@@ -12,9 +12,37 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+function shared() {
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/shared" -c "${CONFIG}" "${@}"
+}
 
-# TODO: Add function to install shared dotfiles
-# TODO: Add function to install wsl dotfiles
-# TODO: Add function to install arch dotfiles
-# TODO: Add main function to switch on input
+function linux() {
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/linux" -c "${CONFIG}" "${@}"
+}
+
+function help(){
+  echo "Options for this script include:
+    - shared - Install dotfiles relating to my wsl/linux terminal development
+    - linux - Install dotfiles relating to my dwm install
+    - help - Show this message and exit
+"
+}
+
+# Dont run install script if help was past as arg
+if [ "$1" = "help" ];then
+  help
+else
+  echo You are trying to install/update "$@"
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+      echo "Starting installation."
+      for ARG in "$@"
+      do
+        $ARG
+      done
+      echo "Finished installation."
+  fi;
+fi;
+
+unset help
+unset linux
+unset shared
