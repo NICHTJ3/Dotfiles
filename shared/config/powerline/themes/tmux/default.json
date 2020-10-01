@@ -1,0 +1,41 @@
+{
+  "segments": {
+    "left": [
+    ],
+    "right": [
+      {
+        "function": "powerline.segments.common.players.spotify",
+        "name": "player",
+        "args": {
+          "format": "{state_symbol} {artist} | {title}"
+        }
+      },
+      {
+        "function": "powerline.segments.common.time.date",
+        "args": {
+          "format": "%d-%m-%Y"
+        }
+      },
+      {
+        "function": "powerline.segments.common.time.date",
+        "name": "time",
+        "args": {
+          "format": "%l:%M %p",
+          "istime": true
+        }
+      },
+      {
+        "function": "powerline.segments.common.bat.battery",
+        "name": "battery",
+        "args": {
+          "gamify": false,
+          "offline": "",
+          "online": "⚡"
+        }
+      },
+      {
+        "function": "powerline.segments.common.net.hostname"
+      }
+    ]
+  }
+}

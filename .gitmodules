@@ -2,3 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "shared/config/neovim"]
+	path = shared/config/neovim
+	url = https://github.com/nichtj3/neovim

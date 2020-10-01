@@ -1,0 +1,41 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+- link:
+    # TODO: Extract linux scripts to seporate folder and add in linux install script
+    # Scripts
+    ~/bin: config/Useful-Scripts
+    # Misc
+    ~/.config/bat/:
+      glob: true
+      path: config/bat/*
+    ~/.config/powerline/:
+      glob: true
+      path: config/powerline/*
+    ~/.gitconfig: config/gitconfig
+    # NVIM config
+    ~/.config/nvim/:
+      glob: true
+      path: config/neovim/*
+    # TMUX config
+    ~/.tmux.conf: config/tmux/tmux.conf
+    # ZSH config
+    ~/.zshenv: config/zsh/zshenv
+    ~/.zshrc: config/zsh/zshrc
+    ~/.config/zsh/p10k.zsh: config/zsh/p10k.zsh
+    ~/.config/zsh/p10k-portable.zsh: config/zsh/p10k-portable.zsh
+
+- create:
+    - ~/.config/nvim/spell/
+    - ~/.config/nvim/undodir/
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
