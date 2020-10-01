@@ -22,7 +22,7 @@ function misc() {
 }
 
 function wm-base() {
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/linux" -c "${BASEDIR}/linux/${CONFIG}" "${@}"
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/wm-base" -c "${BASEDIR}/wm-base/${CONFIG}" "${@}"
 }
 
 function dwm() {
@@ -43,7 +43,9 @@ usage: $MYNAME [Option] [dotbot args (optional)]
 
 Options:
   - shared - Install dotfiles relating to my wsl/linux terminal development
-  - linux - Install dotfiles relating to my dwm install
+  - wm-base - Install dotfiles relating to my base wm install
+  - dwm - Install dotfiles relating to my base wm as well as my autostart for dwm
+  - i3 - Install dotfiles relating to my base wm as well as my configs for i3
   - misc - Install dotfiles relating to random applications
   - help - Show this message and exit
 
