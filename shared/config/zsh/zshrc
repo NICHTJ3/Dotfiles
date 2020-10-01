@@ -69,10 +69,15 @@ eval "`fnm env --multi`"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 # TODO: Check if we're in wsl
-if [ $DISPLAY ]; then
+WSL_ACTIVE=2
+if [[ -z "$IS_WSL" || -z "$WSL_DISTRO_NAME" ]]; then
+  WSL_ACTIVE=1
+fi
+
+if [[ $DISPLAY || $WSL_ACTIVE ]]; then
   [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
 else
-  . $HOME/bin/dracula-tty.sh
+  . $HOME/bin/helper-scripts/dracula-tty.sh
   [[ ! -f ~/.config/zsh/p10k-portable.zsh ]] || source ~/.config/zsh/p10k-portable.zsh
 fi
 
