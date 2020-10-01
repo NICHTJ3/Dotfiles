@@ -13,11 +13,11 @@ git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
 function shared() {
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/shared" -c "${CONFIG}" "${@}"
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/shared" -c "${BASEDIR}/shared/${CONFIG}" "${@}"
 }
 
 function linux() {
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/linux" -c "${CONFIG}" "${@}"
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/linux" -c "${BASEDIR}/linux/${CONFIG}" "${@}"
 }
 
 function help(){
@@ -28,20 +28,23 @@ function help(){
 "
 }
 
-# Dont run install script if help was past as arg
-if [ "$1" = "help" ];then
-  help
-else
-  echo You are trying to install/update "$@"
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-      echo "Starting installation."
-      for ARG in "$@"
-      do
-        $ARG
-      done
-      echo "Finished installation."
-  fi;
-fi;
+echo You are trying to install/update "$1"
+option=$1
+shift 1
+case $option in
+ help)
+   help
+   ;;
+ linux)
+   linux $rest
+   ;;
+ shared)
+   shared $rest
+   ;;
+ *)
+   help
+   ;;
+esac
 
 unset help
 unset linux

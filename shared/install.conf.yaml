@@ -38,6 +38,7 @@
 - create:
     - ~/.config/nvim/spell/
     - ~/.config/nvim/undodir/
+    - ~/bin
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

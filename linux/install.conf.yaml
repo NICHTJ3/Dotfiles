@@ -11,7 +11,6 @@
       recursive: true
 
 - link:
-    ~/bin/wm-scripts/: config/wm-scripts
     # Misc
     ~/.config/mimeapps.list: ./config/mimeapps.list
     ~/.config/picom.conf: ./config/picom.conf
@@ -30,11 +29,16 @@
     # DWM
     ~/.local/share/dwm/:
       glob: true
-      path: dwm/*
+      path: config/dwm/*
+    # Scripts
+    ~/bin/wm-scripts/:
+      glob: true
+      path: config/wm-scripts/*
 
 - create:
     - ~/Documents
     - ~/Downloads
+    - ~/bin
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
