@@ -2,6 +2,7 @@
 
 set -e
 
+MYNAME=${0##*/}  # Short program name for diagnostic messages.
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
@@ -20,32 +21,42 @@ function linux() {
   "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/linux" -c "${BASEDIR}/linux/${CONFIG}" "${@}"
 }
 
-function help(){
-  echo "Options for this script include:
-    - shared - Install dotfiles relating to my wsl/linux terminal development
-    - linux - Install dotfiles relating to my dwm install
-    - help - Show this message and exit
-"
+function misc() {
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/misc" -c "${BASEDIR}/misc/${CONFIG}" "${@}"
 }
 
-echo You are trying to install/update "$1"
+
+help () {
+  cat << EOF
+
+usage: $MYNAME [Option] [dotbot args (optional)]
+
+Options:
+  - shared - Install dotfiles relating to my wsl/linux terminal development
+  - linux - Install dotfiles relating to my dwm install
+  - misc - Install dotfiles relating to random applications
+  - help - Show this message and exit
+
+EOF
+  exit $1
+}
+
 option=$1
 shift 1
-case $option in
- help)
-   help
-   ;;
- linux)
-   linux $rest
-   ;;
- shared)
-   shared $rest
-   ;;
- *)
-   help
-   ;;
-esac
+
+if [[ $option ]]; then
+  echo You are using option: "$option"
+  case $option in
+   help) help ;;
+   linux) linux $@ ;;
+   misc) misc $@ ;;
+   shared) shared $@ ;;
+  esac
+else
+  help
+fi
 
 unset help
 unset linux
+unset misc
 unset shared
