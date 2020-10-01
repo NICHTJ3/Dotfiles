@@ -21,7 +21,11 @@ set shortmess+=Ic " no splash screen
 set showcmd
 set list
 set listchars=tab:>~,nbsp:_,trail:.,extends:>,precedes:<
-set signcolumn=number
+try
+  set signcolumn=number
+catch
+  set signcolumn=auto
+endtry
 
 " Base-16 auto config requires base-16-vim
 if filereadable(expand("~/.vimrc_background"))
