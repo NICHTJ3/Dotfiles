@@ -1,0 +1,40 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+# TODO: Check if this deletes other shared config
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+- link:
+    ~/bin/wm-scripts/: config/wm-scripts
+    # Misc
+    ~/.config/mimeapps.list: ./config/mimeapps.list
+    ~/.config/picom.conf: ./config/picom.conf
+    ~/.config/sxhkd/sxhkdrc: config/sxhkdrc
+    ~/.config/dunst/dunstrc: config/dunstrc
+    # X config
+    ~/.xinitrc: config/xinitrc
+    ~/.xprofile: config/xprofile
+    ~/.config/xprofile: config/xprofile
+    ~/.Xresources: config/Xresources
+    # Applications
+    ~/.config/rofi/:
+      glob: true
+      path: config/rofi/*
+    ~/.config/zathura/zathurarc: config/zathurarc
+    # DWM
+    ~/.local/share/dwm/:
+      glob: true
+      path: dwm/*
+
+- create:
+    - ~/Documents
+    - ~/Downloads
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]

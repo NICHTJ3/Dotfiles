@@ -1,0 +1,115 @@
+#!/bin/sh
+set -e
+
+# Make sure even pre-existing tmux sessions use the latest SSH_AUTH_SOCK.
+# (Inspired by: https://gist.github.com/lann/6771001)
+SOCK_SYMLINK=~/.ssh/ssh_auth_sock
+if [ -r "$SSH_AUTH_SOCK" -a ! -L "$SSH_AUTH_SOCK" ]; then
+  ln -sf "$SSH_AUTH_SOCK" $SOCK_SYMLINK
+fi
+
+function createTmuxFile(){
+echo Creating a .tmux file
+echo "\
+#!/bin/sh
+set -e
+function attachOrSwitch(){
+  if [[ \$TMUX ]];then
+    tmux switch-client -t $1\$1
+  else
+    tmux attach -t $1\$1
+  fi
+}
+
+# Attach to the session if it already exists
+if tmux has-session -t=$1 2> /dev/null; then
+  attachOrSwitch; exit
+fi
+
+# Create a new session with the first window being called vim
+tmux new-session -d -s $1 -n vim -x $(tput cols) -y $(tput lines)
+
+# 1. Main window: vim, server, shell.
+tmux send-keys -t $1:vim \"nvim -c Files\" Enter
+tmux split-window -t $1:vim -h
+# You could send commands to this window like
+# tmux send-keys -t $1:vim.right \"git status\" Enter
+tmux split-window -t $1:vim.2
+# You could send commands to this window like
+# tmux send-keys -t $1:vim.bottom-right \"git status\" Enter
+
+# 2. Create a second window you could create splits etc in the same way as the
+# above section
+tmux new-window -t $1 -c "\$PWD" -n window-2
+
+# Attach to the newly created session
+attachOrSwitch :vim.left
+" > .tmux
+echo Giving the new file the correct permissions
+chmod +x .tmux
+}
+
+function init(){
+  SESSION_NAME=$(basename "$(pwd)")
+  if [[ ! -f ./.tmux && ! -d ./.tmux ]]; then
+    createTmuxFile $SESSION_NAME
+    echo Created a .tmux file have a look inside if you want to change anything
+  else
+    echo There is already a .tmux file or directory remove it before running this command
+  fi
+}
+
+# Prompt to trust the first time we see a given .tmux file before running it
+# as a shell script
+function validateAndRunTmuxFile(){
+  DIGEST="$(openssl sha512 .tmux)"
+  if ! grep -q "$DIGEST" ~/.config/..tmux.digests 2> /dev/null; then
+    cat .tmux
+    read -p \
+      'REPLY? Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
+    echo
+    if [[ $REPLY =~ ^[Tt]$ ]]; then
+      echo "$DIGEST" >> ~/.config/..tmux.digests
+      ./.tmux
+    fi
+  else
+    ./.tmux
+  fi
+}
+
+# Attach to existing session, or create one, based on current directory.
+function attachOrCreateSession(){
+  SESSION_NAME=$(basename "$(pwd)")
+  env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux new -A -s "$SESSION_NAME"
+}
+
+# Pass unknown args to tmux
+function passArgsToTmux(){
+  env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux "$@"
+}
+
+function main() {
+  TMUX_ARGS=""
+  for i in "$@"
+  do
+  case $i in
+      init|--init)
+        init
+        exit
+      ;;
+      *) TMUX_ARGS+="$i " ;;
+  esac
+  done
+
+  if [[ -n "$TMUX_ARGS" ]]; then
+    passArgsToTmux $TMUX_ARGS
+    exit
+  fi
+  if [[ -x .tmux && ! -d .tmux ]]; then
+    validateAndRunTmuxFile
+    exit
+  fi
+  attachOrCreateSession
+}
+
+main "$@"

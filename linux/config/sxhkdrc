@@ -1,0 +1,33 @@
+#
+# wm independent hotkeys
+#
+
+# Pulse Audio controls
+#XF86AudioRaiseVolume
+#    volumectl.sh +5
+#XF86AudioLowerVolume
+#    volumectl.sh -5 #decrease sound volume
+#XF86AudioMute
+#    volumectl.sh toggle #decrease sound volume
+
+# terminal emulator
+super + Return
+  gnome-terminal
+
+# firefox
+super + shift +  Return
+  firefox-developer-edition
+
+# program launcher
+super + @space
+  rofi -show drun
+
+# make sxhkd reload its configuration files:
+super + Escape
+  pkill -USR1 -x sxhkd
+
+super + shift +  Escape
+  power-manager lock
+
+super + shift + e
+  echo "Lock\nLogout\nSuspend\nHibernate\nReboot\nShutdown"|rofi -dmenu -i|tr "[:upper:]" "[:lower:]"|xargs power-manager

@@ -10,9 +10,7 @@
       recursive: true
 
 - link:
-    # TODO: Extract linux scripts to seporate folder and add in linux install script
-    # Scripts
-    ~/bin: config/Useful-Scripts
+    ~/bin/helper-scripts: config/helper-scripts
     # Misc
     ~/.config/bat/:
       glob: true
