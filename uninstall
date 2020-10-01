@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+
+import yaml
+
+
+def removeConfig(config_file):
+    """Removes all symlinks for a given configFile """
+    stream = open(config_file, "r")
+    conf = yaml.load(stream, Loader=yaml.FullLoader)
+    for section in conf:
+        if "link" in section:
+            for target in section["link"]:
+                realpath = os.path.expanduser(target)
+                if os.path.islink(realpath):
+                    print("Removing ", realpath)
+                    os.unlink(realpath)
+
+
+# TODO: Build this dynamically by searching for install.conf.yaml files
+switch = {
+    "dwm": lambda: removeConfig("dwm/install.conf.yaml"),
+    "i3": lambda: removeConfig("i3/install.conf.yaml"),
+    "misc": lambda: removeConfig("misc/install.conf.yaml"),
+    "shared": lambda: removeConfig("shared/install.conf.yaml"),
+    "wm-base": lambda: removeConfig("wm-base/install.conf.yaml"),
+}
+
+config_to_remove = None
+if len(sys.argv) > 1:
+    config_to_remove = sys.argv[1]
+
+if config_to_remove and config_to_remove in switch:
+    switch[config_to_remove]()
+else:
+    print("Invalid key supplied. Acceptable options include:")
+    print("\n".join([*switch]))
