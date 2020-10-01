@@ -17,12 +17,22 @@ function shared() {
   "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/shared" -c "${BASEDIR}/shared/${CONFIG}" "${@}"
 }
 
-function linux() {
+function misc() {
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/misc" -c "${BASEDIR}/misc/${CONFIG}" "${@}"
+}
+
+function wm-base() {
   "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/linux" -c "${BASEDIR}/linux/${CONFIG}" "${@}"
 }
 
-function misc() {
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/misc" -c "${BASEDIR}/misc/${CONFIG}" "${@}"
+function dwm() {
+  wm-base
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/dwm" -c "${BASEDIR}/dwm/${CONFIG}" "${@}"
+}
+
+function i3() {
+  wm-base
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/i3" -c "${BASEDIR}/i3/${CONFIG}" "${@}"
 }
 
 
@@ -48,7 +58,9 @@ if [[ $option ]]; then
   echo You are using option: "$option"
   case $option in
    help) help ;;
-   linux) linux $@ ;;
+   wm-base) wm-base $@ ;;
+   i3) i3 $@ ;;
+   dwm) dwm $@ ;;
    misc) misc $@ ;;
    shared) shared $@ ;;
   esac

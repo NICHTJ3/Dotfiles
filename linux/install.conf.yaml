@@ -26,10 +26,6 @@
       glob: true
       path: config/rofi/*
     ~/.config/zathura/zathurarc: config/zathurarc
-    # DWM
-    ~/.local/share/dwm/:
-      glob: true
-      path: config/dwm/*
     # Scripts
     ~/bin/wm-scripts/:
       glob: true
