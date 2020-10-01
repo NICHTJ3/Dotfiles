@@ -1,0 +1,67 @@
+{
+  "languageserver": {
+    "kotlin": {
+      "command": "bash",
+      "args": [
+        "~/LanguageServers/kotlin-language-server/server/build/scripts/kotlin-language-server"
+      ],
+      "filetypes": ["kotlin"]
+    }
+  },
+  "prettier.eslintIntegration": true,
+  "prettier.disableLanguages": [],
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.trailingComma": "all",
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "diagnostic.virtualText": true,
+  "diagnostic.errorSign": "💣",
+  "diagnostic.warningSign": "⚠️",
+  "diagnostic.infoSign": "❓",
+  "diagnostic.hintSign": "❔",
+  "snippets.priority": 100,
+  "coc.source.word.filetypes": ["markdown", "org"],
+  "snippets.extends": {
+    "cpp": ["c"],
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  },
+  "python.workspaceSymbols.tagFilePath": "${workspaceFolder}/tags",
+  "python.linting.ignorePatterns": ["*-test.py"],
+  "python.venvPath": "/home/nichtj3/.local/share/virtualenvs/",
+  "javascript.validate.enable": false,
+  "python.formatting.provider": "black",
+  "svelte.plugin.typescript.diagnostics.enable": false,
+  "xml.java.home": "/usr/lib/jvm/java-11-openjdk/",
+  "xml.format.spaceBeforeEmptyCloseTag": true,
+  "xml.format.splitAttributes": true,
+  "xml.completion.autoCloseTags": true,
+  "xml.validation.enabled": false,
+  "explorer.position": "right",
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.width": 30,
+  "explorer.keyMappings": {
+    "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"]
+  },
+  "explorer.presets": {
+    "simplify": {
+      "file-child-template": "[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]"
+    }
+  },
+  "clangd.semanticHighlighting": true,
+  "rust-analyzer.lens.run": false,
+  "tailwindCSS.headwind.runOnSave": false
+}
