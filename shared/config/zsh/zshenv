@@ -7,6 +7,8 @@
 [ -d "$HOME/.local/share/cargo/bin" ] && PATH="$HOME/.local/share/cargo/bin:$PATH"
 [ -d "$HOME/.local/share/npm/bin" ] && PATH="$HOME/.local/share/npm/bin:$PATH"
 [ -d"$HOME/.deno" ] && PATH="$HOME/.deno/bin:$PATH"
+# Add user related scripts to path
+[ -d"$HOME/bin" ] && PATH="$PATH:$(du -L "$HOME/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 # }}}
 
 # Enviroment variables {{{
