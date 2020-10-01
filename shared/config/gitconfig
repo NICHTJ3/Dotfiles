@@ -6,12 +6,12 @@
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [pager]
-	diff = ~/bin/diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
-	log = ~/bin/diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
-	show = ~/bin/diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
+	diff = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
+	log = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
+	show = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
 	show-branch = true
 	status = false
-	whatchanged = ~/bin/diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
+	whatchanged = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
 
 [pull]
 	rebase = false
