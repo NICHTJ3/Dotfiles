@@ -30,6 +30,10 @@
     ~/.zshrc: config/zsh/zshrc
     ~/.config/zsh/p10k.zsh: config/zsh/p10k.zsh
     ~/.config/zsh/p10k-portable.zsh: config/zsh/p10k-portable.zsh
+    # Ranger config
+    ~/.config/ranger/:
+      glob: true
+      path: config/ranger/*
 
 - create:
     - ~/.config/nvim/spell/
