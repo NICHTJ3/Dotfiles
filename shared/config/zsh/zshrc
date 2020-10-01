@@ -12,7 +12,7 @@ fpath+=~/.zfunc
 
 HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
 
-source "$HOME/bin/antigen.zsh"
+source "$HOME/bin/helper-scripts/antigen.zsh"
 
 antigen use oh-my-zsh
 

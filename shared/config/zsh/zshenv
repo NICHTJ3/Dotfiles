@@ -17,9 +17,7 @@ export BASE16_SHELL="$HOME/.config/base16-shell/"
 export DISABLE_LS_COLORS=true
 export TERM=xterm-256color
 # Set ZDOTDIR and ADOTDIR here to void antigen issues
-export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export ADOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/antigen"
-export ANTIGEN_CHECK_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshrc"
 # }}}
 
 # Setup {{{
