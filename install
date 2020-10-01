@@ -36,7 +36,7 @@ function i3() {
 }
 
 
-help () {
+function help () {
   cat << EOF
 
 usage: $MYNAME [Option] [dotbot args (optional)]
@@ -54,10 +54,10 @@ EOF
 }
 
 option=$1
-shift 1
 
-if [[ $option ]]; then
+if [ ! -z "$option" ]; then
   echo You are using option: "$option"
+  shift 1
   case $option in
    help) help ;;
    wm-base) wm-base $@ ;;
@@ -73,4 +73,6 @@ fi
 unset help
 unset linux
 unset misc
+unset dwm
+unset i3
 unset shared
