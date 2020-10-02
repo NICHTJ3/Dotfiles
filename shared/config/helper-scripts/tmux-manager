@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # Make sure even pre-existing tmux sessions use the latest SSH_AUTH_SOCK.
