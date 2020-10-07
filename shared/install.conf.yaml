@@ -11,6 +11,7 @@
 
 - link:
     ~/bin/helper-scripts: config/helper-scripts
+    ~/bin/os-scripts: config/os-scripts
     # Misc
     ~/.config/bat/:
       glob: true
