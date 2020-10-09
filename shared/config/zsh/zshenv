@@ -8,10 +8,12 @@
 [ -d "$HOME/.local/share/npm/bin" ] && PATH="$HOME/.local/share/npm/bin:$PATH"
 [ -d"$HOME/.deno" ] && PATH="$HOME/.deno/bin:$PATH"
 # Add user related scripts to path
-[ -d"$HOME/bin" ] && PATH="$PATH:$(du -L "$HOME/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+[ -d"$HOME/bin" ] && \
+  PATH="$PATH:$(du -L "$HOME/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 # }}}
 
 # Enviroment variables {{{
+[[ -z "$IS_WSL" || -z "$WSL_DISTRO_NAME" ]] && WSL_ACTIVE=1
 export EDITOR="nvim"
 export BROWSER="firefox-developer-edition"
 export GEM_HOME="$HOME/.gem"
@@ -29,9 +31,17 @@ export ADOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/antigen"
 # }}}
 
 # Aliases {{{
+if [[ $WSL_ACTIVE  ]];then
+  # Windows
+  alias open='explorer.exe'
+else
+  # Linux
+  alias open='xdg-open'
+fi
+
+# Shared
 alias sudo='sudo ' #Allow sudo to use aliases
 alias :q='exit'
-alias open='xdg-open'
 alias e='open'
 alias ls='lsd'
 alias gp='git push'
