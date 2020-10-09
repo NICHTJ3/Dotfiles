@@ -22,7 +22,7 @@ fi
 if [[ ! $WSL_ACTIVE ]]; then
   export BROWSER="firefox-developer-edition"
 else
-  export BROWSER="/mnt/c/Program\ Files/Firefox\ Developer\ Edition/firefox.exe"
+  export BROWSER="wslview"
 fi
 
 export EDITOR="nvim"
@@ -43,7 +43,7 @@ export ADOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/antigen"
 # Aliases {{{
 if [[ $WSL_ACTIVE  ]];then
   # Windows
-  alias open='explorer.exe'
+  alias open='wslview'
 else
   # Linux
   alias open='xdg-open'
