@@ -13,6 +13,8 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
+# TODO: Build these functions dynamically by searching for directory names that
+# contain an install.conf.yaml file
 function shared() {
   "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/shared" -c "${BASEDIR}/shared/${CONFIG}" "${@}"
 }
