@@ -24,7 +24,7 @@ function help(){
   echo "Usage: $MYNAME <Option> [dotbot args (optional)]"
   echo "Options:"
   for file in $INSTALL_OPTIONS;do
-    echo "$INDENTATION- $file: $( cat $BASEDIR/$file/$DESCRIPTION)"
+    echo "$INDENTATION- $file: $( cat $BASEDIR/$OPTIONS_DIR/$file/$DESCRIPTION)"
   done
   echo "$INDENTATION- help: Show this message and exit"
   exit $1
