@@ -1,3 +1,3 @@
-Dotfiles relating to my configs for i3
-    - i3 config
-    - i3 status config
+Dotfiles relating to my i3 configs
+    - My i3 config
+    - My i3 status config

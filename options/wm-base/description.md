@@ -1,5 +1,5 @@
 Dotfiles relating to my base wm install
-    - x related files
+    - xorg related files
     - sxhkdrc config
     - zathurarc (This might be moved to misc at some point)
     - picom config

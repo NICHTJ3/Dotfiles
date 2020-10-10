@@ -1,2 +1,2 @@
-Dotfiles relating to random applications
+Dotfiles relating to random applications I use
     - vscode vimrc
