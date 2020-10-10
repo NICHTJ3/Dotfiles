@@ -7,7 +7,8 @@ INDENTATION="  "
 MYNAME=${0##*/}  # Short program name for diagnostic messages.
 CONFIG="install.conf.yaml"
 DESCRIPTION="description.md"
-INSTALL_OPTIONS=$(ls | grep -vFxf .dots-ignore)
+INSTALL_OPTIONS=$(ls options | grep -vFxf .dots-ignore)
+OPTIONS_DIR="options"
 
 DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
@@ -44,7 +45,7 @@ if [ ! -z "$option" ]; then
   shift 1
   if [[ ${AVAILABLE_TO_INSTALL[$option]} ]];then
     echo "Install Option: $option was selected."
-    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/$option" -c "${BASEDIR}/$option/${CONFIG}" "${@}"
+    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/$OPTIONS_DIR/$option" -c "${BASEDIR}/$OPTIONS_DIR/$option/${CONFIG}" "${@}"
   else
     echo "Install Option: $option was not available."
     help

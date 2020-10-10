@@ -7,7 +7,8 @@ INDENTATION="  "
 MYNAME=${0##*/}  # Short program name for diagnostic messages.
 CONFIG="install.conf.yaml"
 DESCRIPTION="description.md"
-UNINSTALL_OPTIONS=$(ls | grep -vFxf .dots-ignore)
+UNINSTALL_OPTIONS=$(ls options | grep -vFxf .dots-ignore)
+OPTIONS_DIR="options"
 
 DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
@@ -38,7 +39,7 @@ if [ ! -z "$option" ]; then
   shift 1
   if [[ ${AVAILABLE_TO_UNINSTALL[$option]} ]];then
     echo "Uninstall Option: $option was selected."
-    ${BASEDIR}/scripts/uninstall $BASEDIR/$option/$CONFIG
+    ${BASEDIR}/scripts/uninstall $BASEDIR/$OPTIONS_DIR/$option/$CONFIG
     echo "Uninstall Option: $option was successful."
   else
     echo "Uninstall Option: $option was not available."
