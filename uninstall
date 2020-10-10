@@ -1,39 +1,48 @@
-#!/usr/bin/env python3
+#!/usr/bin/env bash
 
-import os
-import sys
+set -e
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-import yaml
+INDENTATION="  "
+MYNAME=${0##*/}  # Short program name for diagnostic messages.
+CONFIG="install.conf.yaml"
+DESCRIPTION="description.md"
+UNINSTALL_OPTIONS=$(ls | grep -vFxf .dots-ignore)
 
+DOTBOT_DIR="dotbot"
+DOTBOT_BIN="bin/dotbot"
 
-def removeConfig(config_file):
-    """Removes all symlinks for a given configFile """
-    stream = open(config_file, "r")
-    conf = yaml.load(stream, Loader=yaml.FullLoader)
-    for section in conf:
-        if "link" in section:
-            for target in section["link"]:
-                realpath = os.path.expanduser(target)
-                if os.path.islink(realpath):
-                    print("Removing ", realpath)
-                    os.unlink(realpath)
-
-
-# TODO: Build this dynamically by searching for install.conf.yaml files
-switch = {
-    "dwm": lambda: removeConfig("dwm/install.conf.yaml"),
-    "i3": lambda: removeConfig("i3/install.conf.yaml"),
-    "misc": lambda: removeConfig("misc/install.conf.yaml"),
-    "shared": lambda: removeConfig("shared/install.conf.yaml"),
-    "wm-base": lambda: removeConfig("wm-base/install.conf.yaml"),
+# Print the help menu with descriptions from all available packages
+function help(){
+  echo "Usage: $MYNAME <Option>"
+  echo "Options:"
+  for file in $UNINSTALL_OPTIONS;do
+    echo "$INDENTATION- $file: $( cat $BASEDIR/$file/$DESCRIPTION)"
+  done
+  echo "$INDENTATION- help: Show this message and exit"
+  exit $1
 }
 
-config_to_remove = None
-if len(sys.argv) > 1:
-    config_to_remove = sys.argv[1]
 
-if config_to_remove and config_to_remove in switch:
-    switch[config_to_remove]()
-else:
-    print("Invalid key supplied. Acceptable options include:")
-    print("\n".join([*switch]))
+# Create an array of 1's representing an option is available to be uninstalled
+declare -A AVAILABLE_TO_UNINSTALL
+for constant in $UNINSTALL_OPTIONS
+do
+  AVAILABLE_TO_UNINSTALL[$constant]=1
+done
+
+
+# Rename the first param to option and uninstall it if it was available
+option=$1
+if [ ! -z "$option" ]; then
+  shift 1
+  if [[ ${AVAILABLE_TO_UNINSTALL[$option]} ]];then
+    echo "Uninstall Option: $option was selected."
+    ${BASEDIR}/scripts/uninstall $BASEDIR/$option/$CONFIG
+  else
+    echo "Uninstall Option: $option was not available."
+    help
+  fi
+else
+  help
+fi

@@ -1,80 +1,54 @@
 #!/usr/bin/env bash
 
 set -e
-
-MYNAME=${0##*/}  # Short program name for diagnostic messages.
-CONFIG="install.conf.yaml"
-DOTBOT_DIR="dotbot"
-
-DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+INDENTATION="  "
+MYNAME=${0##*/}  # Short program name for diagnostic messages.
+CONFIG="install.conf.yaml"
+DESCRIPTION="description.md"
+INSTALL_OPTIONS=$(ls | grep -vFxf .dots-ignore)
+
+DOTBOT_DIR="dotbot"
+DOTBOT_BIN="bin/dotbot"
+
+# Update dotbot
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-# TODO: Build these functions dynamically by searching for directory names that
-# contain an install.conf.yaml file
-function shared() {
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/shared" -c "${BASEDIR}/shared/${CONFIG}" "${@}"
-}
 
-function misc() {
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/misc" -c "${BASEDIR}/misc/${CONFIG}" "${@}"
-}
-
-function wm-base() {
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/wm-base" -c "${BASEDIR}/wm-base/${CONFIG}" "${@}"
-}
-
-function dwm() {
-  wm-base
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/dwm" -c "${BASEDIR}/dwm/${CONFIG}" "${@}"
-}
-
-function i3() {
-  wm-base
-  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/i3" -c "${BASEDIR}/i3/${CONFIG}" "${@}"
-}
-
-
-function help () {
-  cat << EOF
-
-usage: $MYNAME [Option] [dotbot args (optional)]
-
-Options:
-  - shared - Install dotfiles relating to my wsl/linux terminal development
-  - wm-base - Install dotfiles relating to my base wm install
-  - dwm - Install dotfiles relating to my base wm as well as my autostart for dwm
-  - i3 - Install dotfiles relating to my base wm as well as my configs for i3
-  - misc - Install dotfiles relating to random applications
-  - help - Show this message and exit
-
-EOF
+# Print the help menu with descriptions from all available packages
+function help(){
+  echo "Usage: $MYNAME <Option> [dotbot args (optional)]"
+  echo "Options:"
+  for file in $INSTALL_OPTIONS;do
+    echo "$INDENTATION- $file: $( cat $BASEDIR/$file/$DESCRIPTION)"
+  done
+  echo "$INDENTATION- help: Show this message and exit"
   exit $1
 }
 
-option=$1
 
+# Create an array of 1's representing an option is available to be installed
+declare -A AVAILABLE_TO_INSTALL
+for constant in $INSTALL_OPTIONS
+do
+  AVAILABLE_TO_INSTALL[$constant]=1
+done
+
+
+# Rename the first param to option and install it if it was available
+option=$1
 if [ ! -z "$option" ]; then
-  echo You are using option: "$option"
   shift 1
-  case $option in
-   help) help ;;
-   wm-base) wm-base $@ ;;
-   i3) i3 $@ ;;
-   dwm) dwm $@ ;;
-   misc) misc $@ ;;
-   shared) shared $@ ;;
-  esac
+  if [[ ${AVAILABLE_TO_INSTALL[$option]} ]];then
+    echo "Install Option: $option was selected."
+    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}/$option" -c "${BASEDIR}/$option/${CONFIG}" "${@}"
+  else
+    echo "Install Option: $option was not available."
+    help
+  fi
 else
   help
 fi
-
-unset help
-unset linux
-unset misc
-unset dwm
-unset i3
-unset shared
