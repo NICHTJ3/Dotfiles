@@ -39,6 +39,7 @@ if [ ! -z "$option" ]; then
   if [[ ${AVAILABLE_TO_UNINSTALL[$option]} ]];then
     echo "Uninstall Option: $option was selected."
     ${BASEDIR}/scripts/uninstall $BASEDIR/$option/$CONFIG
+    echo "Uninstall Option: $option was successful."
   else
     echo "Uninstall Option: $option was not available."
     help
