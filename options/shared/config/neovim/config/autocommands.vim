@@ -16,7 +16,7 @@ if has("autocmd")
     autocmd BufWinEnter *.pug set syntax=pug
     autocmd BufWinEnter *.cisco set syntax=cisco
     autocmd BufWinEnter *.css set filetype=css
-    autocmd FileType vimwiki set syntax=markdown
+    autocmd Filetype vimwiki set foldlevel=2
   augroup END
 
   augroup Indentation
