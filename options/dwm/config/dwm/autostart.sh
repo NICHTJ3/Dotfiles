@@ -2,6 +2,7 @@
 # Sound
 start-pulseaudio-x11 &
 pa-applet &
+remaps &
 
 # General
 sxhkd &
