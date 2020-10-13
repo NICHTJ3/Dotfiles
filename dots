@@ -5,6 +5,7 @@ set -e
 MYNAME=${0##*/}  # Short program name for diagnostic messages.
 INSTALL_CONFIG_FILE="install.conf.yaml"
 CONFIGS=$(ls configs | grep -vFxf .dots-ignore)
+PROFILE_EXTENSION=".yml"
 
 META_DIR="."
 CONFIG_DIR="configs"
@@ -56,7 +57,7 @@ case "$subcommand" in
           profile=$OPTARG
           while IFS= read -r config; do
             CONFIGS_TO_INSTALL+=" ${config}"
-          done < "${META_DIR}/${PROFILES_DIR}/$profile/${INSTALL_CONFIG_FILE}"
+          done < "${META_DIR}/${PROFILES_DIR}/$profile${PROFILE_EXTENSION}"
           ;;
         \? )
           echo "Invalid Option: -$OPTARG" 1>&2
@@ -89,7 +90,7 @@ case "$subcommand" in
           profile=$OPTARG
           while IFS= read -r config; do
             CONFIGS_TO_UNINSTALL+=" ${config}"
-          done < "${META_DIR}/${PROFILES_DIR}/$profile/${INSTALL_CONFIG_FILE}"
+          done < "${META_DIR}/${PROFILES_DIR}/$profile${PROFILE_EXTENSION}"
           ;;
         \? )
           echo "Invalid Option: -$OPTARG" 1>&2
