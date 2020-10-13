@@ -4,6 +4,7 @@ set -e
 
 MYNAME=${0##*/}  # Short program name for diagnostic messages.
 INSTALL_CONFIG_FILE="install.conf.yaml"
+CONFIGS=$(ls configs | grep -vFxf .dots-ignore)
 
 META_DIR="."
 CONFIG_DIR="configs"
@@ -15,6 +16,14 @@ DOTBOT_BIN="bin/dotbot"
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 profile=""  # Default to empty package
+
+# Create an array of 1's representing an option is available to be installed
+declare -A AVAILABLE_CONFIG
+for constant in $CONFIGS
+do
+  AVAILABLE_CONFIG[$constant]=1
+done
+
 
 # Parse options to the `install` command
 while getopts ":h" opt; do
@@ -45,6 +54,9 @@ case "$subcommand" in
       case ${opt} in
         p )
           profile=$OPTARG
+          while IFS= read -r config; do
+            CONFIGS_TO_INSTALL+=" ${config}"
+          done < "${META_DIR}/${PROFILES_DIR}/$profile/${INSTALL_CONFIG_FILE}"
           ;;
         \? )
           echo "Invalid Option: -$OPTARG" 1>&2
@@ -58,25 +70,26 @@ case "$subcommand" in
     done
     shift $((OPTIND -1))
 
-    # We now know the profile and the have the remaining configs to install
-    while IFS= read -r config; do
-      CONFIGS+=" ${config}"
-    done < "${META_DIR}/${PROFILES_DIR}/$profile"
+    echo ${CONFIGS_TO_INSTALL} ${@}
 
-    echo ${CONFIGS}
-
-    for config in ${CONFIGS} ${@}; do
+    for config in ${CONFIGS_TO_INSTALL} ${@}; do
       echo -e "\nConfigure $config"
-      configFile="$(mktemp)" ; echo -e "$(<"${BASE_DIR}/${META_DIR}/${CONFIG_DIR}/${config}/${INSTALL_CONFIG_FILE}")" > "$configFile"
-      "${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "$configFile" ; rm -f "$configFile"
+      if [[ ${AVAILABLE_CONFIG[$config]} ]];then
+        "${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}/$CONFIG_DIR/$config" -c "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
+      else
+        echo "Config: $config was not available."
+      fi
     done
     ;;
-  uninstall) 
+  uninstall)
     # Process package options
     while getopts ":p:" opt; do
       case ${opt} in
         p )
           profile=$OPTARG
+          while IFS= read -r config; do
+            CONFIGS_TO_UNINSTALL+=" ${config}"
+          done < "${META_DIR}/${PROFILES_DIR}/$profile/${INSTALL_CONFIG_FILE}"
           ;;
         \? )
           echo "Invalid Option: -$OPTARG" 1>&2
@@ -90,17 +103,15 @@ case "$subcommand" in
     done
     shift $((OPTIND -1))
 
-    # We now know the profile and the have the remaining configs to install
-    while IFS= read -r config; do
-      CONFIGS+=" ${config}"
-    done < "${META_DIR}/${PROFILES_DIR}/$profile"
+    echo ${CONFIGS_TO_UNINSTALL} ${@}
 
-    echo ${CONFIGS}
-
-    for config in ${CONFIGS} ${@}; do
+    for config in ${CONFIGS_TO_UNINSTALL} ${@}; do
       echo -e "\nConfigure $config"
-      configFile="$(mktemp)" ; echo -e "$(<"${BASE_DIR}/${META_DIR}/${CONFIG_DIR}/${config}/${INSTALL_CONFIG_FILE}")" > "$configFile"
-      ${BASEDIR}/scripts/uninstall $configFile; rm -f "$configFile"
+      if [[ ${AVAILABLE_CONFIG[$config]} ]];then
+        ${BASE_DIR}/scripts/uninstall "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
+      else
+        echo "Config: $config was not available."
+      fi
     done
     ;;
 esac
