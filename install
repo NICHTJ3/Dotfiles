@@ -6,8 +6,8 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MYNAME=${0##*/}  # Short program name for diagnostic messages.
 CONFIG="install.conf.yaml"
 DESCRIPTION="description.md"
-INSTALL_OPTIONS=$(ls options | grep -vFxf .dots-ignore)
-OPTIONS_DIR="options"
+INSTALL_OPTIONS=$(ls configs | grep -vFxf .dots-ignore)
+OPTIONS_DIR="configs"
 
 DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
