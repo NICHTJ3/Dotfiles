@@ -1,0 +1,19 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+- link:
+    ~/bin/os-scripts:
+      glob: true
+      path: config/os-scripts/*
+
+- create:
+    - ~/bin
+    - ~/bin/os-scripts

@@ -1,0 +1,23 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+- link:
+    # DWM
+    ~/.local/share/dwm/:
+      glob: true
+      path: config/dwm/*
+    ~/bin/wm-scripts/:
+      glob: true
+      path: config/wm-scripts/*
+
+- create:
+    - ~/bin
+    - ~/bin/helper-scripts

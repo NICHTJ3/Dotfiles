@@ -1,0 +1,13 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+# TODO: Check if this deletes other shared config
+- clean:
+    ~/.config:
+      recursive: true
+
+- link:
+    # Misc
+    ~/.config/sxhkd/sxhkdrc: config/sxhkdrc

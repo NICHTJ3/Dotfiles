@@ -1,0 +1,21 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+# TODO: Check if this deletes other shared config
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+- link:
+    # Misc
+    ~/bin/wm-scripts/:
+      glob: true
+      path: config/wm-scripts/*
+
+- create:
+    - ~/bin
+    - ~/bin/wm-scripts

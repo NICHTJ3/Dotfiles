@@ -1,0 +1,80 @@
+# ZSHENV
+#
+# PATH {{{
+[ -d "$HOME/.gem/bin" ] && PATH="$HOME/.gem/bin:$PATH"
+[ -d "$HOME/.poetry/bin" ] && PATH="$HOME/.poetry/bin:$PATH"
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
+[ -d "$HOME/.local/share/cargo/bin" ] && PATH="$HOME/.local/share/cargo/bin:$PATH"
+[ -d "$HOME/.local/share/npm/bin" ] && PATH="$HOME/.local/share/npm/bin:$PATH"
+[ -d"$HOME/.deno" ] && PATH="$HOME/.deno/bin:$PATH"
+# Add user related scripts to path
+[ -d"$HOME/bin" ] && \
+  PATH="$PATH:$(du -L "$HOME/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+# }}}
+
+# Enviroment variables {{{
+[[ ! -z "$IS_WSL" || ! -z "$WSL_DISTRO_NAME" ]] && WSL_ACTIVE=1
+
+if [[ ! $WSL_ACTIVE ]]; then
+  export BROWSER="firefox-developer-edition"
+else
+  echo $WSL_ACTIVE
+  export BROWSER="wslview"
+fi
+
+export EDITOR="nvim"
+export GEM_HOME="$HOME/.gem"
+export BASE16_SHELL="$HOME/.config/base16-shell/"
+export DISABLE_LS_COLORS=true
+export TERM=xterm-256color
+# Set ZDOTDIR and ADOTDIR here to void antigen issues
+export ADOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/antigen"
+# }}}
+
+# Setup {{{
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+# }}}
+
+# Aliases {{{
+if [[ $WSL_ACTIVE  ]];then
+  # Windows
+  alias open='wslview'
+else
+  # Linux
+  alias open='xdg-open'
+fi
+
+# Shared
+alias sudo='sudo ' #Allow sudo to use aliases
+alias :q='exit'
+alias e='open'
+alias ls='lsd'
+alias gp='git push'
+alias gs='git status'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias cleanMem='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
+alias vim='nvim'
+alias vi='nvim'
+alias :e='nvim'
+alias tmux='tmux-manager'
+alias :q!='test -n "$TMUX" && \tmux kill-session'
+alias :qa='test -n "$TMUX" && \tmux kill-window'
+alias :sp='test -n "$TMUX" && \tmux split-window'
+alias :vs='test -n "$TMUX" && \tmux split-window -h'
+alias tmux-kill-and-set-host='\tmux kill-session -a;\tmux rename-session $HOST'
+alias docker-clean='docker system prune -a'
+alias mapDavidDrive='sudo mount -t cifs //desktop-dm7vasd/hosteddata $HOME/david -o user=op-vr'
+alias cl='clear'
+alias rmNodeModules="find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;"
+alias dots='vi +Dots'
+# }}}
+
+# Bindings {{{
+# Ctrl x ctrl x opens vi with current command
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^x' edit-command-line
+# }}}

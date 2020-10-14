@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+
+set -e
+
+MYNAME=${0##*/}  # Short program name for diagnostic messages.
+INSTALL_CONFIG_FILE="install.conf.yaml"
+CONFIGS=$(ls configs | grep -vFxf .dots-ignore)
+PROFILE_EXTENSION=".yml"
+
+META_DIR="."
+CONFIG_DIR="configs"
+PROFILES_DIR="profiles"
+
+DOTBOT_DIR="dotbot"
+DOTBOT_BIN="bin/dotbot"
+
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+CONFIGS_TO_OPERATE_ON=""
+
+# Create an array of 1's representing an option is available to be installed
+declare -A AVAILABLE_CONFIG
+for constant in $CONFIGS
+do
+  AVAILABLE_CONFIG[$constant]=1
+done
+
+# Parse options to the `install` command
+while getopts ":h" opt; do
+  case ${opt} in
+    h )
+      echo "Usage:"
+      echo "    ${MYNAME} -h                      Display this help message."
+      echo "    ${MYNAME} install -p <profile>       Install <profile>."
+      echo "    ${MYNAME} install <config>       Install <config>."
+      echo "    ${MYNAME} uninstall -p <profile>       Uninstall <profile>."
+      echo "    ${MYNAME} uninstall <config>       Uninstall <config>."
+      exit 0
+      ;;
+   \? )
+     echo "Invalid Option: -$OPTARG" 1>&2
+     exit 1
+     ;;
+  esac
+done
+shift $((OPTIND -1))
+
+function get_shared_subcommand_opts() {
+    while getopts ":p:" opt; do
+      case ${opt} in
+        p )
+          profile=$OPTARG
+          while IFS= read -r config; do
+            CONFIGS_TO_OPERATE_ON+=" ${config}"
+          done < "${META_DIR}/${PROFILES_DIR}/$profile${PROFILE_EXTENSION}"
+          ;;
+        \? )
+          echo "Invalid Option: -$OPTARG" 1>&2
+          exit 1
+          ;;
+        : )
+          echo "Invalid Option: -$OPTARG requires an argument" 1>&2
+          exit 1
+          ;;
+      esac
+    done
+}
+
+function add_or_remove_config() {
+  #function_body
+  add_or_remove=$1; shift
+  config=$1; shift
+  case $add_or_remove in
+    add)
+        "${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}/$CONFIG_DIR/$config" -c "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
+      ;;
+    remove)
+        ${BASE_DIR}/scripts/uninstall "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
+      ;;
+  esac
+}
+
+function add_or_remove_configs(){
+    add_or_remove=$1; shift
+    configs="$@"
+
+    for config in ${configs}; do
+      echo -e "\nConfigure $config"
+      if [[ ${AVAILABLE_CONFIG[$config]} ]];then
+        add_or_remove_config $add_or_remove $config
+      else
+        echo "Config: $config was not available."
+      fi
+    done
+}
+
+subcommand=$1; shift  # Remove 'pip' from the argument list
+get_shared_subcommand_opts "$@"
+shift $((OPTIND -1))
+
+case "$subcommand" in
+  # Parse options to the install sub command
+  install)
+    # Process package options
+    echo ${CONFIGS_TO_OPERATE_ON} ${@}
+    add_or_remove_configs add ${CONFIGS_TO_OPERATE_ON} ${@}
+    ;;
+  uninstall)
+    # Process package options
+    echo ${CONFIGS_TO_OPERATE_ON} ${@}
+    add_or_remove_configs remove ${CONFIGS_TO_OPERATE_ON} ${@}
+    ;;
+esac

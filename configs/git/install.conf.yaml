@@ -1,0 +1,20 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+- link:
+    ~/bin/helper-scripts:
+      glob: true
+      path: config/helper-scripts/*
+    ~/.gitconfig: config/gitconfig
+
+- create:
+    - ~/bin
+    - ~/bin/helper-scripts
