@@ -29,13 +29,7 @@ done
 while getopts ":h" opt; do
   case ${opt} in
     h )
-      echo "Usage:"
-      echo "    ${MYNAME} -h                      Display this help message."
-      echo "    ${MYNAME} install -p <profile>       Install <profile>."
-      echo "    ${MYNAME} install <config>       Install <config>."
-      echo "    ${MYNAME} uninstall -p <profile>       Uninstall <profile>."
-      echo "    ${MYNAME} uninstall <config>       Uninstall <config>."
-      exit 0
+      print_help
       ;;
    \? )
      echo "Invalid Option: -$OPTARG" 1>&2
@@ -44,6 +38,16 @@ while getopts ":h" opt; do
   esac
 done
 shift $((OPTIND -1))
+
+function print_help() {
+  echo "Usage:"
+  echo "    ${MYNAME} -h                      Display this help message."
+  echo "    ${MYNAME} install -p <profile>       Install <profile>."
+  echo "    ${MYNAME} install <config>       Install <config>."
+  echo "    ${MYNAME} uninstall -p <profile>       Uninstall <profile>."
+  echo "    ${MYNAME} uninstall <config>       Uninstall <config>."
+  exit 0
+}
 
 function get_shared_subcommand_opts() {
     while getopts ":p:" opt; do
@@ -94,6 +98,8 @@ function add_or_remove_configs(){
     done
 }
 
+if [ -z "$*" ]; then print_help; fi
+
 subcommand=$1; shift  # Remove 'pip' from the argument list
 get_shared_subcommand_opts "$@"
 shift $((OPTIND -1))
@@ -110,4 +116,5 @@ case "$subcommand" in
     echo ${CONFIGS_TO_OPERATE_ON} ${@}
     add_or_remove_configs remove ${CONFIGS_TO_OPERATE_ON} ${@}
     ;;
+  *) print_help;;
 esac
