@@ -14,4 +14,4 @@
 	whatchanged = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
 
 [pull]
-	rebase = false
+	rebase = true
