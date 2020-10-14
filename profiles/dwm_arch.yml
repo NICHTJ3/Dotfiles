@@ -1,3 +1,6 @@
-shared
-wm-base
+tmux
+zsh
+neovim
+linux_remaps
+git
 dwm

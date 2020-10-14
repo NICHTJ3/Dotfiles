@@ -3,7 +3,6 @@
       create: true
       relink: true
 
-# TODO: Check if this deletes other shared config
 - clean:
     ~/:
       force: true
@@ -11,5 +10,6 @@
       recursive: true
 
 - link:
-    # I3
-    ~/.config/i3/config: config/i3config.conf
+    ~/.config/bat/:
+      glob: true
+      path: config/bat/*
