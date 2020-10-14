@@ -4,20 +4,15 @@
       relink: true
 
 - clean:
-    ~/:
-      force: true
-    ~/.config:
+    ~/bin/:
       recursive: true
 
 - link:
-    # DWM
-    ~/.local/share/dwm/:
-      glob: true
-      path: config/dwm/*
+    # Scripts
     ~/bin/wm-scripts/:
       glob: true
       path: config/wm-scripts/*
 
 - create:
     - ~/bin
-    - ~/bin/helper-scripts
+    - ~/bin/wm-scripts

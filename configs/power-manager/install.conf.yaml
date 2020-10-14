@@ -3,6 +3,7 @@
       create: true
       relink: true
 
+# TODO: Check if this deletes other shared config
 - clean:
     ~/:
       force: true
@@ -10,14 +11,11 @@
       recursive: true
 
 - link:
-    # DWM
-    ~/.local/share/dwm/:
-      glob: true
-      path: config/dwm/*
+    # Misc
     ~/bin/wm-scripts/:
       glob: true
       path: config/wm-scripts/*
 
 - create:
     - ~/bin
-    - ~/bin/helper-scripts
+    - ~/bin/wm-scripts

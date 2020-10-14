@@ -1,5 +1,0 @@
-configuration {
- lines: 8;
- show-icons: true;
- theme: "gruvbox-dark-hard";
-}

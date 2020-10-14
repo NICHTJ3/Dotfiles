@@ -4,11 +4,8 @@
       relink: true
 
 - clean:
-    ~/:
-      force: true
     ~/.config:
       recursive: true
 
 - link:
-    # Code
-    ~/.config/code/vimrc: config/vimrc
+    ~/.config/picom.conf: ./config/picom.conf

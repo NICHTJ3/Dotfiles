@@ -3,12 +3,11 @@
       create: true
       relink: true
 
+# TODO: Check if this deletes other shared config
 - clean:
-    ~/:
-      force: true
     ~/.config:
       recursive: true
 
 - link:
-    # Code
-    ~/.config/code/vimrc: config/vimrc
+    # Misc
+    ~/.config/sxhkd/sxhkdrc: config/sxhkdrc
