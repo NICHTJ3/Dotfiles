@@ -64,7 +64,6 @@ function get_shared_subcommand_opts() {
           ;;
       esac
     done
-    shift $((OPTIND -1))
 }
 
 function add_or_remove_config() {
@@ -97,6 +96,7 @@ function add_or_remove_configs(){
 
 subcommand=$1; shift  # Remove 'pip' from the argument list
 get_shared_subcommand_opts "$@"
+shift $((OPTIND -1))
 
 case "$subcommand" in
   # Parse options to the install sub command
