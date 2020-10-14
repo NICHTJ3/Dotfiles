@@ -16,7 +16,7 @@ DOTBOT_BIN="bin/dotbot"
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-profile=""  # Default to empty package
+CONFIGS_TO_OPERATE_ON=""
 
 # Create an array of 1's representing an option is available to be installed
 declare -A AVAILABLE_CONFIG
@@ -24,7 +24,6 @@ for constant in $CONFIGS
 do
   AVAILABLE_CONFIG[$constant]=1
 done
-
 
 # Parse options to the `install` command
 while getopts ":h" opt; do
@@ -46,73 +45,69 @@ while getopts ":h" opt; do
 done
 shift $((OPTIND -1))
 
+function subcommand_opts() {
+    while getopts ":p:" opt; do
+      case ${opt} in
+        p )
+          profile=$OPTARG
+          while IFS= read -r config; do
+            CONFIGS_TO_OPERATE_ON+=" ${config}"
+          done < "${META_DIR}/${PROFILES_DIR}/$profile${PROFILE_EXTENSION}"
+          ;;
+        \? )
+          echo "Invalid Option: -$OPTARG" 1>&2
+          exit 1
+          ;;
+        : )
+          echo "Invalid Option: -$OPTARG requires an argument" 1>&2
+          exit 1
+          ;;
+      esac
+    done
+    shift $((OPTIND -1))
+}
+
+function add_or_remove_config() {
+  #function_body
+  add_or_remove=$1; shift
+  config=$1; shift
+  case $add_or_remove in
+    add)
+        "${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}/$CONFIG_DIR/$config" -c "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
+      ;;
+    remove)
+        ${BASE_DIR}/scripts/uninstall "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
+      ;;
+  esac
+}
+
+function add_or_remove_configs(){
+    add_or_remove=$1; shift
+    configs="$@"
+
+    for config in ${configs}; do
+      echo -e "\nConfigure $config"
+      if [[ ${AVAILABLE_CONFIG[$config]} ]];then
+        add_or_remove_config $add_or_remove $config
+      else
+        echo "Config: $config was not available."
+      fi
+    done
+}
+
 subcommand=$1; shift  # Remove 'pip' from the argument list
 case "$subcommand" in
   # Parse options to the install sub command
   install)
     # Process package options
-    while getopts ":p:" opt; do
-      case ${opt} in
-        p )
-          profile=$OPTARG
-          while IFS= read -r config; do
-            CONFIGS_TO_INSTALL+=" ${config}"
-          done < "${META_DIR}/${PROFILES_DIR}/$profile${PROFILE_EXTENSION}"
-          ;;
-        \? )
-          echo "Invalid Option: -$OPTARG" 1>&2
-          exit 1
-          ;;
-        : )
-          echo "Invalid Option: -$OPTARG requires an argument" 1>&2
-          exit 1
-          ;;
-      esac
-    done
-    shift $((OPTIND -1))
-
-    echo ${CONFIGS_TO_INSTALL} ${@}
-
-    for config in ${CONFIGS_TO_INSTALL} ${@}; do
-      echo -e "\nConfigure $config"
-      if [[ ${AVAILABLE_CONFIG[$config]} ]];then
-        "${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}/$CONFIG_DIR/$config" -c "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
-      else
-        echo "Config: $config was not available."
-      fi
-    done
+    subcommand_opts "$@"
+    echo ${CONFIGS_TO_OPERATE_ON} ${@}
+    add_or_remove_configs add ${CONFIGS_TO_OPERATE_ON} ${@}
     ;;
   uninstall)
     # Process package options
-    while getopts ":p:" opt; do
-      case ${opt} in
-        p )
-          profile=$OPTARG
-          while IFS= read -r config; do
-            CONFIGS_TO_UNINSTALL+=" ${config}"
-          done < "${META_DIR}/${PROFILES_DIR}/$profile${PROFILE_EXTENSION}"
-          ;;
-        \? )
-          echo "Invalid Option: -$OPTARG" 1>&2
-          exit 1
-          ;;
-        : )
-          echo "Invalid Option: -$OPTARG requires an argument" 1>&2
-          exit 1
-          ;;
-      esac
-    done
-    shift $((OPTIND -1))
-
-    echo ${CONFIGS_TO_UNINSTALL} ${@}
-
-    for config in ${CONFIGS_TO_UNINSTALL} ${@}; do
-      echo -e "\nConfigure $config"
-      if [[ ${AVAILABLE_CONFIG[$config]} ]];then
-        ${BASE_DIR}/scripts/uninstall "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
-      else
-        echo "Config: $config was not available."
-      fi
-    done
+    subcommand_opts "$@"
+    echo ${CONFIGS_TO_OPERATE_ON} ${@}
+    add_or_remove_configs remove ${CONFIGS_TO_OPERATE_ON} ${@}
     ;;
 esac
