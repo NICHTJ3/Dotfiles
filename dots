@@ -45,7 +45,7 @@ while getopts ":h" opt; do
 done
 shift $((OPTIND -1))
 
-function subcommand_opts() {
+function get_shared_subcommand_opts() {
     while getopts ":p:" opt; do
       case ${opt} in
         p )
@@ -96,17 +96,17 @@ function add_or_remove_configs(){
 }
 
 subcommand=$1; shift  # Remove 'pip' from the argument list
+get_shared_subcommand_opts "$@"
+
 case "$subcommand" in
   # Parse options to the install sub command
   install)
     # Process package options
-    subcommand_opts "$@"
     echo ${CONFIGS_TO_OPERATE_ON} ${@}
     add_or_remove_configs add ${CONFIGS_TO_OPERATE_ON} ${@}
     ;;
   uninstall)
     # Process package options
-    subcommand_opts "$@"
     echo ${CONFIGS_TO_OPERATE_ON} ${@}
     add_or_remove_configs remove ${CONFIGS_TO_OPERATE_ON} ${@}
     ;;
