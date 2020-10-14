@@ -29,6 +29,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight' " With coc-clangd to provide highlightin
 "                                      Git                                     "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 Plug 'tpope/vim-fugitive'
+Plug 'rhysd/committia.vim' " Better commits
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim',{'on':'GV'}
 
@@ -52,7 +53,6 @@ Plug 'pgdouyon/vim-evanesco' " Clears search highlighting on move
 Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-surround' " Change/Add surrounding character
 Plug 'tomtom/tcomment_vim' " Toggle comments
-Plug 'rhysd/committia.vim' " Better commits
 Plug 'mbbill/undotree'
 Plug 'easymotion/vim-easymotion'
 
