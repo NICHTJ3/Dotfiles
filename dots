@@ -13,6 +13,8 @@ PROFILES_DIR="profiles"
 
 DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
+DOTBOT_ARGS=""
+UNINSTALL_ARGS=""
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -50,13 +52,17 @@ function print_help() {
 }
 
 function get_shared_subcommand_opts() {
-    while getopts ":p:" opt; do
+    while getopts ":p:s" opt; do
       case ${opt} in
         p )
           profile=$OPTARG
           while IFS= read -r config; do
             CONFIGS_TO_OPERATE_ON+=" ${config}"
           done < "${META_DIR}/${PROFILES_DIR}/$profile${PROFILE_EXTENSION}"
+          ;;
+        s )
+          DOTBOT_ARGS+="-Q"
+          UNINSTALL_ARGS+="-s"
           ;;
         \? )
           echo "Invalid Option: -$OPTARG" 1>&2
@@ -76,10 +82,10 @@ function add_or_remove_config() {
   config=$1; shift
   case $add_or_remove in
     add)
-        "${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}/$CONFIG_DIR/$config" -c "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
+        "${BASE_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" $DOTBOT_ARGS -d "${BASE_DIR}/$CONFIG_DIR/$config" -c "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
       ;;
     remove)
-        ${BASE_DIR}/scripts/uninstall "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
+        ${BASE_DIR}/scripts/uninstall $UNINSTALL_ARGS "${BASE_DIR}/$CONFIG_DIR/$config/${INSTALL_CONFIG_FILE}"
       ;;
   esac
 }
@@ -89,9 +95,10 @@ function add_or_remove_configs(){
     configs="$@"
 
     for config in ${configs}; do
-      echo -e "\nConfigure $config"
+      echo -e "\nWorking on: $config"
       if [[ ${AVAILABLE_CONFIG[$config]} ]];then
         add_or_remove_config $add_or_remove $config
+        echo -e "\nFinished working on: $config"
       else
         echo "Config: $config was not available."
       fi
@@ -108,12 +115,12 @@ case "$subcommand" in
   # Parse options to the install sub command
   install)
     # Process package options
-    echo ${CONFIGS_TO_OPERATE_ON} ${@}
+    echo "Installing configs: ${CONFIGS_TO_OPERATE_ON} ${@}"
     add_or_remove_configs add ${CONFIGS_TO_OPERATE_ON} ${@}
     ;;
   uninstall)
     # Process package options
-    echo ${CONFIGS_TO_OPERATE_ON} ${@}
+    echo "Uninstalling configs: ${CONFIGS_TO_OPERATE_ON} ${@}"
     add_or_remove_configs remove ${CONFIGS_TO_OPERATE_ON} ${@}
     ;;
   *) print_help;;
