@@ -18,7 +18,6 @@
 if [[ ! $WSL_ACTIVE ]]; then
   export BROWSER="firefox-developer-edition"
 else
-  echo $WSL_ACTIVE
   export BROWSER="wslview"
 fi
 
