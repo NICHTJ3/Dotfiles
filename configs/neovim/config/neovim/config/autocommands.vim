@@ -54,4 +54,8 @@ if has("autocmd")
   autocmd! CursorHold * silent call CocActionAsync('highlight')
   " Close coc-explorer if it's the last open window
   autocmd! BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+  " Open FZF instead of explor
+  autocmd! StdinReadPre * let s:std_in=1
+  autocmd! VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") |exe "e Untitled"| exe 'Files'| endif
 endif
