@@ -11,7 +11,7 @@ fi
 function createTmuxFile(){
 echo Creating a .tmux file
 echo "\
-#!/bin/sh
+#!/bin/bash
 set -e
 function attachOrSwitch(){
   if [[ \$TMUX ]];then
