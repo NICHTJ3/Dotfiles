@@ -68,7 +68,8 @@ alias docker-clean='docker system prune -a'
 alias mapDavidDrive='sudo mount -t cifs //desktop-dm7vasd/hosteddata $HOME/david -o user=op-vr'
 alias cl='clear'
 alias rmNodeModules="find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;"
-alias dots='vi +Dots'
+alias dots="vi --cmd 'let g:startify_disable_at_vimenter = 1' +Dots"
+alias diary="nvim --cmd 'let g:startify_disable_at_vimenter = 1' +VimwikiMakeDiaryNote"
 # }}}
 
 # Bindings {{{
