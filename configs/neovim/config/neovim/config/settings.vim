@@ -36,6 +36,9 @@ endif
 " Soft wrap at 80 characters
 set textwidth=80
 
+set t_Co=
+set t_ut=
+set ttyfast
 if has("termguicolors")
   set t_Co=256
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
