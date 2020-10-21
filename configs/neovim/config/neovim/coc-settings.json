@@ -63,5 +63,6 @@
   },
   "clangd.semanticHighlighting": true,
   "rust-analyzer.lens.run": false,
-  "tailwindCSS.headwind.runOnSave": false
+  "tailwindCSS.headwind.runOnSave": false,
+  "svelte.plugin.css.diagnostics.enable": false
 }
