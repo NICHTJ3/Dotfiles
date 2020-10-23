@@ -3,7 +3,7 @@ My dotfiles for arch and wsl using dotbot to link all dotfiles
 
 ### Running
 ```sh
-git clone https://github.com/Dotfiles
+git clone https://github.com/NICHTJ3/Dotfiles
 cd Dotfiles
 
 ./dots -h
