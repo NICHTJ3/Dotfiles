@@ -22,3 +22,6 @@
 - create:
     - ~/bin
     - ~/bin/helper-scripts
+
+- shell:
+    - [touch ~/.z]
