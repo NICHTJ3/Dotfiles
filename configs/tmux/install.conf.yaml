@@ -19,6 +19,9 @@
     # TMUX config
     ~/.tmux.conf: config/tmux/tmux.conf
 
+- shell:
+    - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm]
+
 - create:
     - ~/bin
     - ~/bin/helper-scripts
