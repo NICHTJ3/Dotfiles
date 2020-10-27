@@ -8,6 +8,7 @@
       "filetypes": ["kotlin"]
     }
   },
+  "npm.binPath": "yarn",
   "prettier.eslintIntegration": true,
   "prettier.disableLanguages": [],
   "prettier.semi": true,
