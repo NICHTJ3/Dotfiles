@@ -1,13 +1,4 @@
 {
-  "languageserver": {
-    "kotlin": {
-      "command": "bash",
-      "args": [
-        "~/LanguageServers/kotlin-language-server/server/build/scripts/kotlin-language-server"
-      ],
-      "filetypes": ["kotlin"]
-    }
-  },
   "npm.binPath": "yarn",
   "prettier.eslintIntegration": true,
   "prettier.disableLanguages": [],
