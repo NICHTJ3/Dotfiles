@@ -64,7 +64,7 @@ bindkey '^Q' quit
 # Programs and scripts {{{
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -d "$HOME/.fnm" ] && export PATH=/home/nichtj3/.fnm:$PATH
-eval "`fnm env --multi`"
+eval "`fnm env`"
 # }}}
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
