@@ -53,7 +53,7 @@ let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 
 " Coc list errors
-nnoremap <silent> <leader>cl :<C-u>CocList diagnostics<CR>
+nnoremap <silent> <leader>le :<C-u>CocFzfList diagnostics<CR>
 
 " Ctrl space like vscode
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -63,7 +63,7 @@ nnoremap <silent> <leader>or :call     CocAction('runCommand', 'editor.action.or
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " CocCommands
-nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>c  :<C-u>CocFzfList commands<cr>
 
 " Code action leader a
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
@@ -86,7 +86,7 @@ nnoremap <C-n> :CocCommand explorer --preset simplify<CR>
 nnoremap <leader>n :CocCommand explorer --preset simplify<CR>
 
 " Coc yank
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+nnoremap <silent> <space>y  :<C-u>CocFzfList yank<cr>
 
 " CocSearch for last search
 nnoremap <leader>ls :CocSearch <c-r>/<CR>
