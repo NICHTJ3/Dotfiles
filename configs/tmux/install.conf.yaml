@@ -20,7 +20,9 @@
     ~/.tmux.conf: config/tmux/tmux.conf
 
 - shell:
-    - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm]
+    # Clone tpm if we don't already have it. The || true is just so we won't fail
+    # if it is already installed
+    - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true]
 
 - create:
     - ~/bin
