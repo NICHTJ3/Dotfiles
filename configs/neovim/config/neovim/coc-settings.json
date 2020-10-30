@@ -45,7 +45,7 @@
   "explorer.file.showHiddenFiles": true,
   "explorer.previewAction.onHover": false,
   "explorer.width": 30,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open"]
   },
   "explorer.presets": {

@@ -50,10 +50,6 @@ if has("autocmd")
 
   " Color all columns past 81
   autocmd! Filetype * let &l:colorcolumn='+' . join(range(1, 254), ',+')
-  " Coc highlight on cursorhold
-  autocmd! CursorHold * silent call CocActionAsync('highlight')
-  " Close coc-explorer if it's the last open window
-  autocmd! BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
   " Open FZF instead of explor
   autocmd! StdinReadPre * let s:std_in=1
@@ -66,5 +62,12 @@ if has("autocmd")
         \n\#\# What I need to do\
         \n[TODO](../index)\
         \n\#\# What did I do"
+
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  "            Install New Plugins if not installed                              "
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | q
+  endif
 
 endif

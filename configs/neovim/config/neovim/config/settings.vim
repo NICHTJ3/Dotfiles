@@ -30,7 +30,10 @@ endtry
 " Base-16 auto config requires base-16-vim
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
-  source ~/.vimrc_background
+  try
+    source ~/.vimrc_background
+  catch
+  endtry
 endif
 
 " Soft wrap at 80 characters
