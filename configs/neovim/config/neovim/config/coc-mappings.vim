@@ -90,4 +90,3 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
 " CocSearch for last search
 nnoremap <leader>ls :CocSearch <c-r>/<CR>
-
