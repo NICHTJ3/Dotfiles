@@ -155,11 +155,6 @@ nmap <silent> gs :set opfunc=DuckIt<CR>g@
 vmap <silent> gs :<C-u>call DuckIt(visualmode(), 1)<Cr>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                              Ack for last search                             "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>ls :Ack <c-r>/<CR>
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               markdown preview                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " TODO: Check if we are in a md file
@@ -175,6 +170,9 @@ nnoremap <leader>z :set spell!<CR>
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>gc :Gcommit<CR>
+
 " Below are used in vim diff
-nnoremap <leader>gh :diffget //2
-nnoremap <leader>gl :diffget //3
+if &diff
+    nnoremap <leader>gh :diffget //2
+    nnoremap <leader>gl :diffget //3
+endif
