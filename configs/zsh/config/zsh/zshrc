@@ -36,6 +36,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/docker
   zgen oh-my-zsh plugins/docker-compose
   zgen oh-my-zsh plugins/history-substring-search
+  zgen oh-my-zsh plugins/colored-man-pages
 
   zgen load romkatv/powerlevel10k powerlevel10k
 
