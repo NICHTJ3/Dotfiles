@@ -92,8 +92,8 @@ bindkey '^[OF' end-of-line
 bindkey '^[[3~' delete-char
 
 # Ctrl x ctrl x opens vi with current command
+autoload -Uz compinit; compinit
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^x' edit-command-line
 
-autoload -Uz compinit; compinit
