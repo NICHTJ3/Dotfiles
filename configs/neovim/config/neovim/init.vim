@@ -2,6 +2,7 @@
 runtime! config/pluggins.vim
 runtime! config/settings.vim
 runtime! config/pluggin-settings.vim
+" NOTE: The bellow check may be causing issues
 " Check if coc is installed before configuring coc
 if has_key(plugs, 'coc.nvim')
   runtime! config/coc-pluggins.vim
