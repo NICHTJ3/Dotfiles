@@ -117,20 +117,6 @@ vnoremap < <gv
 vnoremap > >gv
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                           Git rebase file mappings                           "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-if expand('%:t') == "git-rebase-todo"
-    nnoremap p 0ciwpick<ESC>0
-    nnoremap r 0ciwreword<ESC>0
-    nnoremap e 0ciwedit<ESC>0
-    nnoremap s 0ciwsquash<ESC>0
-    nnoremap f 0ciwfixup<ESC>0
-    nnoremap x 0ciwexec<ESC>0
-    nnoremap d 0ciwdrop<ESC>0
-endif
-
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                        Regenerate ctags with leader rt                       "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <Leader>rt :!ctags --extra=+f -R *<CR><CR>
@@ -165,9 +151,25 @@ nnoremap <leader>z :set spell!<CR>
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>glo :Glog<CR>
+nnoremap <leader>gb :GBranches<CR>
 
 " Below are used in vim diff
 if &diff
     nnoremap <leader>gh :diffget //2
     nnoremap <leader>gl :diffget //3
 endif
+
+" Git rebase file mappings
+if expand('%:t') == "git-rebase-todo"
+    nnoremap p 0ciwpick<ESC>0
+    nnoremap r 0ciwreword<ESC>0
+    nnoremap e 0ciwedit<ESC>0
+    nnoremap s 0ciwsquash<ESC>0
+    nnoremap f 0ciwfixup<ESC>0
+    nnoremap x 0ciwexec<ESC>0
+    nnoremap d 0ciwdrop<ESC>0
+endif
+
+

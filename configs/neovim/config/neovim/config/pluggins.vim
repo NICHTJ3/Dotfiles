@@ -32,6 +32,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'rhysd/committia.vim' " Better commits
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/gv.vim',{'on':'GV'}
+Plug 'stsewd/fzf-checkout.vim'
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                          File finding and searching                          "
