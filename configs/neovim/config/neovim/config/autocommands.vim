@@ -49,6 +49,10 @@ if has("autocmd")
     autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
   augroup end
 
+  augroup Firenvim
+    au BufEnter github.com_*.txt set filetype=markdown
+  augroup end
+
   " Color all columns past 81
   autocmd! Filetype * let &l:colorcolumn='+' . join(range(1, 254), ',+')
 

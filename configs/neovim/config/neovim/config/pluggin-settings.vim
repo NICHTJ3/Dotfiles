@@ -89,3 +89,26 @@ let g:startify_lists = [
 let g:startify_custom_header = ['',]
 let g:startify_enable_special = 0
 let g:startify_change_to_vcs_root = 1
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                               Firenvim                                       "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+
+let g:firenvim_config = { 
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+
+let fc = g:firenvim_config['localSettings']
+" Always takeover github
+let fc['https?://github.com'] = { 'takeover': 'always', 'priority': 1  }
