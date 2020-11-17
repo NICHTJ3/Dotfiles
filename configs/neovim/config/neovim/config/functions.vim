@@ -25,7 +25,7 @@ function! DuckIt(type, ...)
 
   let uname = substitute(system('uname'),'\n','','')
   if uname == 'Linux'
-    if system('$PATH')=~ '/mnt/c/WINDOWS'
+    if has('wsl')
       " Windows Subsystem
       silent exe "!cmd.exe /c start 'https://duckduckgo.com/?q=" . search . "'"
     else
