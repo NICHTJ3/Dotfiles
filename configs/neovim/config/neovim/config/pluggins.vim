@@ -56,7 +56,6 @@ Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-surround' " Change/Add surrounding character
 Plug 'tomtom/tcomment_vim' " Toggle comments
 Plug 'mbbill/undotree'
-Plug 'easymotion/vim-easymotion'
 if !system('$PATH')=~ '/mnt/c/WINDOWS'
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
