@@ -85,7 +85,6 @@ set smartcase
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                  My settings                                 "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-set expandtab ts=2 sw=2 ai " Makes tabs 2 spaces and enables auto indentation
 set belloff=all
 set confirm
 set nowrap " Disable line wrap
