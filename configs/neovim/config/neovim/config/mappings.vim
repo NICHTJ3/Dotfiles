@@ -22,53 +22,18 @@ nnoremap c* *Ncgn
 "                               Window movement                                "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>w <C-w>
+" Create or move to split with `<C-<h,j,k,l>>`
+nnoremap <C-h> :call WinMove('h')<CR>
+nnoremap <C-j> :call WinMove('j')<CR>
+nnoremap <C-k> :call WinMove('k')<CR>
+nnoremap <C-l> :call WinMove('l')<CR>
 
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                Split movement                                "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-" With Ctrl
-nnoremap <C-h> <C-W>h
-nnoremap <C-j> <C-W>j
-nnoremap <C-l> <C-W>l
-nnoremap <C-k> <C-W>k
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                  Move split                                  "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>H <C-w>H
-nnoremap <leader>L <C-w>L
-nnoremap <leader>J <C-w>J
-nnoremap <leader>K <C-w>K
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                 Create splits                                "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-" Create with ctrl
-nnoremap c<C-j> :split Below<CR>
-nnoremap c<C-l> :vsplit Right<CR>
-nnoremap c<C-h> :aboveleft vsp Left<CR>
-nnoremap c<C-k> :above split Above<CR>
-" Add with ctrl
-nnoremap a<C-j> :split Below<CR>
-nnoremap a<C-l> :vsplit Right<CR>
-nnoremap a<C-h> :aboveleft vsp Left<CR>
-nnoremap a<C-k> :above split Above<CR>
-" Create with leader
-nnoremap <leader>cj :split Below<CR>
-nnoremap <leader>cl :vsplit Right<CR>
-nnoremap <leader>ch :aboveleft vsp Left<CR>
-nnoremap <leader>ck :above split Above<CR>
-" Add with leader
+" Create splits with `<leader> a <h,j,k,l>`
 nnoremap <leader>aj :split Below<CR>
 nnoremap <leader>al :vsplit Right<CR>
 nnoremap <leader>ah :aboveleft vsp Left<CR>
 nnoremap <leader>ak :above split Above<CR>
 
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                            Save and quit with leader                         "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>q :q<CR>
-nnoremap <leader>wq :wq<cr>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    Open FZF                                  "
