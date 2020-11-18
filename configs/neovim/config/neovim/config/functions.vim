@@ -25,7 +25,7 @@ function! DuckIt(type, ...)
 
   let uname = substitute(system('uname'),'\n','','')
   if uname == 'Linux'
-    if has('wsl')
+    if !Is_WSL()
       " Windows Subsystem
       silent exe "!cmd.exe /c start 'https://duckduckgo.com/?q=" . search . "'"
     else
@@ -92,3 +92,14 @@ function! WinMove(key)
     endif
 endfunction
 
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                           Check if in wsl                                    "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+function! Is_WSL() abort
+  let proc_version = '/proc/version'
+  return filereadable(proc_version)
+        \  ? !empty(filter(
+        \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
+        \  : v:false
+endfunction

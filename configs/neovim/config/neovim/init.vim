@@ -1,4 +1,5 @@
 " Sources vim config files from ~/.config/nvim/
+runtime! config/functions.vim
 runtime! config/pluggins.vim
 runtime! config/settings.vim
 runtime! config/pluggin-settings.vim
@@ -8,7 +9,6 @@ if has_key(plugs, 'coc.nvim') " Check if coc is installed before configuring coc
   runtime! config/coc-mappings.vim
   runtime! config/coc-autocommands.vim
 endif
-runtime! config/functions.vim
 runtime! config/commands.vim
 runtime! config/aliases.vim
 runtime! config/mappings.vim
