@@ -63,10 +63,11 @@ if has("autocmd")
   " VIM wiki template
   autocmd! BufNewFile */diary/[0-9]*.md :silent 0r !echo "\
         \# `date +'\%d-\%m-\%Y'`\
-        \n\#\# What I am doing: <Task>\
-        \n\#\# What I need to do\
+        \n\#\#: <Task>\
+        \n\#\#\# What I am doing
+        \n\#\#\# What I need to do\
         \n[TODO](../index)\
-        \n\#\# What did I do"
+        \n\#\#\# What did I do"
 
   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   "            Install New Plugins if not installed                              "
