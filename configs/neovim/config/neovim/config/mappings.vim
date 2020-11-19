@@ -22,11 +22,6 @@ nnoremap c* *Ncgn
 "                               Window movement                                "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>w <C-w>
-" Create or move to split with `<C-<h,j,k,l>>`
-nnoremap <C-h> :call WinMove('h')<CR>
-nnoremap <C-j> :call WinMove('j')<CR>
-nnoremap <C-k> :call WinMove('k')<CR>
-nnoremap <C-l> :call WinMove('l')<CR>
 
 " Create splits with `<leader> a <h,j,k,l>`
 nnoremap <leader>aj :split Below<CR>
