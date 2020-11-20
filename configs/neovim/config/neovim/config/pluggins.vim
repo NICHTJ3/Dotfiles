@@ -58,7 +58,7 @@ Plug 'tomtom/tcomment_vim' " Toggle comments
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-sleuth'
 
-if !Is_WSL()
+if !system('$PATH')=~ '/mnt/c/WINDOWS'
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 
