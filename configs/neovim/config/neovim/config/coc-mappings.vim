@@ -98,8 +98,8 @@ nnoremap <leader>n :CocCommand explorer --preset simplify<CR>
 let g:lmap.n = "File Explorer"
 
 " Coc yank
-nnoremap <silent> <space>y  :<C-u>CocFzfList yank<cr>
-let g:lmap.y = "Yank List"
+nnoremap <silent> <leader>ly  :<C-u>CocFzfList yank<cr>
+let g:lmap.l.y = "List Yanked Text"
 
 " CocSearch for last search
 nnoremap <leader>sw :CocSearch <c-r>/<CR>

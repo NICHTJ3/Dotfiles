@@ -40,13 +40,11 @@ let g:lmap.a.k = "Split Above"
 "                                    Open FZF                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Open FZF files
-nnoremap <C-p> :Files<CR>
-nnoremap <leader>p :Files<CR>
-let g:lmap.p = "FZF Files"
+nnoremap <leader>lf :Files<CR>
+let g:lmap.l.f = "List Files"
 " Open FZF buffers
-nnoremap <C-b> :Buffers<CR>
-nnoremap <leader>b :Buffers<CR>
-let g:lmap.b = "FZF Buffers"
+nnoremap <leader>lb :Buffers<CR>
+let g:lmap.l.b = "List Buffers"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                     Y yanks to end of line like it should                    "
