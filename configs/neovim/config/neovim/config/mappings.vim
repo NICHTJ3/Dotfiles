@@ -23,17 +23,25 @@ nnoremap c* *Ncgn
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               Window movement                                "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>w <C-w>
+let g:lmap.w.a = {'name':"Add"}
+nnoremap <leader>waj :split Below<CR>
+let g:lmap.w.a.j = "Split Down"
+nnoremap <leader>wal :vsplit Right<CR>
+let g:lmap.w.a.l = "Split Right"
+nnoremap <leader>wah :aboveleft vsp Left<CR>
+let g:lmap.w.a.h = "Split Left"
+nnoremap <leader>wak :above split Above<CR>
+let g:lmap.w.a.k = "Split Above"
 
-" Create splits with `<leader> a <h,j,k,l>`
-nnoremap <leader>aj :split Below<CR>
-let g:lmap.a.j = "Split Down"
-nnoremap <leader>al :vsplit Right<CR>
-let g:lmap.a.l = "Split Right"
-nnoremap <leader>ah :aboveleft vsp Left<CR>
-let g:lmap.a.h = "Split Left"
-nnoremap <leader>ak :above split Above<CR>
-let g:lmap.a.k = "Split Above"
+let g:lmap.w.m = {'name':"Move"}
+nnoremap <leader>wmJ <c-w>J
+let g:lmap.w.m.J = "Move Down"
+nnoremap <leader>wmL <c-w>L
+let g:lmap.w.m.L = "Move Right"
+nnoremap <leader>wmH <c-w>H
+let g:lmap.w.m.H = "Move Left"
+nnoremap <leader>wmK <c-w>K
+let g:lmap.w.m.K = "Move Above"
 
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"

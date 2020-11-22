@@ -137,6 +137,7 @@ let g:lmap.l = {"name":"List..."}
 let g:lmap.e = {"name":"Edit Files"}
 let g:lmap.e = {"name":"Edit Files"}
 let g:lmap.r = {"name":"Rename/Regen Tags"}
+let g:lmap.w = {"name":"Window"}
 
 let g:lmap.h = { 'name' : 'Hunk',
         \'s' : 'Stage',
