@@ -20,14 +20,6 @@ if has("autocmd")
     autocmd Filetype vimwiki set foldlevel=2
   augroup END
 
-  augroup Indentation
-    autocmd!
-    autocmd FileType cs set sw=4 ts=4 sts=4
-    autocmd FileType cucumber set sw=2 ts=2 sts=2 noet
-    autocmd BufWinEnter *.ipynb set sw=4 ts=4 sts=4 et
-    autocmd BufWinEnter *.py set sw=4 ts=4 sts=4 et
-  augroup end
-
   augroup Folding
     autocmd!
     autocmd FileType cs setlocal foldmethod=indent
