@@ -29,6 +29,7 @@ nnoremap <silent> gh :call <SID>show_documentation()<CR>
 
 " Coc format
 nnoremap <silent> <Leader>d :call CocAction('format')<CR>
+let g:lmap.d = "Format Document"
 "
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
@@ -54,29 +55,39 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Coc list errors
 nnoremap <silent> <leader>le :<C-u>CocFzfList diagnostics<CR>
+let g:lmap.l.e = "List Coc Errors"
 
 " Ctrl space like vscode
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Orginize imports
 nnoremap <silent> <leader>or :call     CocAction('runCommand', 'editor.action.organizeImport')<CR>
+let g:lmap.o.r = "Organize Imports"
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " CocCommands
-nnoremap <silent> <leader>c  :<C-u>CocFzfList commands<cr>
+nnoremap <silent> <leader>lc  :<C-u>CocFzfList commands<cr>
+let g:lmap.l.c = "List Coc Commands"
 
 " Code action leader a
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>aa :<C-u>CocCommand actions.open<CR>
+let g:lmap.a.a = "Coc Action Menu"
 
 "Coc rename symbol
 nmap <leader>rn <Plug>(coc-rename)
+let g:lmap.r.n = "Rename Current Word"
 
 "Coc extras
-nmap <silent> <leader>gd <Plug>(coc-definition)
-nmap <silent> <leader>gt <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gr <Plug>(coc-references)
+let g:lmap.g.t = {"name":"Go To..."}
+nmap <silent> <leader>gtd <Plug>(coc-definition)
+let g:lmap.g.t.d = "Go To Definition"
+nmap <silent> <leader>gtt <Plug>(coc-type-definition)
+let g:lmap.g.t.t = "Go To Type Definition"
+nmap <silent> <leader>gti <Plug>(coc-implementation)
+let g:lmap.g.t.i = "Go To Implementation"
+nmap <silent> <leader>gtr <Plug>(coc-references)
+let g:lmap.g.t.r = "Go To References"
 
 " Meta o swap header source
 nnoremap <m-o> :CocCommand clangd.switchSourceHeader<CR>
@@ -84,9 +95,12 @@ nnoremap <m-o> :CocCommand clangd.switchSourceHeader<CR>
 " Open coc-explorer mappings
 nnoremap <C-n> :CocCommand explorer --preset simplify<CR>
 nnoremap <leader>n :CocCommand explorer --preset simplify<CR>
+let g:lmap.n = "File Explorer"
 
 " Coc yank
 nnoremap <silent> <space>y  :<C-u>CocFzfList yank<cr>
+let g:lmap.y = "Yank List"
 
 " CocSearch for last search
-nnoremap <leader>ls :CocSearch <c-r>/<CR>
+nnoremap <leader>sw :CocSearch <c-r>/<CR>
+let g:lmap.s.w = "Search For Current Word"

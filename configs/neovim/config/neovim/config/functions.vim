@@ -63,7 +63,10 @@ function! CheckboxToggle(...) abort
     try
       execute 'keeppatterns s/' . s:bullet . '\s\+\[\zs.\ze\]/\=submatch(0) == c ? " " : c/'
     catch /E486/
-      execute 'keeppatterns s/' . s:bullet . '\s\zs/[' . c . '] /'
+      try
+        execute 'keeppatterns s/' . s:bullet . '\s\zs/[' . c . '] /'
+      catch
+      endtry
     endtry
 
     if i < v:count1 - 1 && !search(s:bullet, 'W')

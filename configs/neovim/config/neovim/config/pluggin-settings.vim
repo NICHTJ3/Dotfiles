@@ -123,3 +123,28 @@ if get(g:, '_has_set_default_indent_settings', 0) == 0
   set shiftwidth=4
   let g:_has_set_default_indent_settings = 1
 endif
+
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                               vim-leader-guide                               "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+let g:lmap={}
+let g:lmap.g = {"name":"Git/GoTo"}
+let g:lmap.s = {"name":"Search"}
+let g:lmap.a = {"name":"Splits and Actions"}
+let g:lmap.o = {"name":"Organize and Only Buffer"}
+let g:lmap.l = {"name":"List..."}
+let g:lmap.e = {"name":"Edit Files"}
+let g:lmap.e = {"name":"Edit Files"}
+let g:lmap.r = {"name":"Rename/Regen Tags"}
+
+let g:lmap.h = { 'name' : 'Hunk',
+        \'s' : 'Stage',
+        \'u' : 'Undo',
+        \'p' : 'Preview',
+      \}
+
+
+call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>

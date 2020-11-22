@@ -6,12 +6,14 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Last file                                    "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+" TODO: Remove this mapping
 nnoremap <leader><leader>l <C-^>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                Edit vimrc                                    "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>ev :e $MYVIMRC<CR>
+let g:lmap.e.v = "Edit VIMRC"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                     Change instances of word undercursor                     "
@@ -25,23 +27,26 @@ nnoremap <leader>w <C-w>
 
 " Create splits with `<leader> a <h,j,k,l>`
 nnoremap <leader>aj :split Below<CR>
+let g:lmap.a.j = "Split Down"
 nnoremap <leader>al :vsplit Right<CR>
+let g:lmap.a.l = "Split Right"
 nnoremap <leader>ah :aboveleft vsp Left<CR>
+let g:lmap.a.h = "Split Left"
 nnoremap <leader>ak :above split Above<CR>
+let g:lmap.a.k = "Split Above"
 
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    Open FZF                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-" Open FZF git files
-nnoremap <expr> <C-f> (len(system('git rev-parse')) ? ':Files' : ':GFiles')."\<cr>"
-nnoremap <expr> <leader>f (len(system('git rev-parse')) ? ':Files' : ':GFiles')."\<cr>"
 " Open FZF files
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>p :Files<CR>
+let g:lmap.p = "FZF Files"
 " Open FZF buffers
 nnoremap <C-b> :Buffers<CR>
 nnoremap <leader>b :Buffers<CR>
+let g:lmap.b = "FZF Buffers"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                     Y yanks to end of line like it should                    "
@@ -63,12 +68,13 @@ nnoremap _ <C-w>_
 "                                Only buffer                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>ob :only<CR>
+let g:lmap.o.b = "Remove all other buffers"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Nav quickfix                                 "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader><up> :cprev<cr>
-nnoremap <leader><down> :cnext<cr>
+nnoremap <up> :cprev<cr>
+nnoremap <down> :cnext<cr>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                   Better visual block indentation changing                   "
@@ -80,6 +86,7 @@ vnoremap > >gv
 "                        Regenerate ctags with leader rt                       "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+let g:lmap.r.t = "Regen Tags"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                        Resize with arrow keys and ctrl                       "
@@ -99,26 +106,39 @@ vmap <silent> gs :<C-u>call DuckIt(visualmode(), 1)<Cr>
 "                               markdown preview                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " TODO: Check if we are in a md file
-nnoremap <leader>cc :<C-u>call CheckboxToggle()<CR>X
+nnoremap <silent> <leader>cc :<C-u>call CheckboxToggle()<CR>
+let g:lmap["cc"] = 'Toggle Checkbox'
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                Toggle spell                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>z :set spell!<CR>
+let g:lmap.z = "Toggle Spell Check"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                Git fugitive                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>gs :G<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gp :Gpush<CR>
-nnoremap <leader>glo :Glog<CR>
-nnoremap <leader>gb :GBranches<CR>
+let g:lmap.g.g = {"name":"Git"}
+nnoremap <leader>ggs :G<CR>
+let g:lmap.g.g.s = "Git Status"
+nnoremap <leader>ggc :Gcommit<CR>
+let g:lmap.g.g.c = "Git Commit"
+nnoremap <leader>ggp :Gpush<CR>
+let g:lmap.g.g.p = "Git Push"
+nnoremap <leader>ggl :Glog<CR>
+let g:lmap.g.g.l = "Git Log"
+nnoremap <leader>ggb :GBranches<CR>
+let g:lmap.g.g.b = "FZF Git Branches"
+nnoremap <leader>ggf :GitFiles<CR>
+let g:lmap.g.g.f = "FZF Git Files"
 
 " Below are used in vim diff
 if &diff
-    nnoremap <leader>gh :diffget //2
-    nnoremap <leader>gl :diffget //3
+    let g:lmap.g.g.d = {"name":"Diff"}
+    nnoremap <leader>ggdh :diffget //2
+    let g:lmap.g.g.d.f = "Take Diff On The Right"
+    nnoremap <leader>ggdl :diffget //3
+    let g:lmap.g.g.d.f = "Take Diff On The Right"
 endif
 
 " Git rebase file mappings
