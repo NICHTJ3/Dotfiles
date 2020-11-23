@@ -19,24 +19,24 @@ nnoremap c* *Ncgn
 "                               Window movement                                "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Add windows
-let g:lmap.w.a = {'name':"Add..."}
+let g:lmap.w.a = {'name':"Add Window..."}
 nnoremap <leader>waj :split Below<CR>
-let g:lmap.w.a.j = "Split Down"
+let g:lmap.w.a.j = "Add Down"
 nnoremap <leader>wal :vsplit Right<CR>
-let g:lmap.w.a.l = "Split Right"
+let g:lmap.w.a.l = "Add Right"
 nnoremap <leader>wah :aboveleft vsp Left<CR>
-let g:lmap.w.a.h = "Split Left"
+let g:lmap.w.a.h = "Add Left"
 nnoremap <leader>wak :above split Above<CR>
-let g:lmap.w.a.k = "Split Above"
+let g:lmap.w.a.k = "Add Above"
 
 " Close windows
-let g:lmap.w.c = {'name':"Close..."}
+let g:lmap.w.c = {'name':"Close Window..."}
 nnoremap <leader>wco :only<CR>
-let g:lmap.w.c.o = "Close Other"
+let g:lmap.w.c.o = "Close Others"
 
 
 " Move windows
-let g:lmap.w.m = {'name':"Move..."}
+let g:lmap.w.m = {'name':"Move Window..."}
 nnoremap <leader>wmj <c-w>J
 let g:lmap.w.m.j = "Move Down"
 nnoremap <leader>wml <c-w>L
