@@ -159,3 +159,95 @@ if expand('%:t') == "git-rebase-todo"
 endif
 
 
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                               Coc mappings                                   "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+" Tab and shift tab to nav
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>Check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Show documentation
+nnoremap <silent> K :call <SID>Show_documentation()<CR>
+nnoremap <silent> gh :call <SID>Show_documentation()<CR>
+
+" Coc format
+nnoremap <silent> <Leader>d :call CocAction('format')<CR>
+let g:lmap.d = "Format Document"
+"
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Expand snip with tab
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>Check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+let g:coc_snippet_next = '<tab>'
+
+" Ctrl j and k next and previous stop
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+
+" Coc list errors
+nnoremap <silent> <leader>le :<C-u>CocFzfList diagnostics<CR>
+let g:lmap.l.e = "List Coc Errors"
+
+" Ctrl space like vscode
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Orginize imports
+nnoremap <silent> <leader>or :call     CocAction('runCommand', 'editor.action.organizeImport')<CR>
+let g:lmap.o.r = "Organize Imports"
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" CocCommands
+nnoremap <silent> <leader>lc  :<C-u>CocFzfList commands<cr>
+let g:lmap.l.c = "List Coc Commands"
+
+" Code action leader a
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>aa :<C-u>CocCommand actions.open<CR>
+let g:lmap.a.a = "Coc Action Menu"
+
+"Coc rename symbol
+nmap <leader>rn <Plug>(coc-rename)
+let g:lmap.r.n = "Rename Current Word"
+
+"Coc extras
+let g:lmap.g.t = {"name":"Go To..."}
+nmap <silent> <leader>gtd <Plug>(coc-definition)
+let g:lmap.g.t.d = "Go To Definition"
+nmap <silent> <leader>gtt <Plug>(coc-type-definition)
+let g:lmap.g.t.t = "Go To Type Definition"
+nmap <silent> <leader>gti <Plug>(coc-implementation)
+let g:lmap.g.t.i = "Go To Implementation"
+nmap <silent> <leader>gtr <Plug>(coc-references)
+let g:lmap.g.t.r = "Go To References"
+
+" Meta o swap header source
+nnoremap <m-o> :CocCommand clangd.switchSourceHeader<CR>
+
+" Open coc-explorer mappings
+nnoremap <C-n> :CocCommand explorer --preset simplify<CR>
+nnoremap <leader>n :CocCommand explorer --preset simplify<CR>
+let g:lmap.n = "File Explorer"
+
+" Coc yank
+nnoremap <silent> <leader>ly  :<C-u>CocFzfList yank<cr>
+let g:lmap.l.y = "List Yanked Text"
+
+" CocSearch for last search
+nnoremap <leader>sw :CocSearch <c-r>/<CR>
+let g:lmap.s.w = "Search For Current Word"

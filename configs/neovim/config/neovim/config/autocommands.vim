@@ -61,11 +61,14 @@ if has("autocmd")
         \n[TODO](../index)\
         \n\#\#\# What did I do"
 
-  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  "            Install New Plugins if not installed                              "
-  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  " Install New Plugins if not installed
   if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | q
   endif
+
+  " Coc highlight on cursorhold
+  autocmd! CursorHold * silent call CocActionAsync('highlight')
+  " Close coc-explorer if it's the last open window
+  autocmd! BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 endif
