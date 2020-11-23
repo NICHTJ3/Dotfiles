@@ -19,7 +19,7 @@ nnoremap c* *Ncgn
 "                               Window movement                                "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Add windows
-let g:lmap.w.a = {'name':"Add"}
+let g:lmap.w.a = {'name':"Add..."}
 nnoremap <leader>waj :split Below<CR>
 let g:lmap.w.a.j = "Split Down"
 nnoremap <leader>wal :vsplit Right<CR>
@@ -30,13 +30,13 @@ nnoremap <leader>wak :above split Above<CR>
 let g:lmap.w.a.k = "Split Above"
 
 " Close windows
-let g:lmap.w.c = {'name':"Close"}
+let g:lmap.w.c = {'name':"Close..."}
 nnoremap <leader>wco :only<CR>
 let g:lmap.w.c.o = "Close Other"
 
 
 " Move windows
-let g:lmap.w.m = {'name':"Move"}
+let g:lmap.w.m = {'name':"Move..."}
 nnoremap <leader>wmJ <c-w>J
 let g:lmap.w.m.J = "Move Down"
 nnoremap <leader>wmL <c-w>L
@@ -121,7 +121,7 @@ let g:lmap.z = "Toggle Spell Check"
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                Git fugitive                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-let g:lmap.g.g = {"name":"Git"}
+let g:lmap.g.g = {"name":"Git..."}
 nnoremap <leader>ggs :G<CR>
 let g:lmap.g.g.s = "Git Status"
 nnoremap <leader>ggc :Gcommit<CR>
@@ -135,9 +135,21 @@ let g:lmap.g.g.b = "FZF Git Branches"
 nnoremap <leader>ggf :GitFiles<CR>
 let g:lmap.g.g.f = "FZF Git Files"
 
+let g:lmap.g.g.h = {"name":"Hunks..."}
+
+nmap <leader>gghs <Plug>(GitGutterStageHunk)
+let g:lmap.g.g.h.s = "Stage"
+nmap <leader>gghu <Plug>(GitGutterUndoHunk)
+let g:lmap.g.g.h.u = "Undo"
+nmap <leader>gghp <Plug>(GitGutterPreviewHunk)
+let g:lmap.g.g.h.p = "Preview"
+
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
 " Below are used in vim diff
 if &diff
-    let g:lmap.g.g.d = {"name":"Diff"}
+    let g:lmap.g.g.d = {"name":"Diff..."}
     nnoremap <leader>ggdh :diffget //2
     let g:lmap.g.g.d.f = "Take Diff On The Right"
     nnoremap <leader>ggdl :diffget //3
@@ -248,3 +260,34 @@ let g:lmap.l.y = "List Yanked Text"
 " CocSearch for last search
 nnoremap <leader>sw :CocSearch <c-r>/<CR>
 let g:lmap.s.w = "Search For Current Word"
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                                   VimWIKI                                    "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+let g:lmap.a.w = {"name":"Vim Wiki..."}
+nmap <leader>awi <Plug>VimwikiIndex
+let g:lmap.a.w.i = "Open Index"
+
+nmap <leader>awI <Plug>VimwikiTabIndex
+let g:lmap.a.w["I"] = "Open Index In New Tab"
+
+nmap <leader>awy <Plug>VimwikiMakeYesterdayDiaryNote
+let g:lmap.a.w.y = "Yesterdays Entry"
+
+nmap <leader>awn <Plug>VimwikiMakeDiaryNote
+let g:lmap.a.w.n = "Todays Entry"
+
+nmap <leader>awN <Plug>VimwikiTabMakeDiaryNote
+let g:lmap.a.w["N"] = "Todays Entry In New Tab"
+
+nmap <leader>awt <Plug>VimwikiMakeTomorrowDiaryNote
+let g:lmap.a.w.t = "Tomorrow Entry"
+
+nmap <leader>awr <Plug>VimwikiDiaryGenerateLinks
+let g:lmap.a.w.r = "Refresh Diary"
+
+nmap <leader>awd <Plug>VimwikiDiaryIndex
+let g:lmap.a.w.d = "Open Diary"
+
+nmap <leader>aws <Plug>VimwikiUISelect
+let g:lmap.a.w.s = "Select"
