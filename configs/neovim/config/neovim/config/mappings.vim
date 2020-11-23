@@ -144,9 +144,6 @@ let g:lmap.g.g.h.u = "Undo"
 nmap <leader>gghp <Plug>(GitGutterPreviewHunk)
 let g:lmap.g.g.h.p = "Preview"
 
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-
 " Below are used in vim diff
 if &diff
     let g:lmap.g.g.d = {"name":"Diff..."}
