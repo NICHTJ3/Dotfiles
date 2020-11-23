@@ -109,7 +109,7 @@ vmap <silent> gs :<C-u>call DuckIt(visualmode(), 1)<Cr>
 "                               markdown preview                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " TODO: Check if we are in a md file
-nnoremap <silent> <leader>cc :<C-u>call CheckboxToggle()<CR>
+nnoremap <silent> <leader>cc :<C-u>call CheckboxToggle()<CR>X<CR>
 let g:lmap["cc"] = 'Toggle Checkbox'
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
