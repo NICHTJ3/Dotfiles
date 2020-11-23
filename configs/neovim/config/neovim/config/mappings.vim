@@ -45,6 +45,10 @@ let g:lmap.w.a.k = "Add Above"
 let g:lmap.w.c = {'name':"Close Window..."}
 nnoremap <leader>wco :only<CR>
 let g:lmap.w.c.o = "Close Others"
+nnoremap <leader>wca :qa<CR>
+let g:lmap.w.c.a = "Close All"
+nnoremap <leader>wcc :q<CR>
+let g:lmap.w.c.c = "Close Current"
 
 
 " Move windows
