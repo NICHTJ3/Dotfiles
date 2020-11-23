@@ -129,14 +129,6 @@ endif
 "                               vim-leader-guide                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 let g:lmap={}
-let g:lmap.g = {"name":"Git/GoTo..."}
-let g:lmap.s = {"name":"Search..."}
-let g:lmap.a = {"name":"Actions and Apps..."}
-let g:lmap.o = {"name":"Organize..."}
-let g:lmap.l = {"name":"List..."}
-let g:lmap.e = {"name":"Edit Files..."}
-let g:lmap.r = {"name":"Rename/Regen Tags..."}
-let g:lmap.w = {"name":"Window..."}
 
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>

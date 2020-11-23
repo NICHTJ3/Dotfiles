@@ -5,6 +5,18 @@
 " TODO: Check if the plugins exist before creating mappings for them?
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                            Mapping Catagories                                "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+let g:lmap.g = {"name":"Git/GoTo..."}
+let g:lmap.s = {"name":"Search..."}
+let g:lmap.a = {"name":"Actions and Apps..."}
+let g:lmap.o = {"name":"Organize..."}
+let g:lmap.l = {"name":"List..."}
+let g:lmap.e = {"name":"Edit Files..."}
+let g:lmap.r = {"name":"Rename/Regen Tags..."}
+let g:lmap.w = {"name":"Window..."}
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                Edit vimrc                                    "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>ev :e $MYVIMRC<CR>
