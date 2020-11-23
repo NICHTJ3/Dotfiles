@@ -18,6 +18,7 @@ nnoremap c* *Ncgn
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               Window movement                                "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+" Add windows
 let g:lmap.w.a = {'name':"Add"}
 nnoremap <leader>waj :split Below<CR>
 let g:lmap.w.a.j = "Split Down"
@@ -28,6 +29,13 @@ let g:lmap.w.a.h = "Split Left"
 nnoremap <leader>wak :above split Above<CR>
 let g:lmap.w.a.k = "Split Above"
 
+" Close windows
+let g:lmap.w.c = {'name':"Close"}
+nnoremap <leader>wco :only<CR>
+let g:lmap.w.c.o = "Close Other"
+
+
+" Move windows
 let g:lmap.w.m = {'name':"Move"}
 nnoremap <leader>wmJ <c-w>J
 let g:lmap.w.m.J = "Move Down"
@@ -64,12 +72,6 @@ xnoremap p pgvy
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap \| <C-w>\|
 nnoremap _ <C-w>_
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                Only buffer                                   "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>ob :only<CR>
-let g:lmap.o.b = "Remove all other buffers"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Nav quickfix                                 "
