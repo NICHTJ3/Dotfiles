@@ -37,14 +37,14 @@ let g:lmap.w.c.o = "Close Other"
 
 " Move windows
 let g:lmap.w.m = {'name':"Move..."}
-nnoremap <leader>wmJ <c-w>J
-let g:lmap.w.m.J = "Move Down"
-nnoremap <leader>wmL <c-w>L
-let g:lmap.w.m.L = "Move Right"
-nnoremap <leader>wmH <c-w>H
-let g:lmap.w.m.H = "Move Left"
-nnoremap <leader>wmK <c-w>K
-let g:lmap.w.m.K = "Move Above"
+nnoremap <leader>wmj <c-w>J
+let g:lmap.w.m.j = "Move Down"
+nnoremap <leader>wml <c-w>L
+let g:lmap.w.m.l = "Move Right"
+nnoremap <leader>wmh <c-w>H
+let g:lmap.w.m.h = "Move Left"
+nnoremap <leader>wmk <c-w>K
+let g:lmap.w.m.k = "Move Above"
 
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
