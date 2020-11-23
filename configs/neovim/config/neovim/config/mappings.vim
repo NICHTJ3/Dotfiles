@@ -102,10 +102,10 @@ vnoremap < <gv
 vnoremap > >gv
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                        Regenerate ctags with leader rt                       "
+"                        Regenerate ctags with leader ar                       "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-let g:lmap.r.t = "Regen Tags"
+nnoremap <Leader>ar :!ctags --extra=+f -R *<CR><CR>
+let g:lmap.a.r = "Regen Ctags"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                        Resize with arrow keys and ctrl                       "
@@ -124,9 +124,8 @@ vmap <silent> gs :<C-u>call DuckIt(visualmode(), 1)<Cr>
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               markdown preview                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-" TODO: Check if we are in a md file
-nnoremap <silent> <leader>cc :<C-u>call CheckboxToggle()<CR>X<CR>
-let g:lmap["cc"] = 'Toggle Checkbox'
+nnoremap <silent> <leader>ac :<C-u>call CheckboxToggle()<CR>X<CR>
+let g:lmap.a.c = 'Toggle Checkbox'
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                Toggle spell                                  "
@@ -275,8 +274,9 @@ nnoremap <leader>sw :CocSearch <c-r>/<CR>
 let g:lmap.s.w = "Search For Current Word"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                   VimWIKI                                    "
+"                                   App Bindings                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                                   VimWIKI                                    "
 let g:lmap.a.w = {"name":"Vim Wiki..."}
 nmap <leader>awi <Plug>VimwikiIndex
 let g:lmap.a.w.i = "Open Index"
