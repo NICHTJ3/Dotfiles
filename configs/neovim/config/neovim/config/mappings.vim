@@ -130,8 +130,8 @@ let g:lmap.a.c = 'Toggle Checkbox'
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                Toggle spell                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>z :set spell!<CR>
-let g:lmap.z = "Toggle Spell Check"
+nnoremap <leader>as :set spell!<CR>
+let g:lmap.a.s = "Toggle Spell Check"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                Git fugitive                                  "
