@@ -57,6 +57,7 @@ Plug 'tomtom/tcomment_vim' " Toggle comments
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-sleuth'
 Plug 'spinks/vim-leader-guide'
+Plug 'roxma/vim-paste-easy' " Automatically set paste when pasting
 
 " FIXME: THis check isn't working
 if !system('$PATH')=~ '/mnt/c/WINDOWS'
