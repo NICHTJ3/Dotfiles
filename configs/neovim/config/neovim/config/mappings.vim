@@ -160,22 +160,22 @@ let g:lmap.g.h.p = "Preview"
 
 " Below are used in vim diff
 if &diff
-    let g:lmap.g.d = {"name":"Diff..."}
-    nnoremap <leader>gdh :diffget //2
-    let g:lmap.g.d.f = "Take Diff On The Right"
-    nnoremap <leader>gdl :diffget //3
-    let g:lmap.g.d.f = "Take Diff On The Right"
+  let g:lmap.g.d = {"name":"Diff..."}
+  nnoremap <leader>gdh :diffget //2
+  let g:lmap.g.d.f = "Take Diff On The Right"
+  nnoremap <leader>gdl :diffget //3
+  let g:lmap.g.d.f = "Take Diff On The Right"
 endif
 
 " Git rebase file mappings
 if expand('%:t') == "git-rebase-todo"
-    nnoremap p 0ciwpick<ESC>0
-    nnoremap r 0ciwreword<ESC>0
-    nnoremap e 0ciwedit<ESC>0
-    nnoremap s 0ciwsquash<ESC>0
-    nnoremap f 0ciwfixup<ESC>0
-    nnoremap x 0ciwexec<ESC>0
-    nnoremap d 0ciwdrop<ESC>0
+  nnoremap p 0ciwpick<ESC>0
+  nnoremap r 0ciwreword<ESC>0
+  nnoremap e 0ciwedit<ESC>0
+  nnoremap s 0ciwsquash<ESC>0
+  nnoremap f 0ciwfixup<ESC>0
+  nnoremap x 0ciwexec<ESC>0
+  nnoremap d 0ciwdrop<ESC>0
 endif
 
 

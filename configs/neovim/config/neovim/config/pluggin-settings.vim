@@ -68,7 +68,7 @@ let g:vim_jsx_pretty_colorful_config = 1
 "                                 VimWiki                                      "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 let g:vimwiki_list = [{'path': '~/Documents/Dev/Notes',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+      \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_table_mappings = 0
 let g:vimwiki_folding = 'expr'
 
@@ -82,10 +82,10 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 "                               Vim Startify                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 let g:startify_lists = [
-          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-          \ { 'type': 'files',     'header': ['   Files']            },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ ]
+      \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+      \ { 'type': 'files',     'header': ['   Files']            },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ ]
 let g:startify_custom_header = ['',]
 let g:startify_enable_special = 0
 let g:startify_change_to_vcs_root = 1
