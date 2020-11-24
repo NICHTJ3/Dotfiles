@@ -31,7 +31,6 @@ Plug 'jackguo380/vim-lsp-cxx-highlight',{'for':['cpp','ccls','clangd']} " With c
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/committia.vim' " Better commits
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/gv.vim',{'on':'GV'}
 Plug 'stsewd/fzf-checkout.vim'
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
