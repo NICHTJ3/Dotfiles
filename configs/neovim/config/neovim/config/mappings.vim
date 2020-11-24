@@ -145,11 +145,11 @@ let g:lmap.g.p = "Git Push"
 nnoremap <leader>gl :Glog<CR>
 let g:lmap.g.l = "Git Log"
 nnoremap <leader>gb :GBranches<CR>
-let g:lmap.g.b = "FZF Git Branches"
+let g:lmap.g.b = "Git Branches"
 nnoremap <leader>gf :GitFiles<CR>
-let g:lmap.g.f = "FZF Git Files"
+let g:lmap.g.f = "Git Files"
 
-let g:lmap.g.h = {"name":"Git Hunks..."}
+let g:lmap.g.h = {"name":"Git Hunk..."}
 
 nmap <leader>ghs <Plug>(GitGutterStageHunk)
 let g:lmap.g.h.s = "Stage"
@@ -269,8 +269,12 @@ nnoremap <silent> <leader>ly  :<C-u>CocFzfList yank<cr>
 let g:lmap.l.y = "List Yanked Text"
 
 " CocSearch for last search
-nnoremap <leader>sw :CocSearch <c-r>/<CR>
-let g:lmap.s.w = "Search For Current Word"
+nnoremap <leader>sl :CocSearch <c-r>/<CR>
+let g:lmap.s.l = "CocSearch For Last Search"
+
+" CocSearch for current word
+nnoremap <leader>sw :CocSearch <c-r><c-w><CR>
+let g:lmap.s.w = "CocSearch For Current Word"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Plugin Mappings                              "
