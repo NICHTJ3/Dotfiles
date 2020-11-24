@@ -59,6 +59,7 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-sleuth'
 Plug 'spinks/vim-leader-guide'
 
+" FIXME: THis check isn't working
 if !system('$PATH')=~ '/mnt/c/WINDOWS'
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
