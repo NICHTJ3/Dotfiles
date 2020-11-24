@@ -9,10 +9,11 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 let g:lmap.g = {"name":"Git/GoTo..."}
 let g:lmap.s = {"name":"Search..."}
-let g:lmap.a = {"name":"Actions and Apps..."}
+let g:lmap.a = {"name":"Actions..."}
 let g:lmap.o = {"name":"Organize..."}
 let g:lmap.l = {"name":"List..."}
 let g:lmap.e = {"name":"Edit Files..."}
+let g:lmap.p = {"name":"Plugins..."}
 let g:lmap.r = {"name":"Rename/Regen Tags..."}
 let g:lmap.w = {"name":"Window..."}
 
@@ -274,33 +275,33 @@ nnoremap <leader>sw :CocSearch <c-r>/<CR>
 let g:lmap.s.w = "Search For Current Word"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                   App Bindings                               "
+"                                 Plugin Mappings                              "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                   VimWIKI                                    "
-let g:lmap.a.w = {"name":"Vim Wiki..."}
-nmap <leader>awi <Plug>VimwikiIndex
-let g:lmap.a.w.i = "Open Index"
+let g:lmap.p.w = {"name":"Vim Wiki..."}
+nmap <leader>pwi <Plug>VimwikiIndex
+let g:lmap.p.w.i = "Open Index"
 
-nmap <leader>awI <Plug>VimwikiTabIndex
-let g:lmap.a.w["I"] = "Open Index In New Tab"
+nmap <leader>pwI <Plug>VimwikiTabIndex
+let g:lmap.p.w["I"] = "Open Index In New Tab"
 
-nmap <leader>awy <Plug>VimwikiMakeYesterdayDiaryNote
-let g:lmap.a.w.y = "Yesterdays Entry"
+nmap <leader>pwy <Plug>VimwikiMakeYesterdayDiaryNote
+let g:lmap.p.w.y = "Yesterdays Entry"
 
-nmap <leader>awn <Plug>VimwikiMakeDiaryNote
-let g:lmap.a.w.n = "Todays Entry"
+nmap <leader>pwn <Plug>VimwikiMakeDiaryNote
+let g:lmap.p.w.n = "Todays Entry"
 
-nmap <leader>awN <Plug>VimwikiTabMakeDiaryNote
-let g:lmap.a.w["N"] = "Todays Entry In New Tab"
+nmap <leader>pwN <Plug>VimwikiTabMakeDiaryNote
+let g:lmap.p.w["N"] = "Todays Entry In New Tab"
 
-nmap <leader>awt <Plug>VimwikiMakeTomorrowDiaryNote
-let g:lmap.a.w.t = "Tomorrow Entry"
+nmap <leader>pwt <Plug>VimwikiMakeTomorrowDiaryNote
+let g:lmap.p.w.t = "Tomorrow Entry"
 
-nmap <leader>awr <Plug>VimwikiDiaryGenerateLinks
-let g:lmap.a.w.r = "Refresh Diary"
+nmap <leader>pwr <Plug>VimwikiDiaryGenerateLinks
+let g:lmap.p.w.r = "Refresh Diary"
 
-nmap <leader>awd <Plug>VimwikiDiaryIndex
-let g:lmap.a.w.d = "Open Diary"
+nmap <leader>pwd <Plug>VimwikiDiaryIndex
+let g:lmap.p.w.d = "Open Diary"
 
-nmap <leader>aws <Plug>VimwikiUISelect
-let g:lmap.a.w.s = "Select"
+nmap <leader>pws <Plug>VimwikiUISelect
+let g:lmap.p.w.s = "Select"
