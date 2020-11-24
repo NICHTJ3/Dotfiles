@@ -14,7 +14,6 @@ let g:lmap.o = {"name":"Organize..."}
 let g:lmap.l = {"name":"List..."}
 let g:lmap.e = {"name":"Edit Files..."}
 let g:lmap.p = {"name":"Plugins..."}
-let g:lmap.r = {"name":"Rename/Regen Tags..."}
 let g:lmap.w = {"name":"Window..."}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -105,8 +104,8 @@ vnoremap > >gv
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                        Regenerate ctags with leader ar                       "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <Leader>ar :!ctags --extra=+f -R *<CR><CR>
-let g:lmap.a.r = "Regen Ctags"
+nnoremap <Leader>aR :!ctags --extra=+f -R *<CR><CR>
+let g:lmap.a.R = "Regen Ctags"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                        Resize with arrow keys and ctrl                       "
@@ -243,8 +242,8 @@ nmap <silent> <leader>aa :<C-u>CocCommand actions.open<CR>
 let g:lmap.a.a = "Coc Action Menu"
 
 "Coc rename symbol
-nmap <leader>rn <Plug>(coc-rename)
-let g:lmap.r.n = "Rename Current Word"
+nmap <leader>ar <Plug>(coc-rename)
+let g:lmap.a.r = "Rename Current Word"
 
 "Coc extras
 let g:lmap.a.g = {"name":"Go To..."}
