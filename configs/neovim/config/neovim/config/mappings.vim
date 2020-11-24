@@ -7,7 +7,7 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                            Mapping Catagories                                "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-let g:lmap.g = {"name":"Git/GoTo..."}
+let g:lmap.g = {"name":"Git..."}
 let g:lmap.s = {"name":"Search..."}
 let g:lmap.a = {"name":"Actions..."}
 let g:lmap.o = {"name":"Organize..."}
@@ -137,36 +137,35 @@ let g:lmap.z = "Toggle Spell Check"
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                Git fugitive                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-let g:lmap.g.g = {"name":"Git..."}
-nnoremap <leader>ggs :G<CR>
-let g:lmap.g.g.s = "Git Status"
-nnoremap <leader>ggc :Gcommit<CR>
-let g:lmap.g.g.c = "Git Commit"
-nnoremap <leader>ggp :Gpush<CR>
-let g:lmap.g.g.p = "Git Push"
-nnoremap <leader>ggl :Glog<CR>
-let g:lmap.g.g.l = "Git Log"
-nnoremap <leader>ggb :GBranches<CR>
-let g:lmap.g.g.b = "FZF Git Branches"
-nnoremap <leader>ggf :GitFiles<CR>
-let g:lmap.g.g.f = "FZF Git Files"
+nnoremap <leader>gs :G<CR>
+let g:lmap.g.s = "Git Status"
+nnoremap <leader>gc :Gcommit<CR>
+let g:lmap.g.c = "Git Commit"
+nnoremap <leader>gp :Gpush<CR>
+let g:lmap.g.p = "Git Push"
+nnoremap <leader>gl :Glog<CR>
+let g:lmap.g.l = "Git Log"
+nnoremap <leader>gb :GBranches<CR>
+let g:lmap.g.b = "FZF Git Branches"
+nnoremap <leader>gf :GitFiles<CR>
+let g:lmap.g.f = "FZF Git Files"
 
-let g:lmap.g.g.h = {"name":"Hunks..."}
+let g:lmap.g.h = {"name":"Git Hunks..."}
 
-nmap <leader>gghs <Plug>(GitGutterStageHunk)
-let g:lmap.g.g.h.s = "Stage"
-nmap <leader>gghu <Plug>(GitGutterUndoHunk)
-let g:lmap.g.g.h.u = "Undo"
-nmap <leader>gghp <Plug>(GitGutterPreviewHunk)
-let g:lmap.g.g.h.p = "Preview"
+nmap <leader>ghs <Plug>(GitGutterStageHunk)
+let g:lmap.g.h.s = "Stage"
+nmap <leader>ghu <Plug>(GitGutterUndoHunk)
+let g:lmap.g.h.u = "Undo"
+nmap <leader>ghp <Plug>(GitGutterPreviewHunk)
+let g:lmap.g.h.p = "Preview"
 
 " Below are used in vim diff
 if &diff
-    let g:lmap.g.g.d = {"name":"Diff..."}
-    nnoremap <leader>ggdh :diffget //2
-    let g:lmap.g.g.d.f = "Take Diff On The Right"
-    nnoremap <leader>ggdl :diffget //3
-    let g:lmap.g.g.d.f = "Take Diff On The Right"
+    let g:lmap.g.d = {"name":"Diff..."}
+    nnoremap <leader>gdh :diffget //2
+    let g:lmap.g.d.f = "Take Diff On The Right"
+    nnoremap <leader>gdl :diffget //3
+    let g:lmap.g.d.f = "Take Diff On The Right"
 endif
 
 " Git rebase file mappings
@@ -248,15 +247,15 @@ nmap <leader>rn <Plug>(coc-rename)
 let g:lmap.r.n = "Rename Current Word"
 
 "Coc extras
-let g:lmap.g.t = {"name":"Go To..."}
-nmap <silent> <leader>gtd <Plug>(coc-definition)
-let g:lmap.g.t.d = "Go To Definition"
-nmap <silent> <leader>gtt <Plug>(coc-type-definition)
-let g:lmap.g.t.t = "Go To Type Definition"
-nmap <silent> <leader>gti <Plug>(coc-implementation)
-let g:lmap.g.t.i = "Go To Implementation"
-nmap <silent> <leader>gtr <Plug>(coc-references)
-let g:lmap.g.t.r = "Go To References"
+let g:lmap.a.g = {"name":"Go To..."}
+nmap <silent> <leader>agd <Plug>(coc-definition)
+let g:lmap.a.g.d = "Go To Definition"
+nmap <silent> <leader>agt <Plug>(coc-type-definition)
+let g:lmap.a.g.t = "Go To Type Definition"
+nmap <silent> <leader>agi <Plug>(coc-implementation)
+let g:lmap.a.g.i = "Go To Implementation"
+nmap <silent> <leader>agr <Plug>(coc-references)
+let g:lmap.a.g.r = "Go To References"
 
 " Meta o swap header source
 nnoremap <m-o> :CocCommand clangd.switchSourceHeader<CR>
