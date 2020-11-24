@@ -128,6 +128,7 @@ endif
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               vim-leader-guide                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+" TODO: Add visualmode leader guide mappings
 let g:lmap={}
 
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
