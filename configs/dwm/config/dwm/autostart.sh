@@ -9,6 +9,7 @@ sxhkd &
 udiskie &
 dwm_bar.sh &
 nm-applet &
+mpris-proxy &
 pkill blueman-applet;blueman-applet &
 # dwall -s mojave &
 bash $HOME/.fehbg &
