@@ -59,8 +59,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'spinks/vim-leader-guide'
 Plug 'roxma/vim-paste-easy' " Automatically set paste when pasting
 
-" FIXME: THis check isn't working
-if !system('$PATH')=~ '/mnt/c/WINDOWS'
+if system('$PATH') !~ '/mnt/c/Windows'
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 
