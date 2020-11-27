@@ -27,11 +27,13 @@ set shortmess+=Ic " no splash screen
 set showcmd
 set list
 set listchars=tab:>~,nbsp:_,trail:.,extends:>,precedes:<
-try
+
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
-catch
+else
   set signcolumn=auto
-endtry
+endif
 
 " Base-16 auto config requires base-16-vim
 if filereadable(expand("~/.vimrc_background"))
