@@ -62,6 +62,17 @@ let g:lmap.w.m.h = "Move Left"
 nnoremap <leader>wmk <c-w>K
 let g:lmap.w.m.k = "Move Above"
 
+" Navigate windows
+let g:lmap.w.n = {'name':"Navigate Window..."}
+nnoremap <leader>wnj <c-w>j
+let g:lmap.w.n.j = "Navigate Down"
+nnoremap <leader>wnl <c-w>l
+let g:lmap.w.n.l = "Navigate Right"
+nnoremap <leader>wnh <c-w>h
+let g:lmap.w.n.h = "Navigate Left"
+nnoremap <leader>wnk <c-w>k
+let g:lmap.w.n.k = "Navigate Above"
+
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    Open FZF                                  "
