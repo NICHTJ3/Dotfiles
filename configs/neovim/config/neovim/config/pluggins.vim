@@ -60,6 +60,8 @@ Plug 'spinks/vim-leader-guide'
 Plug 'roxma/vim-paste-easy' " Automatically set paste when pasting
 
 if system('$PATH') !~ '/mnt/c/Windows'
+  " NOTE: This won't be installed if you're on wsl. If you want to use this
+  " install it on the native windows neovim build
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 
