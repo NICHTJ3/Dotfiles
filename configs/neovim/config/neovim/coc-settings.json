@@ -6,6 +6,7 @@
   "prettier.singleQuote": true,
   "prettier.jsxSingleQuote": true,
   "prettier.trailingComma": "all",
+  "eslint.quiet": true,
   "eslint.filetypes": [
     "javascript",
     "javascriptreact",
