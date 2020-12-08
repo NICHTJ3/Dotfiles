@@ -69,6 +69,8 @@ endif
 "                                     TMUX                                     "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 Plug 'christoomey/vim-tmux-navigator' " Unifies tmux and vim navigation
+Plug 'roxma/vim-tmux-clipboard' " Unifies vim panes in tmux sessions clipboards
+Plug 'tmux-plugins/vim-tmux-focus-events' " Required for vim-tmux-clipboard
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                  Note taking                                 "
