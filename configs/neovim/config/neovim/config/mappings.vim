@@ -78,6 +78,7 @@ let g:lmap.w.n.k = "Navigate Above"
 "                                    Open FZF                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Open FZF files
+nnoremap <c-p> :Files<CR>
 nnoremap <leader>lf :Files<CR>
 let g:lmap.l.f = "List Files"
 " Open FZF buffers
