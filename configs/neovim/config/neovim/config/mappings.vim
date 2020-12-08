@@ -195,16 +195,29 @@ endif
 "                               Coc mappings                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
+" Needed for coc bindings
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " Tab and shift tab to nav
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>Check_back_space() ? "\<TAB>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 " Show documentation
-nnoremap <silent> K :call <SID>Show_documentation()<CR>
-nnoremap <silent> gh :call <SID>Show_documentation()<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
 
 " Coc format
 nnoremap <silent> <Leader>d :call CocAction('format')<CR>
@@ -223,7 +236,7 @@ endif
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>Check_back_space() ? "\<TAB>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
 let g:coc_snippet_next = '<tab>'
