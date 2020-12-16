@@ -266,6 +266,7 @@ nmap <leader>ar <Plug>(coc-rename)
 let g:lmap.a.r = "Rename Current Word"
 
 "Coc extras
+" Leader go to mappings
 let g:lmap.a.g = {"name":"Go To..."}
 nmap <silent> <leader>agd <Plug>(coc-definition)
 let g:lmap.a.g.d = "Go To Definition"
@@ -275,6 +276,9 @@ nmap <silent> <leader>agi <Plug>(coc-implementation)
 let g:lmap.a.g.i = "Go To Implementation"
 nmap <silent> <leader>agr <Plug>(coc-references)
 let g:lmap.a.g.r = "Go To References"
+
+" Non-Leader go to mappings
+nmap <silent> gd <Plug>(coc-definition)
 
 " Meta o swap header source
 nnoremap <m-o> :CocCommand clangd.switchSourceHeader<CR>
