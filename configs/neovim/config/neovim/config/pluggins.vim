@@ -15,7 +15,23 @@ call plug#begin()
 "                         COC Autocomplete and Linting                         "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                                Fuzzy finder etc                              "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+" Only use telescope if we have lua support
+if version >= 800
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+endif
+
 Plug 'antoinemadec/coc-fzf'
+Plug 'stsewd/fzf-checkout.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.local/bin/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'mhinz/vim-startify'
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                              Snippets and Syntax                             "
@@ -24,7 +40,8 @@ Plug 'honza/vim-snippets' " Generic snippets
 let g:polyglot_disabled = ['coffee-script']
 Plug 'sheerun/vim-polyglot' " Generic syntax
 Plug 'jackguo380/vim-lsp-cxx-highlight',{'for':['cpp','ccls','clangd']} " With coc-clangd to provide highlighting
-Plug 'IrenejMarc/vim-mint' " Mint-lang
+Plug 'IrenejMarc/vim-mint' " Mint-lang. 
+"The above wont be needed when my pr is merged into polygot
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                      Git                                     "
@@ -32,14 +49,6 @@ Plug 'IrenejMarc/vim-mint' " Mint-lang
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/committia.vim' " Better commits
 Plug 'airblade/vim-gitgutter'
-Plug 'stsewd/fzf-checkout.vim'
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                          File finding and searching                          "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-Plug 'junegunn/fzf', { 'dir': '~/.local/bin/fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-startify'
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                     Fixes                                    "
