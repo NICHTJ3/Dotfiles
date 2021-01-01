@@ -4,15 +4,10 @@
 "
 " TODO: Check if the plugins exist before creating mappings for them?
 
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                               vim-leader-guide                               "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-" TODO: Add visualmode leader guide mappings
+" Declare a dictionary to be used by which_map later on
 let g:lmap={}
-
-call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
-nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+" Ignore +prefix mappings
+let g:lmap['_'] = { 'name': 'which_key_ignore' }
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                            Mapping Catagories                                "

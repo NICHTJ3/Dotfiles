@@ -8,7 +8,7 @@
 
 " Map leader to space
 let mapleader="\<Space>"
-let maplocalleader="\\"
+let maplocalleader="\<Space>"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               Neovim plugins                                 "
@@ -72,7 +72,7 @@ Plug 'tpope/vim-surround' " Change/Add surrounding character
 Plug 'tomtom/tcomment_vim' " Toggle comments
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-sleuth'
-Plug 'spinks/vim-leader-guide'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'roxma/vim-paste-easy' " Automatically set paste when pasting
 
 if system('$PATH') !~ '/mnt/c/Windows'

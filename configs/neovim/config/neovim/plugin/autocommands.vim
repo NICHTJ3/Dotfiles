@@ -28,6 +28,7 @@ augroup Firenvim
 augroup end
 
 " Color all columns past 81
+" TODO: Setup blacklist for which_key
 autocmd! Filetype * let &l:colorcolumn='+' . join(range(1, 254), ',+')
 
 " Open FZF instead of explor
