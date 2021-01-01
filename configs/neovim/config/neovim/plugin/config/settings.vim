@@ -52,14 +52,13 @@ if has("termguicolors")
   set termguicolors
 endif
 
-" Black line numbers
+" Black line numbers and signcolumn
 hi LineNr guibg=0
 hi GitGutterAdd guibg=0
 hi GitGutterChange guibg=0
 hi GitGutterDelete guibg=0
+hi SignColumn guibg=0
 
-" SignColumn same color as line numbers
-hi link SignColumn LineNr
 
 " Remove extra highlighting around split
 hi VertSplit ctermbg=NONE guibg=NONE

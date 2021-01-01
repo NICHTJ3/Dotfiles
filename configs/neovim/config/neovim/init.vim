@@ -1,5 +1,5 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                               Neovim config                                 "
+"                               Neovim config                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "
 "
@@ -29,7 +29,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Fuzzy finder etc
 "
-
 Plug 'antoinemadec/coc-fzf'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.local/bin/fzf', 'do': './install --all' }
@@ -83,6 +82,8 @@ let g:lmap.w = {"name":"Window..."}
 
 " }}}
 Plug 'roxma/vim-paste-easy' " Automatically set paste when pasting
+Plug 'wincent/pinnacle' " Manipulate highlight groups in lua
+
 
 if system('$PATH') !~ '/mnt/c/Windows'
   " NOTE: This won't be installed if you're on wsl. If you want to use this
