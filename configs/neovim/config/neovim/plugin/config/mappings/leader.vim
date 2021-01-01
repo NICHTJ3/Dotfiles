@@ -57,17 +57,6 @@ nnoremap <leader>wnk <c-w>k
 let g:lmap.w.n.k = "Navigate Above"
 
 
-" TODO: Move these {{{
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                    Open FZF                                  "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>lf :Files<CR>
-let g:lmap.l.f = "List Files"
-" Open FZF buffers
-nnoremap <leader>lb :Buffers<CR>
-let g:lmap.l.b = "List Buffers"
-"}}}
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                        Regenerate ctags with leader ar                       "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -87,30 +76,6 @@ nnoremap <leader>as :set spell!<CR>
 let g:lmap.a.s = "Toggle Spell Check"
 
 " TODO: Move these
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                Git fugitive                                  "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>gs :G<CR>
-let g:lmap.g.s = "Git Status"
-nnoremap <leader>gc :Gcommit<CR>
-let g:lmap.g.c = "Git Commit"
-nnoremap <leader>gp :Gpush<CR>
-let g:lmap.g.p = "Git Push"
-nnoremap <leader>gl :Glog<CR>
-let g:lmap.g.l = "Git Log"
-nnoremap <leader>gb :GBranches<CR>
-let g:lmap.g.b = "Git Branches"
-nnoremap <leader>gf :GitFiles<CR>
-let g:lmap.g.f = "Git Files"
-
-let g:lmap.g.h = {"name":"Git Hunk..."}
-
-nmap <leader>ghs <Plug>(GitGutterStageHunk)
-let g:lmap.g.h.s = "Stage"
-nmap <leader>ghu <Plug>(GitGutterUndoHunk)
-let g:lmap.g.h.u = "Undo"
-nmap <leader>ghp <Plug>(GitGutterPreviewHunk)
-let g:lmap.g.h.p = "Preview"
 
 " Vim diff
 if &diff
