@@ -15,8 +15,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-call plug#begin()
-
+call plug#begin() " Plugins {{{
 " COC Autocomplete and Linting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -52,23 +51,8 @@ Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-surround' " Change/Add surrounding character
 Plug 'tomtom/tcomment_vim' " Toggle comments
 Plug 'mbbill/undotree'
-Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth' " Automatically detect indentation
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-" Declare a dictionary to be used by which-key later on {{{
-let g:lmap={}
-" Ignore +prefix mappings
-let g:lmap['_'] = { 'name': 'which_key_ignore' }
-" Mapping Catagories
-let g:lmap.g = {"name":"Git..."}
-let g:lmap.s = {"name":"Search..."}
-let g:lmap.a = {"name":"Actions..."}
-let g:lmap.o = {"name":"Organize..."}
-let g:lmap.l = {"name":"List..."}
-let g:lmap.e = {"name":"Edit Files..."}
-let g:lmap.p = {"name":"Plugins..."}
-let g:lmap.w = {"name":"Window..."}
-
-" }}}
 Plug 'roxma/vim-paste-easy' " Automatically set paste when pasting
 Plug 'wincent/pinnacle' " Manipulate highlight groups in lua
 
@@ -93,4 +77,18 @@ Plug 'vim-airline/vim-airline' " Better status
 Plug 'chriskempson/base16-vim' " Colorschemes
 Plug 'vim-airline/vim-airline-themes' " Airline Colorschemes
 
-call plug#end()
+call plug#end() "}}}
+
+" WhichKey
+let g:lmap={} " Declare a dictionary to be used by which-key later on
+let g:lmap['_'] = { 'name': 'which_key_ignore' } " Ignore +prefix mappings
+" Mapping Catagories {{{
+let g:lmap.g = {"name":"Git..."}
+let g:lmap.s = {"name":"Search..."}
+let g:lmap.a = {"name":"Actions..."}
+let g:lmap.o = {"name":"Organize..."}
+let g:lmap.l = {"name":"List..."}
+let g:lmap.e = {"name":"Edit Files..."}
+let g:lmap.p = {"name":"Plugins..."}
+let g:lmap.w = {"name":"Window..."}
+" }}}
