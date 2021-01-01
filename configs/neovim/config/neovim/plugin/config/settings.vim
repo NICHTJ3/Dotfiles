@@ -3,12 +3,6 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                             Remap leader to space                            "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-let mapleader = "\ "
-let maplocalleader = "\ "
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                          Movement and nav settings                           "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 set cursorline
@@ -58,14 +52,13 @@ if has("termguicolors")
   set termguicolors
 endif
 
-" Black line numbers
+" Black line numbers and signcolumn
 hi LineNr guibg=0
 hi GitGutterAdd guibg=0
 hi GitGutterChange guibg=0
 hi GitGutterDelete guibg=0
+hi SignColumn guibg=0
 
-" SignColumn same color as line numbers
-hi link SignColumn LineNr
 
 " Remove extra highlighting around split
 hi VertSplit ctermbg=NONE guibg=NONE
@@ -87,6 +80,7 @@ set smartcase
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                  My settings                                 "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+set hidden " Needed for coc
 set belloff=all
 set confirm
 set nowrap " Disable line wrap
@@ -98,6 +92,7 @@ set history=1000
 set nobackup
 set noswapfile
 set lazyredraw " Redraws screen only after user input only
+set updatetime=100
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Line numbers                                 "

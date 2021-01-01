@@ -1,3 +1,4 @@
+" TODO: Move these into autoload files
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                               Neovim functions                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -77,15 +78,4 @@ function! CheckboxToggle(...) abort
   if exists('*repeat#set')
     call repeat#set(":\<C-u>call CheckboxToggle('" . c . "')\<CR>")
   endif
-endfunction
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                           Check if in wsl                                    "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-function! Is_WSL() abort
-  let proc_version = '/proc/version'
-  return filereadable(proc_version)
-        \  ? !empty(filter(
-        \    readfile(proc_version, '', 1), { _, val -> val =~? 'microsoft' }))
-        \  : v:false
 endfunction
