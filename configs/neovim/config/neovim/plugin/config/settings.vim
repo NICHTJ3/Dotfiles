@@ -81,6 +81,7 @@ set smartcase
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                  My settings                                 "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+set hidden " Needed for coc
 set belloff=all
 set confirm
 set nowrap " Disable line wrap
@@ -92,6 +93,7 @@ set history=1000
 set nobackup
 set noswapfile
 set lazyredraw " Redraws screen only after user input only
+set updatetime=100
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Line numbers                                 "
