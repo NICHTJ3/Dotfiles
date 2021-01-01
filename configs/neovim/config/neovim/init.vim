@@ -29,12 +29,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Fuzzy finder etc
 "
-" Only use telescope if we have lua support
-if version >= 800
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-endif
 
 Plug 'antoinemadec/coc-fzf'
 Plug 'stsewd/fzf-checkout.vim'
