@@ -1,1 +1,1 @@
-autocmd BufWinEnter *.kotlin set filetype=kotlin
+autocmd BufNewFile,BufRead *.kotlin set filetype=kotlin

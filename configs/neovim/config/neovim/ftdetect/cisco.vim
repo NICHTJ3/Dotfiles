@@ -1,1 +1,1 @@
-autocmd BufWinEnter *.cisco set syntax=cisco
+autocmd BufNewFile,BufRead *.cisco set filetype=cisco
