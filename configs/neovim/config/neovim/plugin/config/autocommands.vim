@@ -18,6 +18,7 @@ function! s:AutoCommands()
        autocmd WinEnter * lua require'personal.autocommands'.win_enter()
     endif
 
+    " TODO: Find a nicer place for this?
     " Install New Plugins if not installed
     if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
       autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | q
@@ -26,23 +27,15 @@ function! s:AutoCommands()
     " Relative linenums only in normal mode
     autocmd InsertEnter * set norelativenumber
     autocmd InsertLeave * set relativenumber
-  augroup END
 
-  augroup SourceVimrcOnSave
-    autocmd!
+    " TODO: Auto source ftplugin etc
+    " Automatically source vimrc
     autocmd BufWritepost *.vim source $MYVIMRC
-  augroup END
 
-  augroup Terminal
-    autocmd!
-    autocmd TermOpen * startinsert
-    " Turn off line numbers etc
-    autocmd TermOpen * setlocal listchars= nonumber norelativenumber
-  augroup end
+    " Terminal
+    autocmd TermOpen * startinsert " Start terminal in insert mode
+    autocmd TermOpen * setlocal listchars= nonumber norelativenumber " Turn off line numbers etc
+  augroup END
 endfunction
 
 call s:AutoCommands()
-
-
-
-
