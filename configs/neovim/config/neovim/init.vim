@@ -67,7 +67,6 @@ Plug 'roxma/vim-tmux-clipboard' " Unifies vim panes in tmux sessions clipboards
 Plug 'tmux-plugins/vim-tmux-focus-events' " Required for vim-tmux-clipboard
 
 " Note taking
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'iamcco/markdown-preview.nvim',{'do':'cd app & npm install'} " Markdown
 
 " UI
