@@ -29,7 +29,6 @@ Plug 'mhinz/vim-startify'
 
 " Snippets and Syntax
 Plug 'honza/vim-snippets' " Generic snippets
-let g:polyglot_disabled = ['coffee-script']
 Plug 'sheerun/vim-polyglot' " Generic syntax
 Plug 'jackguo380/vim-lsp-cxx-highlight',{'for':['cpp','ccls','clangd']} " With coc-clangd to provide highlighting
 
