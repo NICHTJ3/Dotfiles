@@ -21,7 +21,7 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIGS_TO_OPERATE_ON=""
 
 # Create an array of 1's representing an option is available to be installed
-declare -A AVAILABLE_CONFIG
+declare -a AVAILABLE_CONFIG
 for constant in $CONFIGS
 do
   AVAILABLE_CONFIG[$constant]=1
