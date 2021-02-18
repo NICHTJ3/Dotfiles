@@ -45,22 +45,12 @@ export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
 # }}}
 
 ##################
-# Setup
-##################
-# base16
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-# fnm
-eval "`fnm env`"
-
-##################
 # Aliases
 ##################
 if [[ $WSL_ACTIVE  ]];then
   # Windows
   alias open='wslview'
-else
+elif [[ "$(expr ${$(uname -s)[1,5]})" == "Linux" ]]; then
   # Linux
   alias open='xdg-open'
 fi

@@ -7,6 +7,19 @@ case $- in
       *) return;;
 esac
 
+
+##################
+# Setup
+##################
+# fnm
+eval "$(fnm env)"
+
+# base16
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+
 ##################
 # Enable Powerlevel10k instant prompt.
 ##################
@@ -19,7 +32,7 @@ if [[ $DISPLAY || $WSL_ACTIVE ]]; then
   [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
 # Else source a prompt without icons
 else
-  . $HOME/bin/helper-scripts/dracula-tty.sh
+  [[ "$(expr ${$(uname -s)[1,5]})" == "Linux" ]] && . $HOME/bin/helper-scripts/dracula-tty.sh
   [[ ! -f ~/.config/zsh/p10k-portable.zsh ]] || source ~/.config/zsh/p10k-portable.zsh
 fi
 
