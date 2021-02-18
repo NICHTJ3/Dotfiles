@@ -33,6 +33,9 @@ function! DuckIt(type, ...)
       " Linux
       silent exe "!open 'https://duckduckgo.com/?q=" . search . "'"
     endif
+  else
+    " TODO: Fix this for native windows cli and mac
+    silent exe "!open 'https://duckduckgo.com/?q=" . search . "'"
   endif
 
   let &selection = sel_save
