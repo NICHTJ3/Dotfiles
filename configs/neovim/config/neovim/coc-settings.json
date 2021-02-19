@@ -7,13 +7,7 @@
   "prettier.jsxSingleQuote": true,
   "prettier.trailingComma": "all",
   "eslint.quiet": true,
-  "eslint.filetypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue"
-  ],
+  "markdownlint.onChange": false,
   "diagnostic.virtualText": true,
   "diagnostic.errorSign": "💣",
   "diagnostic.warningSign": "⚠️",
