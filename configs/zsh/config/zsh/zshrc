@@ -28,7 +28,7 @@ eval "$(fnm env)"
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
 # Source normal prompt if on windows or in a DM
-if [[ $DISPLAY || $WSL_ACTIVE ]]; then
+if [[ $DISPLAY || $WSL_ACTIVE || "$(uname -s)" == "Darwin" ]]; then
   [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
 # Else source a prompt without icons
 else
