@@ -73,6 +73,7 @@ Plug 'iamcco/markdown-preview.nvim',{'do':'cd app & npm install'} " Markdown
 Plug 'vim-airline/vim-airline' " Better status
 Plug 'chriskempson/base16-vim' " Colorschemes
 Plug 'vim-airline/vim-airline-themes' " Airline Colorschemes
+Plug 'miyakogi/seiya.vim' " Transparency automagically
 
 call plug#end() "}}}
 
