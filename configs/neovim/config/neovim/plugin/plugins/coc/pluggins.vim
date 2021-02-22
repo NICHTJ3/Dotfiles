@@ -17,6 +17,7 @@ call coc#add_extension('coc-marketplace')
 call coc#add_extension('coc-css')
 call coc#add_extension('coc-xml')
 call coc#add_extension('coc-json')
+call coc#add_extension('coc-omnisharp')
 
 " Language support extensions
 call coc#add_extension('coc-sh')
