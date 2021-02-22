@@ -31,6 +31,7 @@ Plug 'mhinz/vim-startify'
 Plug 'honza/vim-snippets' " Generic snippets
 Plug 'sheerun/vim-polyglot' " Generic syntax
 Plug 'jackguo380/vim-lsp-cxx-highlight',{'for':['cpp','ccls','clangd']} " With coc-clangd to provide highlighting
+Plug 'OmniSharp/omnisharp-vim' " Better C# syntax
 
 " Git
 Plug 'tpope/vim-fugitive'
