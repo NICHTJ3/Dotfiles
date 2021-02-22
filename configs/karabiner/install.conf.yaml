@@ -1,0 +1,15 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+# TODO: Check if this deletes other shared config
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+- link:
+    # Karabiner config
+    ~/.config/karabiner/karabiner.json: ./config/karabiner.json
