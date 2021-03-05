@@ -31,7 +31,7 @@ done
 
 if [[ $WSL_ACTIVE ]]; then
   export BROWSER="wslview"
-else
+elif [[ "$(expr ${$(uname -s)[1,5]})" == "Linux" ]]; then
   export BROWSER="firefox-developer-edition"
 fi
 
