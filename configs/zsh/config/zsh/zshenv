@@ -17,7 +17,8 @@ for path_candidate in \
     $HOME/.local/bin\
     $HOME/.poetry/bin\
     $HOME/.local/share/npm/bin\
-    $HOME/.local/share/cargo/bin
+    $HOME/.local/share/cargo/bin\
+    /usr/local/opt/sqlite/bin
 do
     if [ -d ${path_candidate} ]; then
         export PATH="${PATH}:${path_candidate}"
