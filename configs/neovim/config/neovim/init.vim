@@ -75,9 +75,6 @@ Plug 'chriskempson/base16-vim' " Colorschemes
 Plug 'vim-airline/vim-airline-themes' " Airline Colorschemes
 Plug 'miyakogi/seiya.vim' " Transparency automagically
 
-" Focus windows dynamically
-Plug 'camspiers/lens.vim'
-
 call plug#end() "}}}
 
 " WhichKey
