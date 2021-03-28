@@ -31,7 +31,7 @@ Plug 'mhinz/vim-startify'
 Plug 'honza/vim-snippets' " Generic snippets
 Plug 'sheerun/vim-polyglot' " Generic syntax
 Plug 'jackguo380/vim-lsp-cxx-highlight',{'for':['cpp','ccls','clangd']} " With coc-clangd to provide highlighting
-Plug 'OmniSharp/omnisharp-vim' " Better C# syntax
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Better syntax and other things
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -47,12 +47,12 @@ Plug 'pgdouyon/vim-evanesco' " Clears search highlighting on move
 " Must have plugins
 Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-surround' " Change/Add surrounding character
-Plug 'tomtom/tcomment_vim' " Toggle comments
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-sleuth' " Automatically detect indentation
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'roxma/vim-paste-easy' " Automatically set paste when pasting
 Plug 'wincent/pinnacle' " Manipulate highlight groups in lua
+Plug 'tpope/vim-commentary' " Toggle comments
 
 
 if system('$PATH') !~ '/mnt/c/Windows'
