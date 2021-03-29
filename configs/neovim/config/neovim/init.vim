@@ -30,6 +30,8 @@ Plug 'mhinz/vim-startify'
 " Snippets and Syntax
 Plug 'honza/vim-snippets' " Generic snippets
 Plug 'sheerun/vim-polyglot' " Generic syntax
+" TODO: Next time I work on a cpp project check if I still need this now that I
+" have treesitter
 Plug 'jackguo380/vim-lsp-cxx-highlight',{'for':['cpp','ccls','clangd']} " With coc-clangd to provide highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Better syntax and other things
 
