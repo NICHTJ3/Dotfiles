@@ -50,7 +50,6 @@ Plug 'tpope/vim-surround' " Change/Add surrounding character
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-sleuth' " Automatically detect indentation
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-Plug 'roxma/vim-paste-easy' " Automatically set paste when pasting
 Plug 'wincent/pinnacle' " Manipulate highlight groups in lua
 Plug 'tpope/vim-commentary' " Toggle comments
 Plug 'AndrewRadev/tagalong.vim'
