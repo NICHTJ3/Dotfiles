@@ -1,8 +1,8 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	name = NICHTJ3
-	email = nicholsontrent@gmail.com
+	; name = NICHTJ3
+	; email = nicholsontrent@gmail.com
 [url "git@github.com:NICHTJ3"]
 	insteadOf = https://github.com/nichtj3
 	insteadOf = https://github.com/NICHTJ3
