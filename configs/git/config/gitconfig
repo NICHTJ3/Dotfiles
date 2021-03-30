@@ -3,7 +3,7 @@
 # Please adapt and uncomment the following lines:
 	; name = NICHTJ3
 	; email = nicholsontrent@gmail.com
-[url "git@github.com:NICHTJ3"]
+[url "git@github.com:NICHTJ3"] # Use ssh even for HTTPS remotes
 	insteadOf = https://github.com/nichtj3
 	insteadOf = https://github.com/NICHTJ3
 [pager]
