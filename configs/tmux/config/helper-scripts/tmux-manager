@@ -50,7 +50,7 @@ chmod +x .tmux
 }
 
 function init(){
-  SESSION_NAME=$(basename "$(pwd)")
+  SESSION_NAME=$(echo $(basename "$(pwd)") | sed -e s/\\./_/g)
   if [[ ! -f ./.tmux && ! -d ./.tmux ]]; then
     createTmuxFile $SESSION_NAME
     echo Created a .tmux file have a look inside if you want to change anything
@@ -79,7 +79,8 @@ function validateAndRunTmuxFile(){
 
 # Attach to existing session, or create one, based on current directory.
 function attachOrCreateSession(){
-  SESSION_NAME=$(basename "$(pwd)")
+  # TODO: Break out the creation of the session name to a function?
+  SESSION_NAME=$(echo $(basename "$(pwd)") | sed -e s/\\./_/g)
   env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux new -A -s "$SESSION_NAME"
 }
 
