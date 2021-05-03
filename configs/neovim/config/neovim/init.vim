@@ -20,16 +20,21 @@ call plug#begin() " Plugins {{{
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Fuzzy finder etc
-Plug 'antoinemadec/coc-fzf'
-Plug 'stsewd/fzf-checkout.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.local/bin/fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'antoinemadec/coc-fzf'
+" Plug 'stsewd/fzf-checkout.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.local/bin/fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 Plug 'mhinz/vim-startify'
 
 " Snippets and Syntax
 Plug 'honza/vim-snippets' " Generic snippets
 Plug 'sheerun/vim-polyglot' " Generic syntax
+Plug 'pantharshit00/vim-prisma'
 " TODO: Next time I work on a cpp project check if I still need this now that I
 " have treesitter
 Plug 'jackguo380/vim-lsp-cxx-highlight',{'for':['cpp','ccls','clangd']} " With coc-clangd to provide highlighting
@@ -78,6 +83,8 @@ Plug 'vim-airline/vim-airline-themes' " Airline Colorschemes
 Plug 'miyakogi/seiya.vim' " Transparency automagically
 
 call plug#end() "}}}
+
+lua require("personal")
 
 " WhichKey
 let g:lmap={} " Declare a dictionary to be used by which-key later on

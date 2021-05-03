@@ -27,6 +27,7 @@ call coc#add_extension('coc-python')
 call coc#add_extension('coc-pyright')
 call coc#add_extension('coc-tsserver')
 call coc#add_extension('coc-rust-analyzer')
+call coc#add_extension('coc-prisma')
 
 " Linting and formatting
 call coc#add_extension('coc-eslint')
