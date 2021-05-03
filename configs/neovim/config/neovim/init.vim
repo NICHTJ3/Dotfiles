@@ -33,6 +33,7 @@ Plug 'mhinz/vim-startify'
 
 " Snippets and Syntax
 Plug 'honza/vim-snippets' " Generic snippets
+let g:polyglot_disabled = ['coffee-script']
 Plug 'sheerun/vim-polyglot' " Generic syntax
 Plug 'pantharshit00/vim-prisma'
 " TODO: Next time I work on a cpp project check if I still need this now that I

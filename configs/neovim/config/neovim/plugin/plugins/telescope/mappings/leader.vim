@@ -6,10 +6,7 @@ let g:lmap.l.f = "List Files"
 " nnoremap <leader>lb :Buffers<CR>
 " let g:lmap.l.b = "List Buffers"
 " " Edit vim config
-nnoremap <leader>ev :lua require("telescope.builtin").find_files({ 
-      \prompt_title = "< VimRC >", 
-      \cwd = "~/Dotfiles/configs/neovim/config/neovim",
-      \})<CR>
+nnoremap <leader>ev :lua require("personal.plugins.telescope").EditVimFiles()<CR>
 let g:lmap.e.v = "Edit vim config"
 " " Edit dotfiles
 " nnoremap <leader>ed :Dots<CR>
