@@ -22,12 +22,11 @@ set showcmd
 set list
 set listchars=tab:>~,nbsp:_,trail:.,extends:>,precedes:<
 
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
+try
   set signcolumn=number
-else
+catch /.*/
   set signcolumn=auto
-endif
+endtry
 
 " Base-16 auto config requires base-16-vim
 if filereadable(expand("~/.vimrc_background"))
