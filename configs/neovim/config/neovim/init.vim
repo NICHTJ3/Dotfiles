@@ -48,7 +48,7 @@ Plug 'rhysd/committia.vim' " Better commits
 Plug 'airblade/vim-gitgutter'
 
 " Fixes
-Plug 'bfrg/vim-qf' " Fixes issues with built in quick fix menu
+Plug 'romainl/vim-qf' " Fixes issues with built in quick fix menu
 Plug 'tpope/vim-repeat' " Repeat with . sequences that use pluggins
 Plug 'zoubin/vim-gotofile' " Better go to file
 Plug 'pgdouyon/vim-evanesco' " Clears search highlighting on move
