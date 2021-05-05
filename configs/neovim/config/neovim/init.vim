@@ -40,6 +40,7 @@ Plug 'pantharshit00/vim-prisma'
 " have treesitter
 Plug 'jackguo380/vim-lsp-cxx-highlight',{'for':['cpp','ccls','clangd']} " With coc-clangd to provide highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " Better syntax and other things
+Plug 'p00f/nvim-ts-rainbow'
 
 " Git
 Plug 'tpope/vim-fugitive'
