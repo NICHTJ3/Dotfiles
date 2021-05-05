@@ -7,6 +7,7 @@
   "prettier.jsxSingleQuote": true,
   "prettier.trailingComma": "all",
   "eslint.quiet": true,
+  "eslint.packageManager": "yarn",
   "markdownlint.onChange": false,
   "diagnostic.virtualText": true,
   "diagnostic.errorSign": "💣",
