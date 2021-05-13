@@ -51,5 +51,13 @@
   "clangd.semanticHighlighting": true,
   "rust-analyzer.lens.run": false,
   "tailwindCSS.headwind.runOnSave": false,
-  "svelte.plugin.css.diagnostics.enable": false
+  "svelte.plugin.css.diagnostics.enable": false,
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      // customize filetypes to your needs
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    }
+  }
 }
