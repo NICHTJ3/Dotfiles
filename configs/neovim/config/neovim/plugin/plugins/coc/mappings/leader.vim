@@ -71,7 +71,7 @@ let g:lmap.l.c = "List Coc Commands"
 
 " Code action leader a
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>aa :<C-u>CocCommand actions.open<CR>
+nmap <silent> <leader>aa :<C-u>CocAction<CR>
 let g:lmap.a.a = "Coc Action Menu"
 
 "Coc rename symbol
