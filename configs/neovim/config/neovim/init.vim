@@ -80,8 +80,10 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " Required for vim-tmux-clipboard
 Plug 'iamcco/markdown-preview.nvim',{'do':'cd app & npm install'} " Markdown
 
 " UI
-Plug 'vim-airline/vim-airline' " Better status
-Plug 'chriskempson/base16-vim' " Colorschemes
+" Plug 'vim-airline/vim-airline' " Better status
+Plug 'hoob3rt/lualine.nvim'
+" Plug 'chriskempson/base16-vim' " Colorschemes
+Plug 'folke/tokyonight.nvim' " Tokyo Night colorscheme
 Plug 'vim-airline/vim-airline-themes' " Airline Colorschemes
 Plug 'miyakogi/seiya.vim' " Transparency automagically
 

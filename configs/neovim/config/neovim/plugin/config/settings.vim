@@ -28,15 +28,13 @@ catch /.*/
   set signcolumn=auto
 endtry
 
-" Base-16 auto config requires base-16-vim
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  " FIXME: There must be a nicer check for this
-  try
-    source ~/.vimrc_background
-  catch
-  endtry
-endif
+" TODO: Move this to a plugin file
+let g:tokyonight_style = "night"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+
+" Load the colorscheme
+colorscheme tokyonight
 
 " Soft wrap at 80 characters
 set textwidth=80
