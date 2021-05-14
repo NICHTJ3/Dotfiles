@@ -10,10 +10,10 @@
   "eslint.packageManager": "yarn",
   "markdownlint.onChange": false,
   "diagnostic.virtualText": true,
-  "diagnostic.errorSign": "💣",
-  "diagnostic.warningSign": "⚠️",
-  "diagnostic.infoSign": "❓",
-  "diagnostic.hintSign": "❔",
+  "diagnostic.errorSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.infoSign": " ", // TODO: Should this sign be different than the one below
+  "diagnostic.hintSign": " ",
   "snippets.priority": 100,
   "coc.source.word.filetypes": ["markdown", "org"],
   "snippets.extends": {
