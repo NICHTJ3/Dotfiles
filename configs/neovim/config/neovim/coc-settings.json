@@ -60,5 +60,5 @@
       "filetypes": ["typescript", "typescriptreact", "graphql"]
     }
   },
-  "Lua.diagnostics.globals":["vim","use"]
+  "Lua.diagnostics.globals":["vim","use","use-rocks"]
 }

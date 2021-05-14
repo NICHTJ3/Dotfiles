@@ -40,7 +40,6 @@ return require('packer').startup(function()
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function()
-            -- FIXME: This sometimes isn't being loaded
             require 'personal.plugins.nvim-treesitter'
         end
     }
@@ -68,6 +67,7 @@ return require('packer').startup(function()
     use 'wincent/pinnacle' -- Manipulate highlight groups in lua
     use 'tpope/vim-commentary' -- Toggle comments
     use 'AndrewRadev/tagalong.vim'
+    use_rocks {'luaformatter', server = 'https://luarocks.org/dev'}
 
     -- TMUX
     use 'christoomey/vim-tmux-navigator' -- Unifies tmux and vim navigation
