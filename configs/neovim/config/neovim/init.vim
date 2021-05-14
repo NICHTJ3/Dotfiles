@@ -51,6 +51,7 @@ Plug 'zoubin/vim-gotofile' " Better go to file
 Plug 'pgdouyon/vim-evanesco' " Clears search highlighting on move
 
 " Must have plugins
+Plug 'folke/todo-comments.nvim'
 Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-surround' " Change/Add surrounding character
 Plug 'mbbill/undotree'

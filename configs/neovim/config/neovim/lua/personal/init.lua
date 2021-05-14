@@ -1,6 +1,7 @@
 require("personal.plugins.telescope")
 require("personal.plugins.nvim-treesitter")
 require("personal.plugins.lua-line")
+require("personal.plugins.todo-comments")
 
 P = function(v)
     print(vim.inspect(v))
