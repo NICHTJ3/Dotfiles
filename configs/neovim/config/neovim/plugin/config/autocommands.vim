@@ -18,12 +18,6 @@ function! s:AutoCommands()
        autocmd WinEnter * lua require'personal.autocommands'.win_enter()
     endif
 
-    " TODO: Find a nicer place for this?
-    " Install New Plugins if not installed
-    if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | q
-    endif
-
     " Relative linenums only in normal mode
     autocmd InsertEnter * set norelativenumber
     autocmd InsertLeave * set relativenumber

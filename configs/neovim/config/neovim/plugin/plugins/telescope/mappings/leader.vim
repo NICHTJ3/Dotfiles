@@ -1,4 +1,3 @@
-
 " Open Telescope Files
 nnoremap <leader>lf :lua require('telescope.builtin').find_files()<CR>
 let g:lmap.l.f = "List Files"

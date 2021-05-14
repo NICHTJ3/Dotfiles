@@ -8,21 +8,18 @@
 let mapleader="\<Space>"
 let maplocalleader="\<Space>"
 
-" Source all our pluggins
-runtime pluggins.vim
-
 lua require("personal")
 
 " WhichKey
-let lmap = get(g:, 'lmap', {}) " Declare a dictionary to be used by which-key later on
-let lmap['_'] = { 'name': 'which_key_ignore' } " Ignore +prefix mappings
+let g:lmap = {} " Declare a dictionary to be used by which-key later on
+let g:lmap['_'] = { 'name': 'which_key_ignore' } " Ignore +prefix mappings
 " Mapping Catagories {{{
-let lmap.g = {"name":"Git..."}
-let lmap.s = {"name":"Search..."}
-let lmap.a = {"name":"Actions..."}
-let lmap.o = {"name":"Organize..."}
-let lmap.l = {"name":"List..."}
-let lmap.e = {"name":"Edit Files..."}
-let lmap.p = {"name":"Plugins..."}
-let lmap.w = {"name":"Window..."}
+let g:lmap.g = {"name":"Git..."}
+let g:lmap.s = {"name":"Search..."}
+let g:lmap.a = {"name":"Actions..."}
+let g:lmap.o = {"name":"Organize..."}
+let g:lmap.l = {"name":"List..."}
+let g:lmap.e = {"name":"Edit Files..."}
+let g:lmap.p = {"name":"Plugins..."}
+let g:lmap.w = {"name":"Window..."}
 " }}}
