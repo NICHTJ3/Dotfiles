@@ -28,14 +28,6 @@ catch /.*/
   set signcolumn=auto
 endtry
 
-" TODO: Move this to a plugin file
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-
-" Load the colorscheme
-colorscheme tokyonight
-
 " Soft wrap at 80 characters
 set textwidth=80
 
@@ -50,6 +42,7 @@ if has("termguicolors")
 endif
 
 " Black line numbers and signcolumn
+" TODO: I think this is handled by autocommands?
 hi LineNr guibg=0
 hi GitGutterAdd guibg=0
 hi GitGutterChange guibg=0
@@ -57,6 +50,7 @@ hi GitGutterDelete guibg=0
 hi SignColumn guibg=0
 
 
+" TODO: I don't think this is needed anymore
 " Remove extra highlighting around split
 hi VertSplit ctermbg=NONE guibg=NONE
 

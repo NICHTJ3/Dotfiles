@@ -20,10 +20,6 @@ call plug#begin() " Plugins {{{
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Fuzzy finder etc
-" Plug 'antoinemadec/coc-fzf'
-" Plug 'stsewd/fzf-checkout.vim'
-" Plug 'junegunn/fzf', { 'dir': '~/.local/bin/fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -80,9 +76,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " Required for vim-tmux-clipboard
 Plug 'iamcco/markdown-preview.nvim',{'do':'cd app & npm install'} " Markdown
 
 " UI
-" Plug 'vim-airline/vim-airline' " Better status
 Plug 'hoob3rt/lualine.nvim'
-" Plug 'chriskempson/base16-vim' " Colorschemes
 Plug 'folke/tokyonight.nvim' " Tokyo Night colorscheme
 Plug 'vim-airline/vim-airline-themes' " Airline Colorschemes
 Plug 'miyakogi/seiya.vim' " Transparency automagically
