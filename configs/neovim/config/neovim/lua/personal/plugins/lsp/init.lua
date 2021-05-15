@@ -1,5 +1,3 @@
-require 'personal.plugins.lsp.lspinstall'
-
 -- TODO figure out why this don't work
 vim.fn.sign_define(
     "LspDiagnosticsSignError",
@@ -104,11 +102,6 @@ local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
     documentHighlight(client, bufnr)
-end
-
-function lsp_config.tsserver_on_attach(client, bufnr)
-    lsp_config.common_on_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
 end
 
 -- Use a loop to conveniently both setup defined servers

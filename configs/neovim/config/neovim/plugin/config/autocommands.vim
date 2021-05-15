@@ -22,10 +22,6 @@ function! s:AutoCommands()
     autocmd InsertEnter * set norelativenumber
     autocmd InsertLeave * set relativenumber
 
-    " TODO: Auto source ftplugin etc
-    " Automatically source vimrc
-    autocmd BufWritepost *.vim source $MYVIMRC
-
     " Terminal
     autocmd TermOpen * startinsert " Start terminal in insert mode
     autocmd TermOpen * setlocal listchars= nonumber norelativenumber " Turn off line numbers etc

@@ -10,7 +10,7 @@ return require('packer').startup(function(use)
     use {
         'kabouzeid/nvim-lspinstall',
         requires = {{'neovim/nvim-lspconfig'}},
-        config = function() require('personal.plugins.lsp') end
+        config = function() require('personal.plugins.lspinstall') end
     }
     use {'hrsh7th/nvim-compe',config = function() require('personal.plugins.compe')end}
     use 'glepnir/lspsaga.nvim'
@@ -101,4 +101,3 @@ return require('packer').startup(function(use)
     }
 
 end)
-

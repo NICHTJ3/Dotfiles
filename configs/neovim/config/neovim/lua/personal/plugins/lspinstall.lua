@@ -1,8 +1,11 @@
+
 local function setup_servers()
   require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
   for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
+    require'lspconfig'[server].setup{
+        -- on_attach = require('personal.plugins.lsp').common_on_attach
+    }
   end
 end
 
