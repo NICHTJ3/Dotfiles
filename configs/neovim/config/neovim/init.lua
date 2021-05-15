@@ -1,5 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+if require('personal.first_load')() then
+  return
+end
 
 require("personal.plugins")
 

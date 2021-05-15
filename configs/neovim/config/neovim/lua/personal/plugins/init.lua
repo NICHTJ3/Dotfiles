@@ -1,25 +1,19 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
-local cmd = vim.cmd
-local g = vim.g
+vim.o.completeopt = "menuone,noselect"
 
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
--- NOTE: Install packer if it hasn't already been installed
-if fn.empty(fn.glob(install_path)) > 0 then
-    execute("!git clone https://github.com/wbthomason/packer.nvim " ..
-                install_path)
-    execute "packadd packer.nvim"
-end
-
--- Only required if you have packer configured as `opt`
-cmd[[packadd packer.nvim]]
-
-return require('packer').startup(function()
+return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
     -- LSP
+    use 'neovim/nvim-lsp'
+    use {'neovim/nvim-lspconfig', requires = {{'neovim/nvim-lsp'}}}
+    use {
+        'kabouzeid/nvim-lspinstall',
+        requires = {{'neovim/nvim-lspconfig'}},
+        config = function() require('personal.plugins.lsp') end
+    }
+    use {'hrsh7th/nvim-compe',config = function() require('personal.plugins.compe')end}
+    use 'glepnir/lspsaga.nvim'
 
     -- Telescope/Fuzzy finding
     use {
@@ -27,20 +21,25 @@ return require('packer').startup(function()
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
         config = function() require 'personal.plugins.telescope' end
     }
-    use {'nvim-telescope/telescope-fzy-native.nvim',after={{'nvim-telescope/telescope.nvim'}}}
+    use {
+        'nvim-telescope/telescope-fzy-native.nvim',
+        requires = {{'nvim-telescope/telescope.nvim'}}
+    }
 
     -- Snippets and Syntax
-    use 'honza/vim-snippets'
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
     use 'pantharshit00/vim-prisma'
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        config = function()
-            require 'personal.plugins.nvim-treesitter'
-        end
+        config = function() require 'personal.plugins.nvim-treesitter' end
     }
-    use {'p00f/nvim-ts-rainbow', after='nvim-treesitter/nvim-treesitter'}
+    use {
+        'p00f/nvim-ts-rainbow',
+        requires = {{'nvim-treesitter/nvim-treesitter'}}
+    }
 
     -- Git
     use 'tpope/vim-fugitive'
@@ -58,9 +57,10 @@ return require('packer').startup(function()
         'folke/todo-comments.nvim',
         config = function() require 'personal.plugins.todo-comments' end
     }
-    use {'unblevable/quick-scope',config=function ()
-        require('personal.plugins.quickscope')
-    end}
+    use {
+        'unblevable/quick-scope',
+        config = function() require('personal.plugins.quickscope') end
+    }
     use 'tpope/vim-surround' -- Change/Add surrounding character
     use 'tpope/vim-sleuth' -- Automatically detect indentation
     use 'wincent/pinnacle' -- Manipulate highlight groups in lua
@@ -77,28 +77,27 @@ return require('packer').startup(function()
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
         cmd = 'MarkdownPreview',
-        config = function ()
-            require('personal.plugins.markdown-preview')
-        end
+        config = function() require('personal.plugins.markdown-preview') end
     }
 
     -- UI
-    use {'glepnir/dashboard-nvim',config=function ()
-        require("personal.plugins.dashboard")
-    end}
-    use {'kyazdani42/nvim-tree.lua',config=function ()
-        require("personal.plugins.nvim-tree")
-    end}
+    use {
+        'glepnir/dashboard-nvim',
+        config = function() require("personal.plugins.dashboard") end
+    }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        config = function() require("personal.plugins.nvim-tree") end
+    }
     use {
         'hoob3rt/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        requires = {{'kyazdani42/nvim-web-devicons', opt = true}},
         config = function() require 'personal.plugins.lua-line' end
     }
     use 'folke/tokyonight.nvim'
-    use {'miyakogi/seiya.vim', -- Transparency automagically
-        config = function ()
-            require('personal.plugins.seiya')
-        end
+    use {
+        'miyakogi/seiya.vim', -- Transparency automagically
+        config = function() require('personal.plugins.seiya') end
     }
 
 end)
