@@ -249,30 +249,6 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
--- Config for: seiya.vim
-time("Config for seiya.vim", true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27personal.plugins.seiya\frequire\0", "config", "seiya.vim")
-time("Config for seiya.vim", false)
--- Config for: nvim-compe
-time("Config for nvim-compe", true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27personal.plugins.compe\frequire\0", "config", "nvim-compe")
-time("Config for nvim-compe", false)
--- Config for: nvim-treesitter
-time("Config for nvim-treesitter", true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0%personal.plugins.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
-time("Config for nvim-treesitter", false)
--- Config for: dashboard-nvim
-time("Config for dashboard-nvim", true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.dashboard\frequire\0", "config", "dashboard-nvim")
-time("Config for dashboard-nvim", false)
--- Config for: nvim-tree.lua
-time("Config for nvim-tree.lua", true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time("Config for nvim-tree.lua", false)
--- Config for: formatter.nvim
-time("Config for formatter.nvim", true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.formatter\frequire\0", "config", "formatter.nvim")
-time("Config for formatter.nvim", false)
 -- Config for: lualine.nvim
 time("Config for lualine.nvim", true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30personal.plugins.lua-line\frequire\0", "config", "lualine.nvim")
@@ -285,14 +261,38 @@ time("Config for nvim-lspinstall", false)
 time("Config for todo-comments.nvim", true)
 try_loadstring("\27LJ\2\n>\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0#personal.plugins.todo-comments\frequire\0", "config", "todo-comments.nvim")
 time("Config for todo-comments.nvim", false)
--- Config for: telescope.nvim
-time("Config for telescope.nvim", true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.telescope\frequire\0", "config", "telescope.nvim")
-time("Config for telescope.nvim", false)
+-- Config for: nvim-compe
+time("Config for nvim-compe", true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27personal.plugins.compe\frequire\0", "config", "nvim-compe")
+time("Config for nvim-compe", false)
+-- Config for: nvim-treesitter
+time("Config for nvim-treesitter", true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0%personal.plugins.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
+time("Config for nvim-treesitter", false)
+-- Config for: dashboard-nvim
+time("Config for dashboard-nvim", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.dashboard\frequire\0", "config", "dashboard-nvim")
+time("Config for dashboard-nvim", false)
 -- Config for: quick-scope
 time("Config for quick-scope", true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0 personal.plugins.quickscope\frequire\0", "config", "quick-scope")
 time("Config for quick-scope", false)
+-- Config for: nvim-tree.lua
+time("Config for nvim-tree.lua", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time("Config for nvim-tree.lua", false)
+-- Config for: formatter.nvim
+time("Config for formatter.nvim", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.formatter\frequire\0", "config", "formatter.nvim")
+time("Config for formatter.nvim", false)
+-- Config for: telescope.nvim
+time("Config for telescope.nvim", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.telescope\frequire\0", "config", "telescope.nvim")
+time("Config for telescope.nvim", false)
+-- Config for: seiya.vim
+time("Config for seiya.vim", true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27personal.plugins.seiya\frequire\0", "config", "seiya.vim")
+time("Config for seiya.vim", false)
 
 -- Command lazy-loads
 time("Defining lazy-load commands", true)

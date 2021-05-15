@@ -87,6 +87,7 @@ function lsp_config.common_on_attach(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
+    -- TODO: I want to run Format if it's available?
     buf_set_keymap("n", "<space>d", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
   if client.resolved_capabilities.document_range_formatting then

@@ -1,8 +1,7 @@
 local eslint = {
-    lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-    lintIgnoreExitCode = true,
-    lintStdin = true,
-    lintFormats = {"%f:%l:%c: %m"}
+  lintCommand = 'eslint_d --stdin --stdin-filename ${INPUT} -f unix',
+  lintStdin = true,
+  lintIgnoreExitCode = true
 }
 
 local servers_with_config = {
@@ -33,11 +32,13 @@ local servers_with_config = {
     },
     efm = {
         on_attach = function(client)
+            require('personal.plugins.lsp').common_on_attach(client)
             client.resolved_capabilities.rename = false
             client.resolved_capabilities.hover = false
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.completion = false
         end,
+        filetypes = {'typescriptreact'},
         settings = {
             rootMarkers = {vim.loop.cwd()},
             languages = {
@@ -55,7 +56,7 @@ local servers_with_config = {
             require('personal.plugins.lsp').common_on_attach(client)
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.document_range_formatting = false
-        end,
+        end
     }
 }
 
