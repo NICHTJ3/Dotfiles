@@ -14,6 +14,12 @@ return require('packer').startup(function(use)
     }
     use {'hrsh7th/nvim-compe',config = function() require('personal.plugins.compe')end}
     use 'glepnir/lspsaga.nvim'
+    use {
+      "mhartington/formatter.nvim",
+      config = function ()
+          require'personal.plugins.formatter'
+      end
+    } -- helper for fast formatting
 
     -- Telescope/Fuzzy finding
     use {
