@@ -6,5 +6,5 @@ let g:tokyonight_dark_sidebar = 1
 let g:tokyonight_dark_float = 1
 
 " Load the colorscheme
-colorscheme tokyonight
+silent colorscheme tokyonight
 

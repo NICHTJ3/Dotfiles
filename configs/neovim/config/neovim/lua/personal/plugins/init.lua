@@ -13,14 +13,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Only required if you have packer configured as `opt`
-cmd [[packadd packer.nvim]]
+cmd[[packadd packer.nvim]]
 
 return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- COC Autocomplete and Linting
-    use {'neoclide/coc.nvim', branch = 'release'}
+    -- LSP
 
     -- Telescope/Fuzzy finding
     use {
@@ -28,11 +27,9 @@ return require('packer').startup(function()
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
         config = function() require 'personal.plugins.telescope' end
     }
-    use 'nvim-telescope/telescope-fzy-native.nvim'
+    use {'nvim-telescope/telescope-fzy-native.nvim',after={{'nvim-telescope/telescope.nvim'}}}
 
     -- Snippets and Syntax
-    g['polyglot_disabled'] = {'coffee-script'}
-    use 'sheerun/vim-polyglot' -- NOTE: Do I even need this anymore
     use 'honza/vim-snippets'
     use 'pantharshit00/vim-prisma'
     -- Treesitter
@@ -43,7 +40,7 @@ return require('packer').startup(function()
             require 'personal.plugins.nvim-treesitter'
         end
     }
-    use 'p00f/nvim-ts-rainbow'
+    use {'p00f/nvim-ts-rainbow', after='nvim-treesitter/nvim-treesitter'}
 
     -- Git
     use 'tpope/vim-fugitive'
@@ -61,7 +58,9 @@ return require('packer').startup(function()
         'folke/todo-comments.nvim',
         config = function() require 'personal.plugins.todo-comments' end
     }
-    use 'unblevable/quick-scope'
+    use {'unblevable/quick-scope',config=function ()
+        require('personal.plugins.quickscope')
+    end}
     use 'tpope/vim-surround' -- Change/Add surrounding character
     use 'tpope/vim-sleuth' -- Automatically detect indentation
     use 'wincent/pinnacle' -- Manipulate highlight groups in lua
@@ -77,18 +76,30 @@ return require('packer').startup(function()
     use {
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
-        cmd = 'MarkdownPreview'
+        cmd = 'MarkdownPreview',
+        config = function ()
+            require('personal.plugins.markdown-preview')
+        end
     }
 
     -- UI
-    use 'mhinz/vim-startify'
+    use {'glepnir/dashboard-nvim',config=function ()
+        require("personal.plugins.dashboard")
+    end}
+    use {'kyazdani42/nvim-tree.lua',config=function ()
+        require("personal.plugins.nvim-tree")
+    end}
     use {
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
         config = function() require 'personal.plugins.lua-line' end
     }
     use 'folke/tokyonight.nvim'
-    use 'miyakogi/seiya.vim' -- Transparency automagically
+    use {'miyakogi/seiya.vim', -- Transparency automagically
+        config = function ()
+            require('personal.plugins.seiya')
+        end
+    }
 
 end)
 
