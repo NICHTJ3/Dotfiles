@@ -16,19 +16,6 @@ vim.fn.sign_define(
     {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"}
 )
 
-vim.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
-vim.cmd("nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>")
-vim.cmd("nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>")
-vim.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>")
-vim.cmd("nnoremap <silent> ca :Lspsaga code_action<CR>")
-vim.cmd("nnoremap <silent> K :Lspsaga hover_doc<CR>")
--- vim.cmd('nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>')
-vim.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
-vim.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
--- scroll down hover doc or scroll in definition preview
-vim.cmd("nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
--- scroll up hover doc
-vim.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
 vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
 -- Set Default Prefix.
@@ -73,14 +60,7 @@ vim.lsp.protocol.CompletionItemKind = {
     "   (TypeParameter)"
 }
 
---[[ " autoformat
-autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100) ]]
--- Java
--- autocmd FileType java nnoremap ca <Cmd>lua require('jdtls').code_action()<CR>
-
-local function documentHighlight(client, bufnr)
+local function documentHighlight(client, _)
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec(
@@ -101,7 +81,37 @@ end
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
-    documentHighlight(client, bufnr)
+  print("LSP Attatched")
+  local opts = { noremap=true, silent=true }
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', opts)
+  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
+-- scroll down hover doc or scroll in definition preview
+  buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+-- scroll up hover doc
+  buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    buf_set_keymap("n", "<space>d", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  end
+  if client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap("v", "<space>d", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
+
+  documentHighlight(client, bufnr)
 end
 
 -- Use a loop to conveniently both setup defined servers
