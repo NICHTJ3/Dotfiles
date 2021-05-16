@@ -103,7 +103,8 @@ local function setup_servers()
                     require('personal.plugins.lsp').common_on_attach,
                 settings = server_config.settings or nil,
                 filetypes = server_config.filetypes or nil,
-                root_dir = server_config.root_dir or nil
+                root_dir = server_config.root_dir or nil,
+                capabilities = server_config.capabilities or nil
             }
         end
     end

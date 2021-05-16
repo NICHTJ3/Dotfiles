@@ -27,6 +27,6 @@ vim.g.dashboard_custom_section = {
     },
     e = {
         description = {'  Settings           '},
-        command = ':e ~/.config/nvim/lv-settings.lua'
+        command = "lua require('telescope.builtin').find_files()"
     }
 }
