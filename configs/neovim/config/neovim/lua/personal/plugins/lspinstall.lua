@@ -1,7 +1,9 @@
 local eslint = {
-  lintCommand = 'eslint_d --stdin --stdin-filename ${INPUT} -f unix',
-  lintStdin = true,
-  lintIgnoreExitCode = true
+    lintCommand = 'eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}',
+    lintSource = 'eslint',
+    lintStdin = true,
+    lintFormats = {'%f(%l,%c): %tarning %m', '%f(%l,%c): %rror %m'},
+    lintIgnoreExitCode = true
 }
 
 local servers_with_config = {
@@ -38,9 +40,10 @@ local servers_with_config = {
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.completion = false
         end,
-        filetypes = {'typescriptreact'},
+        root_dir = require('lspconfig').util.root_pattern("yarn.lock", "lerna.json", ".git"),
+        filetypes = {'typescriptreact','typescript'},
         settings = {
-            rootMarkers = {vim.loop.cwd()},
+            -- rootMarkers = {vim.loop.cwd()},
             languages = {
                 javascript = {eslint},
                 javascriptreact = {eslint},
@@ -74,7 +77,8 @@ local function setup_servers()
                 on_attach = server_config.on_attach or
                     require('personal.plugins.lsp').common_on_attach,
                 settings = server_config.settings or nil,
-                filetypes = server_config.filetypes or nil
+                filetypes = server_config.filetypes or nil,
+                root_dir = server_config.root_dir or nil
             }
         end
     end

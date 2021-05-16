@@ -8,6 +8,8 @@ vim.g.maplocalleader = ' '
 
 require("personal.plugins")
 
+vim.lsp.set_log_level("debug")
+
 P = function(v)
     print(vim.inspect(v))
     return v
