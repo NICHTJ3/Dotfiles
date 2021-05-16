@@ -47,8 +47,8 @@ local function save_profiles(threshold)
 end
 
 time("Luarocks path setup", true)
-local package_path_str = "/Users/trent.nicholson/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/trent.nicholson/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/trent.nicholson/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/trent.nicholson/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/trent.nicholson/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/nichtj3/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/nichtj3/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/nichtj3/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/nichtj3/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/nichtj3/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -73,164 +73,164 @@ time("Defining packer_plugins", true)
 _G.packer_plugins = {
   ["coc.nvim"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/coc.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/coc.nvim"
   },
   ["committia.vim"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/committia.vim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/committia.vim"
   },
   ["lualine.nvim"] = {
-    config = { "\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30personal.plugins.lua-line\frequire\0" },
+    config = { "\27LJ\2\0029\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\30personal.plugins.lua-line\frequire\0" },
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   ["markdown-preview.nvim"] = {
     commands = { "MarkdownPreview" },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\n@\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0%personal.plugins.nvim-treesitter\frequire\0" },
+    config = { "\27LJ\2\2@\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0%personal.plugins.nvim-treesitter\frequire\0" },
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-ts-rainbow"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   pinnacle = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/pinnacle"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/pinnacle"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
   ["quick-scope"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/quick-scope"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/quick-scope"
   },
   ["seiya.vim"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/seiya.vim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/seiya.vim"
   },
   ["tagalong.vim"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/tagalong.vim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/tagalong.vim"
   },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
   },
   ["telescope.nvim"] = {
-    config = { "\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.telescope\frequire\0" },
+    config = { "\27LJ\2\2:\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\31personal.plugins.telescope\frequire\0" },
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["todo-comments.nvim"] = {
-    config = { "\27LJ\2\n>\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0#personal.plugins.todo-comments\frequire\0" },
+    config = { "\27LJ\2\2>\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0#personal.plugins.todo-comments\frequire\0" },
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-commentary"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-evanesco"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-evanesco"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-evanesco"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
   ["vim-gitgutter"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
   },
   ["vim-gotofile"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-gotofile"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-gotofile"
   },
   ["vim-polyglot"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-polyglot"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-polyglot"
   },
   ["vim-prisma"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-prisma"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-prisma"
   },
   ["vim-qf"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-qf"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-qf"
   },
   ["vim-repeat"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-repeat"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-repeat"
   },
   ["vim-sleuth"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-sleuth"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-sleuth"
   },
   ["vim-snippets"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-snippets"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-snippets"
   },
   ["vim-startify"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-startify"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-startify"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   ["vim-tmux-clipboard"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-tmux-clipboard"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-tmux-clipboard"
   },
   ["vim-tmux-focus-events"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-tmux-focus-events"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-tmux-focus-events"
   },
   ["vim-tmux-navigator"] = {
     loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator"
+    path = "/home/nichtj3/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator"
   }
 }
 
 time("Defining packer_plugins", false)
 -- Config for: telescope.nvim
 time("Config for telescope.nvim", true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31personal.plugins.telescope\frequire\0", "config", "telescope.nvim")
+try_loadstring("\27LJ\2\2:\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\31personal.plugins.telescope\frequire\0", "config", "telescope.nvim")
 time("Config for telescope.nvim", false)
--- Config for: lualine.nvim
-time("Config for lualine.nvim", true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30personal.plugins.lua-line\frequire\0", "config", "lualine.nvim")
-time("Config for lualine.nvim", false)
 -- Config for: nvim-treesitter
 time("Config for nvim-treesitter", true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0%personal.plugins.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
+try_loadstring("\27LJ\2\2@\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0%personal.plugins.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
 time("Config for nvim-treesitter", false)
+-- Config for: lualine.nvim
+time("Config for lualine.nvim", true)
+try_loadstring("\27LJ\2\0029\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\30personal.plugins.lua-line\frequire\0", "config", "lualine.nvim")
+time("Config for lualine.nvim", false)
 -- Config for: todo-comments.nvim
 time("Config for todo-comments.nvim", true)
-try_loadstring("\27LJ\2\n>\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0#personal.plugins.todo-comments\frequire\0", "config", "todo-comments.nvim")
+try_loadstring("\27LJ\2\2>\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0#personal.plugins.todo-comments\frequire\0", "config", "todo-comments.nvim")
 time("Config for todo-comments.nvim", false)
 
 -- Command lazy-loads
