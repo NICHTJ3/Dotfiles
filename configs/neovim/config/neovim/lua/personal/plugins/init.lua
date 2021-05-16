@@ -12,13 +12,14 @@ return require('packer').startup(function(use)
         requires = {{'neovim/nvim-lspconfig'}},
         config = function() require('personal.plugins.lspinstall') end
     }
-    use {'hrsh7th/nvim-compe',config = function() require('personal.plugins.compe')end}
+    use {
+        'hrsh7th/nvim-compe',
+        config = function() require('personal.plugins.compe') end
+    }
     use 'glepnir/lspsaga.nvim'
     use {
-      "mhartington/formatter.nvim",
-      config = function ()
-          require'personal.plugins.formatter'
-      end
+        "mhartington/formatter.nvim",
+        config = function() require 'personal.plugins.formatter' end
     } -- helper for fast formatting
 
     -- Telescope/Fuzzy finding
