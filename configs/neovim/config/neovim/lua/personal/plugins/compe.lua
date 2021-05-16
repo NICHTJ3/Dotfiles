@@ -13,12 +13,15 @@ require'compe'.setup {
     documentation = true,
 
     source = {
-        path = true,
-        buffer = true,
-        calc = true,
-        nvim_lsp = true,
-        nvim_lua = true,
-        vsnip = true
+        sort = {priority = 500},
+        tags = {priority = 500},
+        spell = {priority = 500},
+        path = {priority = 500},
+        buffer = {priority = 500},
+        calc = {priority = 500},
+        nvim_lsp = {priority = 500},
+        nvim_lua = {priority = 500},
+        vsnip = {priority = 1000}
     }
 }
 
@@ -40,24 +43,24 @@ end
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
 _G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif vim.fn.call("vsnip#available", {1}) == 1 then
-    return t "<Plug>(vsnip-expand-or-jump)"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn['compe#complete']()
-  end
+    if vim.fn.pumvisible() == 1 then
+        return t "<C-n>"
+    elseif vim.fn.call("vsnip#available", {1}) == 1 then
+        return t "<Plug>(vsnip-expand-or-jump)"
+    elseif check_back_space() then
+        return t "<Tab>"
+    else
+        return vim.fn['compe#complete']()
+    end
 end
 _G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
-  else
-    return t "<S-Tab>"
-  end
+    if vim.fn.pumvisible() == 1 then
+        return t "<C-p>"
+    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+        return t "<Plug>(vsnip-jump-prev)"
+    else
+        return t "<S-Tab>"
+    end
 end
 
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
