@@ -6,10 +6,22 @@ local eslint = {
     lintIgnoreExitCode = true
 }
 
+-- local required_servers = {
+--     "lua", -- "tailwindcss",
+--     -- "typescript",
+--     "graphql" -- "efm"
+-- }
+-- local installed_servers = require'lspinstall'.installed_servers()
+-- for _, server in pairs(required_servers) do
+--     if not vim.tbl_contains(installed_servers, server) then
+--         require'lspinstall'.install_server(server)
+--     end
+-- end
+
 --- TODO: Break all this out into seporate files
 --- TODO: Clean up file structure for all config
 --- TODO: Setup prisma lsp
---- TODO: Install lsp servers with first install of dotfiles?
+--
 
 local servers_with_config = {
     lua = {
@@ -39,7 +51,7 @@ local servers_with_config = {
     },
     efm = {
         on_attach = function(client)
-            require('personal.plugins.lsp').common_on_attach(client)
+            require('personal.plugins.lsp').common_on_attach(client, nil)
             client.resolved_capabilities.rename = false
             client.resolved_capabilities.hover = false
             client.resolved_capabilities.document_formatting = false
@@ -48,8 +60,11 @@ local servers_with_config = {
         root_dir = require('lspconfig').util.root_pattern("yarn.lock",
                                                           "lerna.json",
                                                           "package-lock.json",
-                                                          ".git"),
-        filetypes = {'typescriptreact', 'typescript', 'javascript', 'svelte'},
+                                                          "lerna.json", ".git"),
+        filetypes = {
+            'typescriptreact', 'typescript', 'javascript', 'javascriptreact',
+            'svelte'
+        },
         settings = {
             languages = {
                 javascript = {eslint},
@@ -61,12 +76,12 @@ local servers_with_config = {
             }
         }
     },
-    typescript = {
-        on_attach = function(client)
-            require('personal.plugins.lsp').common_on_attach(client)
-            client.resolved_capabilities.document_formatting = false
-            client.resolved_capabilities.document_range_formatting = false
-        end
+    graphql = {
+        filetypes = {'typescriptreact', 'typescript', 'javascript', 'svelte'},
+        root_dir = require('lspconfig').util.root_pattern("yarn.lock",
+                                                          "lerna.json",
+                                                          "package-lock.json",
+                                                          ".git")
     }
 }
 

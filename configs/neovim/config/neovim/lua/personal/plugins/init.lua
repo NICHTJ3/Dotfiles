@@ -37,15 +37,15 @@ return require('packer').startup(function(use)
     use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
-        config = function()
-            require("trouble").setup {}
-        end
+        config = function() require("trouble").setup {} end
     }
 
     -- Snippets and Syntax
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/vim-vsnip-integ'
     use 'pantharshit00/vim-prisma'
+    vim.g['polyglot_disabled'] = {'coffee-script'}
+    use 'sheerun/vim-polyglot'
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -69,10 +69,6 @@ return require('packer').startup(function(use)
     use 'pgdouyon/vim-evanesco' -- Clears search highlighting on move
 
     -- Must have plugins
-    use {
-        'folke/todo-comments.nvim',
-        config = function() require 'personal.plugins.todo-comments' end
-    }
     use {
         'unblevable/quick-scope',
         config = function() require('personal.plugins.quickscope') end

@@ -29,4 +29,3 @@ g.nvim_tree_icons = {
 }
 
 vim.cmd('nnoremap <c-n> <Cmd>NvimTreeToggle<CR>')
-
