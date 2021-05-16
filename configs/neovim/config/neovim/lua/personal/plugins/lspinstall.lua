@@ -6,6 +6,11 @@ local eslint = {
     lintIgnoreExitCode = true
 }
 
+--- TODO: Break all this out into seporate files
+--- TODO: Clean up file structure for all config
+--- TODO: Setup prisma lsp
+--- TODO: Install lsp servers with first install of dotfiles?
+
 local servers_with_config = {
     lua = {
         settings = {

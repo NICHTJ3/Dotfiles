@@ -33,6 +33,15 @@ return require('packer').startup(function(use)
         requires = {{'nvim-telescope/telescope.nvim'}}
     }
 
+    -- Trouble
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {}
+        end
+    }
+
     -- Snippets and Syntax
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/vim-vsnip-integ'

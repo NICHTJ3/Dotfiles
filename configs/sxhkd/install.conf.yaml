@@ -3,7 +3,6 @@
       create: true
       relink: true
 
-# TODO: Check if this deletes other shared config
 - clean:
     ~/.config:
       recursive: true
