@@ -40,10 +40,9 @@ local servers_with_config = {
             client.resolved_capabilities.document_formatting = false
             client.resolved_capabilities.completion = false
         end,
-        root_dir = require('lspconfig').util.root_pattern("yarn.lock", "lerna.json", ".git"),
-        filetypes = {'typescriptreact','typescript'},
+        root_dir = require('lspconfig').util.root_pattern("yarn.lock", "lerna.json","package-lock.json", ".git"),
+        filetypes = {'typescriptreact','typescript','javascript','svelte'},
         settings = {
-            -- rootMarkers = {vim.loop.cwd()},
             languages = {
                 javascript = {eslint},
                 javascriptreact = {eslint},
