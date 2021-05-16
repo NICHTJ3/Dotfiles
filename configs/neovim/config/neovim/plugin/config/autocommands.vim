@@ -19,8 +19,9 @@ function! s:AutoCommands()
     endif
 
     " Relative linenums only in normal mode
-    autocmd InsertEnter * set norelativenumber
-    autocmd InsertLeave * set relativenumber
+    " TODO: Move these to lua and check that we're not on dashboard
+    " autocmd InsertEnter * set norelativenumber
+    " autocmd InsertLeave * set relativenumber
 
     " Terminal
     autocmd TermOpen * startinsert " Start terminal in insert mode
