@@ -6,17 +6,13 @@ local eslint = {
     lintIgnoreExitCode = true
 }
 
--- local required_servers = {
---     "lua", -- "tailwindcss",
---     -- "typescript",
---     "graphql" -- "efm"
--- }
--- local installed_servers = require'lspinstall'.installed_servers()
--- for _, server in pairs(required_servers) do
---     if not vim.tbl_contains(installed_servers, server) then
---         require'lspinstall'.install_server(server)
---     end
--- end
+local required_servers = {"lua", "tailwindcss", "typescript", "graphql", "efm"}
+local installed_servers = require'lspinstall'.installed_servers()
+for _, server in pairs(required_servers) do
+    if not vim.tbl_contains(installed_servers, server) then
+        require'lspinstall'.install_server(server)
+    end
+end
 
 --- TODO: Break all this out into seporate files
 --- TODO: Clean up file structure for all config
@@ -76,12 +72,19 @@ local servers_with_config = {
             }
         }
     },
+    -- TODO: This doesn't seam to work in iou for some reason -_-
     graphql = {
-        filetypes = {'typescriptreact', 'typescript', 'javascript', 'svelte'},
-        root_dir = require('lspconfig').util.root_pattern("yarn.lock",
-                                                          "lerna.json",
-                                                          "package-lock.json",
-                                                          ".git")
+        cmd = {"graphql-lsp", "server", "-m", "stream"},
+        filetypes = {'typescriptreact', 'typescript', 'graphql'},
+        root_dir = require('lspconfig').util.root_pattern('.graphqlrc',
+                                                          '.graphqlrc.json',
+                                                          '.graphqlrc.yml',
+                                                          '.graphqlrc.yaml',
+                                                          '.graphql.config.js',
+                                                          '.graphqlrc.js',
+                                                          'package.json',
+                                                          'tsconfig.json',
+                                                          '.git')
     }
 }
 

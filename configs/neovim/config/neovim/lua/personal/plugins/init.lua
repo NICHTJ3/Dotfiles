@@ -41,8 +41,13 @@ return require('packer').startup(function(use)
     }
 
     -- Snippets and Syntax
-    use 'hrsh7th/vim-vsnip'
-    use 'hrsh7th/vim-vsnip-integ'
+    use {
+        'hrsh7th/vim-vsnip',
+        requires = {
+            {'hrsh7th/vim-vsnip-integ'}, {'rafamadriz/friendly-snippets'}
+        },
+        config = function() require('personal.plugins.vsnip') end
+    }
     use 'pantharshit00/vim-prisma'
     vim.g['polyglot_disabled'] = {'coffee-script'}
     use 'sheerun/vim-polyglot'
