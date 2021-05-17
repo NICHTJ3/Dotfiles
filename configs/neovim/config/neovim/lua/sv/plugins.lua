@@ -5,18 +5,23 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- LSP
-    use 'neovim/nvim-lsp'
-    use {'neovim/nvim-lspconfig', requires = {{'neovim/nvim-lsp'}}}
     use {
-        'kabouzeid/nvim-lspinstall',
-        requires = {{'neovim/nvim-lspconfig'}},
-        config = function() require('sv.configs.lsp.lspinstall') end
+        'neovim/nvim-lsp',
+        requires = {
+            {'neovim/nvim-lspconfig', requires = {{'neovim/nvim-lsp'}}}, {
+                'hrsh7th/nvim-compe',
+                config = function()
+                    require('sv.configs.lsp.compe')
+                end
+            }, {
+                'kabouzeid/nvim-lspinstall',
+                requires = {{'neovim/nvim-lspconfig'}},
+                config = function()
+                    require('sv.configs.lsp.lspinstall')
+                end
+            }, {'glepnir/lspsaga.nvim'}
+        }
     }
-    use {
-        'hrsh7th/nvim-compe',
-        config = function() require('sv.configs.lsp.compe') end
-    }
-    use 'glepnir/lspsaga.nvim'
     use {
         "mhartington/formatter.nvim",
         config = function() require 'sv.configs.formatter' end
