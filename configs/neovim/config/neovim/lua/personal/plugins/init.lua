@@ -109,7 +109,8 @@ return require('packer').startup(function(use)
                 'tiagofumo/vim-nerdtree-syntax-highlight',
                 requires = {{'ryanoasis/vim-devicons'}}
             }, {'PhilRunninger/nerdtree-buffer-ops'},
-            {'PhilRunninger/nerdtree-visual-selection'}
+            {'PhilRunninger/nerdtree-visual-selection'},
+            {'Xuyuanp/nerdtree-git-plugin'}
         },
         config = function() require("personal.plugins.nerdtree") end
     }
