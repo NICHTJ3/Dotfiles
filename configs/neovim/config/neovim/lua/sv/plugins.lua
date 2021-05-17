@@ -19,13 +19,14 @@ return require('packer').startup(function(use)
                 config = function()
                     require('sv.configs.lsp.lspinstall')
                 end
-            }, {'glepnir/lspsaga.nvim'}
+            }, {'glepnir/lspsaga.nvim'}, {
+                "mhartington/formatter.nvim", -- Helper for fast formatting
+                config = function()
+                    require 'sv.configs.formatter'
+                end
+            }
         }
     }
-    use {
-        "mhartington/formatter.nvim",
-        config = function() require 'sv.configs.formatter' end
-    } -- helper for fast formatting
 
     -- Telescope/Fuzzy finding
     use {
