@@ -2,7 +2,7 @@ local linters = require('sv.configs.lsp.lspconfig.efm.linters')
 
 local config = {
     on_attach = function(client)
-        require('sv.plugins.lsp').common_on_attach(client, nil)
+        require('sv.configs.lsp').common_on_attach(client, nil)
         client.resolved_capabilities.rename = false
         client.resolved_capabilities.hover = false
         client.resolved_capabilities.document_formatting = false

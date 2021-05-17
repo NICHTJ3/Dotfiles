@@ -89,6 +89,16 @@ return require('packer').startup(function(use)
     use 'wincent/pinnacle' -- Manipulate highlight groups in lua
     use 'tpope/vim-commentary' -- Toggle comments
     use 'AndrewRadev/tagalong.vim'
+    use {
+        "folke/zen-mode.nvim",
+        config = function()
+            require("zen-mode").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 
     -- TMUX
     use 'christoomey/vim-tmux-navigator' -- Unifies tmux and vim navigation

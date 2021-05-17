@@ -39,6 +39,7 @@ local check_back_space = function()
 end
 
 -- TODO: Make this work like it does in my coc config
+-- TODO: Remember to clear unto stuff
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
