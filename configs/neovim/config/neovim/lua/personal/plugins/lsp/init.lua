@@ -54,16 +54,20 @@ function lsp_config.common_on_attach(client, bufnr)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
-    buf_set_keymap('n', '<leader>D',
+    buf_set_keymap('n', '<leader>agD', '<Cmd>lua vim.lsp.buf.declaration()<CR>',
+                   opts)
+    buf_set_keymap('n', '<leader>agd', '<Cmd>lua vim.lsp.buf.definition()<CR>',
+                   opts)
+    buf_set_keymap('n', '<leader>agr', '<cmd>lua vim.lsp.buf.references()<CR>',
+                   opts)
+    buf_set_keymap('n', '<leader>agi',
+                   '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', '<leader>agt',
                    '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', opts)
-    buf_set_keymap('n', '<leader>e',
+    buf_set_keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
+    buf_set_keymap('n', '<leader>ar', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', '<leader>aa', '<cmd>Lspsaga code_action<CR>', opts)
+    buf_set_keymap('n', '<leader>ai',
                    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
                    opts)
     buf_set_keymap('n', '<leader>q',

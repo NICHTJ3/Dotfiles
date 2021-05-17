@@ -15,9 +15,15 @@ for _, server in pairs(required_servers) do
 end
 
 --- TODO: Break all this out into seporate files
+-- The files will probably be
+-- ServerConfigs
+-- LspConfig
+-- EFM
+-- InstalledLSP?
+
 --- TODO: Clean up file structure for all config
 --- TODO: Setup prisma lsp
---
+--- TODO: Get graphql lsp working in typescriptreact
 
 local servers_with_config = {
     lua = {

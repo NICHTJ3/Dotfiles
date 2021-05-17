@@ -103,8 +103,15 @@ return require('packer').startup(function(use)
         config = function() require("personal.plugins.dashboard") end
     }
     use {
-        'kyazdani42/nvim-tree.lua',
-        config = function() require("personal.plugins.nvim-tree") end
+        'preservim/nerdtree',
+        requires = {
+            {
+                'tiagofumo/vim-nerdtree-syntax-highlight',
+                requires = {{'ryanoasis/vim-devicons'}}
+            }, {'PhilRunninger/nerdtree-buffer-ops'},
+            {'PhilRunninger/nerdtree-visual-selection'}
+        },
+        config = function() require("personal.plugins.nerdtree") end
     }
     use {
         'hoob3rt/lualine.nvim',

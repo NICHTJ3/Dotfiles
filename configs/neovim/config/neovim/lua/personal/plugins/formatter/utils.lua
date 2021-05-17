@@ -12,7 +12,10 @@ end
 
 local gofmt = function() return {exe = "gofumpt", stdin = true} end
 
-local luaformat = function() return {exe = "lua-format -i", stdin = true} end
+-- TODO: Better options for this
+local luaformat = function()
+    return {exe = "lua-format -i --align-parameter --align-args", stdin = true}
+end
 
 local formattable_file_types = {
     typescriptreact = {prettier},
