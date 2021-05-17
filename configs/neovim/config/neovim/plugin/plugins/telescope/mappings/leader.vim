@@ -3,7 +3,7 @@ nnoremap <leader>lf :lua require('telescope.builtin').find_files()<CR>
 " " Open FZF buffers
 " nnoremap <leader>lb :Buffers<CR>
 " " Edit vim config
-nnoremap <leader>ev :lua require("personal.plugins.telescope").EditVimFiles()<CR>
+nnoremap <leader>ev :lua require("sv.plugins.telescope").EditVimFiles()<CR>
 " " Edit dotfiles
 " nnoremap <leader>ed :Dots<CR>
 

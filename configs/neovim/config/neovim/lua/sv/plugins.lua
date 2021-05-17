@@ -10,23 +10,23 @@ return require('packer').startup(function(use)
     use {
         'kabouzeid/nvim-lspinstall',
         requires = {{'neovim/nvim-lspconfig'}},
-        config = function() require('personal.plugins.lspinstall') end
+        config = function() require('sv.configs.lsp.lspinstall') end
     }
     use {
         'hrsh7th/nvim-compe',
-        config = function() require('personal.plugins.compe') end
+        config = function() require('sv.configs.lsp.compe') end
     }
     use 'glepnir/lspsaga.nvim'
     use {
         "mhartington/formatter.nvim",
-        config = function() require 'personal.plugins.formatter' end
+        config = function() require 'sv.configs.formatter' end
     } -- helper for fast formatting
 
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-        config = function() require 'personal.plugins.telescope' end
+        config = function() require 'sv.configs.telescope' end
     }
     use {
         'nvim-telescope/telescope-fzy-native.nvim',
@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
         requires = {
             {'hrsh7th/vim-vsnip-integ'}, {'rafamadriz/friendly-snippets'}
         },
-        config = function() require('personal.plugins.vsnip') end
+        config = function() require('sv.configs.vsnip') end
     }
     use 'pantharshit00/vim-prisma'
     vim.g['polyglot_disabled'] = {'coffee-script'}
@@ -55,7 +55,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        config = function() require 'personal.plugins.nvim-treesitter' end
+        config = function() require 'sv.configs.nvim-treesitter' end
     }
     use {
         'p00f/nvim-ts-rainbow',
@@ -73,10 +73,10 @@ return require('packer').startup(function(use)
     use 'zoubin/vim-gotofile' -- Better go to file
     use 'pgdouyon/vim-evanesco' -- Clears search highlighting on move
 
-    -- Must have plugins
+    -- Must have configs
     use {
         'unblevable/quick-scope',
-        config = function() require('personal.plugins.quickscope') end
+        config = function() require('sv.configs.quickscope') end
     }
     use 'tpope/vim-surround' -- Change/Add surrounding character
     use 'tpope/vim-sleuth' -- Automatically detect indentation
@@ -94,13 +94,13 @@ return require('packer').startup(function(use)
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
         cmd = 'MarkdownPreview',
-        config = function() require('personal.plugins.markdown-preview') end
+        config = function() require('sv.configs.markdown-preview') end
     }
 
     -- UI
     use {
         'glepnir/dashboard-nvim',
-        config = function() require("personal.plugins.dashboard") end
+        config = function() require("sv.configs.dashboard") end
     }
     use {
         'preservim/nerdtree',
@@ -112,17 +112,17 @@ return require('packer').startup(function(use)
             {'PhilRunninger/nerdtree-visual-selection'},
             {'Xuyuanp/nerdtree-git-plugin'}
         },
-        config = function() require("personal.plugins.nerdtree") end
+        config = function() require("sv.configs.nerdtree") end
     }
     use {
         'hoob3rt/lualine.nvim',
         requires = {{'kyazdani42/nvim-web-devicons', opt = true}},
-        config = function() require 'personal.plugins.lua-line' end
+        config = function() require 'sv.configs.lua-line' end
     }
     use 'folke/tokyonight.nvim'
     use {
         'miyakogi/seiya.vim', -- Transparency automagically
-        config = function() require('personal.plugins.seiya') end
+        config = function() require('sv.configs.seiya') end
     }
 
 end)

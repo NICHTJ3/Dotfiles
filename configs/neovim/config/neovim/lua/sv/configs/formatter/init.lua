@@ -1,5 +1,5 @@
 local formattable_file_types =
-    require('personal.plugins.formatter.utils').formattable_file_types
+    require('sv.configs.formatter.utils').formattable_file_types
 
 require("formatter").setup({logging = false, filetype = formattable_file_types})
 

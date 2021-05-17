@@ -1,5 +1,5 @@
 local formattable_file_types =
-    require('personal.plugins.formatter.utils').formattable_file_types
+    require('sv.configs.formatter.utils').formattable_file_types
 
 vim.fn.sign_define("LspDiagnosticsSignError", {
     texthl = "LspDiagnosticsSignError",

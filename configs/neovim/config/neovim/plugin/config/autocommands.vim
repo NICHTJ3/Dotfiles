@@ -14,8 +14,8 @@ function! s:AutoCommands()
            \ has('statusline') &&
            \ has('nvim')
 
-      "  autocmd VimEnter * lua require'personal.autocommands'.vim_enter()
-      "  autocmd WinEnter * lua require'personal.autocommands'.win_enter()
+      "  autocmd VimEnter * lua require'sv.autocommands'.vim_enter()
+      "  autocmd WinEnter * lua require'sv.autocommands'.win_enter()
     endif
 
     " Relative linenums only in normal mode

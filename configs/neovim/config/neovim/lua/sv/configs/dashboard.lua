@@ -27,6 +27,6 @@ vim.g.dashboard_custom_section = {
     },
     e = {
         description = {'  Settings           '},
-        command = "lua require('personal.plugins.telescope').EditVimFiles()"
+        command = "lua require('sv.plugins.telescope').EditVimFiles()"
     }
 }
