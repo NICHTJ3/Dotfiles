@@ -1,5 +1,3 @@
-vim.o.completeopt = "menuone,noselect"
-
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -72,7 +70,10 @@ return require('packer').startup(function(use)
     -- Git
     use 'tpope/vim-fugitive'
     use 'rhysd/committia.vim' -- Better commits
-    use 'airblade/vim-gitgutter'
+    use {
+        'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+        config = function() require('gitsigns').setup() end
+    }
 
     -- Fixes
     use 'romainl/vim-qf' -- Fixes issues with built in quick fix menu
@@ -146,5 +147,4 @@ return require('packer').startup(function(use)
         'miyakogi/seiya.vim', -- Transparency automagically
         config = function() require('sv.configs.seiya') end
     }
-
 end)

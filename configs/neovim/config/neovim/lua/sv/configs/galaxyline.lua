@@ -4,7 +4,8 @@ local condition = require 'galaxyline.condition'
 local diagnostic = require 'galaxyline.provider_diagnostic'
 
 local gls = gl.section
-gl.short_line_list = { 'packer', 'NvimTree', 'Outline', 'LspTrouble' }
+
+gl.short_line_list = { 'packer', 'nerdtree', 'Outline', 'LspTrouble' }
 
 local colors = {
     bg = '#282c34',
@@ -97,34 +98,6 @@ local function split(str, sep)
     end
     return res
 end
-
--- local function trailing_whitespace()
---     local trail = vim.fn.search('\\s$', 'nw')
---     if trail ~= 0 then
---         return '  '
---     else
---         return nil
---     end
--- end
-
--- local function tab_indent()
---     local tab = vim.fn.search('^\\t', 'nw')
---     if tab ~= 0 then
---         return ' → '
---     else
---         return nil
---     end
--- end
-
--- local function buffers_count()
---     local buffers = {}
---     for _, val in ipairs(vim.fn.range(1, vim.fn.bufnr('$'))) do
---         if vim.fn.bufexists(val) == 1 and vim.fn.buflisted(val) == 1 then
---             table.insert(buffers, val)
---         end
---     end
---     return #buffers
--- end
 
 local function get_basename(file)
     return file:match '^.+/(.+)$'
@@ -224,6 +197,7 @@ gls.left[3] = {
         highlight = { colors.middlegrey, colors.section_bg },
     },
 }
+
 gls.left[4] = {
     FileName = {
         provider = get_current_file_name,
@@ -233,26 +207,14 @@ gls.left[4] = {
         separator_highlight = { colors.section_bg, colors.bg },
     },
 }
--- gls.left[4] = {
---     WhiteSpace = {
---         provider = trailing_whitespace,
---         condition = buffer_not_empty,
---         highlight = {colors.fg, colors.bg}
---     }
--- }
--- gls.left[5] = {
---     TabIndent = {
---         provider = tab_indent,
---         condition = buffer_not_empty,
---         highlight = {colors.fg, colors.bg}
---     }
--- }
+
 gls.left[8] = {
     DiagnosticsCheck = {
         provider = { LspCheckDiagnostics },
         highlight = { colors.middlegrey, colors.bg },
     },
 }
+
 gls.left[9] = {
     DiagnosticError = {
         provider = { 'DiagnosticError' },
@@ -262,12 +224,6 @@ gls.left[9] = {
         -- separator_highlight = {colors.bg, colors.bg}
     },
 }
--- gls.left[10] = {
---     Space = {
---         provider = function() return ' ' end,
---         highlight = {colors.section_bg, colors.bg}
---     }
--- }
 gls.left[11] = {
     DiagnosticWarn = {
         provider = { 'DiagnosticWarn' },
@@ -277,12 +233,6 @@ gls.left[11] = {
         -- separator_highlight = {colors.bg, colors.bg}
     },
 }
--- gls.left[12] = {
---     Space = {
---         provider = function() return ' ' end,
---         highlight = {colors.section_bg, colors.bg}
---     }
--- }
 gls.left[13] = {
     DiagnosticInfo = {
         provider = { 'DiagnosticInfo' },
@@ -295,30 +245,59 @@ gls.left[13] = {
 gls.left[14] = {
     LspStatus = {
         provider = { LspStatus },
-        -- separator = ' ',
-        -- separator_highlight = {colors.bg, colors.bg},
         highlight = { colors.middlegrey, colors.bg },
     },
 }
 
+-- get diff datas
+-- support plugins: vim-gitgutter vim-signify coc-git
+local get_hunks_data = function()
+  -- diff data 1:add 2:modified 3:remove
+  local diff_data = {0, 0, 0}
+  if vim.fn.exists("b:gitsigns_status_dict") == 1 then
+    local gitsigns_dict = vim.api.nvim_buf_get_var(0, 'gitsigns_status')
+    diff_data[1] = tonumber(gitsigns_dict:match('+(%d+)')) or 0
+    diff_data[2] = tonumber(gitsigns_dict:match('~(%d+)')) or 0
+    diff_data[3] = tonumber(gitsigns_dict:match('-(%d+)')) or 0
+    return diff_data
+  elseif vim.fn.exists("*sy#repo#get_stats") == 1 then
+    diff_data[1] = vim.fn["sy#repo#get_stats"]()[1]
+    diff_data[2] = vim.fn["sy#repo#get_stats"]()[2]
+    diff_data[3] = vim.fn["sy#repo#get_stats"]()[3]
+    return diff_data
+  elseif vim.fn.exists("*GitGutterGetHunkSummary") == 1 then
+    for idx, v in pairs(vim.fn.GitGutterGetHunkSummary()) do
+      diff_data[idx] = v
+    end
+  end
+  return diff_data
+end
+
+local diff_add =function ()
+  local add = get_hunks_data()[1]
+  if add > 0 then
+    return add .. ' '
+  end
+end
+
+local diff_modified =function ()
+  local modified = get_hunks_data()[2]
+  if modified > 0 then
+    return modified .. ' '
+  end
+end
+
+local diff_remove=function ()
+  local removed = get_hunks_data()[3]
+  if removed > 0 then
+    return removed .. ' '
+  end
+end
+
 -- Right side
--- gls.right[0] = {
---     ShowLspClient = {
---         provider = 'GetLspClient',
---         condition = function()
---             local tbl = {['dashboard'] = true, [''] = true}
---             if tbl[vim.bo.filetype] then return false end
---             return true
---         end,
---         icon = ' ',
---         highlight = {colors.middlegrey, colors.bg},
---         separator = ' ',
---         separator_highlight = {colors.section_bg, colors.bg}
---     }
--- }
 gls.right[1] = {
     DiffAdd = {
-        provider = 'DiffAdd',
+        provider = diff_add,
         condition = checkwidth,
         icon = '+',
         highlight = { colors.green, colors.bg },
@@ -328,7 +307,7 @@ gls.right[1] = {
 }
 gls.right[2] = {
     DiffModified = {
-        provider = 'DiffModified',
+        provider = diff_modified,
         condition = checkwidth,
         icon = '~',
         highlight = { colors.orange, colors.bg },
@@ -336,7 +315,7 @@ gls.right[2] = {
 }
 gls.right[3] = {
     DiffRemove = {
-        provider = 'DiffRemove',
+        provider = diff_remove,
         condition = checkwidth,
         icon = '-',
         highlight = { colors.red, colors.bg },
@@ -384,12 +363,6 @@ gls.right[8] = {
         highlight = { colors.darkgrey, colors.blue },
     },
 }
--- gls.right[9] = {
---     ScrollBar = {
---         provider = 'ScrollBar',
---         highlight = {colors.purple, colors.section_bg}
---     }
--- }
 
 -- Short status line
 gls.short_line_left[1] = {
@@ -429,4 +402,4 @@ gls.short_line_right[1] = {
 }
 
 -- Force manual load so that nvim boots with a status line
-gl.load_galaxyline() 
+gl.load_galaxyline()
