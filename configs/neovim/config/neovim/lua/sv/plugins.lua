@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
         }
     }
 
+
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
@@ -130,11 +131,16 @@ return require('packer').startup(function(use)
         },
         config = function() require("sv.configs.nerdtree") end
     }
+
     use {
-        'hoob3rt/lualine.nvim',
-        requires = {{'kyazdani42/nvim-web-devicons', opt = true}},
-        config = function() require 'sv.configs.lua-line' end
+        'glepnir/galaxyline.nvim',
+        branch = 'main',
+        -- your statusline
+        config = function() require'sv.configs.galaxyline' end,
+        -- some optional icons
+        requires = {{'kyazdani42/nvim-web-devicons', opt = true},{'nvim-lua/lsp-status.nvim'}}
     }
+
     use 'folke/tokyonight.nvim'
     use {
         'miyakogi/seiya.vim', -- Transparency automagically
