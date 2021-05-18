@@ -50,6 +50,9 @@ nnoremap <leader>as :set spell!<CR>
 " TODO: Move these
 
 " Vim diff
+" NOTE: This should probably by done in ftplugin? if possible
+" Worst case this check can be done in lua like 
+" print(vim.cmd("if &diff | echo 1 |else| echo 0| endif"))
 if &diff
   nnoremap <leader>gdh :diffget //2
   nnoremap <leader>gdl :diffget //3

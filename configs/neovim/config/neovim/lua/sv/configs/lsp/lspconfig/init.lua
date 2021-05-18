@@ -40,7 +40,10 @@ local configs = {
                                                           'package.json',
                                                           'tsconfig.json',
                                                           '.git')
-    }
+    },
+    -- TODO: Make a PR to lsp-install to install PowerShellEditorServices
+    -- automagically
+    powershell_es = {bundle_path = "~/PowerShellEditorServices"}
 }
 
 local M = {}

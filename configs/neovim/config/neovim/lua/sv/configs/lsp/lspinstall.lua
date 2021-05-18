@@ -15,6 +15,10 @@ end
 local function setup_servers()
     require'lspinstall'.setup()
     local servers = require'lspinstall'.installed_servers()
+
+    -- TODO: Extract this functionality to a better place
+    table.insert(servers,"powershell_es")
+
     for _, server in pairs(servers) do
         local server_config = configs[server] or {}
         require'lspconfig'[server].setup {
@@ -22,7 +26,8 @@ local function setup_servers()
             settings = server_config.settings or nil,
             filetypes = server_config.filetypes or nil,
             root_dir = server_config.root_dir or nil,
-            capabilities = server_config.capabilities or nil
+            capabilities = server_config.capabilities or nil,
+            bundle_path = server_config.bundle_path or nil
         }
     end
 end
