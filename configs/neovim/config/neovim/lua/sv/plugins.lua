@@ -26,7 +26,6 @@ return require('packer').startup(function(use)
         }
     }
 
-
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
@@ -71,7 +70,8 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use 'rhysd/committia.vim' -- Better commits
     use {
-        'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+        'lewis6991/gitsigns.nvim',
+        requires = {'nvim-lua/plenary.nvim'},
         config = function() require('gitsigns').setup() end
     }
 
@@ -126,8 +126,7 @@ return require('packer').startup(function(use)
             {
                 'tiagofumo/vim-nerdtree-syntax-highlight',
                 requires = {{'ryanoasis/vim-devicons'}}
-            }, {'PhilRunninger/nerdtree-buffer-ops'},
-            {'PhilRunninger/nerdtree-visual-selection'},
+            }, {'PhilRunninger/nerdtree-visual-selection'},
             {'Xuyuanp/nerdtree-git-plugin'}
         },
         config = function() require("sv.configs.nerdtree") end
@@ -137,9 +136,12 @@ return require('packer').startup(function(use)
         'glepnir/galaxyline.nvim',
         branch = 'main',
         -- your statusline
-        config = function() require'sv.configs.galaxyline' end,
+        config = function() require 'sv.configs.galaxyline' end,
         -- some optional icons
-        requires = {{'kyazdani42/nvim-web-devicons', opt = true},{'nvim-lua/lsp-status.nvim'}}
+        requires = {
+            {'kyazdani42/nvim-web-devicons', opt = true},
+            {'nvim-lua/lsp-status.nvim'}
+        }
     }
 
     use 'folke/tokyonight.nvim'
