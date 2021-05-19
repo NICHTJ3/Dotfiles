@@ -7,21 +7,38 @@ local diagnostic = require 'galaxyline.provider_diagnostic'
 
 local gls = gl.section
 
-gl.short_line_list = {'packer', 'nerdtree', 'Outline', 'LspTrouble'}
+gl.short_line_list = {'packer', 'nerdtree', 'Outline', 'Trouble'}
 
-local colors = {
-    bg = '#282c34',
-    fg = '#abb2bf',
-    section_bg = '#38393f',
-    blue = '#61afef',
-    green = '#98c379',
-    purple = '#c678dd',
-    orange = '#e5c07b',
-    red = '#e06c75',
-    yellow = '#e5c07b',
-    darkgrey = '#2c323d',
-    middlegrey = '#8791A5'
+local themes = {
+    base = {
+        bg = '#282c34',
+        fg = '#abb2bf',
+        section_bg = '#38393f',
+        blue = '#61afef',
+        green = '#98c379',
+        purple = '#c678dd',
+        orange = '#e5c07b',
+        red = '#e06c75',
+        yellow = '#e5c07b',
+        darkgrey = '#2c323d',
+        middlegrey = '#8791A5'
+    },
+    tokyonight = {
+        bg = '#24283b',
+        fg = '#c0caf5',
+        section_bg = '#292e42',
+        blue = '#2ac3de',
+        red = "#f7768e",
+        green = "#9ece6a",
+        purple = "#9d7cd8",
+        orange = "#ff9e64",
+        yellow = "#e0af68",
+        darkgrey = '#2c323d',
+        middlegrey = '#8791A5'
+    }
 }
+
+local colors = themes.tokyonight
 
 -- Local helper functions
 local buffer_not_empty = function() return not utils.is_buffer_empty() end
@@ -215,6 +232,7 @@ gls.left[13] = {
         -- separator_highlight = {colors.section_bg, colors.bg}
     }
 }
+
 gls.left[14] = {
     LspStatus = {
         provider = {LspStatus},
