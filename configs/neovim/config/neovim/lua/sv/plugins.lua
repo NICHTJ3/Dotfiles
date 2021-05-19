@@ -1,3 +1,4 @@
+-- TODO: Make plugins opt where possible
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -93,13 +94,7 @@ return require('packer').startup(function(use)
     use 'AndrewRadev/tagalong.vim'
     use {
         "folke/zen-mode.nvim",
-        config = function()
-            require("zen-mode").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
+        config = function() require("zen-mode").setup {} end
     }
 
     -- TMUX

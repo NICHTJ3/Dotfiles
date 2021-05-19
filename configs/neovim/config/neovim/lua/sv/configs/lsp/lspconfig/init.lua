@@ -43,7 +43,7 @@ local configs = {
     },
     -- TODO: Make a PR to lsp-install to install PowerShellEditorServices
     -- automagically
-    powershell_es = {bundle_path = "~/PowerShellEditorServices"}
+    powershell_es = {bundle_path = "~/language-servers/PowerShellEditorServices"}
 }
 
 local M = {}
