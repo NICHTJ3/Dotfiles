@@ -3,8 +3,6 @@ local utils = require 'sv.configs.utils'
 local condition = require 'galaxyline.condition'
 local diagnostic = require 'galaxyline.provider_diagnostic'
 
--- TODO: Fix colorscheme for this bar. It should match tokyonight
-
 local gls = gl.section
 
 gl.short_line_list = {'packer', 'nerdtree', 'Outline', 'Trouble'}
@@ -112,6 +110,8 @@ end
 
 local LspStatus = function()
     if #vim.lsp.get_active_clients() > 0 then
+        -- TODO: This is the default layout for lsp-status...
+        -- I should probably only pull in the individual modules I need
         return require'lsp-status'.status()
     end
     return ''
@@ -176,7 +176,9 @@ gls.left[3] = {
             local len = #tbl
 
             if len > 2 and not len == 3 and not tbl[0] == '~' then
-                return '…/' .. table.concat(tbl, '/', len - 1) .. '/' -- shorten filepath to last 2 folders
+                -- return '…/' .. table.concat(tbl, '/', len - 1) .. '/' -- shorten filepath to last 2 folders
+                -- alternative: only last folder in filepath
+                return '…/'..tbl[len]..'/'
                 -- alternative: only 1 containing folder using vim builtin function
                 -- return '…/' .. vim.fn.fnamemodify(vim.fn.expand '%', ':p:h:t') .. '/'
             else
