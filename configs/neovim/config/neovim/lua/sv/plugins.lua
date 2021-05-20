@@ -87,6 +87,10 @@ return require('packer').startup(function(use)
         'unblevable/quick-scope',
         config = function() require('sv.configs.quickscope') end
     }
+    use {
+        'marcushwz/nvim-workbench',
+        config = function() require('sv.configs.nvim-workbench') end
+    }
     use 'tpope/vim-surround' -- Change/Add surrounding character
     use 'tpope/vim-sleuth' -- Automatically detect indentation
     use 'wincent/pinnacle' -- Manipulate highlight groups in lua
