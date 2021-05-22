@@ -10,14 +10,14 @@ for _, server in pairs(required_servers) do
 end
 
 --- TODO: Setup prisma lsp
---- TODO: Get graphql lsp working in typescriptreact
 
 local function setup_servers()
     require'lspinstall'.setup()
     local servers = require'lspinstall'.installed_servers()
 
     -- TODO: Extract this functionality to a better place
-    table.insert(servers,"powershell_es")
+    table.insert(servers, "powershell_es")
+    table.insert(servers, "graphql")
 
     for _, server in pairs(servers) do
         local server_config = configs[server] or {}
@@ -27,7 +27,8 @@ local function setup_servers()
             filetypes = server_config.filetypes or nil,
             root_dir = server_config.root_dir or nil,
             capabilities = server_config.capabilities or nil,
-            bundle_path = server_config.bundle_path or nil
+            bundle_path = server_config.bundle_path or nil,
+            cmd = server_config.cmd or nil
         }
     end
 end
