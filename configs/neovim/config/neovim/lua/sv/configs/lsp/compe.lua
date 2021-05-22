@@ -72,6 +72,6 @@ vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 -- TODO: This needs updated to autocomplete the first hightlighted item on enter
-vim.api.nvim_set_keymap("i", "<CR>", "compe#complete('<CR>')", {expr = true})
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
 vim.api
-    .nvim_set_keymap("i", "<C-Space>", "compe#confirm('<CR>')", {expr = true})
+    .nvim_set_keymap("i", "<C-Space>", "compe#complete()", {expr = true})

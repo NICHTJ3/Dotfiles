@@ -48,9 +48,7 @@ return require('packer').startup(function(use)
     -- Snippets and Syntax
     use {
         'hrsh7th/vim-vsnip',
-        requires = {
-            {'hrsh7th/vim-vsnip-integ'}, {'rafamadriz/friendly-snippets'}
-        },
+        requires = {{'rafamadriz/friendly-snippets'}},
         config = function() require('sv.configs.vsnip') end
     }
     use 'pantharshit00/vim-prisma'
