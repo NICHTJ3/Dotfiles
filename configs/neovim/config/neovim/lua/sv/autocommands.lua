@@ -1,5 +1,3 @@
-local pinnacle = require 'wincent.pinnacle'
-
 local autocommands = {}
 
 -- +0,+1,+2, ... +254
@@ -35,10 +33,20 @@ autocommands.colorcolumn_filetype_blacklist =
     {
         ['diff'] = true,
         ['dirvish'] = true,
+        ['dashboard'] = true,
         ['fugitiveblame'] = true,
         ['undotree'] = true,
         ['qf'] = true
     }
+
+autocommands.numbers_blacklist = {
+    ['diff'] = true,
+    ['dirvish'] = true,
+    ['dashboard'] = true,
+    ['fugitiveblame'] = true,
+    ['undotree'] = true,
+    ['qf'] = true
+}
 
 local set_colorcolumn = function()
     local filetype = vim.bo.filetype
@@ -47,17 +55,22 @@ local set_colorcolumn = function()
     end
 end
 
-local transparent_sign_and_ruler = function()
-    vim.cmd('hi LineNr ' .. pinnacle.highlight({bg = 0}))
-    vim.cmd('hi GitGutterAdd ' .. pinnacle.highlight({bg = 0}))
-    vim.cmd('hi GitGutterChange ' .. pinnacle.highlight({bg = 0}))
-    vim.cmd('hi GitGutterDelete ' .. pinnacle.highlight({bg = 0}))
-    vim.cmd('hi SignColumn ' .. pinnacle.highlight({bg = 0}))
+local set_no_relative_number = function()
+    local filetype = vim.bo.filetype
+    if autocommands.numbers_blacklist[filetype] ~= true then
+        vim.api.nvim_win_set_option(0, 'relativenumber', false)
+    end
+end
+
+local set_relative_number = function()
+    local filetype = vim.bo.filetype
+    if autocommands.numbers_blacklist[filetype] ~= true then
+        vim.api.nvim_win_set_option(0, 'relativenumber', true)
+    end
 end
 
 autocommands.vim_enter = function()
     set_colorcolumn()
-    transparent_sign_and_ruler()
     return
 end
 
@@ -65,5 +78,9 @@ autocommands.win_enter = function()
     set_colorcolumn()
     return
 end
+
+autocommands.insert_enter = function() set_no_relative_number() end
+
+autocommands.insert_leave = function() set_relative_number() end
 
 return autocommands

@@ -16,7 +16,6 @@ endif
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                             Theme and appearance                             "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-set background=dark
 set shortmess+=Ic " no splash screen
 set showcmd
 set list
@@ -40,19 +39,6 @@ if has("termguicolors")
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-
-" Black line numbers and signcolumn
-" TODO: I think this is handled by autocommands?
-hi LineNr guibg=0
-hi GitGutterAdd guibg=0
-hi GitGutterChange guibg=0
-hi GitGutterDelete guibg=0
-hi SignColumn guibg=0
-
-
-" TODO: I don't think this is needed anymore
-" Remove extra highlighting around split
-hi VertSplit ctermbg=NONE guibg=NONE
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                             Sane window splitting                            "
@@ -97,11 +83,6 @@ set relativenumber " Relative and normal line numbering
 if len($TMUX)
   hi SpellBad gui=underline
 endif
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                          Change comments to italics                          "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-hi Comment cterm=italic gui=italic
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                     Autocomplete options for command mode                    "
