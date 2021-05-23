@@ -22,6 +22,7 @@ vim.fn.sign_define("LspDiagnosticsSignInformation", {
     numhl = "LspDiagnosticsSignInformation"
 })
 
+-- TODO: This is not working.. Fix this
 vim.cmd(
     'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
@@ -100,8 +101,8 @@ function lsp_config.common_on_attach(client, bufnr)
 
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
+      hi LspReferenceText cterm=bold ctermbg=red guibg=0
       hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
       hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
       augroup lsp_document_highlight
         autocmd! * <buffer>

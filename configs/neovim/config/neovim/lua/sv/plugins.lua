@@ -91,7 +91,6 @@ return require('packer').startup(function(use)
     }
     use 'tpope/vim-surround' -- Change/Add surrounding character
     use 'tpope/vim-sleuth' -- Automatically detect indentation
-    use 'wincent/pinnacle' -- Manipulate highlight groups in lua
     use 'b3nj5m1n/kommentary' -- Toggle comments
     use 'AndrewRadev/tagalong.vim'
     use {
