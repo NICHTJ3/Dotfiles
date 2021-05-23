@@ -39,33 +39,10 @@ autocommands.colorcolumn_filetype_blacklist =
         ['qf'] = true
     }
 
-autocommands.numbers_blacklist = {
-    ['diff'] = true,
-    ['dirvish'] = true,
-    ['dashboard'] = true,
-    ['fugitiveblame'] = true,
-    ['undotree'] = true,
-    ['qf'] = true
-}
-
 local set_colorcolumn = function()
     local filetype = vim.bo.filetype
     if autocommands.colorcolumn_filetype_blacklist[filetype] ~= true then
         vim.api.nvim_win_set_option(0, 'colorcolumn', focused_colorcolumn)
-    end
-end
-
-local set_no_relative_number = function()
-    local filetype = vim.bo.filetype
-    if autocommands.numbers_blacklist[filetype] ~= true then
-        vim.api.nvim_win_set_option(0, 'relativenumber', false)
-    end
-end
-
-local set_relative_number = function()
-    local filetype = vim.bo.filetype
-    if autocommands.numbers_blacklist[filetype] ~= true then
-        vim.api.nvim_win_set_option(0, 'relativenumber', true)
     end
 end
 
@@ -79,8 +56,8 @@ autocommands.win_enter = function()
     return
 end
 
-autocommands.insert_enter = function() set_no_relative_number() end
+autocommands.insert_enter = function() return end
 
-autocommands.insert_leave = function() set_relative_number() end
+autocommands.insert_leave = function() return end
 
 return autocommands
