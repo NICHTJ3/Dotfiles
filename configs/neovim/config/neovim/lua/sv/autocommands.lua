@@ -56,13 +56,13 @@ local transparent_sign_and_ruler = function()
 end
 
 autocommands.vim_enter = function()
-    -- set_colorcolumn()
+    set_colorcolumn()
     transparent_sign_and_ruler()
     return
 end
 
 autocommands.win_enter = function()
-    -- set_colorcolumn()
+    set_colorcolumn()
     return
 end
 

@@ -80,7 +80,7 @@ return require('packer').startup(function(use)
     use 'zoubin/vim-gotofile' -- Better go to file
     use 'pgdouyon/vim-evanesco' -- Clears search highlighting on move
 
-    -- Must have configs
+    -- Must have plugins
     use {
         'unblevable/quick-scope',
         config = function() require('sv.configs.quickscope') end
@@ -92,7 +92,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-surround' -- Change/Add surrounding character
     use 'tpope/vim-sleuth' -- Automatically detect indentation
     use 'wincent/pinnacle' -- Manipulate highlight groups in lua
-    use 'tpope/vim-commentary' -- Toggle comments
+    use 'b3nj5m1n/kommentary' -- Toggle comments
     use 'AndrewRadev/tagalong.vim'
     use {
         "folke/zen-mode.nvim",
@@ -132,9 +132,7 @@ return require('packer').startup(function(use)
     use {
         'glepnir/galaxyline.nvim',
         branch = 'main',
-        -- your statusline
         config = function() require 'sv.configs.galaxyline' end,
-        -- some optional icons
         requires = {
             {'kyazdani42/nvim-web-devicons', opt = true},
             {'nvim-lua/lsp-status.nvim'}
