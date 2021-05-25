@@ -22,15 +22,12 @@ vim.fn.sign_define("LspDiagnosticsSignInformation", {
     numhl = "LspDiagnosticsSignInformation"
 })
 
--- TODO: This is not working.. Fix this
-vim.cmd(
-    'command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
-
 -- Set Default Prefix.
 -- Note: You can set a prefix per lsp server in the lv-globals.lua file
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = {prefix = "", spacing = 0},
+        -- virtual_text = {prefix = "", spacing = 0},
+        virtual_text = false,
         signs = true,
         underline = true
     })
@@ -49,7 +46,6 @@ vim.lsp.protocol.CompletionItemKind = {
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
-    print("LSP Attatched")
     local opts = {noremap = true, silent = true}
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -68,8 +64,7 @@ function lsp_config.common_on_attach(client, bufnr)
     buf_set_keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
     buf_set_keymap('n', '<leader>ar', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', '<leader>aa', '<cmd>Lspsaga code_action<CR>', opts)
-    buf_set_keymap('n', '<leader>ai',
-                   '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
+    buf_set_keymap('n', '<leader>ai', '<cmd>Lspsaga show_line_diagnostics<CR>',
                    opts)
     buf_set_keymap('n', '<leader>q',
                    '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -100,10 +95,12 @@ function lsp_config.common_on_attach(client, bufnr)
     end
 
     if client.resolved_capabilities.document_highlight then
+
+        -- TODO: Fix this
         vim.api.nvim_exec([[
       hi LspReferenceText cterm=bold ctermbg=red guibg=0
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=0
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=0
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
