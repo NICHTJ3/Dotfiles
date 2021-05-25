@@ -8,7 +8,8 @@ local config = {
         client.resolved_capabilities.document_formatting = false
         client.resolved_capabilities.completion = false
     end,
-    root_dir = require('lspconfig').util.root_pattern("yarn.lock", "lerna.json",
+    root_dir = require('lspconfig').util.root_pattern(".eslintrc*", "yarn.lock",
+                                                      "lerna.json",
                                                       "package-lock.json",
                                                       "lerna.json", ".git"),
     filetypes = {
