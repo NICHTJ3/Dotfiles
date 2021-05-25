@@ -21,11 +21,11 @@ set showcmd
 set list
 set listchars=tab:>~,nbsp:_,trail:.,extends:>,precedes:<
 
-try
-  set signcolumn=number
-catch /.*/
+" try
+"   set signcolumn=number
+" catch /.*/
   set signcolumn=auto
-endtry
+" endtry
 
 " Soft wrap at 80 characters
 set textwidth=80
