@@ -71,7 +71,35 @@ return require('packer').startup(function(use)
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
-        config = function() require('gitsigns').setup() end
+        config = function()
+            require('gitsigns').setup {
+                keymaps = {
+                    -- Default keymap options
+                    noremap = true,
+                    buffer = true,
+
+                    ['n ]c'] = {
+                        expr = true,
+                        "&diff ? ']h' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'"
+                    },
+                    ['n [c'] = {
+                        expr = true,
+                        "&diff ? '[h' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'"
+                    },
+
+                    ['n <leader>ghs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+                    ['n <leader>ghu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+                    ['n <leader>ghr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+                    ['n <leader>ghR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+                    ['n <leader>ghp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+                    ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+
+                    -- Text objects
+                    ['o ih'] = ':<C-U>lua require"gitsigns".select_hunk()<CR>',
+                    ['x ih'] = ':<C-U>lua require"gitsigns".select_hunk()<CR>'
+                }
+            }
+        end
     }
 
     -- Fixes
