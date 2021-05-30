@@ -21,6 +21,7 @@ vim.g.dashboard_custom_section = {
         description = {'  Recently Used Files'},
         command = 'Telescope oldfiles'
     },
+    c = {description = {'  Load Session       '}, command = 'SessionLoad'},
     d = {
         description = {'  Find Word          '},
         command = 'Telescope live_grep'
