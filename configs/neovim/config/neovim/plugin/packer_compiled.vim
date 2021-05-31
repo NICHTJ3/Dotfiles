@@ -95,13 +95,17 @@ _G.packer_plugins = {
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   ["gitsigns.nvim"] = {
-    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0" },
+    config = { "\27LJ\2\n’\5\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\3\0005\4\4\0=\4\5\0035\4\6\0=\4\a\3=\3\t\2B\0\2\1K\0\1\0\fkeymaps\1\0\0\tn [c\1\2\1\0@&diff ? '[h' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'\texpr\2\tn ]c\1\2\1\0@&diff ? ']h' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'\texpr\2\1\0\n\tx ih2:<C-U>lua require\"gitsigns\".select_hunk()<CR>\17n <leader>gb4<cmd>lua require\"gitsigns\".blame_line(true)<CR>\to ih2:<C-U>lua require\"gitsigns\".select_hunk()<CR>\fnoremap\2\vbuffer\2\18n <leader>ghp2<cmd>lua require\"gitsigns\".preview_hunk()<CR>\18n <leader>ghR2<cmd>lua require\"gitsigns\".reset_buffer()<CR>\18n <leader>ghr0<cmd>lua require\"gitsigns\".reset_hunk()<CR>\18n <leader>ghu5<cmd>lua require\"gitsigns\".undo_stage_hunk()<CR>\18n <leader>ghs0<cmd>lua require\"gitsigns\".stage_hunk()<CR>\nsetup\rgitsigns\frequire\0" },
     loaded = true,
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   kommentary = {
     loaded = true,
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/lazygit.nvim"
   },
   ["lsp-status.nvim"] = {
     loaded = true,
@@ -231,10 +235,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-nerdtree-syntax-highlight"
   },
-  ["vim-polyglot"] = {
-    loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-polyglot"
-  },
   ["vim-prisma"] = {
     loaded = true,
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/vim-prisma"
@@ -280,66 +280,66 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
--- Config for: zen-mode.nvim
-time("Config for zen-mode.nvim", true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")
-time("Config for zen-mode.nvim", false)
--- Config for: seiya.vim
-time("Config for seiya.vim", true)
-try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21sv.configs.seiya\frequire\0", "config", "seiya.vim")
-time("Config for seiya.vim", false)
--- Config for: nvim-workbench
-time("Config for nvim-workbench", true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30sv.configs.nvim-workbench\frequire\0", "config", "nvim-workbench")
-time("Config for nvim-workbench", false)
--- Config for: gitsigns.nvim
-time("Config for gitsigns.nvim", true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time("Config for gitsigns.nvim", false)
--- Config for: nvim-compe
-time("Config for nvim-compe", true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.lsp.compe\frequire\0", "config", "nvim-compe")
-time("Config for nvim-compe", false)
--- Config for: vim-vsnip
-time("Config for vim-vsnip", true)
-try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21sv.configs.vsnip\frequire\0", "config", "vim-vsnip")
-time("Config for vim-vsnip", false)
--- Config for: nvim-treesitter
-time("Config for nvim-treesitter", true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31sv.configs.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
-time("Config for nvim-treesitter", false)
--- Config for: trouble.nvim
-time("Config for trouble.nvim", true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
-time("Config for trouble.nvim", false)
--- Config for: nvim-lspinstall
-time("Config for nvim-lspinstall", true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30sv.configs.lsp.lspinstall\frequire\0", "config", "nvim-lspinstall")
-time("Config for nvim-lspinstall", false)
--- Config for: formatter.nvim
-time("Config for formatter.nvim", true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.formatter\frequire\0", "config", "formatter.nvim")
-time("Config for formatter.nvim", false)
 -- Config for: galaxyline.nvim
 time("Config for galaxyline.nvim", true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26sv.configs.galaxyline\frequire\0", "config", "galaxyline.nvim")
 time("Config for galaxyline.nvim", false)
--- Config for: quick-scope
-time("Config for quick-scope", true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26sv.configs.quickscope\frequire\0", "config", "quick-scope")
-time("Config for quick-scope", false)
--- Config for: dashboard-nvim
-time("Config for dashboard-nvim", true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.dashboard\frequire\0", "config", "dashboard-nvim")
-time("Config for dashboard-nvim", false)
+-- Config for: vim-vsnip
+time("Config for vim-vsnip", true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21sv.configs.vsnip\frequire\0", "config", "vim-vsnip")
+time("Config for vim-vsnip", false)
 -- Config for: telescope.nvim
 time("Config for telescope.nvim", true)
 try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.telescope\frequire\0", "config", "telescope.nvim")
 time("Config for telescope.nvim", false)
+-- Config for: zen-mode.nvim
+time("Config for zen-mode.nvim", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")
+time("Config for zen-mode.nvim", false)
+-- Config for: quick-scope
+time("Config for quick-scope", true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26sv.configs.quickscope\frequire\0", "config", "quick-scope")
+time("Config for quick-scope", false)
+-- Config for: nvim-lspinstall
+time("Config for nvim-lspinstall", true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30sv.configs.lsp.lspinstall\frequire\0", "config", "nvim-lspinstall")
+time("Config for nvim-lspinstall", false)
+-- Config for: seiya.vim
+time("Config for seiya.vim", true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21sv.configs.seiya\frequire\0", "config", "seiya.vim")
+time("Config for seiya.vim", false)
+-- Config for: nvim-compe
+time("Config for nvim-compe", true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.lsp.compe\frequire\0", "config", "nvim-compe")
+time("Config for nvim-compe", false)
+-- Config for: dashboard-nvim
+time("Config for dashboard-nvim", true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.dashboard\frequire\0", "config", "dashboard-nvim")
+time("Config for dashboard-nvim", false)
+-- Config for: nvim-treesitter
+time("Config for nvim-treesitter", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31sv.configs.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
+time("Config for nvim-treesitter", false)
 -- Config for: nerdtree
 time("Config for nerdtree", true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24sv.configs.nerdtree\frequire\0", "config", "nerdtree")
 time("Config for nerdtree", false)
+-- Config for: trouble.nvim
+time("Config for trouble.nvim", true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time("Config for trouble.nvim", false)
+-- Config for: gitsigns.nvim
+time("Config for gitsigns.nvim", true)
+try_loadstring("\27LJ\2\n’\5\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\3\0005\4\4\0=\4\5\0035\4\6\0=\4\a\3=\3\t\2B\0\2\1K\0\1\0\fkeymaps\1\0\0\tn [c\1\2\1\0@&diff ? '[h' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'\texpr\2\tn ]c\1\2\1\0@&diff ? ']h' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'\texpr\2\1\0\n\tx ih2:<C-U>lua require\"gitsigns\".select_hunk()<CR>\17n <leader>gb4<cmd>lua require\"gitsigns\".blame_line(true)<CR>\to ih2:<C-U>lua require\"gitsigns\".select_hunk()<CR>\fnoremap\2\vbuffer\2\18n <leader>ghp2<cmd>lua require\"gitsigns\".preview_hunk()<CR>\18n <leader>ghR2<cmd>lua require\"gitsigns\".reset_buffer()<CR>\18n <leader>ghr0<cmd>lua require\"gitsigns\".reset_hunk()<CR>\18n <leader>ghu5<cmd>lua require\"gitsigns\".undo_stage_hunk()<CR>\18n <leader>ghs0<cmd>lua require\"gitsigns\".stage_hunk()<CR>\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time("Config for gitsigns.nvim", false)
+-- Config for: nvim-workbench
+time("Config for nvim-workbench", true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30sv.configs.nvim-workbench\frequire\0", "config", "nvim-workbench")
+time("Config for nvim-workbench", false)
+-- Config for: formatter.nvim
+time("Config for formatter.nvim", true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.formatter\frequire\0", "config", "formatter.nvim")
+time("Config for formatter.nvim", false)
 
 -- Command lazy-loads
 time("Defining lazy-load commands", true)

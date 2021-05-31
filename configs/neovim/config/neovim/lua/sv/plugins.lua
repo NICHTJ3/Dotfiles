@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
         config = function() require('sv.configs.vsnip') end
     }
     use 'pantharshit00/vim-prisma'
-    vim.g['polyglot_disabled'] = {'coffee-script'}
+    vim.g['polyglot_disabled'] = {'coffee-script', 'json'}
     use 'sheerun/vim-polyglot'
     -- Treesitter
     use {
