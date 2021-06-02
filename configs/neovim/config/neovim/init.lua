@@ -1,7 +1,11 @@
+if require('sv.first_load')() then return end
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-require("personal.plugins")
+require("sv.plugins")
+
+vim.lsp.set_log_level("debug")
 
 P = function(v)
     print(vim.inspect(v))

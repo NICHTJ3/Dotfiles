@@ -14,17 +14,13 @@ function! s:AutoCommands()
            \ has('statusline') &&
            \ has('nvim')
 
-       autocmd VimEnter * lua require'personal.autocommands'.vim_enter()
-       autocmd WinEnter * lua require'personal.autocommands'.win_enter()
+       autocmd VimEnter * lua require'sv.autocommands'.vim_enter()
+       autocmd WinEnter * lua require'sv.autocommands'.win_enter()
     endif
 
     " Relative linenums only in normal mode
-    autocmd InsertEnter * set norelativenumber
-    autocmd InsertLeave * set relativenumber
-
-    " TODO: Auto source ftplugin etc
-    " Automatically source vimrc
-    autocmd BufWritepost *.vim source $MYVIMRC
+    autocmd InsertEnter * lua require'sv.autocommands'.insert_enter()
+    autocmd InsertLeave * lua require'sv.autocommands'.insert_leave()
 
     " Terminal
     autocmd TermOpen * startinsert " Start terminal in insert mode

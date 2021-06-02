@@ -1,5 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
+	name = Trent Nicholson
+	email = nicholsontrent@gmail.com
 # Please adapt and uncomment the following lines:
 	; name = NICHTJ3
 	; email = nicholsontrent@gmail.com
