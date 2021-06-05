@@ -30,7 +30,10 @@ return require('packer').startup(function(use)
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+        requires = {
+            {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'},
+            {'cwebster2/github-coauthors.nvim'}
+        },
         config = function() require 'sv.configs.telescope' end
     }
     use {
