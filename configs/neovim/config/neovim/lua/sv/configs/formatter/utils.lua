@@ -29,7 +29,8 @@ local formattable_file_types = {
     php = {prettier},
     rust = {rustfmt},
     go = {gofmt},
-    lua = {luaformat}
+    lua = {luaformat},
+    yaml = {prettier}
 }
 
 local M = {}
