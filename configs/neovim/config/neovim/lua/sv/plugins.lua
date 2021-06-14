@@ -32,13 +32,11 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = {
             {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'},
-            {'cwebster2/github-coauthors.nvim'}
+            {'cwebster2/github-coauthors.nvim'},
+            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+
         },
         config = function() require 'sv.configs.telescope' end
-    }
-    use {
-        'nvim-telescope/telescope-fzy-native.nvim',
-        requires = {{'nvim-telescope/telescope.nvim'}}
     }
 
     -- Trouble
@@ -60,11 +58,8 @@ return require('packer').startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
+        requires = {{'p00f/nvim-ts-rainbow'}},
         config = function() require 'sv.configs.nvim-treesitter' end
-    }
-    use {
-        'p00f/nvim-ts-rainbow',
-        requires = {{'nvim-treesitter/nvim-treesitter'}}
     }
 
     -- Git
