@@ -66,6 +66,7 @@ function lsp_config.common_on_attach(client, bufnr)
     buf_set_keymap('n', '<leader>aa', '<cmd>Lspsaga code_action<CR>', opts)
     buf_set_keymap('n', '<leader>ai', '<cmd>Lspsaga show_line_diagnostics<CR>',
                    opts)
+    buf_set_keymap('n', '<leader>or', '<cmd>OrganizeImports<CR>', opts)
     buf_set_keymap('n', '<leader>q',
                    '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)

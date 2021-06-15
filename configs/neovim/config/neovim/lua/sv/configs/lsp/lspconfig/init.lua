@@ -1,5 +1,14 @@
 local efmConfig = require('sv.configs.lsp.lspconfig.efm').config
 
+local function organize_imports()
+    local params = {
+        command = "_typescript.organizeImports",
+        arguments = {vim.api.nvim_buf_get_name(0)},
+        title = ""
+    }
+    vim.lsp.buf.execute_command(params)
+end
+
 local configs = {
     efm = efmConfig,
     lua = {
@@ -41,6 +50,14 @@ local configs = {
                                                           'package.json',
                                                           'tsconfig.json',
                                                           '.git')
+    },
+    typescript = {
+        commands = {
+            OrganizeImports = {
+                organize_imports,
+                description = "Organize Imports"
+            }
+        }
     },
     -- TODO: Make a PR to lsp-install to install PowerShellEditorServices
     -- automagically

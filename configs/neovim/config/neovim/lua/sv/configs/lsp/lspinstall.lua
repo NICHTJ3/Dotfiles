@@ -28,7 +28,8 @@ local function setup_servers()
             root_dir = server_config.root_dir or nil,
             capabilities = server_config.capabilities or nil,
             bundle_path = server_config.bundle_path or nil,
-            cmd = server_config.cmd or nil
+            cmd = server_config.cmd or nil,
+            commands = server_config.commands or nil
         }
     end
 end
