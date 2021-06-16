@@ -53,12 +53,15 @@ return require('packer').startup(function(use)
         config = function() require('sv.configs.vsnip') end
     }
     use 'pantharshit00/vim-prisma'
-    use 'jparise/vim-graphql'
+    use 'jparise/vim-graphql' -- TODO: Migrate to Treesitter
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        requires = {{'p00f/nvim-ts-rainbow'}},
+        requires = {
+            {'p00f/nvim-ts-rainbow'},
+            {'nvim-treesitter/nvim-treesitter-textobjects'}
+        },
         config = function() require 'sv.configs.nvim-treesitter' end
     }
 
@@ -70,6 +73,7 @@ return require('packer').startup(function(use)
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
         config = function()
+            -- TODO: Move this into another file it seems to be slow to declare?
             require('gitsigns').setup {
                 keymaps = {
                     -- Default keymap options
@@ -118,7 +122,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-surround' -- Change/Add surrounding character
     use 'tpope/vim-sleuth' -- Automatically detect indentation
     use 'b3nj5m1n/kommentary' -- Toggle comments
-    use 'AndrewRadev/tagalong.vim'
+    -- use 'AndrewRadev/tagalong.vim'
     use {
         "folke/zen-mode.nvim",
         config = function() require("zen-mode").setup {} end
