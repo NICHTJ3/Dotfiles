@@ -1,4 +1,5 @@
 local actions = require('telescope.actions')
+local trouble = require('trouble.providers.telescope')
 
 require('telescope').setup {
     defaults = {
@@ -14,7 +15,8 @@ require('telescope').setup {
             i = {
                 ["<esc>"] = actions.close,
                 ["<C-x>"] = false,
-                ["<C-q>"] = actions.send_to_qflist
+                ["<C-q>"] = actions.send_to_qflist,
+                ["<C-t>"] = trouble.open_with_trouble
             }
         }
     },
