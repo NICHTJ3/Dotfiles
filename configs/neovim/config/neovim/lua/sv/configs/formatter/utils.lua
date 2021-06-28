@@ -1,3 +1,6 @@
+-- FIXME: vim.api.nvim_buf_get_name seems to have issues with names such as
+-- `[id].ts` I should find a way around this
+-- TODO: Find a way to check if the exe is installed
 local prettier = function()
     return {
         exe = "prettier",
