@@ -1,12 +1,7 @@
--- FIXME: vim.api.nvim_buf_get_name seems to have issues with names such as
--- `[id].ts` I should find a way around this
 -- TODO: Find a way to check if the exe is installed
-local prettier = function()
-    return {
-        exe = "prettier",
-        args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-        stdin = true
-    }
+local prettierd = function()
+    local filename = vim.api.nvim_buf_get_name(0):gsub("([%[%]])", "%\\%1") -- escape only characters from set
+    return {exe = "prettierd", args = {filename}, stdin = true}
 end
 
 local rustfmt = function()
@@ -21,19 +16,19 @@ local luaformat = function()
 end
 
 local formattable_file_types = {
-    typescriptreact = {prettier},
-    javascript = {prettier},
-    typescript = {prettier},
-    svelte = {prettier},
-    css = {prettier},
-    jsonc = {prettier},
-    json = {prettier},
-    html = {prettier},
-    php = {prettier},
+    typescriptreact = {prettierd},
+    javascript = {prettierd},
+    typescript = {prettierd},
+    svelte = {prettierd},
+    css = {prettierd},
+    jsonc = {prettierd},
+    json = {prettierd},
+    html = {prettierd},
+    php = {prettierd},
     rust = {rustfmt},
     go = {gofmt},
     lua = {luaformat},
-    yaml = {prettier}
+    yaml = {prettierd}
 }
 
 local M = {}
