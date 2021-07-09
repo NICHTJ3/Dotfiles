@@ -110,7 +110,6 @@ return require('packer').startup(function(use)
     use {
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
-        cmd = 'MarkdownPreview',
         config = function() require('sv.configs.markdown-preview') end
     }
 
