@@ -72,9 +72,7 @@ return require('packer').startup(function(use)
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
-        config = function()
-            require('sv.configs.gitsigns')
-        end
+        config = function() require('sv.configs.gitsigns') end
     }
 
     -- Fixes
@@ -84,6 +82,7 @@ return require('packer').startup(function(use)
     use 'pgdouyon/vim-evanesco' -- Clears search highlighting on move
 
     -- Must have plugins
+    use {'tjdevries/astronauta.nvim'} -- Use until [https://github.com/neovim/neovim/pull/13823] is merged
     use {
         'unblevable/quick-scope',
         config = function() require('sv.configs.quickscope') end
