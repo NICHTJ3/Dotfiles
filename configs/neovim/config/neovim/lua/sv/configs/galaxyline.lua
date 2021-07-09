@@ -110,7 +110,6 @@ end
 
 local LspStatus = function()
     if #vim.lsp.get_active_clients() > 0 then
-        -- TODO: This is the default layout for lsp-status...
         -- I should probably only pull in the individual modules I need
         return require'lsp-status'.status()
     end

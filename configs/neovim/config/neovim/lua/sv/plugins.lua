@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
         config = function() require('sv.configs.vsnip') end
     }
     use 'pantharshit00/vim-prisma'
-    use 'jparise/vim-graphql' -- TODO: Migrate to Treesitter
+    use 'jparise/vim-graphql' -- NOTE: I might want to migrate this to Treesitter
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',

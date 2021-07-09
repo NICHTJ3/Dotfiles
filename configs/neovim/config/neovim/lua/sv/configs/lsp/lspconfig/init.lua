@@ -36,8 +36,6 @@ local configs = {
             }
         }
     },
-    -- TODO: This doesn't seam to working when installed with lsp-install for
-    -- some reason
     graphql = {
         cmd = {"graphql-lsp", "server", "-m", "stream"},
         filetypes = {'typescriptreact', 'typescript', 'graphql'},
@@ -59,11 +57,6 @@ local configs = {
             }
         }
     },
-    -- TODO: Make a PR to lsp-install to install PowerShellEditorServices
-    -- automagically
-    powershell_es = {
-        bundle_path = "~/language-servers/PowerShellEditorServices"
-    }
 }
 
 local M = {}
