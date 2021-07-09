@@ -4,6 +4,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 require("sv.plugins")
+require("personal.mappings.leader")
 
 vim.lsp.set_log_level("debug")
 
