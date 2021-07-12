@@ -38,7 +38,16 @@ local configs = {
     },
     graphql = {
         cmd = {"graphql-lsp", "server", "-m", "stream"},
-        filetypes = {'typescriptreact', 'typescript', 'graphql'},
+        on_new_config = function(new_config, new_root_dir)
+            local new_cmd = vim.deepcopy(
+                                {"graphql-lsp", "server", "-m", "stream"})
+            table.insert(new_cmd, '-c')
+            table.insert(new_cmd, new_root_dir)
+            new_config.cmd = new_cmd
+        end,
+        filetypes = {
+            'typescriptreact', 'typescript', 'graphql', 'typescript.tsx'
+        },
         root_dir = require('lspconfig').util.root_pattern('.graphqlrc',
                                                           '.graphqlrc.json',
                                                           '.graphqlrc.yml',
@@ -50,6 +59,7 @@ local configs = {
                                                           '.git')
     },
     typescript = {
+        filetypes = {'typescriptreact', 'typescript', 'typescript.tsx'},
         commands = {
             OrganizeImports = {
                 organize_imports,
@@ -57,6 +67,10 @@ local configs = {
             }
         }
     },
+    tailwindcss = {
+        -- TODO: Add support for base filetypes
+        filetypes = {'typescriptreact', 'typescript.tsx'}
+    }
 }
 
 local M = {}
