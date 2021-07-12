@@ -1,4 +1,9 @@
 local linters = require('sv.configs.lsp.lspconfig.efm.linters')
+local Check_command_installed =
+    require('sv.configs.formatter.utils').Check_command_installed
+
+-- TODO Why is this not working
+Check_command_installed('eslint_d')
 
 local config = {
     on_attach = function(client)
@@ -14,7 +19,7 @@ local config = {
                                                       "lerna.json", ".git"),
     filetypes = {
         'typescriptreact', 'typescript', 'javascript', 'javascriptreact',
-        'svelte'
+        'svelte', 'typescript.tsx'
     },
     settings = {
         languages = {
@@ -22,7 +27,8 @@ local config = {
             javascriptreact = {linters.eslint},
             typescript = {linters.eslint},
             typescriptreact = {linters.eslint},
-            svelte = {linters.eslint}
+            svelte = {linters.eslint},
+            ['typescript.tsx'] = {linters.eslint}
             -- other languages here
         }
     }
