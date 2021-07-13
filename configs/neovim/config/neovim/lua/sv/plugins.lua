@@ -7,7 +7,17 @@ return require('packer').startup(function(use)
     use {
         'neovim/nvim-lsp',
         requires = {
-            {'neovim/nvim-lspconfig', requires = {{'neovim/nvim-lsp'}}}, {
+            {
+                'ray-x/lsp_signature.nvim',
+                config = function()
+                    require'lsp_signature'.on_attach(
+                        {
+                            fix_pos = true, -- set to true, the floating window will not auto-close until finish all parameters
+                            use_lspsaga = true -- set to true if you want to use lspsaga popup
+                        })
+
+                end
+            }, {'neovim/nvim-lspconfig', requires = {{'neovim/nvim-lsp'}}}, {
                 'hrsh7th/nvim-compe',
                 config = function()
                     require('sv.configs.lsp.compe')

@@ -46,6 +46,8 @@ vim.lsp.protocol.CompletionItemKind = {
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
+    require "lsp_signature".on_attach()
+
     local opts = {noremap = true, silent = true}
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
