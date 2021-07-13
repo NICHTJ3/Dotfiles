@@ -9,6 +9,7 @@ end
 local prettierd = function()
     if not Check_command_installed('prettierd') then return end
     local filename = vim.api.nvim_buf_get_name(0):gsub("([%[%]])", "%\\%1") -- escape only characters from set
+    -- TODO: This does not seam to read config files...
     return {exe = "prettierd", args = {filename}, stdin = true}
 end
 
