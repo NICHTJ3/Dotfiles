@@ -1,7 +1,7 @@
 local configs = require('sv.configs.lsp.lspconfig').configs
 local common_on_attach = require('sv.configs.lsp').common_on_attach
 
-local required_servers = {"lua", "tailwindcss", "typescript", "efm"}
+local required_servers = {"lua", "tailwindcss", "typescript", "efm", "css"}
 local installed_servers = require'lspinstall'.installed_servers()
 for _, server in pairs(required_servers) do
     if not vim.tbl_contains(installed_servers, server) then

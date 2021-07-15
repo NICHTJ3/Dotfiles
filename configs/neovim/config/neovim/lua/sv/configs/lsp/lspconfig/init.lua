@@ -9,6 +9,9 @@ local function organize_imports()
     vim.lsp.buf.execute_command(params)
 end
 
+local cssCapabilities = vim.lsp.protocol.make_client_capabilities()
+cssCapabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local configs = {
     efm = efmConfig,
     lua = {
@@ -70,7 +73,8 @@ local configs = {
     tailwindcss = {
         -- TODO: Add support for base filetypes
         filetypes = {'typescriptreact', 'typescript.tsx'}
-    }
+    },
+    css = {capabilities = cssCapabilities}
 }
 
 local M = {}
