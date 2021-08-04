@@ -32,6 +32,7 @@ end
 local formattable_file_types = {
     typescriptreact = {prettierd},
     javascript = {prettierd},
+    javascriptreact = {prettierd},
     typescript = {prettierd},
     svelte = {prettierd},
     css = {prettierd},
@@ -43,7 +44,9 @@ local formattable_file_types = {
     go = {gofmt},
     lua = {luaformat},
     yaml = {prettierd},
-    ['typescript.tsx'] = {prettierd}
+    markdown = {prettierd},
+    ['typescript.tsx'] = {prettierd},
+    ['javascript.tsx'] = {prettierd}
 }
 
 local M = {}

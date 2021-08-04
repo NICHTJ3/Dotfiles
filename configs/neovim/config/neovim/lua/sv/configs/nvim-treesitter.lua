@@ -1,5 +1,7 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = {"typescript", "javascript"},
+    ensure_installed = {
+        "typescript", "javascript", "tsx", "graphql", "svelte", "css", "scss"
+    },
     rainbow = {
         enable = true,
         extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean

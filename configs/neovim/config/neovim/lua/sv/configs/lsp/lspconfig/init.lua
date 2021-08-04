@@ -72,7 +72,10 @@ local configs = {
     },
     tailwindcss = {
         -- TODO: Add support for base filetypes
-        filetypes = {'typescriptreact', 'typescript.tsx'}
+        filetypes = {
+            'typescriptreact', 'typescript.tsx', 'javascriptreact',
+            'javascript.jsx'
+        }
     },
     css = {capabilities = cssCapabilities}
 }

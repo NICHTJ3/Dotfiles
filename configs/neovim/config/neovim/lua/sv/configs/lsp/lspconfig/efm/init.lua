@@ -19,7 +19,7 @@ local config = {
                                                       "lerna.json", ".git"),
     filetypes = {
         'typescriptreact', 'typescript', 'javascript', 'javascriptreact',
-        'svelte', 'typescript.tsx'
+        'svelte', 'typescript.tsx', 'markdown'
     },
     settings = {
         languages = {
@@ -28,7 +28,7 @@ local config = {
             typescript = {linters.eslint},
             typescriptreact = {linters.eslint},
             svelte = {linters.eslint},
-            ['typescript.tsx'] = {linters.eslint}
+            ['typescript.tsx'] = {linters.eslint},
             -- other languages here
         }
     }
