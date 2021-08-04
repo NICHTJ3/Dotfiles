@@ -62,7 +62,10 @@ local configs = {
                                                           '.git')
     },
     typescript = {
-        filetypes = {'typescriptreact', 'typescript', 'typescript.tsx'},
+        filetypes = {
+            'typescriptreact', 'typescript', 'typescript.tsx', 'javascript',
+            'javascriptreact'
+        },
         commands = {
             OrganizeImports = {
                 organize_imports,
