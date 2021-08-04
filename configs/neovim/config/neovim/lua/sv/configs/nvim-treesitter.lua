@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        "typescript", "javascript", "tsx", "graphql", "svelte", "css", "scss"
+        -- "typescript", "javascript", "tsx", "graphql", "svelte", "css", "scss"
     },
     rainbow = {
         enable = true,
