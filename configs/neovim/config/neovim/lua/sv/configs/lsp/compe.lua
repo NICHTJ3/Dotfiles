@@ -15,11 +15,11 @@ require'compe'.setup {
     documentation = true,
 
     source = {
+        tags = false,
+        spell = false,
+        buffer = false,
         sort = {priority = 500},
-        tags = {priority = 500},
-        spell = {priority = 500},
         path = {priority = 500},
-        buffer = {priority = 500},
         calc = {priority = 500},
         nvim_lsp = {priority = 500},
         nvim_lua = {priority = 500},
@@ -73,5 +73,4 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 -- TODO: This needs updated to autocomplete the first hightlighted item on enter
 vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
-vim.api
-    .nvim_set_keymap("i", "<C-Space>", "compe#complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {expr = true})

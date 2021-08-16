@@ -11,6 +11,7 @@ require'nvim-treesitter.configs'.setup {
             "#b48ead"
         }
     },
+    highlight = {enable = true, additional_vim_regex_highlighting = false},
     textobjects = {
         select = {
             enable = true,
@@ -25,3 +26,8 @@ require'nvim-treesitter.configs'.setup {
         }
     }
 }
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.graphql.used_by = "typescriptreact"
+parser_config.typescript.used_by = "typescriptreact"
+

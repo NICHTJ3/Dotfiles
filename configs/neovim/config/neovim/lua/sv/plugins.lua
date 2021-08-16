@@ -62,10 +62,9 @@ return require('packer').startup(function(use)
         requires = {{'rafamadriz/friendly-snippets'}},
         config = function() require('sv.configs.vsnip') end
     }
-    use 'sheerun/vim-polyglot' -- Note: I should remove this and enable tree sitter once jsx is fixed
+    -- use 'sheerun/vim-polyglot' -- Note: I should remove this and enable tree sitter once jsx is fixed
     -- Treesitter
-    --[[ use 'pantharshit00/vim-prisma'
-    use 'jparise/vim-graphql' -- NOTE: I might want to migrate this to Treesitter
+    use 'pantharshit00/vim-prisma'
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
@@ -74,7 +73,7 @@ return require('packer').startup(function(use)
             {'nvim-treesitter/nvim-treesitter-textobjects'}
         },
         config = function() require 'sv.configs.nvim-treesitter' end
-    } ]]
+    }
 
     -- Git
     use 'tpope/vim-fugitive'
