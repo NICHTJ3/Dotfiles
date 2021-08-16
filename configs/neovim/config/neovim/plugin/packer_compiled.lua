@@ -118,7 +118,7 @@ _G.packer_plugins = {
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
   },
   ["lsp_signature.nvim"] = {
-    config = { "\27LJ\2\n\\\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\16use_lspsaga\2\ffix_pos\2\14on_attach\18lsp_signature\frequire\0" },
+    config = { "\27LJ\2\n\\\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\ffix_pos\2\16use_lspsaga\2\14on_attach\18lsp_signature\frequire\0" },
     loaded = true,
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
   },
@@ -289,45 +289,9 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: seiya.vim
-time([[Config for seiya.vim]], true)
-try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21sv.configs.seiya\frequire\0", "config", "seiya.vim")
-time([[Config for seiya.vim]], false)
--- Config for: nvim-compe
-time([[Config for nvim-compe]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.lsp.compe\frequire\0", "config", "nvim-compe")
-time([[Config for nvim-compe]], false)
--- Config for: galaxyline.nvim
-time([[Config for galaxyline.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26sv.configs.galaxyline\frequire\0", "config", "galaxyline.nvim")
-time([[Config for galaxyline.nvim]], false)
--- Config for: nerdtree
-time([[Config for nerdtree]], true)
-try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24sv.configs.nerdtree\frequire\0", "config", "nerdtree")
-time([[Config for nerdtree]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24sv.configs.gitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
--- Config for: nvim-lspinstall
-time([[Config for nvim-lspinstall]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30sv.configs.lsp.lspinstall\frequire\0", "config", "nvim-lspinstall")
-time([[Config for nvim-lspinstall]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
-time([[Config for trouble.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31sv.configs.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
 -- Config for: lsp_signature.nvim
 time([[Config for lsp_signature.nvim]], true)
-try_loadstring("\27LJ\2\n\\\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\16use_lspsaga\2\ffix_pos\2\14on_attach\18lsp_signature\frequire\0", "config", "lsp_signature.nvim")
+try_loadstring("\27LJ\2\n\\\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\ffix_pos\2\16use_lspsaga\2\14on_attach\18lsp_signature\frequire\0", "config", "lsp_signature.nvim")
 time([[Config for lsp_signature.nvim]], false)
 -- Config for: nvim-workbench
 time([[Config for nvim-workbench]], true)
@@ -337,26 +301,62 @@ time([[Config for nvim-workbench]], false)
 time([[Config for markdown-preview.nvim]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0 sv.configs.markdown-preview\frequire\0", "config", "markdown-preview.nvim")
 time([[Config for markdown-preview.nvim]], false)
--- Config for: dashboard-nvim
-time([[Config for dashboard-nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.dashboard\frequire\0", "config", "dashboard-nvim")
-time([[Config for dashboard-nvim]], false)
--- Config for: zen-mode.nvim
-time([[Config for zen-mode.nvim]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")
-time([[Config for zen-mode.nvim]], false)
 -- Config for: quick-scope
 time([[Config for quick-scope]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26sv.configs.quickscope\frequire\0", "config", "quick-scope")
 time([[Config for quick-scope]], false)
+-- Config for: dashboard-nvim
+time([[Config for dashboard-nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.dashboard\frequire\0", "config", "dashboard-nvim")
+time([[Config for dashboard-nvim]], false)
+-- Config for: seiya.vim
+time([[Config for seiya.vim]], true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21sv.configs.seiya\frequire\0", "config", "seiya.vim")
+time([[Config for seiya.vim]], false)
 -- Config for: formatter.nvim
 time([[Config for formatter.nvim]], true)
 try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.formatter\frequire\0", "config", "formatter.nvim")
 time([[Config for formatter.nvim]], false)
+-- Config for: nvim-compe
+time([[Config for nvim-compe]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.lsp.compe\frequire\0", "config", "nvim-compe")
+time([[Config for nvim-compe]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: vim-vsnip
 time([[Config for vim-vsnip]], true)
 try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21sv.configs.vsnip\frequire\0", "config", "vim-vsnip")
 time([[Config for vim-vsnip]], false)
+-- Config for: nvim-lspinstall
+time([[Config for nvim-lspinstall]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30sv.configs.lsp.lspinstall\frequire\0", "config", "nvim-lspinstall")
+time([[Config for nvim-lspinstall]], false)
+-- Config for: nerdtree
+time([[Config for nerdtree]], true)
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24sv.configs.nerdtree\frequire\0", "config", "nerdtree")
+time([[Config for nerdtree]], false)
+-- Config for: zen-mode.nvim
+time([[Config for zen-mode.nvim]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")
+time([[Config for zen-mode.nvim]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24sv.configs.gitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31sv.configs.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: galaxyline.nvim
+time([[Config for galaxyline.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26sv.configs.galaxyline\frequire\0", "config", "galaxyline.nvim")
+time([[Config for galaxyline.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
