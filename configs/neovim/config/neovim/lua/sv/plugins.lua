@@ -69,6 +69,7 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         requires = {
+            {'JoosepAlviste/nvim-ts-context-commentstring'},
             {'p00f/nvim-ts-rainbow'},
             {'nvim-treesitter/nvim-treesitter-textobjects'}
         },
@@ -103,7 +104,19 @@ return require('packer').startup(function(use)
     }
     use 'tpope/vim-surround' -- Change/Add surrounding character
     use 'tpope/vim-sleuth' -- Automatically detect indentation
-    use 'b3nj5m1n/kommentary' -- Toggle comments
+    use {
+        'b3nj5m1n/kommentary', -- Toggle comments
+        config = function()
+            require('kommentary.config').configure_language('typescriptreact', {
+                single_line_comment_string = 'auto',
+                multi_line_comment_strings = 'auto',
+                hook_function = function()
+                    require('ts_context_commentstring.internal').update_commentstring()
+                end
+            })
+        end
+
+    }
     -- use 'AndrewRadev/tagalong.vim'
     use {
         "folke/zen-mode.nvim",

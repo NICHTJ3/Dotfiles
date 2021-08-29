@@ -2,6 +2,11 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = {
         -- "typescript", "javascript", "tsx", "graphql", "svelte", "css", "scss"
     },
+    context_commentstring = {
+        enable = true,
+        -- This plugin provided an autocommand option
+        enable_autocmd = true
+    },
     rainbow = {
         enable = true,
         extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
