@@ -46,7 +46,7 @@ vim.lsp.protocol.CompletionItemKind = {
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
-    require "lsp_signature".on_attach()
+    require"lsp_signature".on_attach()
 
     local opts = {noremap = true, silent = true}
     local function buf_set_keymap(...)
@@ -64,7 +64,9 @@ function lsp_config.common_on_attach(client, bufnr)
     buf_set_keymap('n', '<leader>agt',
                    '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
-    buf_set_keymap('n', '<leader>ar', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', '<leader>ar',
+                   "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
+
     buf_set_keymap('n', '<leader>aa', '<cmd>Lspsaga code_action<CR>', opts)
     buf_set_keymap('n', '<leader>ai', '<cmd>Lspsaga show_line_diagnostics<CR>',
                    opts)
