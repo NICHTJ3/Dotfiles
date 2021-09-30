@@ -9,7 +9,6 @@ end
 local prettierd = function()
     if not Check_command_installed('prettierd') then return end
     local filename = vim.api.nvim_buf_get_name(0):gsub("([%[%]])", "%\\%1") -- escape only characters from set
-    -- TODO: This does not seam to read config files...
     return {exe = "prettierd", args = {filename}, stdin = true}
 end
 
@@ -30,23 +29,24 @@ local luaformat = function()
 end
 
 local formattable_file_types = {
-    typescriptreact = {prettierd},
     javascript = {prettierd},
     javascriptreact = {prettierd},
+    ['javascript.tsx'] = {prettierd},
     typescript = {prettierd},
-    svelte = {prettierd},
+    typescriptreact = {prettierd},
+    ['typescript.tsx'] = {prettierd},
     css = {prettierd},
-    jsonc = {prettierd},
-    json = {prettierd},
+    scss = {prettierd},
+    go = {gofmt},
     html = {prettierd},
+    json = {prettierd},
+    jsonc = {prettierd},
+    lua = {luaformat},
+    markdown = {prettierd},
     php = {prettierd},
     rust = {rustfmt},
-    go = {gofmt},
-    lua = {luaformat},
-    yaml = {prettierd},
-    markdown = {prettierd},
-    ['typescript.tsx'] = {prettierd},
-    ['javascript.tsx'] = {prettierd}
+    svelte = {prettierd},
+    yaml = {prettierd}
 }
 
 local M = {}
