@@ -111,3 +111,7 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^x' edit-command-line
 
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true

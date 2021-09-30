@@ -25,3 +25,4 @@
 
 - shell:
     - [touch ~/.z]
+    - [pnpm install-completion zsh]
