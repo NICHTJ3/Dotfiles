@@ -33,8 +33,11 @@ nnoremap <C-Up>   :resize +5<CR>
 nnoremap <Down> :cnext<CR>
 nnoremap <Up>   :cprev<CR>
 
-nnoremap <Left> gT
-nnoremap <Right> gt
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                         Bufferline.nvim navigation                           "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+nnoremap <Left> :BufferLineCyclePrev<CR>
+nnoremap <Right> :BufferLineCycleNext<CR>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                        Search duck duck go with gs                           "

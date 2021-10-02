@@ -137,32 +137,41 @@ return require('packer').startup(function(use)
 
     -- UI
     use {
+        'akinsho/bufferline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            require("bufferline").setup {
+                offsets = {
+                    {
+                        filetype = "nerdtree",
+                        text = "File Explorer",
+                        highlight = "Directory",
+                        text_align = "left"
+                    }
+                }
+            }
+        end
+    }
+
+    use {
         'glepnir/dashboard-nvim',
         config = function() require("sv.configs.dashboard") end
     }
     use {
-        'preservim/nerdtree',
-        requires = {
-            {
-                'tiagofumo/vim-nerdtree-syntax-highlight',
-                requires = {{'ryanoasis/vim-devicons'}}
-            }, {'PhilRunninger/nerdtree-visual-selection'},
-            {'Xuyuanp/nerdtree-git-plugin'}
-        },
-        config = function() require("sv.configs.nerdtree") end
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require 'sv.configs.nvimtree' end
     }
-
     use {
-        'glepnir/galaxyline.nvim',
+        'glepnir/galaxyline.nvim', -- Status line
         branch = 'main',
         config = function() require 'sv.configs.galaxyline' end,
         requires = {
             {'kyazdani42/nvim-web-devicons', opt = true},
-            {'nvim-lua/lsp-status.nvim'}
+            {'nvim-lua/lsp-status.nvim'} -- For git information
         }
     }
-
-    use 'folke/tokyonight.nvim'
+    use 'folke/tokyonight.nvim' -- Theme
     use {
         'miyakogi/seiya.vim', -- Transparency automagically
         config = function() require('sv.configs.seiya') end
