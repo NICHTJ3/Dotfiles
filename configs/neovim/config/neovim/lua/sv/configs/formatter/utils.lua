@@ -14,7 +14,7 @@ end
 
 local rustfmt = function()
     if not Check_command_installed('rustfmt') then return end
-    return {exe = "rustfmt", args = {"--force"}, stdin = true}
+    return {exe = "rustfmt", stdin = true}
 end
 
 local gofmt = function()
