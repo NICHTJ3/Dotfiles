@@ -2,7 +2,7 @@ set background=dark
 
 let g:tokyonight_style = "night"
 let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer", "coc-explorer","vim-plug","nerdtree" ]
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer", "coc-explorer","vim-plug","nerdtree" ,"NvimTree"]
 let g:tokyonight_hide_inactive_statusline = 1
 let g:tokyonight_dark_sidebar = 0
 let g:tokyonight_dark_float = 1
