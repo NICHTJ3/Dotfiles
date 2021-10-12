@@ -1,5 +1,3 @@
-local efmConfig = require('sv.configs.lsp.lspconfig.efm').config
-
 local function organize_imports()
     local params = {
         command = "_typescript.organizeImports",
@@ -13,7 +11,6 @@ local cssCapabilities = vim.lsp.protocol.make_client_capabilities()
 cssCapabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local configs = {
-    efm = efmConfig,
     lua = {
         settings = {
             Lua = {

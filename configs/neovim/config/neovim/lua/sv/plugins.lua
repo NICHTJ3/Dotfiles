@@ -23,10 +23,10 @@ return require('packer').startup(function(use)
                     require('sv.configs.lsp.compe')
                 end
             }, {
-                'kabouzeid/nvim-lspinstall',
+                'williamboman/nvim-lsp-installer',
                 requires = {{'neovim/nvim-lspconfig'}},
                 config = function()
-                    require('sv.configs.lsp.lspinstall')
+                    require('sv.configs.lsp.lspinstaller')
                 end
             }, {'glepnir/lspsaga.nvim'}, {
                 "mhartington/formatter.nvim", -- Helper for fast formatting
