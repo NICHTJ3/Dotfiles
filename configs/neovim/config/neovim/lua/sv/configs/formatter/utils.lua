@@ -7,9 +7,13 @@ local Check_command_installed = function(command)
 end
 
 local prettierd = function()
-    if not Check_command_installed('prettierd') then return end
+    if not Check_command_installed('prettier_d_slim') then return end
     local filename = vim.api.nvim_buf_get_name(0):gsub("([%[%]])", "%\\%1") -- escape only characters from set
-    return {exe = "prettierd", args = {filename}, stdin = true}
+    return {
+        exe = "prettier_d_slim",
+        args = {"--stdin-filepath " .. filename,"--stdin"},
+        stdin = true
+    }
 end
 
 local rustfmt = function()

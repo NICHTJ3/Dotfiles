@@ -1,4 +1,5 @@
 local eslintlsConfig = require("sv.configs.lsp.lspconfig.eslintls").config
+local common_on_attach = require('sv.configs.lsp').common_on_attach
 
 local function organize_imports()
     local params = {
@@ -23,7 +24,12 @@ local configs = {
                 organize_imports,
                 description = "Organize Imports"
             }
-        }
+        },
+        on_attach = function(client, bufnr)
+            client.resolved_capabilities.document_formatting = false
+            common_on_attach(client, bufnr)
+        end
+
     },
     cssls = {capabilities = cssCapabilities},
     eslintls = eslintlsConfig

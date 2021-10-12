@@ -87,13 +87,11 @@ function lsp_config.common_on_attach(client, bufnr)
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
         -- If we have a formatter defined by formattable_file_types then use
-        -- that only
-        if formattable_file_types[vim.bo.filetype] == nil then
-            buf_set_keymap("n", "<space>d",
-                           "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        end
-
+        -- that too
+        vim.cmd [[ command! MyFormat :lua vim.lsp.buf.formatting_seq_sync({}, 2000); vim.cmd "Format" <CR> ]]
+        buf_set_keymap("n", "<space>d", "<cmd>MyFormat<CR>", opts)
     end
+
     if client.resolved_capabilities.document_range_formatting then
         buf_set_keymap("v", "<space>d",
                        "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
