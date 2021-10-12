@@ -2,9 +2,10 @@ local configurations = require('sv.configs.lsp.lspconfig').configs
 local common_on_attach = require('sv.configs.lsp').common_on_attach
 
 local required_servers = {
-    "bashls", "cssls", "eslint", "graphql", "jsonls", "prismals",
-    "rust_analyzer", "stylelint_lsp", "sumneko_lua", "svelte", "tailwindcss",
-    "tsserver", "vimls", "vuels"
+    "omnisharp", "dockerls", "emmet_ls", "cssls", "graphql", "jsonls",
+    "prismals", "eslintls", "tsserver", "vimls", "tailwindcss", "html",
+    "stylelint_lsp", "svelte", "rust_analyzer", "sumneko_lua", "vuels", "bashls"
+
 }
 
 local lsp_installer_servers = require 'nvim-lsp-installer.servers'
