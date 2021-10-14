@@ -7,11 +7,12 @@ local Check_command_installed = function(command)
 end
 
 local prettierd = function()
-    if not Check_command_installed('prettier_d_slim') then return end
+    if not Check_command_installed('prettier') then return end
+
     local filename = vim.api.nvim_buf_get_name(0):gsub("([%[%]])", "%\\%1") -- escape only characters from set
     return {
-        exe = "prettier_d_slim",
-        args = {"--stdin-filepath " .. filename,"--stdin"},
+        exe = "prettier",
+        args = {"-w", "--stdin-filepath " .. filename},
         stdin = true
     }
 end

@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
 
     -- LSP
     use {
-        'neovim/nvim-lsp',
+        'neovim/nvim-lspconfig',
         requires = {
             {
                 'ray-x/lsp_signature.nvim',
@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
                         })
 
                 end
-            }, {'neovim/nvim-lspconfig', requires = {{'neovim/nvim-lsp'}}}, {
+            }, {
                 'hrsh7th/nvim-compe',
                 config = function()
                     require('sv.configs.lsp.compe')
