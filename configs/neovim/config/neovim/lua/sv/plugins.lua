@@ -77,8 +77,13 @@ return require('packer').startup(function(use)
     }
 
     -- Git
+    use {
+        'tveskag/nvim-blame-line', -- Git blame in virtual_text
+        config = function()
+            vim.g.blameLineVirtualTextHighlight = 'Question'
+        end
+    }
     use 'tpope/vim-fugitive'
-    use 'kdheepak/lazygit.nvim' -- Lazygit in vim?
     use 'rhysd/committia.vim' -- Better commits
     use {
         'lewis6991/gitsigns.nvim',
@@ -117,11 +122,12 @@ return require('packer').startup(function(use)
         end
 
     }
-    -- use 'AndrewRadev/tagalong.vim'
+    use 'AndrewRadev/tagalong.vim'
     use {
         "folke/zen-mode.nvim",
         config = function() require("zen-mode").setup {} end
     }
+    use {"folke/twilight.nvim"}
 
     -- TMUX
     use 'christoomey/vim-tmux-navigator' -- Unifies tmux and vim navigation
@@ -172,6 +178,7 @@ return require('packer').startup(function(use)
         }
     }
     use 'folke/tokyonight.nvim' -- Theme
+    use 'tiagovla/tokyodark.nvim' -- Theme
     use {
         'miyakogi/seiya.vim', -- Transparency automagically
         config = function() require('sv.configs.seiya') end
