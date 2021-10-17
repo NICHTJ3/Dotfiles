@@ -32,7 +32,7 @@ local configs = {
 
     },
     cssls = {capabilities = cssCapabilities},
-    eslintls = eslintlsConfig
+    eslint = eslintlsConfig
 }
 
 local M = {}

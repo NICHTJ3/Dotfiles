@@ -88,8 +88,14 @@ function lsp_config.common_on_attach(client, bufnr)
     if client.resolved_capabilities.document_formatting then
         -- If we have a formatter defined by formattable_file_types then use
         -- that too
-        vim.cmd [[ command! MyFormat :lua vim.lsp.buf.formatting_seq_sync({}, 2000); vim.cmd "Format" <CR> ]]
-        buf_set_keymap("n", "<space>d", "<cmd>MyFormat<CR>", opts)
+        if not formattable_file_types[vim.bo.filetype] == nil then
+            vim.cmd [[ command! MyFormat :lua vim.lsp.buf.formatting_seq_sync({}, 2000); vim.cmd "Format" <CR> ]]
+            buf_set_keymap("n", "<space>d", "<cmd>MyFormat<CR>", opts)
+        else
+            buf_set_keymap("n", "<space>d",
+                           "<cmd>lua vim.lsp.buf.formatting_seq_sync({}, 2000)<CR>",
+                           opts)
+        end
     end
 
     if client.resolved_capabilities.document_range_formatting then

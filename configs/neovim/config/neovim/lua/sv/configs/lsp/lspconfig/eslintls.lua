@@ -1,21 +1,23 @@
-local path = require "nvim-lsp-installer.path"
+local npm = require "nvim-lsp-installer.installers.npm"
 local server = require "nvim-lsp-installer.server"
-local root_dir = server.get_server_root_path('eslint')
-local common_on_attach = require('sv.configs.lsp').common_on_attach
+
+local lsp_root_dir = server.get_server_root_path('vscode-langservers-extracted')
+local executable = "vscode-eslint-language-server"
 
 local M = {}
 
-M.config = {
-    cmd = {
-        "yarn", 'node',
-        path.concat {root_dir, "server", "out", "eslintServer.js"}, "--stdio"
-    },
-    on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = true
-        common_on_attach(client, bufnr)
-    end,
-    settings = {format = {enable = true}}
+local function get_command()
+    local cmd = npm.executable(lsp_root_dir, executable)
 
-}
+    -- If we have yarn installed execute the lsp wrapped with yarn node to
+    -- avoid issues resolving modules in yarn 2 repo's
+    if vim.fn.executable('yarn') == 1 then
+        return {'yarn', 'node', cmd, '--stdio'}
+    end
+    return {cmd, '--stdio'}
+
+end
+
+M.config = {cmd = get_command()}
 
 return M
