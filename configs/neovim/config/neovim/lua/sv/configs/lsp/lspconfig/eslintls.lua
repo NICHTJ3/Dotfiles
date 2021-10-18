@@ -1,23 +1,17 @@
-local npm = require "nvim-lsp-installer.installers.npm"
-local server = require "nvim-lsp-installer.server"
-
-local lsp_root_dir = server.get_server_root_path('vscode-langservers-extracted')
-local executable = "vscode-eslint-language-server"
+local servers = require "nvim-lsp-installer.servers"
 
 local M = {}
 
-local function get_command()
-    local cmd = npm.executable(lsp_root_dir, executable)
+local _, server = servers.get_server('eslint')
+local default_opts = server._default_options
+local cmd = default_opts.cmd
 
-    -- If we have yarn installed execute the lsp wrapped with yarn node to
-    -- avoid issues resolving modules in yarn 2 repo's
-    if vim.fn.executable('yarn') == 1 then
-        return {'yarn', 'node', cmd, '--stdio'}
-    end
-    return {cmd, '--stdio'}
-
+-- If we have yarn installed execute the lsp wrapped with yarn node to
+-- avoid issues resolving modules in yarn 2 repo's
+if vim.fn.executable('yarn') == 1 then
+    cmd = vim.list_extend({"yarn", "node"}, default_opts.cmd)
 end
 
-M.config = {cmd = get_command()}
+M.config = {cmd = cmd}
 
 return M
