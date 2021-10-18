@@ -147,12 +147,24 @@ return require('packer').startup(function(use)
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
             require("bufferline").setup {
-                offsets = {
-                    {
-                        filetype = "nerdtree",
-                        text = "File Explorer",
-                        highlight = "Directory",
-                        text_align = "left"
+                options = {
+                    custom_filter = function(buf_number)
+                        -- filter out by buffer name
+                        if vim.fn.bufname(buf_number) ~= "Right" and
+                            vim.fn.bufname(buf_number) ~= "Left" and
+                            vim.fn.bufname(buf_number) ~= "Below" and
+                            vim.fn.bufname(buf_number) ~= "Above" then
+                            return true
+                        end
+                    end,
+                    always_show_bufferline = true,
+                    offsets = {
+                        {
+                            filetype = "NvimTree",
+                            text = "File Explorer",
+                            highlight = "Directory",
+                            text_align = "left"
+                        }
                     }
                 }
             }
