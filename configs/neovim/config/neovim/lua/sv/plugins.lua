@@ -20,13 +20,13 @@ return require('packer').startup(function(use)
             }, {
                 'hrsh7th/nvim-compe',
                 config = function()
-                    require('sv.configs.lsp.compe')
+                    require 'sv.configs.lsp.compe'
                 end
             }, {
                 'williamboman/nvim-lsp-installer',
                 requires = {{'neovim/nvim-lspconfig'}},
                 config = function()
-                    require('sv.configs.lsp.lspinstaller')
+                    require 'sv.configs.lsp.lspinstaller'
                 end
             }, {'glepnir/lspsaga.nvim'}, {
                 "mhartington/formatter.nvim", -- Helper for fast formatting
@@ -62,7 +62,6 @@ return require('packer').startup(function(use)
         requires = {{'rafamadriz/friendly-snippets'}},
         config = function() require('sv.configs.vsnip') end
     }
-    -- use 'sheerun/vim-polyglot' -- Note: I should remove this and enable tree sitter once jsx is fixed
     -- Treesitter
     use 'pantharshit00/vim-prisma'
     use {
@@ -173,7 +172,7 @@ return require('packer').startup(function(use)
 
     use {
         'glepnir/dashboard-nvim',
-        config = function() require("sv.configs.dashboard") end
+        config = function() require "sv.configs.dashboard" end
     }
     use {
         'kyazdani42/nvim-tree.lua',
@@ -193,6 +192,6 @@ return require('packer').startup(function(use)
     use 'tiagovla/tokyodark.nvim' -- Theme
     use {
         'miyakogi/seiya.vim', -- Transparency automagically
-        config = function() require('sv.configs.seiya') end
+        config = function() require 'sv.configs.seiya' end
     }
 end)
