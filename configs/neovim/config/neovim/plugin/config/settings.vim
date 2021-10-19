@@ -70,19 +70,14 @@ set nobackup
 set noswapfile
 set lazyredraw " Redraws screen only after user input only
 set updatetime=100
+" FIXME: Why is this not working
+hi SpellBad gui=undercurl cterm=undercurl 
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Line numbers                                 "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 set number " Relative and normal line numbering
 set relativenumber " Relative and normal line numbering
-
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"     Change error underline to a straight line if you're in a TMUX session    "
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-if len($TMUX)
-  hi SpellBad gui=underline
-endif
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                     Autocomplete options for command mode                    "

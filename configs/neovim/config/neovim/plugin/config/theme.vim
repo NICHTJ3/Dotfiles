@@ -4,16 +4,17 @@ let g:tokyonight_style = "night"
 let g:tokyonight_italic_functions = 1
 let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer", "coc-explorer","vim-plug","nerdtree" ,"NvimTree"]
 let g:tokyonight_hide_inactive_statusline = 1
-let g:tokyonight_dark_sidebar = 0
+let g:tokyonight_dark_sidebar = 1
 let g:tokyonight_dark_float = 1
 let g:tokyonight_italic_comments = 1
+let g:tokyonight_transparent = 1
 
-let g:tokyodark_transparent_background = 0
+let g:tokyodark_transparent_background = 1
 let g:tokyodark_enable_italic_comment = 1
 let g:tokyodark_enable_italic = 1
 let g:tokyodark_color_gamma = "1.0"
 
-silent! colorscheme tokyodark
+silent! colorscheme tokyonight
 
 " Black line numbers and signcolumn
 hi LineNr guibg=0
