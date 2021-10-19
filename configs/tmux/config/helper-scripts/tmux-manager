@@ -9,8 +9,8 @@ if [ -r "$SSH_AUTH_SOCK" -a ! -L "$SSH_AUTH_SOCK" ]; then
 fi
 
 function createTmuxFile(){
-echo Creating a .tmux file
-echo "\
+  echo Creating a .tmux file
+  echo "\
 #!/bin/bash
 set -e
 function attachOrSwitch(){
@@ -67,21 +67,31 @@ function validateAndRunTmuxFile(){
     cat .tmux
     read -p \
       'REPLY? Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
-    echo
-    if [[ $REPLY =~ ^[Tt]$ ]]; then
-      echo "$DIGEST" >> ~/.config/..tmux.digests
-      ./.tmux
+        echo
+        if [[ $REPLY =~ ^[Tt]$ ]]; then
+          echo "$DIGEST" >> ~/.config/..tmux.digests
+          ./.tmux
+        fi
+      else
+        ./.tmux
     fi
-  else
-    ./.tmux
-  fi
 }
 
 # Attach to existing session, or create one, based on current directory.
 function attachOrCreateSession(){
-  # TODO: Break out the creation of the session name to a function?
   SESSION_NAME=$(echo $(basename "$(pwd)") | sed -e s/\\./_/g)
-  env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux new -A -s "$SESSION_NAME"
+
+  # Create a session if it doesn't already exist
+  if ! tmux has-session -t=$SESSION_NAME 2> /dev/null; then
+    env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux new -s "$SESSION_NAME" -d
+  fi
+
+  # Attach to the session created above even if we're in tmux
+  if [[ $TMUX ]];then
+    tmux switch-client -t $1
+  else
+    tmux attach -t $1
+  fi
 }
 
 # Pass unknown args to tmux
@@ -93,13 +103,13 @@ function main() {
   TMUX_ARGS=""
   for i in "$@"
   do
-  case $i in
+    case $i in
       init|--init)
         init
         exit
-      ;;
+        ;;
       *) TMUX_ARGS+="$i " ;;
-  esac
+    esac
   done
 
   if [[ -n "$TMUX_ARGS" ]]; then
