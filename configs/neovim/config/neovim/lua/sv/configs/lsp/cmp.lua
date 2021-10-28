@@ -51,8 +51,11 @@ cmp.setup {
         })
     },
     sources = cmp.config.sources({
-        {name = 'nvim_lua'}, {name = 'zsh'}, {name = 'nvim_lsp'},
-        {name = 'path'}, {name = 'vsnip'}, -- For vsnip users.
+        {name = 'vsnip'}, -- For vsnip users.
+        {name = 'nvim_lsp'},
+        {name = 'nvim_lua'},
+        {name = 'path'},
+        {name = 'zsh'},
         {name = 'buffer'}
     }),
 
