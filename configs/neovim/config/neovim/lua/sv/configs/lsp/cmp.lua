@@ -6,6 +6,7 @@ local lspkind = require "lspkind"
 lspkind.init()
 
 cmp.setup {
+    preselect = cmp.PreselectMode.None,
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
@@ -15,14 +16,34 @@ cmp.setup {
         end
     },
     mapping = {
-        ['<C-n>'] = cmp.mapping.select_next_item(
-            {behavior = cmp.SelectBehavior.Insert}),
-        ['<C-p>'] = cmp.mapping.select_prev_item(
-            {behavior = cmp.SelectBehavior.Insert}),
-        ['<Down>'] = cmp.mapping.select_next_item(
-            {behavior = cmp.SelectBehavior.Select}),
-        ['<Up>'] = cmp.mapping.select_prev_item(
-            {behavior = cmp.SelectBehavior.Select}),
+        ["<C-n>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                cmp.complete()
+            end
+        end, {'i', 'c'}),
+        ["<C-p>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                cmp.complete()
+            end
+        end, {'i', 'c'}),
+        ['<Tab>'] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                cmp.complete()
+            end
+        end, {'i', 'c'}),
+        ['<S-Tab>'] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                cmp.complete()
+            end
+        end, {'i', 'c'}),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -46,6 +67,7 @@ cmp.setup {
                 nvim_lsp = "[LSP]",
                 luasnip = "[LuaSnip]",
                 nvim_lua = "[Lua]",
+                path = "[Path]",
                 latex_symbols = "[Latex]"
             })
         })

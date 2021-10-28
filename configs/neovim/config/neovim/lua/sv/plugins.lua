@@ -1,4 +1,3 @@
--- TODO: Make plugins opt where possible
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -37,7 +36,8 @@ return require('packer').startup(function(use)
         requires = {
             'neovim/nvim-lspconfig', 'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lua', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip',
-            'onsails/lspkind-nvim'
+            'onsails/lspkind-nvim', 'hrsh7th/cmp-cmdline'
+
         },
         config = function() require 'sv.configs.lsp.cmp' end
     }
