@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
         requires = {
             'neovim/nvim-lspconfig', 'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lua', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip',
-            'onsails/lspkind-nvim', 'hrsh7th/cmp-cmdline'
+            'hrsh7th/cmp-path', 'onsails/lspkind-nvim', 'hrsh7th/cmp-cmdline'
 
         },
         config = function() require 'sv.configs.lsp.cmp' end
@@ -144,6 +144,7 @@ return require('packer').startup(function(use)
     }
 
     -- UI
+    use 'tjdevries/colorbuddy.nvim'
     use {
         'akinsho/bufferline.nvim',
         requires = 'kyazdani42/nvim-web-devicons',

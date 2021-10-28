@@ -2,9 +2,6 @@ local cmp = require "cmp"
 
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
 
-local lspkind = require "lspkind"
-lspkind.init()
-
 cmp.setup {
     preselect = cmp.PreselectMode.None,
     snippet = {
@@ -54,23 +51,28 @@ cmp.setup {
         })
     },
     sources = cmp.config.sources({
-        {name = "gh_issues"}, {name = 'nvim_lua'}, {name = 'zsh'},
-        {name = 'nvim_lsp'}, {name = 'path'}, {name = 'vsnip'}, -- For vsnip users.
+        {name = 'nvim_lua'}, {name = 'zsh'}, {name = 'nvim_lsp'},
+        {name = 'path'}, {name = 'vsnip'}, -- For vsnip users.
         {name = 'buffer'}
     }),
+
     experimental = {nativeMenu = false, ghost_text = true},
-    format = require("lspkind").cmp_format(
-        {
-            with_text = true,
-            menu = ({
-                buffer = "[Buffer]",
-                nvim_lsp = "[LSP]",
-                luasnip = "[LuaSnip]",
-                nvim_lua = "[Lua]",
-                path = "[Path]",
-                latex_symbols = "[Latex]"
+    formatting = {
+        format = require("lspkind").cmp_format(
+            {
+                with_text = false,
+                menu = ({
+                    buffer = "[Buffer]",
+                    nvim_lsp = "[LSP]",
+                    luasnip = "[LuaSnip]",
+                    nvim_lua = "[Lua]",
+                    path = "[Path]",
+                    cmdline = "[Command]",
+                    latex_symbols = "[Latex]",
+                    vsnip = "[Snippet]"
+                })
             })
-        })
+    }
 }
 
 -- Use buffer source for `/`.
