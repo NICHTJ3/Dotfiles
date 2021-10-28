@@ -1,5 +1,10 @@
 local eslintlsConfig = require("sv.configs.lsp.lspconfig.eslintls").config
 local common_on_attach = require('sv.configs.lsp').common_on_attach
+local lspconfig = require('lspconfig')
+
+lspconfig.util.default_config.capabilities =
+    require('cmp_nvim_lsp').update_capabilities(
+        vim.lsp.protocol.make_client_capabilities())
 
 local function organize_imports()
     local params = {

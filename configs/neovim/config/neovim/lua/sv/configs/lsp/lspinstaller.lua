@@ -2,9 +2,9 @@ local configurations = require('sv.configs.lsp.lspconfig').configs
 local common_on_attach = require('sv.configs.lsp').common_on_attach
 
 local required_servers = {
-    "omnisharp", "dockerls", "emmet_ls", "cssls", "graphql", "jsonls",
-    "prismals", "eslint", "tsserver", "vimls", "tailwindcss", "html",
-    "svelte", "rust_analyzer", "sumneko_lua", "vuels", "bashls"
+    "omnisharp", "dockerls", "emmet_ls", "cssls", "graphql", "jsonls", "eslint",
+    "tsserver", "vimls", "tailwindcss", "html", "svelte", "rust_analyzer",
+    "sumneko_lua", "vuels", "bashls"
 
 }
 

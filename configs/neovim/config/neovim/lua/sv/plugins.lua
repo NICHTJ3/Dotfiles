@@ -18,11 +18,6 @@ return require('packer').startup(function(use)
 
                 end
             }, {
-                'hrsh7th/nvim-compe',
-                config = function()
-                    require 'sv.configs.lsp.compe'
-                end
-            }, {
                 'williamboman/nvim-lsp-installer',
                 requires = {{'neovim/nvim-lspconfig'}},
                 config = function()
@@ -37,15 +32,23 @@ return require('packer').startup(function(use)
         }
     }
 
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'neovim/nvim-lspconfig', 'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-nvim-lua', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip',
+            'onsails/lspkind-nvim'
+        },
+        config = function() require 'sv.configs.lsp.cmp' end
+    }
+
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {
-            {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'},
-            {'cwebster2/github-coauthors.nvim'},
-            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-
-        },
+        {'nvim-lua/popup.nvim'},
+        {'nvim-lua/plenary.nvim'},
+        {'cwebster2/github-coauthors.nvim'},
+        {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
         config = function() require 'sv.configs.telescope' end
     }
 
