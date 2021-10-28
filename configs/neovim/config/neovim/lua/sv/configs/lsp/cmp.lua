@@ -3,7 +3,7 @@ local cmp = require "cmp"
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
 
 cmp.setup {
-    preselect = cmp.PreselectMode.None,
+    completion = {completeopt = 'menu,menuone,noinsert'},
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
@@ -52,11 +52,8 @@ cmp.setup {
     },
     sources = cmp.config.sources({
         {name = 'vsnip'}, -- For vsnip users.
-        {name = 'nvim_lsp'},
-        {name = 'nvim_lua'},
-        {name = 'path'},
-        {name = 'zsh'},
-        {name = 'buffer'}
+        {name = 'nvim_lsp'}, {name = 'nvim_lua'}, {name = 'path'},
+        {name = 'zsh'}, {name = 'buffer'}
     }),
 
     experimental = {nativeMenu = false, ghost_text = true},
