@@ -46,18 +46,12 @@ local set_colorcolumn = function()
     end
 end
 
-autocommands.vim_enter = function()
-    set_colorcolumn()
-    return
-end
+autocommands.vim_enter = function() set_colorcolumn() end
 
-autocommands.win_enter = function()
-    set_colorcolumn()
-    return
-end
+autocommands.win_enter = function() set_colorcolumn() end
 
-autocommands.insert_enter = function() return end
+autocommands.insert_enter = function() end
 
-autocommands.insert_leave = function() return end
+autocommands.insert_leave = function() end
 
 return autocommands

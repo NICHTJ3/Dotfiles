@@ -1,7 +1,8 @@
 local gl = require 'galaxyline'
-local utils = require 'sv.configs.utils'
 local condition = require 'galaxyline.condition'
 local diagnostic = require 'galaxyline.provider_diagnostic'
+
+local utils = require 'valhalla.utils'
 
 local gls = gl.section
 
@@ -177,7 +178,7 @@ gls.left[3] = {
             if len > 2 and not len == 3 and not tbl[0] == '~' then
                 -- return '…/' .. table.concat(tbl, '/', len - 1) .. '/' -- shorten filepath to last 2 folders
                 -- alternative: only last folder in filepath
-                return '…/'..tbl[len]..'/'
+                return '…/' .. tbl[len] .. '/'
                 -- alternative: only 1 containing folder using vim builtin function
                 -- return '…/' .. vim.fn.fnamemodify(vim.fn.expand '%', ':p:h:t') .. '/'
             else
