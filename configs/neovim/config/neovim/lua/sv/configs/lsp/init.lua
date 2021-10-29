@@ -32,17 +32,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         underline = true
     })
 
--- symbols for autocomplete
-vim.lsp.protocol.CompletionItemKind = {
-    "   (Text) ", "   (Method)", "   (Function)",
-    "   (Constructor)", " ﴲ  (Field)", "[] (Variable)", "   (Class)",
-    " ﰮ  (Interface)", "   (Module)", " 襁 (Property)", "   (Unit)",
-    "   (Value)", " 練 (Enum)", "   (Keyword)", "   (Snippet)",
-    "   (Color)", "   (File)", "   (Reference)", "   (Folder)",
-    "   (EnumMember)", " ﲀ  (Constant)", " ﳤ  (Struct)", "   (Event)",
-    "   (Operator)", "   (TypeParameter)"
-}
-
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
@@ -53,10 +42,8 @@ function lsp_config.common_on_attach(client, bufnr)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
-    buf_set_keymap('n', '<leader>agD', '<Cmd>lua vim.lsp.buf.declaration()<CR>',
-                   opts)
-    buf_set_keymap('n', '<leader>agd', '<Cmd>lua vim.lsp.buf.definition()<CR>',
-                   opts)
+    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', '<leader>agr', '<cmd>lua vim.lsp.buf.references()<CR>',
                    opts)
     buf_set_keymap('n', '<leader>agi',
@@ -64,7 +51,7 @@ function lsp_config.common_on_attach(client, bufnr)
     buf_set_keymap('n', '<leader>agt',
                    '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
-    buf_set_keymap('n', '<leader>ar',
+    buf_set_keymap('n', '<leader>arn',
                    "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
 
     buf_set_keymap('n', '<leader>aa', '<cmd>Lspsaga code_action<CR>', opts)
