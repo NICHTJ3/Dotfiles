@@ -22,7 +22,15 @@ return require('packer').startup(function(use)
                 config = function()
                     require 'sv.configs.lsp.lspinstaller'
                 end
-            }, {'glepnir/lspsaga.nvim'}, {
+            }, {
+                -- glepnir/lspsaga.nvim
+                -- till glepnir goes back online
+                'tami5/lspsaga.nvim',
+                branch = 'nvim51',
+                config = function()
+                    require('lspsaga').init_lsp_saga()
+                end
+            }, {
                 "mhartington/formatter.nvim", -- Helper for fast formatting
                 config = function()
                     require 'sv.configs.formatter'

@@ -28,18 +28,10 @@ cmp.setup {
             end
         end, {'i', 'c'}),
         ['<Tab>'] = cmp.mapping(function()
-            if cmp.visible() then
-                cmp.select_next_item()
-            else
-                cmp.complete()
-            end
+            if cmp.visible() then cmp.select_next_item() end
         end, {'i', 'c'}),
         ['<S-Tab>'] = cmp.mapping(function()
-            if cmp.visible() then
-                cmp.select_prev_item()
-            else
-                cmp.complete()
-            end
+            if cmp.visible() then cmp.select_prev_item() end
         end, {'i', 'c'}),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
