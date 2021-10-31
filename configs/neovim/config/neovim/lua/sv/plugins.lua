@@ -28,7 +28,12 @@ return require('packer').startup(function(use)
                 'tami5/lspsaga.nvim',
                 branch = 'nvim51',
                 config = function()
-                    require('lspsaga').init_lsp_saga()
+                    require('lspsaga').init_lsp_saga {
+                        -- NOTE: This is dissabled because it doesn't check if
+                        -- the lsp server supports it before enabling the
+                        -- autocommand
+                        code_action_prompt = {enable = false}
+                    }
                 end
             }, {
                 "mhartington/formatter.nvim", -- Helper for fast formatting
