@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local sumneko_lua = require('sv.configs.lsp.lspconfig.sumneko_lua')
 
 local eslintls = require("sv.configs.lsp.lspconfig.eslintls")
 local tsserver = require('sv.configs.lsp.lspconfig.tsserver')
@@ -11,7 +12,8 @@ lspconfig.util.default_config.capabilities =
 local configs = {
     tsserver = tsserver.config,
     cssls = cssls.config,
-    eslint = eslintls.config
+    eslint = eslintls.config,
+    sumneko_lua = sumneko_lua.config
 }
 
 local M = {}
