@@ -12,7 +12,7 @@ fi
 # Conditional PATH additions
 for path_candidate in \
     $HOME/go/bin\
-    $HOME/.deno\
+    $HOME/.deno/bin\
     $HOME/.fnm\
     $HOME/.gem/bin\
     $HOME/.local/bin\
