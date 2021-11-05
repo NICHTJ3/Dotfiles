@@ -23,8 +23,8 @@ local rustfmt = function()
 end
 
 local gofmt = function()
-    if not Check_command_installed('gofumpt') then return end
-    return {exe = "gofumpt", stdin = true}
+    if not Check_command_installed('gofmt') then return end
+    return {exe = "gofmt", stdin = true}
 end
 
 -- TODO: Better options for this

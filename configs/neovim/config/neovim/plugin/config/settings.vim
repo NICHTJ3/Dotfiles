@@ -82,9 +82,9 @@ set relativenumber " Relative and normal line numbering
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                     Autocomplete options for command mode                    "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-set wildoptions=pum
+" set wildoptions=pum " this is disabled because of cmp
 set pumheight=15
-set pumblend=10
+set pumblend=0 " Completion transparency
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Fold settings                                "
