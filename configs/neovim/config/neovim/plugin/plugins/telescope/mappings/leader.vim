@@ -1,5 +1,5 @@
 " Open Telescope Files
-nnoremap <leader>lf :lua require('telescope.builtin').find_files()<CR>
+nnoremap <leader>lf :lua require('sv.configs.telescope').ListFiles()<CR>
 
 " Open Telescope buffers
 nnoremap <leader>lb :lua require('telescope.builtin').buffers()<CR>
@@ -15,3 +15,6 @@ nnoremap <leader>sw :lua require('telescope.builtin').grep_string()<CR>
 
 " Github-coauthors
 nnoremap <leader>gca <cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>
+
+" Projects
+ nnoremap <leader>lp :lua require'sv.configs.telescope'.ListProjects()<CR>

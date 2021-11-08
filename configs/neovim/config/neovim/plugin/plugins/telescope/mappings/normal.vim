@@ -1,1 +1,1 @@
-nnoremap <c-f> :lua require('telescope.builtin').find_files()<CR>
+nnoremap <c-p> :lua require('sv.configs.telescope').ListFiles()<CR>

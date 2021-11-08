@@ -16,7 +16,7 @@ require('telescope').setup {
                 ["<C-x>"] = false,
                 ["<C-q>"] = actions.send_to_qflist,
                 ["<C-t>"] = trouble.open_with_trouble
-            },
+            }
         }
     },
     extensions = {
@@ -31,12 +31,15 @@ require('telescope').load_extension('fzf')
 
 local M = {}
 
-M.EditVimFiles = function()
-    require("telescope.builtin").find_files(
-        {
-            prompt_title = "< Neovim Config >",
-            cwd = "~/Dotfiles/configs/neovim/config/neovim"
-        })
+M.ListNeovim = function()
+    require("telescope.builtin").find_files {
+        prompt_title = "< Neovim Config >",
+        cwd = "~/Dotfiles/configs/neovim/config/neovim"
+    }
 end
+
+M.ListFiles = function() require("telescope.builtin").find_files() end
+
+M.ListProjects = function() require("telescope").extensions.project.project{} end
 
 return M
