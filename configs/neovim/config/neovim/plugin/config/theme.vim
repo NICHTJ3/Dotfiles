@@ -14,7 +14,7 @@ let g:tokyodark_enable_italic_comment = 1
 let g:tokyodark_enable_italic = 1
 let g:tokyodark_color_gamma = "1.0"
 
-silent! colorscheme tokyodark
+silent! colorscheme tokyonight
 
 " Black line numbers and signcolumn
 hi LineNr guibg=0

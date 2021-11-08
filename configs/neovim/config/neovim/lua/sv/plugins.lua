@@ -2,6 +2,9 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- Plugins installed out of curiosity
+    use 'chipsenkbeil/distant.nvim'
+
     -- LSP
     use {
         'neovim/nvim-lspconfig',
@@ -59,11 +62,31 @@ return require('packer').startup(function(use)
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
-        {'nvim-lua/popup.nvim'},
-        {'nvim-lua/plenary.nvim'},
-        {'cwebster2/github-coauthors.nvim'},
+        {
+            'cwebster2/github-coauthors.nvim',
+            config = function()
+                require('telescope').load_extension('githubcoauthors')
+            end
+        },
+        {
+            "nvim-telescope/telescope-project.nvim",
+            config = function()
+                require'telescope'.load_extension('project')
+                vim.api.nvim_set_keymap('n', '<C-p>',
+                                        ":lua require'telescope'.extensions.project.project{}<CR>",
+                                        {noremap = true, silent = true})
+            end
+        },
+        {
+            "nvim-telescope/telescope-frecency.nvim",
+            requires = {"tami5/sqlite.lua"},
+            config = function()
+                require"telescope".load_extension("frecency")
+            end
+        },
         {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
-        config = function() require 'sv.configs.telescope' end
+        config = function() require 'sv.configs.telescope' end,
+        requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"}
     }
 
     -- Trouble

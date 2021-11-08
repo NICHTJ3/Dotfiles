@@ -12,11 +12,11 @@ require('telescope').setup {
 
         mappings = {
             i = {
-                ["<esc>"] = actions.close,
+                ["<Esc>"] = actions.close,
                 ["<C-x>"] = false,
                 ["<C-q>"] = actions.send_to_qflist,
                 ["<C-t>"] = trouble.open_with_trouble
-            }
+            },
         }
     },
     extensions = {
@@ -28,7 +28,6 @@ require('telescope').setup {
 }
 
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('githubcoauthors')
 
 local M = {}
 
