@@ -29,7 +29,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         virtual_text = {prefix = "", spacing = 0},
         -- virtual_text = false,
         signs = true,
-        underline = true
+        underline = false
     })
 
 local lsp_config = {}
@@ -55,15 +55,14 @@ function lsp_config.common_on_attach(client, bufnr)
     buf_set_keymap('n', '<leader>agt',
                    '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', opts)
-    buf_set_keymap('n', '<leader>arn',
-                   "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
+    buf_set_keymap('n', '<leader>ar', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
     buf_set_keymap('n', '<leader>aa', '<cmd>Lspsaga code_action<CR>', opts)
     buf_set_keymap('n', '<leader>ai', '<cmd>Lspsaga show_line_diagnostics<CR>',
                    opts)
     buf_set_keymap('n', '<leader>or', '<cmd>OrganizeImports<CR>', opts)
     buf_set_keymap('n', '<leader>q',
-                   '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+                   '<cmd>Trouble lsp_document_diagnostics<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
     -- scroll down hover doc or scroll in definition preview

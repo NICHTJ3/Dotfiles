@@ -1,7 +1,7 @@
 {
     "reactFunctionComponent": {
         "prefix": "rfc",
-        "body": "import React from 'react'\n\ninterface Props{\n\t$1\n}\n\nexport function ${TM_FILENAME_BASE} (props : Props) => {\n\treturn (\n\t\t<div>\n\t\t\t$2\n\t\t</div>\n\t)\n}",
+        "body": "import React from 'react'\n\ninterface Props{\n\t$1\n}\n\nexport function ${TM_FILENAME_BASE} (props : Props) {\n\treturn (\n\t\t<div>\n\t\t\t$2\n\t\t</div>\n\t)\n}",
         "description": "Creates a React functional component without PropTypes"
     }
 }

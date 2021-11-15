@@ -6,7 +6,7 @@ vim.g.maplocalleader = ' '
 require("sv.plugins")
 require("personal.mappings.leader")
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("error")
 
 P = function(v)
     print(vim.inspect(v))

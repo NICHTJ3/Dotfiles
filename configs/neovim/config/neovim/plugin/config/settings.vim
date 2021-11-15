@@ -71,7 +71,10 @@ set noswapfile
 set lazyredraw " Redraws screen only after user input only
 set updatetime=100
 " FIXME: Why is this not working
-hi SpellBad gui=undercurl cterm=undercurl 
+hi SpellBad gui=undercurl cterm=undercurl guifg=red ctermfg=red
+hi SpellRare gui=undercurl cterm=undercurl guifg=blue ctermfg=blue
+hi SpellCap gui=undercurl cterm=undercurl guisp=yellow ctermfg=yellow
+hi SpellLocal gui=undercurl cterm=undercurl guisp=green ctermfg=green
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Line numbers                                 "
