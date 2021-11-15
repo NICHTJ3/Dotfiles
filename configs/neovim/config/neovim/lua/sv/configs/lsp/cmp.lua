@@ -71,7 +71,7 @@ cmp.setup {
             name = 'look',
             keyword_length = 2,
             opts = {convert_case = true, loud = true}
-        }, {name = 'buffer'}
+        }, {name = 'buffer'}, {name = "cmp_git"}
 
     }),
 
@@ -93,6 +93,8 @@ cmp.setup {
             })
     }
 }
+
+require("cmp_git").setup()
 
 -- Use buffer source for `/`.
 require'cmp'.setup.cmdline('/', {

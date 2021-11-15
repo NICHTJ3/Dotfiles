@@ -53,8 +53,8 @@ return require('packer').startup(function(use)
             'neovim/nvim-lspconfig', 'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lua', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip',
             'hrsh7th/cmp-path', 'onsails/lspkind-nvim', 'hrsh7th/cmp-cmdline',
-            'octaltree/cmp-look', 'hrsh7th/cmp-nvim-lsp-document-symbol'
-
+            'octaltree/cmp-look', 'hrsh7th/cmp-nvim-lsp-document-symbol',
+            {"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
         },
         config = function() require 'sv.configs.lsp.cmp' end
     }
