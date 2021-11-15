@@ -8,6 +8,8 @@
 [url "git@github.com:NICHTJ3"] # Use ssh even for HTTPS remotes
 	insteadOf = https://github.com/nichtj3
 	insteadOf = https://github.com/NICHTJ3
+[url "git@github.dev.xero.com:"] # Use ssh even for HTTPS remotes
+	insteadOf = https://github.dev.xero.com/
 [pager]
 	diff = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
 	log = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
