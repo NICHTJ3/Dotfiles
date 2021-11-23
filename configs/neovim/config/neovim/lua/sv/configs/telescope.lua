@@ -28,6 +28,9 @@ require('telescope').setup {
 }
 
 require('telescope').load_extension('fzf')
+require"telescope".load_extension("frecency")
+require'telescope'.load_extension('project')
+require('telescope').load_extension('githubcoauthors')
 
 local M = {}
 
@@ -40,6 +43,7 @@ end
 
 M.ListFiles = function() require("telescope.builtin").find_files() end
 
-M.ListProjects = function() require("telescope").extensions.project.project{} end
+M.ListProjects =
+    function() require("telescope").extensions.project.project {} end
 
 return M

@@ -7,90 +7,64 @@ return require('packer').startup(function(use)
 
     -- LSP
     use {
-        'neovim/nvim-lspconfig',
-        requires = {
-            {
-                'ray-x/lsp_signature.nvim',
-                config = function()
-                    require'lsp_signature'.on_attach(
-                        {
-                            fix_pos = true, -- set to true, the floating window will not auto-close until finish all parameters
-                            use_lspsaga = true -- set to true if you want to use lspsaga popup
-                        })
-
-                end
-            }, {
-                'williamboman/nvim-lsp-installer',
-                requires = {{'neovim/nvim-lspconfig'}},
-                config = function()
-                    require 'sv.configs.lsp.lspinstaller'
-                end
-            }, {
-                -- glepnir/lspsaga.nvim
-                -- till glepnir goes back online
-                'tami5/lspsaga.nvim',
-                branch = 'nvim51',
-                config = function()
-                    require('lspsaga').init_lsp_saga {
-                        -- NOTE: This is dissabled because it doesn't check if
-                        -- the lsp server supports it before enabling the
-                        -- autocommand
-                        code_action_prompt = {enable = false}
-                    }
-                end
-            }, {
-                "mhartington/formatter.nvim", -- Helper for fast formatting
-                config = function()
-                    require 'sv.configs.formatter'
-                end
-            }
+        'neovim/nvim-lspconfig', {
+            'williamboman/nvim-lsp-installer',
+            requires = {{'neovim/nvim-lspconfig'}},
+            config = function() require 'sv.configs.lsp.lspinstaller' end
+        }, {
+            -- glepnir/lspsaga.nvim
+            -- till glepnir goes back online
+            'tami5/lspsaga.nvim',
+            branch = 'nvim51',
+            config = function()
+                require('lspsaga').init_lsp_saga {
+                    -- NOTE: This is dissabled because it doesn't check if
+                    -- the lsp server supports it before enabling the
+                    -- autocommand (It was the vscode like lightbulb)
+                    code_action_prompt = {enable = false}
+                }
+            end
+        }, {
+            'mhartington/formatter.nvim', -- Helper for fast formatting
+            config = function() require 'sv.configs.formatter' end
         }
     }
 
     use {
         'hrsh7th/nvim-cmp',
-        requires = {
-            'neovim/nvim-lspconfig', 'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-nvim-lua', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip',
-            'hrsh7th/cmp-path', 'onsails/lspkind-nvim', 'hrsh7th/cmp-cmdline',
-            'octaltree/cmp-look', 'hrsh7th/cmp-nvim-lsp-document-symbol',
-            {"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
-        },
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-vsnip',
+        'hrsh7th/cmp-path',
+        'onsails/lspkind-nvim',
+        'hrsh7th/cmp-cmdline',
+        'octaltree/cmp-look',
+        'hrsh7th/cmp-nvim-lsp-document-symbol',
+        {'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim'},
+        requires = {'neovim/nvim-lspconfig'},
         config = function() require 'sv.configs.lsp.cmp' end
     }
 
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
-        {
-            'cwebster2/github-coauthors.nvim',
-            config = function()
-                require('telescope').load_extension('githubcoauthors')
-            end
-        },
-        {
-            "nvim-telescope/telescope-project.nvim",
-            config = function()
-                require'telescope'.load_extension('project')
-            end
-        },
-        {
-            "nvim-telescope/telescope-frecency.nvim",
-            requires = {"tami5/sqlite.lua"},
-            config = function()
-                require"telescope".load_extension("frecency")
-            end
-        },
+        'cwebster2/github-coauthors.nvim',
+        'nvim-telescope/telescope-project.nvim',
         {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+        {
+            'nvim-telescope/telescope-frecency.nvim',
+            requires = {'tami5/sqlite.lua'}
+        },
         config = function() require 'sv.configs.telescope' end,
-        requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"}
+        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}
     }
 
     -- Trouble
     use {
-        "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = function() require("trouble").setup {} end
+        'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require('trouble').setup {} end
     }
 
     -- Snippets and Syntax
@@ -139,10 +113,6 @@ return require('packer').startup(function(use)
         'unblevable/quick-scope',
         config = function() require('sv.configs.quickscope') end
     }
-    use {
-        'marcushwz/nvim-workbench',
-        config = function() require('sv.configs.nvim-workbench') end
-    }
     use 'tpope/vim-surround' -- Change/Add surrounding character
     use 'tpope/vim-sleuth' -- Automatically detect indentation
     use {
@@ -159,11 +129,6 @@ return require('packer').startup(function(use)
 
     }
     use 'AndrewRadev/tagalong.vim'
-    use {
-        "folke/zen-mode.nvim",
-        config = function() require("zen-mode").setup {} end
-    }
-    use {"folke/twilight.nvim"}
 
     -- TMUX
     use 'christoomey/vim-tmux-navigator' -- Unifies tmux and vim navigation
@@ -178,29 +143,28 @@ return require('packer').startup(function(use)
     }
 
     -- UI
-    use 'tjdevries/colorbuddy.nvim'
     use {
         'akinsho/bufferline.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
-            require("bufferline").setup {
+            require('bufferline').setup {
                 options = {
                     custom_filter = function(buf_number)
                         -- filter out by buffer name
-                        if vim.fn.bufname(buf_number) ~= "Right" and
-                            vim.fn.bufname(buf_number) ~= "Left" and
-                            vim.fn.bufname(buf_number) ~= "Below" and
-                            vim.fn.bufname(buf_number) ~= "Above" then
+                        if vim.fn.bufname(buf_number) ~= 'Right' and
+                            vim.fn.bufname(buf_number) ~= 'Left' and
+                            vim.fn.bufname(buf_number) ~= 'Below' and
+                            vim.fn.bufname(buf_number) ~= 'Above' then
                             return true
                         end
                     end,
                     always_show_bufferline = true,
                     offsets = {
                         {
-                            filetype = "NvimTree",
-                            text = "File Explorer",
-                            highlight = "Directory",
-                            text_align = "left"
+                            filetype = 'NvimTree',
+                            text = 'File Explorer',
+                            highlight = 'Directory',
+                            text_align = 'left'
                         }
                     }
                 }
@@ -210,7 +174,7 @@ return require('packer').startup(function(use)
 
     use {
         'glepnir/dashboard-nvim',
-        config = function() require "sv.configs.dashboard" end
+        config = function() require 'sv.configs.dashboard' end
     }
     use {
         'kyazdani42/nvim-tree.lua',
@@ -227,9 +191,14 @@ return require('packer').startup(function(use)
         }
     }
     use 'folke/tokyonight.nvim' -- Theme
-    use 'tiagovla/tokyodark.nvim' -- Theme
     use {
         'miyakogi/seiya.vim', -- Transparency automagically
-        config = function() require 'sv.configs.seiya' end
+        config = function()
+            -- Automatically enable seiya
+            vim.g.seiya_auto_enable = 1
+            -- Doesn't work by default in neovim with true-color terminal the below fixes
+            -- this
+            vim.g.seiya_target_groups = {'guibg'}
+        end
     }
 end)

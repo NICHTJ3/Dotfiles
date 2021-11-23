@@ -35,9 +35,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
-
-    require"lsp_signature".on_attach()
-
     -- NOTE: I'm not sure if I need this to be honest
     require('lsp-status').on_attach(client)
 

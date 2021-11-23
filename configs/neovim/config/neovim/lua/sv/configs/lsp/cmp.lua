@@ -70,7 +70,7 @@ cmp.setup {
         {
             name = 'look',
             keyword_length = 2,
-            opts = {convert_case = true, loud = true}
+            options = {convert_case = true, loud = true}
         }, {name = 'buffer'}, {name = "cmp_git"}
 
     }),
