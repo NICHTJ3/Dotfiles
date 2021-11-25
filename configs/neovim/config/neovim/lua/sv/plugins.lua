@@ -1,3 +1,4 @@
+print("Things are happening")
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -30,34 +31,34 @@ return require('packer').startup(function(use)
         }
     }
 
+    -- TODO: Maybe make some of these opt and include them in the cmp config
     use {
         'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-nvim-lua',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-vsnip',
-        'hrsh7th/cmp-path',
-        'onsails/lspkind-nvim',
-        'hrsh7th/cmp-cmdline',
-        'octaltree/cmp-look',
-        'hrsh7th/cmp-nvim-lsp-document-symbol',
-        {'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim'},
-        requires = {'neovim/nvim-lspconfig'},
+        requires = {
+            'neovim/nvim-lspconfig', 'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-nvim-lua', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip',
+            'hrsh7th/cmp-path', 'onsails/lspkind-nvim', 'hrsh7th/cmp-cmdline',
+            'octaltree/cmp-look', 'hrsh7th/cmp-nvim-lsp-document-symbol',
+            {'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim'}
+        },
         config = function() require 'sv.configs.lsp.cmp' end
     }
 
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
-        'cwebster2/github-coauthors.nvim',
-        'nvim-telescope/telescope-project.nvim',
-        {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
-        {
-            'nvim-telescope/telescope-frecency.nvim',
-            requires = {'tami5/sqlite.lua'}
-        },
         config = function() require 'sv.configs.telescope' end,
-        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}
+        requires = {
+            'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim',
+            'cwebster2/github-coauthors.nvim',
+            'nvim-telescope/telescope-project.nvim',
+            'nvim-telescope/telescope-ui-select.nvim',
+            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+            {
+                'nvim-telescope/telescope-frecency.nvim',
+                requires = {'tami5/sqlite.lua'}
+            }
+        }
     }
 
     -- Trouble

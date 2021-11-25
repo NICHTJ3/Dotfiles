@@ -1,7 +1,9 @@
 local actions = require('telescope.actions')
 local trouble = require('trouble.providers.telescope')
+local builtin = require('telescope.builtin')
+local telescope = require('telescope')
 
-require('telescope').setup {
+telescope.setup {
     defaults = {
         prompt_prefix = ' >',
         color_devicons = true,
@@ -23,27 +25,32 @@ require('telescope').setup {
         fzf = {
             override_generic_sorter = true, -- override the generic sorter
             override_file_sorter = true -- override the file sorter
+        },
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+                -- even more opts
+            }
         }
     }
 }
 
-require('telescope').load_extension('fzf')
-require"telescope".load_extension("frecency")
-require'telescope'.load_extension('project')
-require('telescope').load_extension('githubcoauthors')
+telescope.load_extension('fzf')
+telescope.load_extension("frecency")
+telescope.load_extension('project')
+telescope.load_extension('githubcoauthors')
+telescope.load_extension("ui-select")
 
 local M = {}
 
 M.ListNeovim = function()
-    require("telescope.builtin").find_files {
+    builtin.find_files {
         prompt_title = "< Neovim Config >",
         cwd = "~/Dotfiles/configs/neovim/config/neovim"
     }
 end
 
-M.ListFiles = function() require("telescope.builtin").find_files() end
+M.ListFiles = function() builtin.find_files() end
 
-M.ListProjects =
-    function() require("telescope").extensions.project.project {} end
+M.ListProjects = function() telescope.extensions.project.project {} end
 
 return M

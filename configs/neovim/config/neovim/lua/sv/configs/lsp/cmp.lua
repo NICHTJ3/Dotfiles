@@ -5,7 +5,6 @@ vim.opt.completeopt = {"menu", "menuone", "noselect"}
 local keymap = require("cmp.utils.keymap")
 
 cmp.setup {
-    -- completion = {completeopt = 'menu,menuone,noinsert'},
     completion = {autocomplete = {cmp.TriggerEvent.TextChanged}},
     snippet = {
         expand = function(args)
@@ -66,11 +65,10 @@ cmp.setup {
     },
     sources = cmp.config.sources({
         {name = 'nvim_lsp'}, {name = 'nvim_lua'}, {name = 'vsnip'}, -- For vsnip users.
-        {name = 'path'}, {name = 'zsh'},
-        {
+        {name = 'path'}, {name = 'zsh'}, {
             name = 'look',
             keyword_length = 2,
-            options = {convert_case = true, loud = true}
+            option = {convert_case = true, loud = true}
         }, {name = 'buffer'}, {name = "cmp_git"}
 
     }),
