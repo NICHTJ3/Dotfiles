@@ -40,7 +40,7 @@ require'nvim-tree'.setup {
         -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
         ignore_list = {}
     },
-    view = {side = 'left'}
+    view = {side = 'right'}
 }
 
 vim.cmd("nnoremap <C-n> :NvimTreeToggle<CR>")
