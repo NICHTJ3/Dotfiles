@@ -29,3 +29,15 @@ lsp_installer.on_server_ready(function(server)
     server:setup(server_config)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
+
+local M = {}
+
+function M.UpdateInstalledServers()
+    local servers = lsp_installer_servers.get_installed_server_names()
+    for _, server in pairs(servers) do vim.cmd("LspInstall " .. server) end
+end
+
+vim.cmd("command! LspUpdateServers " ..
+                "lua require('sv.configs.lsp.lspinstaller').UpdateInstalledServers()<CR>")
+
+return M
