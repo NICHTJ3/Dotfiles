@@ -187,6 +187,7 @@ return require('packer').startup(function(use)
         }
     }
     use 'folke/tokyonight.nvim' -- Theme
+    use "rebelot/kanagawa.nvim" -- Theme
     use {
         'miyakogi/seiya.vim', -- Transparency automagically
         config = function()
