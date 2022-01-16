@@ -1,0 +1,9 @@
+{
+    "configs":[
+        "neovim",
+        "zsh",
+        "karabiner",
+        "tmux",
+        "git"
+    ]
+}

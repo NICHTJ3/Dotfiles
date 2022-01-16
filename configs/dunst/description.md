@@ -1,2 +1,0 @@
-Dotfiles relating dunst
-    - dunstrc

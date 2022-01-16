@@ -1,0 +1,8 @@
+{
+    "links": [
+        {
+            "from": "./dunst/config/dunstrc",
+            "to": "~/.config/dunst/dunstrc"
+        }
+    ]
+}

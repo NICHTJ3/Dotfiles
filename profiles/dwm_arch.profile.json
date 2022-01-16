@@ -1,0 +1,22 @@
+{
+    "configs": [
+        "tmux",
+        "zsh",
+        "neovim",
+        "linux_remaps",
+        "xorg",
+        "dunst",
+        "git",
+        "misc_scripts",
+        "picom",
+        "ranger",
+        "power-manager",
+        "sxhkd",
+        "vscode_vimrc",
+        "zathura",
+        "bat",
+        "dwm",
+        "rofi",
+        "gh"
+    ]
+}

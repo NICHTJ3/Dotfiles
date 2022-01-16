@@ -1,0 +1,11 @@
+{
+    "configs": [
+        "tmux",
+        "zsh",
+        "neovim",
+        "git",
+        "ranger",
+        "bat",
+        "gh"
+    ]
+}

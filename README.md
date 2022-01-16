@@ -1,18 +1,13 @@
 ## Dotfiles
-My dotfiles for arch and wsl using dotbot to link all dotfiles
+My dotfiles for arch and wsl using dotsy to link all dotfiles
 
 ### Running
 ```sh
 git clone https://github.com/NICHTJ3/Dotfiles
 cd Dotfiles
 
-./dots -h
-Usage:
-    dots -h                      Display this help message.
-    dots install -p <profile>       Install <profile>.
-    dots install <config>       Install <config>.
-    dots uninstall -p <profile>       Uninstall <profile>.
-    dots uninstall <config>       Uninstall <config>.
+cargo install dotsy
+dotsy -h
 ```
 
 ### More help can be found in the wiki
