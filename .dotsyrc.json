@@ -1,5 +1,5 @@
 {
-    "dotfiles": "./",
+    "dotfiles": "~/Dotfiles/",
     "profiles_dir": "profiles",
     "configs_dir": "configs",
     "package_add_command": "brew add {}",
