@@ -1,0 +1,20 @@
+{
+    "links": [
+        {
+            "from": "xorg/config/xinitrc",
+            "to": "~/.xinitrc"
+        },
+        {
+            "from": "xorg/config/xprofile",
+            "to": "   ~/.xprofile"
+        },
+        {
+            "from": "xorg/config/xprofile",
+            "to": "   ~/.config/xprofile"
+        },
+        {
+            "from": "xorg/config/Xresources",
+            "to": "   ~/.Xresources"
+        }
+    ]
+}

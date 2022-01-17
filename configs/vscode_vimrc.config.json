@@ -1,0 +1,8 @@
+{
+    "links": [
+        {
+            "from": "./vscode_vimrc/config/vimrc",
+            "to": "~/.config/code/vimrc"
+        }
+    ]
+}

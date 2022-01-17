@@ -1,0 +1,9 @@
+{
+    "links": [
+        {
+            "from": "gh/config/*",
+            "to": " ~/.config/gh/",
+            "glob": true
+        }
+    ]
+}

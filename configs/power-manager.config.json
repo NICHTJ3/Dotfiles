@@ -1,0 +1,9 @@
+{
+    "links": [
+        {
+            "from": "power-manager/config/wm-scripts/*",
+            "to": "~/bin/wm-scripts/",
+            "glob": true
+        }
+    ]
+}

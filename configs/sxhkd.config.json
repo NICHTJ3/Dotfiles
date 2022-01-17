@@ -1,0 +1,8 @@
+{
+    "links": [
+        {
+            "from": "sxhkd/config/sxhkdrc",
+            "to": "~/.config/sxhkd/sxhkdrc"
+        }
+    ]
+}

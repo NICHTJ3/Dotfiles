@@ -1,0 +1,8 @@
+{
+    "links": [
+        {
+            "to": "~/.config/picom.conf",
+            "from": "picom/config/picom.conf"
+        }
+    ]
+}

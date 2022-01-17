@@ -1,0 +1,9 @@
+{
+    "links": [
+        {
+            "from": "rofi/config/rofi/*",
+            "to": "~/.config/rofi/",
+            "glob": true
+        }
+    ]
+}

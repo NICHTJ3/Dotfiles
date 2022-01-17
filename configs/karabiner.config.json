@@ -1,0 +1,8 @@
+{
+    "links": [
+        {
+            "from": " karabiner/config/karabiner.json",
+            "to": "~/.config/karabiner/karabiner.json"
+        }
+    ]
+}
