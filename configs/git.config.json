@@ -1,0 +1,13 @@
+{
+    "links": [
+        {
+            "to": "~/bin/helper-scripts",
+            "from": "git/config/helper-scripts/*",
+            "glob": true
+        },
+        {
+            "to": "~/.gitconfig",
+            "from": "git/config/gitconfig"
+        }
+    ]
+}

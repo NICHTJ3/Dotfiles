@@ -1,0 +1,9 @@
+{
+    "links": [
+        {
+            "from": "./misc_scripts/config/wm-scripts/*",
+            "to": "~/bin/misc-scripts/",
+            "glob": true
+        }
+    ]
+}

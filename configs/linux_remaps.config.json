@@ -1,0 +1,9 @@
+{
+    "links": [
+        {
+            "from": "linux_remaps/config/os-scripts/*",
+            "to": "~/bin/os-scripts",
+            "glob": true
+        }
+    ]
+}

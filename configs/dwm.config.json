@@ -1,0 +1,17 @@
+{
+    "links": [
+        {
+            "from": "dwm/config/dwm/*",
+            "to": "~/.local/share/dwm/",
+            "glob": true
+        },
+        {
+            "from": "dwm/config/wm-scripts/*",
+            "to": "~/bin/wm-scripts",
+            "glob": true
+        }
+    ],
+    "directories": [
+        "~/bin/helper-scripts/"
+    ]
+}
