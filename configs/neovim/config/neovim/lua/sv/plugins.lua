@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
             -- glepnir/lspsaga.nvim
             -- till glepnir goes back online
             'tami5/lspsaga.nvim',
-            branch = 'nvim51',
+            branch = 'nvim6.0',
             config = function()
                 require('lspsaga').init_lsp_saga {
                     -- NOTE: This is dissabled because it doesn't check if
@@ -108,7 +108,6 @@ return require('packer').startup(function(use)
     use 'pgdouyon/vim-evanesco' -- Clears search highlighting on move
 
     -- Must have plugins
-    use {'tjdevries/astronauta.nvim'} -- Use until [https://github.com/neovim/neovim/pull/13823] is merged
     use {
         'unblevable/quick-scope',
         config = function() require('sv.configs.quickscope') end
@@ -178,7 +177,9 @@ return require('packer').startup(function(use)
         config = function() require 'sv.configs.nvimtree' end
     }
     use {
-        'glepnir/galaxyline.nvim', -- Status line
+        -- 'glepnir/galaxyline.nvim', -- Status line
+        -- till glepnir goes back online
+        'NTBBloodbath/galaxyline.nvim',
         branch = 'main',
         config = function() require 'sv.configs.galaxyline' end,
         requires = {
