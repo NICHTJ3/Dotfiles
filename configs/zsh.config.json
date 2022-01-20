@@ -26,8 +26,5 @@
     "shell": [
         "touch ~/.z",
         "pnpm install-completion zsh"
-    ],
-    "revert_shell": [
-        "rm ~/.z"
     ]
 }
