@@ -59,6 +59,10 @@ return require('packer').startup(function(use)
             }
         }
     }
+    use {
+        'windwp/nvim-spectre',
+        config = function() require('sv.configs.spectre') end
+    }
 
     -- Trouble
     use {
