@@ -6,35 +6,29 @@
 --                              Window movement                                "
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 -- Add windows
-vim.api.nvim_set_keymap('n', '<leader>waj', ':split Below<CR>', {})
-vim.api.nvim_set_keymap('n', '<leader>wal', ':vsplit Right<CR>', {})
-vim.api.nvim_set_keymap('n', '<leader>wah', ':aboveleft vsp Left<CR>', {})
-vim.api.nvim_set_keymap('n', '<leader>wak', ':above split Above<CR>', {})
+vim.keymap.set('n', '<leader>waj', ':split Below<CR>')
+vim.keymap.set('n', '<leader>wal', ':vsplit Right<CR>')
+vim.keymap.set('n', '<leader>wah', ':aboveleft vsp Left<CR>')
+vim.keymap.set('n', '<leader>wak', ':above split Above<CR>')
 
 -- Close windows
-vim.api.nvim_set_keymap('n', '<leader>wco', ':only<CR>', {})
-vim.api.nvim_set_keymap('n', '<leader>wca', ':qa<CR>', {})
-vim.api.nvim_set_keymap('n', '<leader>wcc', ':q<CR>', {})
+vim.keymap.set('n', '<leader>wco', ':only<CR>')
+vim.keymap.set('n', '<leader>wca', ':qa<CR>')
+vim.keymap.set('n', '<leader>wcc', ':q<CR>')
 
 -- Move windows
-vim.api.nvim_set_keymap('n', '<leader>wmj', '<c-w>J', {})
-vim.api.nvim_set_keymap('n', '<leader>wml', '<c-w>L', {})
-vim.api.nvim_set_keymap('n', '<leader>wmh', '<c-w>H', {})
-vim.api.nvim_set_keymap('n', '<leader>wmk', '<c-w>K', {})
+vim.keymap.set('n', '<leader>wmj', '<c-w>J')
+vim.keymap.set('n', '<leader>wml', '<c-w>L')
+vim.keymap.set('n', '<leader>wmh', '<c-w>H')
+vim.keymap.set('n', '<leader>wmk', '<c-w>K')
 
 -- Navigate windows
-vim.api.nvim_set_keymap('n', '<leader>wnj', '<c-w>j', {})
-vim.api.nvim_set_keymap('n', '<leader>wnl', '<c-w>l', {})
-vim.api.nvim_set_keymap('n', '<leader>wnh', '<c-w>h', {})
-vim.api.nvim_set_keymap('n', '<leader>wnk', '<c-w>k', {})
-
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
---                              markdown preview                               "
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
--- TODO: Do this
--- nnoremap <silent> <leader>ac :<C-u>call CheckboxToggle()<CR>X<CR>
+vim.keymap.set('n', '<leader>wnj', '<c-w>j')
+vim.keymap.set('n', '<leader>wnl', '<c-w>l')
+vim.keymap.set('n', '<leader>wnh', '<c-w>h')
+vim.keymap.set('n', '<leader>wnk', '<c-w>k')
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 --                               Toggle spell                                  "
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-vim.api.nvim_set_keymap('n', '<leader>as', ':set spell!<CR>', {})
+vim.keymap.set('n', '<leader>as', ':set spell!<CR>')
