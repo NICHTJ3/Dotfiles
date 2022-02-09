@@ -5,6 +5,7 @@ vim.g.maplocalleader = ' '
 
 require("sv.plugins")
 require("personal.mappings.leader")
+require("personal.mappings.normal")
 
 vim.lsp.set_log_level("error")
 
