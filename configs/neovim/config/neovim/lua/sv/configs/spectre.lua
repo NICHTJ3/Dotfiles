@@ -1,1 +1,1 @@
-vim.keymap.set('n', '<leader>S', require('spectre').open)
+vim.keymap.set('n', '<leader>as', require('spectre').open)

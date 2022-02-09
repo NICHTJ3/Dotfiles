@@ -21,3 +21,10 @@ vim.keymap.set('n', '<Up>', '<cmd>cprev<CR>', {noremap = true})
 
 -- Search duck duck go with gs
 vim.keymap.set('n', 'gs', ':set opfunc=DuckIt<CR>g@', {silent = true})
+
+-- Bufferline.nvim navigation
+vim.keymap.set('n', '<Left>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true})
+vim.keymap.set('n', '<Right>', '<cmd>BufferLineCycleNext<CR>', {noremap = true})
+
+-- Toggle Last buffer with <backspace>
+vim.keymap.set('n', '<backspace>', '<c-^>', {noremap = true})
