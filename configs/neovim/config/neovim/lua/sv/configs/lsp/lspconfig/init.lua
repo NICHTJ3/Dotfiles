@@ -13,7 +13,10 @@ local configs = {
     tsserver = tsserver.config,
     cssls = cssls.config,
     eslint = eslintls.config,
-    sumneko_lua = sumneko_lua.config
+    sumneko_lua = sumneko_lua.config,
+    jsonls = {
+        settings = {json = {schemas = require('schemastore').json.schemas()}}
+    }
 }
 
 local M = {}

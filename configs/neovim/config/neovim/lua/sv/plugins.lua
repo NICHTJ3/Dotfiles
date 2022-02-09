@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
     use {
         'neovim/nvim-lspconfig', {
             'williamboman/nvim-lsp-installer',
-            requires = {{'neovim/nvim-lspconfig'}},
+            requires = {{'neovim/nvim-lspconfig'}, {"b0o/schemastore.nvim"}},
             config = function() require 'sv.configs.lsp.lspinstaller' end
         }, {
             -- glepnir/lspsaga.nvim
