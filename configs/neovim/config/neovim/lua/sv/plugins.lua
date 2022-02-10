@@ -68,7 +68,11 @@ return require('packer').startup(function(use)
     use {
         'folke/trouble.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('trouble').setup {} end
+        config = function()
+            require('trouble').setup {}
+            vim.keymap.set('n', '<leader>tt', '<cmd>TroubleToggle<CR>',
+                           {silent = true, noremap = true})
+        end
     }
 
     -- Snippets and Syntax
@@ -95,6 +99,8 @@ return require('packer').startup(function(use)
         'tveskag/nvim-blame-line', -- Git blame in virtual_text
         config = function()
             vim.g.blameLineVirtualTextHighlight = 'Question'
+            vim.keymap.set('n', '<leader>tgb', '<cmd>ToggleBlameLine<CR>',
+                           {noremap = true})
         end
     }
     use 'tpope/vim-fugitive'
