@@ -1,9 +1,8 @@
-local eslint_config = require("lspconfig.server_configurations.eslint")
-local lspconfig = require('lspconfig')
-
 local M = {}
 
 local function get_cmd()
+    local lspconfig = require('lspconfig')
+    local eslint_config = require("lspconfig.server_configurations.eslint")
 
     local cmd = eslint_config.default_config.cmd
 
@@ -16,18 +15,21 @@ local function get_cmd()
                       buffer_location)
 
     local lsp_cmd = eslint_config.default_config.cmd[1]
-    local cmd_args = {table.unpack(eslint_config.default_config.cmd, 2)}
+    local cmd_args = {unpack(eslint_config.default_config.cmd, 2)}
 
     if pnpm and vim.fn.executable('pnpm') == 1 then
-        cmd = {"pnpm", "exec", cmd, "--", table.unpack(cmd_args)}
+        cmd = {"pnpm", "exec", cmd, "--", unpack(cmd_args)}
     end
     --
     if yarn2 and vim.fn.executable('yarn') == 1 then
-        cmd = {"yarn", "exec", lsp_cmd, "--", table.unpack(cmd_args)}
+        cmd = {"yarn", "exec", lsp_cmd, "--", unpack(cmd_args)}
     end
     return cmd
 end
 
-M.config = {on_new_config = function(config) config.cmd = get_cmd() end}
+M.config = {
+    cmd = get_cmd(),
+    on_new_config = function(config) config.cmd = get_cmd() end
+}
 
 return M
