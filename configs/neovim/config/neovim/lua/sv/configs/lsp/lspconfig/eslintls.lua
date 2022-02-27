@@ -15,14 +15,15 @@ local function get_cmd()
     local yarn2 = lspconfig.util.root_pattern('.pnp.cjs', '.pnp.js')(
                       buffer_location)
 
+    local lsp_cmd = eslint_config.default_config.cmd[1]
+    local cmd_args = {table.unpack(eslint_config.default_config.cmd, 2)}
+
     if pnpm and vim.fn.executable('pnpm') == 1 then
-        cmd =
-            vim.list_extend({"pnpm", "exec"}, eslint_config.default_config.cmd)
+        cmd = {"pnpm", "exec", cmd, "--", table.unpack(cmd_args)}
     end
     --
     if yarn2 and vim.fn.executable('yarn') == 1 then
-        cmd =
-            vim.list_extend({"yarn", "exec"}, eslint_config.default_config.cmd)
+        cmd = {"yarn", "exec", lsp_cmd, "--", table.unpack(cmd_args)}
     end
     return cmd
 end
