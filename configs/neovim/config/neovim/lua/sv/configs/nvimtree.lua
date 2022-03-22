@@ -1,9 +1,10 @@
 vim.g.nvim_tree_group_empty = 1 -- 0 by default, compact folders that only contain a single folder into one node in the file tree
-vim.g.nvim_tree_disable_window_picker = 0 -- 0 by default, will disable the window picker.
 vim.g.nvim_tree_indent_markers = 1 -- 0 by default, this option shows indent markers when folders are open
 
 -- following options are the default
 require'nvim-tree'.setup {
+    -- will disable the window picker.
+    disable_window_picker = 0,
     -- disables netrw completely
     disable_netrw = true,
     -- hijack netrw window on startup

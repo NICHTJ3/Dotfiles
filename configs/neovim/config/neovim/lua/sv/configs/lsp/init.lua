@@ -93,16 +93,6 @@ function lsp_config.common_on_attach(client, bufnr)
     if client.resolved_capabilities.document_highlight then
         -- NOTE: Currently this below section does nothing. I probably want to
         -- update it to highlight vars like vscode
-        vim.api.nvim_exec([[
-            hi LspReferenceText cterm=bold ctermbg=red guibg=0
-            hi LspReferenceRead cterm=bold ctermbg=red guibg=0
-            hi LspReferenceWrite cterm=bold ctermbg=red guibg=0
-            augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-        ]], false)
     end
 end
 
