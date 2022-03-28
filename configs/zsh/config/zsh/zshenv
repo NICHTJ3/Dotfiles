@@ -9,8 +9,11 @@ if [ -d"$HOME/bin" ];then
     PATH="$PATH:$(du -L "$HOME/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 fi
 
+export DOTNET_ROOT=$HOME/.dotnet
+
 # Conditional PATH additions
 for path_candidate in \
+    $DOTNET_ROOT\
     $HOME/go/bin\
     $HOME/.deno/bin\
     $HOME/.fnm\
