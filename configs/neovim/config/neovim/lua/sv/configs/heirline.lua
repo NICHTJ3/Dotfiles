@@ -159,7 +159,8 @@ local FilePath = {
 
 local FileFlags = {
     {
-        provider = function() if vim.bo.modified then return "[+]" end end,
+        provider = function() if vim.bo.modified then return "" end end,
+
         hl = {fg = colors.green}
     }, {
         provider = function()
@@ -181,12 +182,6 @@ local FileName = {
     provider = function()
         local file = vim.fn.expand '%:t'
         if vim.fn.empty(file) == 1 then return '' end
-        if string.len(file_readonly()) ~= 0 then
-            return file .. file_readonly()
-        end
-        if vim.bo.modifiable then
-            if vim.bo.modified then return file .. '  ' end
-        end
         return file .. ' '
     end
 }
@@ -283,23 +278,34 @@ local Diagnostics = {
         })
     end,
 
-    {provider = "!(", hl = {fg = colors.gray, style = "bold"}},
     {
         provider = function(self)
-            return self.errors > 0 and (self.error_icon .. self.errors .. " ")
+            if self.errors == 0 then return "" end
+            local result = (self.error_icon .. self.errors)
+            if self.warnings > 0 or self.hints > 0 or self.info > 0 then
+                result = result .. " "
+            end
+            return result
         end,
         hl = {fg = colors.diag.error}
     },
     {
         provider = function(self)
-            return self.warnings > 0 and
-                       (self.warn_icon .. self.warnings .. " ")
+            if self.warnings == 0 then return "" end
+            local result = (self.warn_icon .. self.warnings)
+            if self.hints > 0 or self.info > 0 then
+                result = result .. " "
+            end
+            return result
         end,
         hl = {fg = colors.diag.warn}
     },
     {
         provider = function(self)
-            return self.info > 0 and (self.info_icon .. self.info .. " ")
+            if self.info == 0 then return "" end
+            local result = (self.info_icon .. self.info)
+            if self.hints > 0 then result = result .. " " end
+            return result
         end,
         hl = {fg = colors.diag.info}
     },
@@ -308,8 +314,7 @@ local Diagnostics = {
             return self.hints > 0 and (self.hint_icon .. self.hints)
         end,
         hl = {fg = colors.diag.hint}
-    },
-    {provider = ")", hl = {fg = colors.gray, style = "bold"}}
+    }
 }
 
 local GitBranch = {
@@ -415,8 +420,8 @@ ViMode = utils.surround({"", ""}, colors.bright_bg, {ViMode})
 local Align = {provider = "%="}
 
 local DefaultStatusline = {
-    ViMode, Space, Spell, FileNameBlock, {provider = "%<"}, Space, GitBranch,
-    Git, Space, Diagnostics, Align, Align, LSPActive, Space, Space, Space,
+    ViMode, Space, Spell, FileNameBlock, {provider = "%<"}, Align, Align,
+    GitBranch, Git, Space, LSPActive, Space, Diagnostics, Space, Space, Space,
     Ruler, Space, ScrollBar
 }
 
