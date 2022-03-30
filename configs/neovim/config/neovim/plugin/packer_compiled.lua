@@ -69,8 +69,14 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Comment.nvim"] = {
+    config = { "\27LJ\2\nß\3\0\1\a\0\22\00066\1\0\0009\1\1\0019\1\2\1\a\1\3\0X\0010€6\1\4\0'\3\5\0B\1\2\0029\2\6\0009\3\6\0019\3\a\3\5\2\3\0X\2\2€'\2\b\0X\3\1€'\2\t\0+\3\0\0009\4\6\0009\5\6\0019\5\n\5\5\4\5\0X\4\a€6\4\4\0'\6\v\0B\4\2\0029\4\f\4B\4\1\2\18\3\4\0X\4\16€9\4\r\0009\5\r\0019\5\14\5\4\4\5\0X\4\5€9\4\r\0009\5\r\0019\5\15\5\5\4\5\0X\4\6€6\4\4\0'\6\v\0B\4\2\0029\4\16\4B\4\1\2\18\3\4\0006\4\4\0'\6\17\0B\4\2\0029\4\18\0045\6\19\0=\2\20\6=\3\21\6D\4\2\0K\0\1\0\rlocation\bkey\1\0\0\28calculate_commentstring&ts_context_commentstring.internal\30get_visual_start_location\6V\6v\fcmotion\24get_cursor_location#ts_context_commentstring.utils\nblock\16__multiline\14__default\tline\nctype\18Comment.utils\frequire\20typescriptreact\rfiletype\abo\bvimN\1\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\1K\0\1\0\rpre_hook\1\0\0\0\nsetup\fComment\frequire\0" },
+    loaded = true,
+    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
+  },
   ["bufferline.nvim"] = {
-    config = { "\27LJ\2\n©\1\0\1\4\0\a\0\0316\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\3\0X\1\23€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\4\0X\1\16€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\5\0X\1\t€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\6\0X\1\2€+\1\2\0L\1\2\0K\0\1\0\nAbove\nBelow\tLeft\nRight\fbufname\afn\bvimå\1\1\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0003\4\3\0=\4\5\0034\4\3\0005\5\6\0>\5\1\4=\4\a\3=\3\t\2B\0\2\1K\0\1\0\foptions\1\0\0\foffsets\1\0\4\ttext\18File Explorer\14highlight\14Directory\15text_align\tleft\rfiletype\rNvimTree\18custom_filter\1\0\1\27always_show_bufferline\2\0\nsetup\15bufferline\frequire\0" },
+    config = { "\27LJ\2\n©\1\0\1\4\0\a\0\0316\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\3\0X\1\23€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\4\0X\1\16€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\5\0X\1\t€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\6\0X\1\2€+\1\2\0L\1\2\0K\0\1\0\nAbove\nBelow\tLeft\nRight\fbufname\afn\bvimå\1\1\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0003\4\3\0=\4\5\0034\4\3\0005\5\6\0>\5\1\4=\4\a\3=\3\t\2B\0\2\1K\0\1\0\foptions\1\0\0\foffsets\1\0\4\rfiletype\rNvimTree\ttext\18File Explorer\14highlight\14Directory\15text_align\tleft\18custom_filter\1\0\1\27always_show_bufferline\2\0\nsetup\15bufferline\frequire\0" },
     loaded = true,
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
@@ -167,12 +173,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
     url = "https://github.com/rebelot/kanagawa.nvim"
-  },
-  kommentary = {
-    config = { "\27LJ\2\n^\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\25update_commentstring&ts_context_commentstring.internal\frequire¾\1\1\0\5\0\a\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0003\4\5\0=\4\6\3B\0\3\1K\0\1\0\18hook_function\0\1\0\2\31multi_line_comment_strings\tauto\31single_line_comment_string\tauto\20typescriptreact\23configure_language\22kommentary.config\frequire\0" },
-    loaded = true,
-    path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/kommentary",
-    url = "https://github.com/b3nj5m1n/kommentary"
   },
   ["lsp-status.nvim"] = {
     loaded = true,
@@ -331,7 +331,7 @@ _G.packer_plugins = {
     url = "https://github.com/folke/tokyonight.nvim"
   },
   ["trouble.nvim"] = {
-    config = { "\27LJ\2\n \1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\fnoremap\2\vsilent\2\27<cmd>TroubleToggle<CR>\15<leader>tt\6n\bset\vkeymap\bvim\nsetup\ftrouble\frequire\0" },
+    config = { "\27LJ\2\n \1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\fnoremap\2\27<cmd>TroubleToggle<CR>\15<leader>tt\6n\bset\vkeymap\bvim\nsetup\ftrouble\frequire\0" },
     loaded = true,
     path = "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
@@ -400,22 +400,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: formatter.nvim
-time([[Config for formatter.nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.formatter\frequire\0", "config", "formatter.nvim")
-time([[Config for formatter.nvim]], false)
--- Config for: vim-vsnip
-time([[Config for vim-vsnip]], true)
-try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21sv.configs.vsnip\frequire\0", "config", "vim-vsnip")
-time([[Config for vim-vsnip]], false)
--- Config for: markdown-preview.nvim
-time([[Config for markdown-preview.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0 sv.configs.markdown-preview\frequire\0", "config", "markdown-preview.nvim")
-time([[Config for markdown-preview.nvim]], false)
 -- Config for: nvim-blame-line
 time([[Config for nvim-blame-line]], true)
 try_loadstring("\27LJ\2\n¦\1\0\0\6\0\n\0\r6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\1\fnoremap\2\29<cmd>ToggleBlameLine<CR>\16<leader>tgb\6n\bset\vkeymap\rQuestion\"blameLineVirtualTextHighlight\6g\bvim\0", "config", "nvim-blame-line")
 time([[Config for nvim-blame-line]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\nß\3\0\1\a\0\22\00066\1\0\0009\1\1\0019\1\2\1\a\1\3\0X\0010€6\1\4\0'\3\5\0B\1\2\0029\2\6\0009\3\6\0019\3\a\3\5\2\3\0X\2\2€'\2\b\0X\3\1€'\2\t\0+\3\0\0009\4\6\0009\5\6\0019\5\n\5\5\4\5\0X\4\a€6\4\4\0'\6\v\0B\4\2\0029\4\f\4B\4\1\2\18\3\4\0X\4\16€9\4\r\0009\5\r\0019\5\14\5\4\4\5\0X\4\5€9\4\r\0009\5\r\0019\5\15\5\5\4\5\0X\4\6€6\4\4\0'\6\v\0B\4\2\0029\4\16\4B\4\1\2\18\3\4\0006\4\4\0'\6\17\0B\4\2\0029\4\18\0045\6\19\0=\2\20\6=\3\21\6D\4\2\0K\0\1\0\rlocation\bkey\1\0\0\28calculate_commentstring&ts_context_commentstring.internal\30get_visual_start_location\6V\6v\fcmotion\24get_cursor_location#ts_context_commentstring.utils\nblock\16__multiline\14__default\tline\nctype\18Comment.utils\frequire\20typescriptreact\rfiletype\abo\bvimN\1\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\1K\0\1\0\rpre_hook\1\0\0\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23sv.configs.lsp.cmp\frequire\0", "config", "nvim-cmp")
@@ -428,30 +420,50 @@ time([[Config for gitsigns.nvim]], false)
 time([[Config for nvim-lsp-installer]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0 sv.configs.lsp.lspinstaller\frequire\0", "config", "nvim-lsp-installer")
 time([[Config for nvim-lsp-installer]], false)
--- Config for: kommentary
-time([[Config for kommentary]], true)
-try_loadstring("\27LJ\2\n^\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\25update_commentstring&ts_context_commentstring.internal\frequire¾\1\1\0\5\0\a\0\n6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0003\4\5\0=\4\6\3B\0\3\1K\0\1\0\18hook_function\0\1\0\2\31multi_line_comment_strings\tauto\31single_line_comment_string\tauto\20typescriptreact\23configure_language\22kommentary.config\frequire\0", "config", "kommentary")
-time([[Config for kommentary]], false)
--- Config for: nvim-spectre
-time([[Config for nvim-spectre]], true)
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23sv.configs.spectre\frequire\0", "config", "nvim-spectre")
-time([[Config for nvim-spectre]], false)
--- Config for: galaxyline.nvim
-time([[Config for galaxyline.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26sv.configs.galaxyline\frequire\0", "config", "galaxyline.nvim")
-time([[Config for galaxyline.nvim]], false)
 -- Config for: quick-scope
 time([[Config for quick-scope]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26sv.configs.quickscope\frequire\0", "config", "quick-scope")
 time([[Config for quick-scope]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-try_loadstring("\27LJ\2\n©\1\0\1\4\0\a\0\0316\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\3\0X\1\23€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\4\0X\1\16€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\5\0X\1\t€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\6\0X\1\2€+\1\2\0L\1\2\0K\0\1\0\nAbove\nBelow\tLeft\nRight\fbufname\afn\bvimå\1\1\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0003\4\3\0=\4\5\0034\4\3\0005\5\6\0>\5\1\4=\4\a\3=\3\t\2B\0\2\1K\0\1\0\foptions\1\0\0\foffsets\1\0\4\ttext\18File Explorer\14highlight\14Directory\15text_align\tleft\rfiletype\rNvimTree\18custom_filter\1\0\1\27always_show_bufferline\2\0\nsetup\15bufferline\frequire\0", "config", "bufferline.nvim")
-time([[Config for bufferline.nvim]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\n \1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\fnoremap\2\27<cmd>TroubleToggle<CR>\15<leader>tt\6n\bset\vkeymap\bvim\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24sv.configs.nvimtree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+try_loadstring("\27LJ\2\n©\1\0\1\4\0\a\0\0316\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\3\0X\1\23€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\4\0X\1\16€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\5\0X\1\t€6\1\0\0009\1\1\0019\1\2\1\18\3\0\0B\1\2\2\6\1\6\0X\1\2€+\1\2\0L\1\2\0K\0\1\0\nAbove\nBelow\tLeft\nRight\fbufname\afn\bvimå\1\1\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0003\4\3\0=\4\5\0034\4\3\0005\5\6\0>\5\1\4=\4\a\3=\3\t\2B\0\2\1K\0\1\0\foptions\1\0\0\foffsets\1\0\4\rfiletype\rNvimTree\ttext\18File Explorer\14highlight\14Directory\15text_align\tleft\18custom_filter\1\0\1\27always_show_bufferline\2\0\nsetup\15bufferline\frequire\0", "config", "bufferline.nvim")
+time([[Config for bufferline.nvim]], false)
+-- Config for: vim-vsnip
+time([[Config for vim-vsnip]], true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21sv.configs.vsnip\frequire\0", "config", "vim-vsnip")
+time([[Config for vim-vsnip]], false)
+-- Config for: lspsaga.nvim
+time([[Config for lspsaga.nvim]], true)
+try_loadstring("\27LJ\2\nj\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\23code_action_prompt\1\0\0\1\0\1\venable\1\18init_lsp_saga\flspsaga\frequire\0", "config", "lspsaga.nvim")
+time([[Config for lspsaga.nvim]], false)
+-- Config for: formatter.nvim
+time([[Config for formatter.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.formatter\frequire\0", "config", "formatter.nvim")
+time([[Config for formatter.nvim]], false)
+-- Config for: nvim-spectre
+time([[Config for nvim-spectre]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23sv.configs.spectre\frequire\0", "config", "nvim-spectre")
+time([[Config for nvim-spectre]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31sv.configs.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: markdown-preview.nvim
+time([[Config for markdown-preview.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0 sv.configs.markdown-preview\frequire\0", "config", "markdown-preview.nvim")
+time([[Config for markdown-preview.nvim]], false)
+-- Config for: galaxyline.nvim
+time([[Config for galaxyline.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26sv.configs.galaxyline\frequire\0", "config", "galaxyline.nvim")
+time([[Config for galaxyline.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25sv.configs.telescope\frequire\0", "config", "telescope.nvim")
@@ -460,18 +472,6 @@ time([[Config for telescope.nvim]], false)
 time([[Config for seiya.vim]], true)
 try_loadstring("\27LJ\2\na\0\0\2\0\5\0\t6\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0005\1\4\0=\1\3\0K\0\1\0\1\2\0\0\nguibg\24seiya_target_groups\22seiya_auto_enable\6g\bvim\0", "config", "seiya.vim")
 time([[Config for seiya.vim]], false)
--- Config for: trouble.nvim
-time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\n \1\0\0\6\0\n\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\0016\0\3\0009\0\4\0009\0\5\0'\2\6\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\fnoremap\2\vsilent\2\27<cmd>TroubleToggle<CR>\15<leader>tt\6n\bset\vkeymap\bvim\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
-time([[Config for trouble.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31sv.configs.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: lspsaga.nvim
-time([[Config for lspsaga.nvim]], true)
-try_loadstring("\27LJ\2\nj\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\23code_action_prompt\1\0\0\1\0\1\venable\1\18init_lsp_saga\flspsaga\frequire\0", "config", "lspsaga.nvim")
-time([[Config for lspsaga.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
