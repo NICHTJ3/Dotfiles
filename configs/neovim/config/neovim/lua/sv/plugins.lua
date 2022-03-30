@@ -1,6 +1,7 @@
-return require('packer').startup(function(use)
+﻿return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use "rafcamlet/nvim-luapad"
 
     -- LSP
     use {
@@ -205,15 +206,9 @@ return require('packer').startup(function(use)
         config = function() require 'sv.configs.nvimtree' end
     }
     use {
-        -- 'glepnir/galaxyline.nvim', -- Status line
-        -- till glepnir goes back online
-        'NTBBloodbath/galaxyline.nvim',
-        branch = 'main',
-        config = function() require 'sv.configs.galaxyline' end,
-        requires = {
-            {'kyazdani42/nvim-web-devicons', opt = true},
-            {'nvim-lua/lsp-status.nvim'} -- For git information
-        }
+        "rebelot/heirline.nvim", -- Status line
+        requires = {'nvim-lua/lsp-status.nvim'}, -- For git information
+        config = function() require 'sv.configs.heirline' end
     }
     use 'folke/tokyonight.nvim' -- Theme
     use "rebelot/kanagawa.nvim" -- Theme

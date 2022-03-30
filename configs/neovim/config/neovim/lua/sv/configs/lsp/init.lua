@@ -35,9 +35,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
-    -- NOTE: I'm not sure if I need this to be honest
-    require('lsp-status').on_attach(client)
-
     local opts = {noremap = true, silent = true}
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
