@@ -122,16 +122,38 @@ local FileIcon = {
     hl = function(self) return {fg = self.icon_color} end
 }
 
-local FileName = {
+local function split(str, sep)
+    local res = {}
+    local n = 1
+    for w in str:gmatch('([^' .. sep .. ']*)') do
+        res[n] = res[n] or w -- only set once (so the blank after a string is ignored)
+        if w == '' then n = n + 1 end -- step forwards on a blank but not a string
+    end
+    return res
+end
+
+local FilePath = {
     init = function(self)
         self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
         if self.lfilename == "" then self.lfilename = "[No Name]" end
     end,
     hl = {fg = utils.get_highlight("Directory").fg},
 
-    utils.make_flexible_component(2, {
-        provider = function(self) return self.lfilename end
-    }, {provider = function(self) return vim.fn.pathshorten(self.lfilename) end})
+    provider = function()
+        local fp = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.:h')
+        local tbl = split(fp, '/')
+        local len = #tbl
+
+        if len > 2 and not len == 3 and not tbl[0] == '~' then
+            -- return '…/' .. table.concat(tbl, '/', len - 1) .. '/' -- shorten filepath to last 2 folders
+            -- alternative: only last folder in filepath
+            return '…/' .. tbl[len] .. '/'
+            -- alternative: only 1 containing folder using vim builtin function
+            -- return '…/' .. vim.fn.fnamemodify(vim.fn.expand '%', ':p:h:t') .. '/'
+        else
+            return fp .. '/'
+        end
+    end
 }
 
 local FileFlags = {
@@ -148,6 +170,29 @@ local FileFlags = {
     }
 }
 
+local function file_readonly()
+    if vim.bo.filetype == 'help' then return '' end
+    if vim.bo.readonly == true then return '  ' end
+    return ''
+end
+
+local FileName = {
+    provider = function()
+        local file = vim.fn.expand '%:t'
+        if vim.fn.empty(file) == 1 then return '' end
+        if string.len(file_readonly()) ~= 0 then
+            return file .. file_readonly()
+        end
+        if vim.bo.modifiable then
+            if vim.bo.modified then return file .. '  ' end
+        end
+        return file .. ' '
+    end,
+    highlight = {colors.fg, colors.section_bg},
+    separator = '',
+    separator_highlight = {colors.section_bg, colors.bg}
+}
+
 local FileNameModifer = {
     hl = function()
         if vim.bo.modified then
@@ -158,16 +203,11 @@ local FileNameModifer = {
 }
 
 -- let's add the children to our FileNameBlock component
-FileNameBlock = utils.insert(FileNameBlock, FileIcon,
-                             utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
-                             unpack(FileFlags) -- A small optimisation, since their parent does nothing
--- { provider = "%<" } -- this means that the statusline is cut here when there's not enough space
-)
-
-local FileType = {
-    provider = function() return string.upper(vim.bo.filetype) end,
-    hl = {fg = utils.get_highlight("Type").fg}
-}
+FileNameBlock =
+    utils.insert(FileNameBlock, FileIcon, FilePath, -- A small optimisation, since their parent does nothing
+                 utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
+                 unpack(FileFlags) -- A small optimisation, since their parent does nothing
+    )
 
 local Ruler = {
     -- %l = current line number
@@ -188,7 +228,7 @@ local ScrollBar = {
     hl = {fg = colors.blue, bg = colors.bright_bg}
 }
 
-local LSPActive = {
+local LSPActive = utils.make_flexible_component(2, {
     condition = conditions.lsp_attached,
 
     -- You can keep it simple,
@@ -203,7 +243,13 @@ local LSPActive = {
         return " [" .. table.concat(names, ", ") .. "]"
     end,
     hl = {fg = colors.green, style = "bold"}
-}
+}, {
+    condition = conditions.lsp_attached,
+
+    provider = " [LSP]",
+
+    hl = {fg = colors.green, style = "bold"}
+})
 
 -- local LSPMessages = {
 --     provider = function()
@@ -218,10 +264,10 @@ local Diagnostics = {
     condition = conditions.has_diagnostics,
 
     static = {
-        error_icon = unpack(vim.fn.sign_getdefined("DiagnosticSignError")).text,
-        warn_icon = unpack(vim.fn.sign_getdefined("DiagnosticSignWarn")).text,
-        info_icon = unpack(vim.fn.sign_getdefined("DiagnosticSignInfo")).text,
-        hint_icon = unpack(vim.fn.sign_getdefined("DiagnosticSignHint")).text
+        error_icon = (vim.fn.sign_getdefined("DiagnosticSignError")[1] or {}).text,
+        warn_icon = (vim.fn.sign_getdefined("DiagnosticSignWarn")[1] or {}).text,
+        info_icon = (vim.fn.sign_getdefined("DiagnosticSignInfo")[1] or {}).text,
+        hint_icon = (vim.fn.sign_getdefined("DiagnosticSignHint")[1] or {}).text
     },
 
     init = function(self)
@@ -265,10 +311,7 @@ local Diagnostics = {
         end,
         hl = {fg = colors.diag.hint}
     },
-    {
-        provider = ")",
-        hl = { fg = colors.gray, style = "bold" }
-    },
+    {provider = ")", hl = {fg = colors.gray, style = "bold"}}
 }
 
 -- DiagBlock = utils.surround({"![", "]"}, nil, DiagBlock)
@@ -315,27 +358,27 @@ local Git = {
     {condition = function(self) return self.has_changes end, provider = ")"}
 }
 
-local WorkDir = {
-    provider = function(self)
-        self.icon = (vim.fn.haslocaldir(0) == 1 and "" or "") .. "" .. " "
-        local cwd = vim.fn.getcwd(0)
-        self.cwd = vim.fn.fnamemodify(cwd, ":~")
-    end,
-    hl = {fg = colors.blue, style = "bold"},
-
-    utils.make_flexible_component(1, {
-        provider = function(self)
-            local trail = self.cwd:sub(-1) == "/" and "" or "/"
-            return self.icon .. self.cwd .. trail .. " "
-        end
-    }, {
-        provider = function(self)
-            local cwd = vim.fn.pathshorten(self.cwd)
-            local trail = self.cwd:sub(-1) == "/" and "" or "/"
-            return self.icon .. cwd .. trail .. " "
-        end
-    }, {provider = ""})
-}
+-- local WorkDir = {
+--     provider = function(self)
+--         self.icon = (vim.fn.haslocaldir(0) == 1 and "" or "") .. "" .. " "
+--         local cwd = vim.fn.getcwd(0)
+--         self.cwd = vim.fn.fnamemodify(cwd, ":~")
+--     end,
+--     hl = {fg = colors.blue, style = "bold"},
+--
+--     utils.make_flexible_component(1, {
+--         provider = function(self)
+--             local trail = self.cwd:sub(-1) == "/" and "" or "/"
+--             return self.icon .. self.cwd .. trail .. " "
+--         end
+--     }, {
+--         provider = function(self)
+--             local cwd = vim.fn.pathshorten(self.cwd)
+--             local trail = self.cwd:sub(-1) == "/" and "" or "/"
+--             return self.icon .. cwd .. trail .. " "
+--         end
+--     }, {provider = ""})
+-- }
 
 local HelpFilename = {
     condition = function() return vim.bo.filetype == "help" end,
@@ -370,14 +413,14 @@ local Align = {provider = "%="}
 local Space = {provider = " "}
 
 local DefaultStatusline = {
-    ViMode, Space, Spell, WorkDir, FileNameBlock, {provider = "%<"}, Space, Git,
-    Space, Diagnostics, Align, Align, LSPActive, Space, Space, FileType, Space,
-    Ruler, Space, ScrollBar
+    ViMode, Space, Spell, FileNameBlock, {provider = "%<"}, Space, Git, Space,
+    Diagnostics, Align, Align, LSPActive, Space, Space, Space, Ruler, Space,
+    ScrollBar
 }
 
 local InactiveStatusline = {
     condition = function() return not conditions.is_active() end,
-    {hl = {fg = colors.gray, force = true}, WorkDir},
+    {hl = {fg = colors.gray, force = true}},
     FileNameBlock,
     {provider = "%<"},
     Align
@@ -391,7 +434,6 @@ local SpecialStatusline = {
                 filetype = {"^git.*", "fugitive"}
             })
     end,
-    FileType,
     Space,
     HelpFilename,
     Align
@@ -403,7 +445,6 @@ local TerminalStatusline = {
     end,
     hl = {bg = colors.dark_red},
     {condition = conditions.is_active, ViMode, Space},
-    FileType,
     Space,
     TerminalName,
     Align
