@@ -2,9 +2,6 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Plugins installed out of curiosity
-    use 'chipsenkbeil/distant.nvim'
-
     -- LSP
     use {
         'neovim/nvim-lspconfig', {

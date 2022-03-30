@@ -5,7 +5,7 @@ require'nvim-treesitter.configs'.setup {
     context_commentstring = {
         enable = true,
         -- This plugin provided an autocommand option
-        enable_autocmd = true
+        enable_autocmd = false
     },
     rainbow = {
         enable = true,
