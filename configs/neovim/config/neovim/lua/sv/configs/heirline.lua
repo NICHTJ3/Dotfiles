@@ -23,7 +23,6 @@ local colors = {
         change = utils.get_highlight("Constant").fg
     }
 }
-
 local Space = {provider = " "}
 
 local ViMode = {
@@ -189,10 +188,7 @@ local FileName = {
             if vim.bo.modified then return file .. '  ' end
         end
         return file .. ' '
-    end,
-    highlight = {colors.fg, colors.section_bg},
-    separator = '',
-    separator_highlight = {colors.section_bg, colors.bg}
+    end
 }
 
 local FileNameModifer = {
@@ -316,8 +312,16 @@ local Diagnostics = {
     {provider = ")", hl = {fg = colors.gray, style = "bold"}}
 }
 
--- DiagBlock = utils.surround({"![", "]"}, nil, DiagBlock)
--- DiagBlock = {{provider="--"}, DiagBlock, {provider = '--'}}
+local GitBranch = {
+    -- You can use your working dirs git branch
+    provider = function() return ' ' .. (vim.g.gitsigns_head or "") end,
+    condition = vim.g.gitsigns_head,
+
+    -- Or the files git branch
+    -- provider = function() return ' ' .. (vim.b.gitsigns_head or "") end,
+    -- condition = vim.b.gitsigns_head,
+    hl = {fg = colors.orange}
+}
 
 local Git = {
     condition = conditions.is_git_repo,
@@ -331,10 +335,6 @@ local Git = {
 
     hl = {fg = colors.orange},
 
-    {
-        provider = function(self) return " " .. self.status_dict.head end,
-        hl = {style = "bold"}
-    },
     Space,
     {
         provider = function(self)
@@ -415,9 +415,9 @@ ViMode = utils.surround({"", ""}, colors.bright_bg, {ViMode})
 local Align = {provider = "%="}
 
 local DefaultStatusline = {
-    ViMode, Space, Spell, FileNameBlock, {provider = "%<"}, Space, Git, Space,
-    Diagnostics, Align, Align, LSPActive, Space, Space, Space, Ruler, Space,
-    ScrollBar
+    ViMode, Space, Spell, FileNameBlock, {provider = "%<"}, Space, GitBranch,
+    Git, Space, Diagnostics, Align, Align, LSPActive, Space, Space, Space,
+    Ruler, Space, ScrollBar
 }
 
 local InactiveStatusline = {
@@ -428,13 +428,21 @@ local InactiveStatusline = {
     Align
 }
 
+local GitCommitStatusline = {
+    condition = function()
+        return conditions.buffer_matches({filetype = {"^git.*", "fugitive"}})
+    end,
+    ViMode,
+    Space,
+    GitBranch,
+    Space,
+    Align
+}
+
 local SpecialStatusline = {
     condition = function()
         return conditions.buffer_matches(
-                   {
-                buftype = {"nofile", "prompt", "help", "quickfix"},
-                filetype = {"^git.*", "fugitive"}
-            })
+                   {buftype = {"nofile", "prompt", "help", "quickfix"}})
     end,
     Space,
     HelpFilename,
@@ -470,9 +478,10 @@ local StatusLines = {
 
     init = utils.pick_child_on_condition,
 
-    SpecialStatusline,
     TerminalStatusline,
     InactiveStatusline,
+    GitCommitStatusline,
+    SpecialStatusline,
     DefaultStatusline
 }
 
