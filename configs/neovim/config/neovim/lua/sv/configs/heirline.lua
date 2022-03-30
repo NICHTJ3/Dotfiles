@@ -24,6 +24,8 @@ local colors = {
     }
 }
 
+local Space = {provider = " "}
+
 local ViMode = {
     -- get vim current mode, this information will be required by the provider
     -- and the highlight functions, so we compute it only once per component
@@ -333,7 +335,7 @@ local Git = {
         provider = function(self) return " " .. self.status_dict.head end,
         hl = {style = "bold"}
     },
-    {condition = function(self) return self.has_changes end, provider = "("},
+    Space,
     {
         provider = function(self)
             local count = self.status_dict.added or 0
@@ -341,6 +343,7 @@ local Git = {
         end,
         hl = {fg = colors.git.add}
     },
+    Space,
     {
         provider = function(self)
             local count = self.status_dict.removed or 0
@@ -348,14 +351,14 @@ local Git = {
         end,
         hl = {fg = colors.git.del}
     },
+    Space,
     {
         provider = function(self)
             local count = self.status_dict.changed or 0
             return count > 0 and ("~" .. count)
         end,
         hl = {fg = colors.git.change}
-    },
-    {condition = function(self) return self.has_changes end, provider = ")"}
+    }
 }
 
 -- local WorkDir = {
@@ -410,7 +413,6 @@ local Spell = {
 ViMode = utils.surround({"", ""}, colors.bright_bg, {ViMode})
 
 local Align = {provider = "%="}
-local Space = {provider = " "}
 
 local DefaultStatusline = {
     ViMode, Space, Spell, FileNameBlock, {provider = "%<"}, Space, Git, Space,
