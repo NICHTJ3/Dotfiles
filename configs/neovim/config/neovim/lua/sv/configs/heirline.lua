@@ -318,13 +318,11 @@ local Diagnostics = {
 }
 
 local GitBranch = {
-    -- You can use your working dirs git branch
-    provider = function() return ' ' .. (vim.g.gitsigns_head or "") end,
-    condition = vim.g.gitsigns_head,
-
-    -- Or the files git branch
-    -- provider = function() return ' ' .. (vim.b.gitsigns_head or "") end,
-    -- condition = vim.b.gitsigns_head,
+    provider = function()
+        return (vim.b.gitsigns_head or vim.g.gitsigns_head) and ' ' ..
+                   (vim.b.gitsigns_head or vim.g.gitsigns_head)
+    end,
+    condition = vim.b.gitsigns_head or vim.g.gitsigns_head,
     hl = {fg = colors.orange}
 }
 
@@ -420,9 +418,9 @@ ViMode = utils.surround({"", ""}, colors.bright_bg, {ViMode})
 local Align = {provider = "%="}
 
 local DefaultStatusline = {
-    ViMode, Space, Spell, FileNameBlock, {provider = "%<"}, Align, Align,
-    GitBranch, Git, Space, LSPActive, Space, Diagnostics, Space, Space, Space,
-    Ruler, Space, ScrollBar
+    ViMode, Space, Spell, FileNameBlock, Space, GitBranch, Git,
+    {provider = "%<"}, Align, Align, LSPActive, Space, Diagnostics, Space,
+    Space, Space, Ruler, Space, ScrollBar
 }
 
 local InactiveStatusline = {
