@@ -12,14 +12,14 @@ local prettierd = function()
     local filename = vim.api.nvim_buf_get_name(0):gsub("([%[%]])", "%\\%1") -- escape only characters from set
     return {
         exe = "prettier",
-        args = {"-w", "--stdin-filepath " .. filename},
+        args = {"--stdin-filepath", filename},
         stdin = true
     }
 end
 
 local rustfmt = function()
     if not Check_command_installed('rustfmt') then return end
-    return {exe = "rustfmt", stdin = true}
+    return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
 end
 
 local gofmt = function()
@@ -30,7 +30,16 @@ end
 -- TODO: Better options for this
 local luaformat = function()
     if not Check_command_installed('lua-format') then return end
-    return {exe = "lua-format -i --align-parameter --align-args", stdin = true}
+    return {
+        exe = "lua-format",
+        args = {"--stdin", "--align-parameter", "--align-args"},
+        stdin = true
+    }
+end
+
+local terraform = function()
+    if not Check_command_installed('terraform') then return end
+    return {exe = "terraform", args = {"fmt", "-"}, stdin = true}
 end
 
 local formattable_file_types = {
@@ -51,7 +60,9 @@ local formattable_file_types = {
     php = {prettierd},
     rust = {rustfmt},
     svelte = {prettierd},
-    yaml = {prettierd}
+    yaml = {prettierd},
+    terraform = {terraform},
+    [''] = {},
 }
 
 local M = {}
