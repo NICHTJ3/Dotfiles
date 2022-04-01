@@ -172,35 +172,6 @@
 
     -- UI
     use {
-        'akinsho/bufferline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function()
-            require('bufferline').setup {
-                options = {
-                    custom_filter = function(buf_number)
-                        -- filter out by buffer name
-                        if vim.fn.bufname(buf_number) ~= 'Right' and
-                            vim.fn.bufname(buf_number) ~= 'Left' and
-                            vim.fn.bufname(buf_number) ~= 'Below' and
-                            vim.fn.bufname(buf_number) ~= 'Above' then
-                            return true
-                        end
-                    end,
-                    always_show_bufferline = true,
-                    offsets = {
-                        {
-                            filetype = 'NvimTree',
-                            text = 'File Explorer',
-                            highlight = 'Directory',
-                            text_align = 'left'
-                        }
-                    }
-                }
-            }
-        end
-    }
-
-    use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require 'sv.configs.nvimtree' end
