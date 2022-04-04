@@ -150,6 +150,10 @@
 
     -- UI
     use {
+        'rcarriga/nvim-notify',
+        config = function() vim.notify = require("notify") end
+    }
+    use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require 'sv.configs.nvimtree' end

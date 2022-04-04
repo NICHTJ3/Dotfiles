@@ -2,12 +2,14 @@ local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 local Modules = require("sv.configs.heirline.modules.init")
 
+local Space = Modules.Space
+local Align = Modules.Align
+
 local DefaultStatusline = {
-    Modules.ViMode, Modules.Space, Modules.Spell, Modules.FileNameBlock,
-    Modules.Space, Modules.GitBranch, Modules.Git, {provider = "%<"},
-    Modules.Align, Modules.Align, Modules.LSPActive, Modules.LSPMessages,
-    Modules.Space, Modules.Diagnostics, Modules.Space, Modules.Space,
-    Modules.Space, Modules.ScrollPercentage, Modules.Space, Modules.ScrollBar
+    Modules.ViMode, Space, Modules.Spell, Modules.FileNameBlock, Space,
+    Modules.GitBranch, Modules.Git, {provider = "%<"}, Align, Align,
+    Modules.LSPActive, Modules.LSPMessages, Space, Modules.Diagnostics, Space,
+    Space, Space, Modules.ScrollPercentage, Space, Modules.ScrollBar
 }
 
 local InactiveStatusline = {
@@ -15,7 +17,7 @@ local InactiveStatusline = {
     {hl = {fg = Modules.sett.inactive_bkg, force = true}},
     Modules.FileNameBlock,
     {provider = "%<"},
-    Modules.Align
+    Align
 }
 
 local GitCommitStatusline = {
@@ -23,10 +25,10 @@ local GitCommitStatusline = {
         return conditions.buffer_matches({filetype = {"^git.*", "fugitive"}})
     end,
     Modules.ViMode,
-    Modules.Space,
+    Space,
     Modules.GitBranch,
-    Modules.Space,
-    Modules.Align
+    Space,
+    Align
 }
 
 local SpecialStatusline = {
@@ -34,9 +36,9 @@ local SpecialStatusline = {
         return conditions.buffer_matches(
                    {buftype = {"nofile", "prompt", "help", "quickfix"}})
     end,
-    Modules.Space,
+    Space,
     Modules.HelpFilename,
-    Modules.Align
+    Align
 }
 
 local TerminalStatusline = {
@@ -44,10 +46,10 @@ local TerminalStatusline = {
         return conditions.buffer_matches({buftype = {"terminal"}})
     end,
     hl = {bg = Modules.sett.curr_dir},
-    {condition = conditions.is_active, Modules.ViMode, Modules.Space},
-    Modules.Space,
+    {condition = conditions.is_active, Modules.ViMode, Space},
+    Space,
     Modules.TerminalName,
-    Modules.Align
+    Align
 }
 
 local StatusLines = {
