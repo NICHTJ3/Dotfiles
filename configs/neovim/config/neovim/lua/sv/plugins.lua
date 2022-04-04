@@ -12,6 +12,8 @@
     use "b0o/schemastore.nvim"
     use {
         'mhartington/formatter.nvim', -- Helper for fast formatting
+        cmd = {'Format', 'FormatWrite'},
+        keys = {'<leader>d'},
         config = function() require 'sv.configs.formatter' end
     }
     use {
@@ -46,11 +48,20 @@
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
-            {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'},
-            'cwebster2/github-coauthors.nvim',
-            'nvim-telescope/telescope-project.nvim',
-            'nvim-telescope/telescope-ui-select.nvim',
-            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+            {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}, -- Actual dependencies
+            {'cwebster2/github-coauthors.nvim', opt = true},
+            {'nvim-telescope/telescope-project.nvim', opt = true},
+            {'nvim-telescope/telescope-ui-select.nvim', opt = true},
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+                run = 'make',
+                opt = true
+            }
+        },
+        -- Only load the plugin on these keypresses (this may not be what I want)
+        keys = {
+            '<leader>lf', '<leader>ev', '<leader>lb', '<leader>/', '<leader>sw',
+            '<leader>lca', '<leader>lp', '<c-p>'
         },
         config = function()
             local module = require 'sv.configs.telescope'
@@ -60,6 +71,7 @@
     }
     use {
         'windwp/nvim-spectre',
+        keys = {'<leader>as'},
         config = function()
             vim.keymap.set('n', '<leader>as', require('spectre').open)
         end
@@ -84,7 +96,7 @@
     }
 
     -- Treesitter and syntax
-    use 'hashivim/vim-terraform'
+    use {'hashivim/vim-terraform', ft = {"terraform"}}
     use {
         'nvim-treesitter/nvim-treesitter', -- Tree sitter
         requires = {
@@ -121,7 +133,7 @@
         'numToStr/Comment.nvim',
         config = function() require('sv.configs.comment') end
     }
-    use 'AndrewRadev/tagalong.vim'
+    use {'AndrewRadev/tagalong.vim', ft = {'typescriptreact', 'html', 'vue'}}
 
     -- TMUX
     use 'christoomey/vim-tmux-navigator' -- Unifies tmux and vim navigation
@@ -132,6 +144,7 @@
     use {
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
+        ft = {"markdown"},
         config = function() require('sv.configs.markdown-preview') end
     }
 

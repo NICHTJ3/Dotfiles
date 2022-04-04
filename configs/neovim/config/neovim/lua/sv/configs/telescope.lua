@@ -6,6 +6,11 @@ local telescope = require('telescope')
 local M = {}
 
 M.Setup = function()
+    vim.cmd('packadd! github-coauthors.nvim')
+    vim.cmd('packadd! telescope-project.nvim')
+    vim.cmd('packadd! telescope-ui-select.nvim')
+    vim.cmd('packadd! telescope-fzf-native.nvim')
+
     telescope.setup {
         defaults = {
             prompt_prefix = ' >',
@@ -57,22 +62,23 @@ M.ListFiles = function() builtin.find_files() end
 M.ListProjects = function() telescope.extensions.project.project {} end
 
 M.Mappings = function()
-    print('What the hell')
     -- Open Telescope Files
     vim.keymap.set('n', '<leader>lf',
                    "<cmd>lua require('sv.configs.telescope').ListFiles()<CR>")
+    vim.keymap.set('n', '<c-p>',
+                   "<cmd>lua require'sv.configs.telescope'.ListFiles()<CR")
     -- Edit nvim config
     vim.keymap.set('n', '<leader>ev',
                    "<cmd>lua require('sv.configs.telescope').ListNeovim()<CR>")
     -- Open Telescope buffers
     vim.keymap.set('n', '<leader>lb',
-                   "<cmd>lua require('telescope.builtin').buffers()")
+                   "<cmd>lua require('telescope.builtin').buffers()<CR>")
     -- Open live grep search
     vim.keymap.set('n', '<leader>/',
-                   "<cmd>lua require('telescope.builtin').live_grep()")
+                   "<cmd>lua require('telescope.builtin').live_grep()<CR>")
     -- Search current work
     vim.keymap.set('n', '<leader>sw',
-                   "<cmd>lua require('telescope.builtin').grep_string()")
+                   "<cmd>lua require('telescope.builtin').grep_string()<CR>")
 
     -- Github-coauthors
     vim.keymap.set('n', '<leader>lca',
@@ -80,6 +86,7 @@ M.Mappings = function()
     -- List projects
     vim.keymap.set('n', '<leader>lp',
                    "<cmd>lua require'sv.configs.telescope'.ListProjects()<CR")
+
 end
 
 return M
