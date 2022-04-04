@@ -45,12 +45,18 @@
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
-        'cwebster2/github-coauthors.nvim',
-        'nvim-telescope/telescope-project.nvim',
-        'nvim-telescope/telescope-ui-select.nvim',
-        {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
-        config = function() require 'sv.configs.telescope' end,
-        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}
+        requires = {
+            {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'},
+            'cwebster2/github-coauthors.nvim',
+            'nvim-telescope/telescope-project.nvim',
+            'nvim-telescope/telescope-ui-select.nvim',
+            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+        },
+        config = function()
+            local module = require 'sv.configs.telescope'
+            module.Setup()
+            module.Mappings()
+        end
     }
     use {
         'windwp/nvim-spectre',
@@ -81,9 +87,11 @@
     use 'hashivim/vim-terraform'
     use {
         'nvim-treesitter/nvim-treesitter', -- Tree sitter
-        'p00f/nvim-ts-rainbow', -- Rainbow brackets
-        'nvim-treesitter/nvim-treesitter-textobjects', -- More objects I.E. functions, classes etc...
-        'JoosepAlviste/nvim-ts-context-commentstring', -- Better comments in react
+        requires = {
+            'p00f/nvim-ts-rainbow', -- Rainbow brackets
+            'nvim-treesitter/nvim-treesitter-textobjects', -- More objects I.E. functions, classes etc...
+            'JoosepAlviste/nvim-ts-context-commentstring' -- Better comments in react
+        },
         run = ':TSUpdate',
         config = function() require 'sv.configs.nvim-treesitter' end
     }
@@ -116,11 +124,9 @@
     use 'AndrewRadev/tagalong.vim'
 
     -- TMUX
-    use {
-        'christoomey/vim-tmux-navigator', -- Unifies tmux and vim navigation
-        'roxma/vim-tmux-clipboard', -- Unifies vim panes in tmux sessions clipboards
-        'tmux-plugins/vim-tmux-focus-events' -- Required for vim-tmux-clipboard
-    }
+    use 'christoomey/vim-tmux-navigator' -- Unifies tmux and vim navigation
+    use 'roxma/vim-tmux-clipboard' -- Unifies vim panes in tmux sessions clipboards
+    use 'tmux-plugins/vim-tmux-focus-events' -- Required for vim-tmux-clipboard
 
     -- Note taking
     use {
