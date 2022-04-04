@@ -7,12 +7,12 @@ local DefaultStatusline = {
     Modules.Space, Modules.GitBranch, Modules.Git, {provider = "%<"},
     Modules.Align, Modules.Align, Modules.LSPActive, Modules.LSPMessages,
     Modules.Space, Modules.Diagnostics, Modules.Space, Modules.Space,
-    Modules.Space, Modules.Ruler, Modules.Space, Modules.ScrollBar
+    Modules.Space, Modules.ScrollPercentage, Modules.Space, Modules.ScrollBar
 }
 
 local InactiveStatusline = {
     condition = function() return not conditions.is_active() end,
-    {hl = {fg = Modules.colors.gray, force = true}},
+    {hl = {fg = Modules.sett.inactive_bkg, force = true}},
     Modules.FileNameBlock,
     {provider = "%<"},
     Modules.Align
@@ -43,7 +43,7 @@ local TerminalStatusline = {
     condition = function()
         return conditions.buffer_matches({buftype = {"terminal"}})
     end,
-    hl = {bg = Modules.colors.dark_red},
+    hl = {bg = Modules.sett.curr_dir},
     {condition = conditions.is_active, Modules.ViMode, Modules.Space},
     Modules.Space,
     Modules.TerminalName,
@@ -51,7 +51,6 @@ local TerminalStatusline = {
 }
 
 local StatusLines = {
-
     hl = function()
         if conditions.is_active() then
             return {

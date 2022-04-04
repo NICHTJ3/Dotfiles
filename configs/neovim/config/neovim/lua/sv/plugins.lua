@@ -162,7 +162,22 @@
         },
         config = function() require 'sv.configs.heirline.init' end
     }
-    use({'catppuccin/nvim', as = 'catppuccin'}) -- Theme
+    use({
+        'catppuccin/nvim',
+        as = 'catppuccin',
+        config = function()
+            require('catppuccin').setup({
+                integration = {
+                    nvimtree = {
+                        enabled = true,
+                        show_root = true, -- makes the root folder not transparent
+                        transparent_panel = false -- make the panel transparent
+                    }
+                }
+            })
+
+        end
+    }) -- Theme
 end)
 
 -- Other plugins that might be useful in future

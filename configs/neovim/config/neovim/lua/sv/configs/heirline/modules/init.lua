@@ -1,27 +1,26 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
-local colors = {
-    bright_bg = utils.get_highlight("Folded").bg,
-    red = utils.get_highlight("DiagnosticError").fg,
-    dark_red = utils.get_highlight("DiffDelete").bg,
-    green = utils.get_highlight("String").fg,
-    blue = utils.get_highlight("Function").fg,
-    gray = utils.get_highlight("NonText").fg,
-    orange = utils.get_highlight("Constant").fg,
-    purple = utils.get_highlight("Statement").fg,
-    cyan = utils.get_highlight("Special").fg,
+local clrs = require("catppuccin.core.color_palette")
+
+-- settings
+local sett = {
+    bkg = clrs.black3,
+    branch = clrs.sky,
+    bright_bg = clrs.bright_bg,
+    curr_dir = clrs.flamingo,
+    curr_file = clrs.white,
+    diffs = clrs.peach,
+    extras = clrs.gray1,
+    inactive_bkg = clrs.gray0,
+    scroll_bar = clrs.sky,
     diag = {
         warn = utils.get_highlight("DiagnosticWarn").fg,
         error = utils.get_highlight("DiagnosticError").fg,
         hint = utils.get_highlight("DiagnosticHint").fg,
         info = utils.get_highlight("DiagnosticInfo").fg
     },
-    git = {
-        del = utils.get_highlight("DiagnosticError").fg,
-        add = utils.get_highlight("String").fg,
-        change = utils.get_highlight("Constant").fg
-    }
+    git = {del = clrs.red, add = clrs.green, change = clrs.orange}
 }
 
 local Space = {provider = " "}
@@ -74,19 +73,19 @@ local ViMode = {
             t = "T"
         },
         mode_colors = {
-            n = colors.red,
-            i = colors.green,
-            v = colors.cyan,
-            V = colors.cyan,
-            ["\22"] = colors.cyan, -- this is an actual ^V, type <C-v><C-v> in insert mode
-            c = colors.orange,
-            s = colors.purple,
-            S = colors.purple,
-            ["\19"] = colors.purple, -- this is an actual ^S, type <C-v><C-s> in insert mode
-            R = colors.orange,
-            r = colors.orange,
-            ["!"] = colors.red,
-            t = colors.red
+            n = clrs.lavender,
+            i = clrs.green,
+            v = clrs.flamingo,
+            V = clrs.flamingo,
+            ["\22"] = clrs.flaminfo, -- this is an actual ^V, type <C-v><C-v> in insert mode
+            c = clrs.peach,
+            s = clrs.maroon,
+            S = clrs.maroon,
+            ["\19"] = clrs.maroon, -- this is an actual ^S, type <C-v><C-s> in insert mode
+            R = clrs.teal,
+            r = clrs.teal,
+            ["!"] = clrs.green,
+            t = clrs.green
         }
     },
     -- We can now access the value of mode() that, by now, would have been
@@ -139,7 +138,7 @@ local FilePath = {
         self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
         if self.lfilename == "" then self.lfilename = "[No Name]" end
     end,
-    hl = {fg = utils.get_highlight("Directory").fg},
+    hl = {fg = sett.curr_dir},
 
     provider = function()
         local fp = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.:h')
@@ -162,14 +161,14 @@ local FileFlags = {
     {
         provider = function() if vim.bo.modified then return "" end end,
 
-        hl = {fg = colors.green}
+        hl = {fg = clrs.green}
     }, {
         provider = function()
             if not vim.bo.modifiable or vim.bo.readonly then
                 return ""
             end
         end,
-        hl = {fg = colors.orange}
+        hl = {fg = clrs.orange}
     }
 }
 
@@ -178,14 +177,15 @@ local FileName = {
         local file = vim.fn.expand '%:t'
         if vim.fn.empty(file) == 1 then return '' end
         return file .. ' '
-    end
+    end,
+    hl = {fg = sett.curr_file, style = "bold"}
 }
 
 local FileNameModifer = {
     hl = function()
         if vim.bo.modified then
             -- use `force` because we need to override the child's hl foreground
-            return {fg = colors.cyan, style = "bold", force = true}
+            return {fg = sett.diffs, style = "bold", force = true}
         end
     end
 }
@@ -205,6 +205,15 @@ local Ruler = {
     provider = "%7(%l/%3L%):%2c %P"
 }
 
+local ScrollPercentage = {
+    -- %l = current line number
+    -- %L = number of lines in the buffer
+    -- %c = column number
+    -- %P = percentage through file of displayed window
+    provider = "%P",
+    hl = {fg = sett.extras}
+}
+
 local ScrollBar = {
     static = {sbar = {"▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"}},
     provider = function(self)
@@ -213,7 +222,7 @@ local ScrollBar = {
         local i = math.floor(curr_line / lines * (#self.sbar - 1)) + 1
         return string.rep(self.sbar[i], 2)
     end,
-    hl = {fg = colors.blue, bg = colors.bright_bg}
+    hl = {fg = sett.scroll_bar, bg = sett.bright_bg}
 }
 
 local LSPActive = utils.make_flexible_component(2, {
@@ -230,13 +239,13 @@ local LSPActive = utils.make_flexible_component(2, {
         end
         return " [" .. table.concat(names, ", ") .. "]"
     end,
-    hl = {fg = colors.green, style = "bold"}
+    hl = {fg = sett.extras, style = "bold"}
 }, {
     condition = conditions.lsp_attached,
 
     provider = " [LSP]",
 
-    hl = {fg = colors.green, style = "bold"}
+    hl = {fg = sett.extras, style = "bold"}
 })
 
 local LSPMessages = {
@@ -247,7 +256,7 @@ local LSPMessages = {
         --     return require("lsp-status").status()
         -- end
     end,
-    hl = {fg = colors.gray}
+    hl = {fg = sett.extras}
 }
 
 local function get_sign(sign)
@@ -289,7 +298,7 @@ local Diagnostics = {
             end
             return result
         end,
-        hl = {fg = colors.diag.error}
+        hl = {fg = sett.diag.error}
     },
     {
         provider = function(self)
@@ -300,7 +309,7 @@ local Diagnostics = {
             end
             return result
         end,
-        hl = {fg = colors.diag.warn}
+        hl = {fg = sett.diag.warn}
     },
     {
         provider = function(self)
@@ -309,13 +318,13 @@ local Diagnostics = {
             if self.hints > 0 then result = result .. " " end
             return result
         end,
-        hl = {fg = colors.diag.info}
+        hl = {fg = sett.diag.info}
     },
     {
         provider = function(self)
             return self.hints > 0 and (self.hint_icon .. self.hints)
         end,
-        hl = {fg = colors.diag.hint}
+        hl = {fg = sett.diag.hint}
     }
 }
 
@@ -325,7 +334,7 @@ local GitBranch = {
                    (vim.b.gitsigns_head or vim.g.gitsigns_head)
     end,
     condition = vim.b.gitsigns_head or vim.g.gitsigns_head,
-    hl = {fg = colors.orange}
+    hl = {fg = sett.branch}
 }
 
 local Git = {
@@ -338,7 +347,7 @@ local Git = {
                                self.status_dict.changed ~= 0
     end,
 
-    hl = {fg = colors.orange},
+    hl = {fg = sett.diffs},
 
     Space,
     {
@@ -346,7 +355,7 @@ local Git = {
             local count = self.status_dict.added or 0
             return count > 0 and ("+" .. count)
         end,
-        hl = {fg = colors.git.add}
+        hl = {fg = sett.git.add}
     },
     Space,
     {
@@ -354,7 +363,7 @@ local Git = {
             local count = self.status_dict.removed or 0
             return count > 0 and ("-" .. count)
         end,
-        hl = {fg = colors.git.del}
+        hl = {fg = sett.git.del}
     },
     Space,
     {
@@ -362,7 +371,7 @@ local Git = {
             local count = self.status_dict.changed or 0
             return count > 0 and ("~" .. count)
         end,
-        hl = {fg = colors.git.change}
+        hl = {fg = sett.git.change}
     }
 }
 
@@ -372,7 +381,7 @@ local WorkDir = {
         local cwd = vim.fn.getcwd(0)
         self.cwd = vim.fn.fnamemodify(cwd, ":~")
     end,
-    hl = {fg = colors.blue, style = "bold"},
+    hl = {fg = sett.curr_dir, style = "bold"},
 
     utils.make_flexible_component(1, {
         provider = function(self)
@@ -394,7 +403,7 @@ local HelpFilename = {
         local filename = vim.api.nvim_buf_get_name(0)
         return vim.fn.fnamemodify(filename, ":t")
     end,
-    hl = {fg = colors.blue}
+    hl = {fg = sett.curr_file}
 }
 
 local TerminalName = {
@@ -406,13 +415,13 @@ local TerminalName = {
         local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
         return " " .. tname
     end,
-    hl = {fg = colors.blue, style = "bold"}
+    hl = {fg = sett.curr_dir, style = "bold"}
 }
 
 local Spell = {
     condition = function() return vim.wo.spell end,
     provider = "SPELL ",
-    hl = {style = "bold", fg = colors.orange}
+    hl = {style = "bold", fg = sett.diffs}
 }
 
 local Align = {provider = "%="}
@@ -433,5 +442,7 @@ return {
     TerminalName = TerminalName,
     ViMode = ViMode,
     WorkDir = WorkDir,
-    colors = colors
+    sett = sett,
+    colors = clrs,
+    ScrollPercentage = ScrollPercentage
 }
