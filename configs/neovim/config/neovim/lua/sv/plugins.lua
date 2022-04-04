@@ -1,31 +1,32 @@
 ﻿return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-    use "rafcamlet/nvim-luapad"
 
     -- LSP
+    use 'neovim/nvim-lspconfig'
     use {
-        'neovim/nvim-lspconfig', {
-            'williamboman/nvim-lsp-installer',
-            requires = {{'neovim/nvim-lspconfig'}, {"b0o/schemastore.nvim"}},
-            config = function() require 'sv.configs.lsp.lspinstaller' end
-        }, {
-            -- glepnir/lspsaga.nvim
-            -- till glepnir goes back online
-            'tami5/lspsaga.nvim',
-            branch = 'nvim6.0',
-            config = function()
-                require('lspsaga').init_lsp_saga {
-                    -- NOTE: This is disabled because it doesn't check if
-                    -- the lsp server supports it before enabling the
-                    -- autocommand (It was the vscode like lightbulb)
-                    code_action_prompt = {enable = false}
-                }
-            end
-        }, {
-            'mhartington/formatter.nvim', -- Helper for fast formatting
-            config = function() require 'sv.configs.formatter' end
-        }
+        'williamboman/nvim-lsp-installer',
+        requires = {'neovim/nvim-lspconfig'},
+        config = function() require 'sv.configs.lsp.lspinstaller' end
+    }
+    use "b0o/schemastore.nvim"
+    use {
+        'mhartington/formatter.nvim', -- Helper for fast formatting
+        config = function() require 'sv.configs.formatter' end
+    }
+    use {
+        -- glepnir/lspsaga.nvim
+        -- till glepnir goes back online
+        'tami5/lspsaga.nvim',
+        branch = 'nvim6.0',
+        config = function()
+            require('lspsaga').init_lsp_saga {
+                -- NOTE: This is disabled because it doesn't check if
+                -- the lsp server supports it before enabling the
+                -- autocommand (It was the vscode like lightbulb)
+                code_action_prompt = {enable = false}
+            }
+        end
     }
 
     -- TODO: Maybe make some of these opt and include them in the cmp config
@@ -44,22 +45,18 @@
     -- Telescope/Fuzzy finding
     use {
         'nvim-telescope/telescope.nvim',
+        'cwebster2/github-coauthors.nvim',
+        'nvim-telescope/telescope-project.nvim',
+        'nvim-telescope/telescope-ui-select.nvim',
+        {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
         config = function() require 'sv.configs.telescope' end,
-        requires = {
-            'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim',
-            'cwebster2/github-coauthors.nvim',
-            'nvim-telescope/telescope-project.nvim',
-            'nvim-telescope/telescope-ui-select.nvim',
-            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
-            {
-                'nvim-telescope/telescope-frecency.nvim',
-                requires = {'tami5/sqlite.lua'}
-            }
-        }
+        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}
     }
     use {
         'windwp/nvim-spectre',
-        config = function() require('sv.configs.spectre') end
+        config = function()
+            vim.keymap.set('n', '<leader>as', require('spectre').open)
+        end
     }
 
     -- Trouble
@@ -73,34 +70,25 @@
         end
     }
 
-    -- Snippets and Syntax
+    -- Snippets
     use {
         'hrsh7th/vim-vsnip',
         requires = {{'rafamadriz/friendly-snippets'}},
         config = function() require('sv.configs.vsnip') end
     }
-    -- Treesitter
-    use 'pantharshit00/vim-prisma'
+
+    -- Treesitter and syntax
+    use 'hashivim/vim-terraform'
     use {
-        'nvim-treesitter/nvim-treesitter',
+        'nvim-treesitter/nvim-treesitter', -- Tree sitter
+        'p00f/nvim-ts-rainbow', -- Rainbow brackets
+        'nvim-treesitter/nvim-treesitter-textobjects', -- More objects I.E. functions, classes etc...
+        'JoosepAlviste/nvim-ts-context-commentstring', -- Better comments in react
         run = ':TSUpdate',
-        requires = {
-            {'JoosepAlviste/nvim-ts-context-commentstring'},
-            {'p00f/nvim-ts-rainbow'},
-            {'nvim-treesitter/nvim-treesitter-textobjects'}
-        },
         config = function() require 'sv.configs.nvim-treesitter' end
     }
 
     -- Git
-    use {
-        'tveskag/nvim-blame-line', -- Git blame in virtual_text
-        config = function()
-            vim.g.blameLineVirtualTextHighlight = 'Question'
-            vim.keymap.set('n', '<leader>tgb', '<cmd>ToggleBlameLine<CR>',
-                           {noremap = true})
-        end
-    }
     use 'tpope/vim-fugitive'
     use 'rhysd/committia.vim' -- Better commits
     use {
@@ -112,7 +100,6 @@
     -- Fixes
     use 'romainl/vim-qf' -- Fixes issues with built in quick fix menu
     use 'tpope/vim-repeat' -- Repeat with . sequences that use pluggins
-    use 'zoubin/vim-gotofile' -- Better go to file
     use 'pgdouyon/vim-evanesco' -- Clears search highlighting on move
 
     -- Must have plugins
@@ -163,3 +150,5 @@ end)
 -- 'miyakogi/seiya.vim', -- Transparency automagically
 -- 'folke/tokyonight.nvim' -- Theme
 -- 'rebelot/kanagawa.nvim' -- Theme
+-- 'zoubin/vim-gotofile' -- Better go to file if you don't always have lsp running in node
+-- 'rafcamlet/nvim-luapad' -- Lua scratchpad
