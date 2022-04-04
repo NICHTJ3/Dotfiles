@@ -160,7 +160,7 @@
             'nvim-lua/lsp-status.nvim', -- For git information
             'kyazdani42/nvim-web-devicons'
         },
-        config = function() require 'sv.configs.heirline' end
+        config = function() require 'sv.configs.heirline.init' end
     }
     use({'catppuccin/nvim', as = 'catppuccin'}) -- Theme
 end)

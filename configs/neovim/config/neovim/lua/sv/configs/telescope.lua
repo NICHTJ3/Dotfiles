@@ -66,7 +66,7 @@ M.Mappings = function()
     vim.keymap.set('n', '<leader>lf',
                    "<cmd>lua require('sv.configs.telescope').ListFiles()<CR>")
     vim.keymap.set('n', '<c-p>',
-                   "<cmd>lua require'sv.configs.telescope'.ListFiles()<CR")
+                   "<cmd>lua require'sv.configs.telescope'.ListFiles()<CR>")
     -- Edit nvim config
     vim.keymap.set('n', '<leader>ev',
                    "<cmd>lua require('sv.configs.telescope').ListNeovim()<CR>")
@@ -86,6 +86,7 @@ M.Mappings = function()
     -- List projects
     vim.keymap.set('n', '<leader>lp',
                    "<cmd>lua require'sv.configs.telescope'.ListProjects()<CR")
+
 
 end
 

@@ -23,6 +23,7 @@ local colors = {
         change = utils.get_highlight("Constant").fg
     }
 }
+
 local Space = {provider = " "}
 
 local ViMode = {
@@ -171,12 +172,6 @@ local FileFlags = {
         hl = {fg = colors.orange}
     }
 }
-
-local function file_readonly()
-    if vim.bo.filetype == 'help' then return '' end
-    if vim.bo.readonly == true then return '  ' end
-    return ''
-end
 
 local FileName = {
     provider = function()
@@ -371,27 +366,27 @@ local Git = {
     }
 }
 
--- local WorkDir = {
---     provider = function(self)
---         self.icon = (vim.fn.haslocaldir(0) == 1 and "" or "") .. "" .. " "
---         local cwd = vim.fn.getcwd(0)
---         self.cwd = vim.fn.fnamemodify(cwd, ":~")
---     end,
---     hl = {fg = colors.blue, style = "bold"},
---
---     utils.make_flexible_component(1, {
---         provider = function(self)
---             local trail = self.cwd:sub(-1) == "/" and "" or "/"
---             return self.icon .. self.cwd .. trail .. " "
---         end
---     }, {
---         provider = function(self)
---             local cwd = vim.fn.pathshorten(self.cwd)
---             local trail = self.cwd:sub(-1) == "/" and "" or "/"
---             return self.icon .. cwd .. trail .. " "
---         end
---     }, {provider = ""})
--- }
+local WorkDir = {
+    provider = function(self)
+        self.icon = (vim.fn.haslocaldir(0) == 1 and "" or "") .. "" .. " "
+        local cwd = vim.fn.getcwd(0)
+        self.cwd = vim.fn.fnamemodify(cwd, ":~")
+    end,
+    hl = {fg = colors.blue, style = "bold"},
+
+    utils.make_flexible_component(1, {
+        provider = function(self)
+            local trail = self.cwd:sub(-1) == "/" and "" or "/"
+            return self.icon .. self.cwd .. trail .. " "
+        end
+    }, {
+        provider = function(self)
+            local cwd = vim.fn.pathshorten(self.cwd)
+            local trail = self.cwd:sub(-1) == "/" and "" or "/"
+            return self.icon .. cwd .. trail .. " "
+        end
+    }, {provider = ""})
+}
 
 local HelpFilename = {
     condition = function() return vim.bo.filetype == "help" end,
@@ -420,79 +415,23 @@ local Spell = {
     hl = {style = "bold", fg = colors.orange}
 }
 
-ViMode = utils.surround({"", ""}, colors.bright_bg, {ViMode})
-
 local Align = {provider = "%="}
 
-local DefaultStatusline = {
-    ViMode, Space, Spell, FileNameBlock, Space, GitBranch, Git,
-    {provider = "%<"}, Align, Align, LSPActive, LSPMessages, Space, Diagnostics,
-    Space, Space, Space, Ruler, Space, ScrollBar
+return {
+    Align = Align,
+    Diagnostics = Diagnostics,
+    FileNameBlock = FileNameBlock,
+    Git = Git,
+    GitBranch = GitBranch,
+    HelpFilename = HelpFilename,
+    LSPActive = LSPActive,
+    LSPMessages = LSPMessages,
+    Ruler = Ruler,
+    ScrollBar = ScrollBar,
+    Space = Space,
+    Spell = Spell,
+    TerminalName = TerminalName,
+    ViMode = ViMode,
+    WorkDir = WorkDir,
+    colors = colors
 }
-
-local InactiveStatusline = {
-    condition = function() return not conditions.is_active() end,
-    {hl = {fg = colors.gray, force = true}},
-    FileNameBlock,
-    {provider = "%<"},
-    Align
-}
-
-local GitCommitStatusline = {
-    condition = function()
-        return conditions.buffer_matches({filetype = {"^git.*", "fugitive"}})
-    end,
-    ViMode,
-    Space,
-    GitBranch,
-    Space,
-    Align
-}
-
-local SpecialStatusline = {
-    condition = function()
-        return conditions.buffer_matches(
-                   {buftype = {"nofile", "prompt", "help", "quickfix"}})
-    end,
-    Space,
-    HelpFilename,
-    Align
-}
-
-local TerminalStatusline = {
-    condition = function()
-        return conditions.buffer_matches({buftype = {"terminal"}})
-    end,
-    hl = {bg = colors.dark_red},
-    {condition = conditions.is_active, ViMode, Space},
-    Space,
-    TerminalName,
-    Align
-}
-
-local StatusLines = {
-
-    hl = function()
-        if conditions.is_active() then
-            return {
-                fg = utils.get_highlight("StatusLine").fg,
-                bg = utils.get_highlight("StatusLine").bg
-            }
-        else
-            return {
-                fg = utils.get_highlight("StatusLineNC").fg,
-                bg = utils.get_highlight("StatusLineNC").bg
-            }
-        end
-    end,
-
-    init = utils.pick_child_on_condition,
-
-    TerminalStatusline,
-    InactiveStatusline,
-    GitCommitStatusline,
-    SpecialStatusline,
-    DefaultStatusline
-}
-
-require("heirline").setup(StatusLines)
