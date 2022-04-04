@@ -6,7 +6,7 @@
     use 'neovim/nvim-lspconfig'
     use {
         'williamboman/nvim-lsp-installer',
-        requires = {'neovim/nvim-lspconfig'},
+        requires = {'neovim/nvim-lspconfig', 'nvim-lua/lsp-status.nvim'},
         config = function() require 'sv.configs.lsp.lspinstaller' end
     }
     use "b0o/schemastore.nvim"

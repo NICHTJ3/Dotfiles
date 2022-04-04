@@ -244,23 +244,30 @@ local LSPActive = utils.make_flexible_component(2, {
     hl = {fg = colors.green, style = "bold"}
 })
 
--- local LSPMessages = {
---     provider = function()
---         local status = require("lsp-status").status()
---         if status ~= " " then return status end
---     end,
---     hl = {fg = colors.gray}
--- }
+local LSPMessages = {
+    provider = function()
+        -- Enable once https://github.com/nvim-lua/lsp-status.nvim/issues/60 is fixed
+        return ""
+        -- if #vim.lsp.buf_get_clients() > 0 then
+        --     return require("lsp-status").status()
+        -- end
+    end,
+    hl = {fg = colors.gray}
+}
+
+local function get_sign(sign)
+    return (vim.fn.sign_getdefined(sign)[1] or {text = ""}).text
+end
 
 local Diagnostics = {
 
     condition = conditions.has_diagnostics,
 
     static = {
-        error_icon = (vim.fn.sign_getdefined("DiagnosticSignError")[1] or {text=""}).text,
-        warn_icon = (vim.fn.sign_getdefined("DiagnosticSignWarn")[1] or {text=""}).text,
-        info_icon = (vim.fn.sign_getdefined("DiagnosticSignInfo")[1] or {text=""}).text,
-        hint_icon = (vim.fn.sign_getdefined("DiagnosticSignHint")[1] or {text=""}).text
+        error_icon = get_sign("DiagnosticSignError"),
+        warn_icon = get_sign("DiagnosticSignWarn"),
+        info_icon = get_sign("DiagnosticSignInfo"),
+        hint_icon = get_sign("DiagnosticSignHint")
     },
 
     init = function(self)
@@ -419,8 +426,8 @@ local Align = {provider = "%="}
 
 local DefaultStatusline = {
     ViMode, Space, Spell, FileNameBlock, Space, GitBranch, Git,
-    {provider = "%<"}, Align, Align, LSPActive, Space, Diagnostics, Space,
-    Space, Space, Ruler, Space, ScrollBar
+    {provider = "%<"}, Align, Align, LSPActive, LSPMessages, Space, Diagnostics,
+    Space, Space, Space, Ruler, Space, ScrollBar
 }
 
 local InactiveStatusline = {

@@ -35,6 +35,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, bufnr)
+    -- Register client for messages and set up buffer autocommands to update
+    -- the statusline and the current function.
+    -- NOTE: on_attach is called with the client object, which is the "client" parameter below
+    require('lsp-status').on_attach(client)
+
     local opts = {noremap = true, silent = true}
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
