@@ -94,12 +94,6 @@ cmp.setup {
 
 require("cmp_git").setup()
 
--- Use buffer source for `/`.
-require'cmp'.setup.cmdline('/', {
-    sources = cmp.config.sources({{name = 'nvim_lsp_document_symbol'}},
-                                 {{name = 'buffer'}})
-})
-
 -- TODO: Is there a way to autocomplete on enter?
 -- Use cmdline & path source for ':'.
 cmp.setup.cmdline(':', {

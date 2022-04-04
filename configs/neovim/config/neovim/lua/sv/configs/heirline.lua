@@ -257,10 +257,10 @@ local Diagnostics = {
     condition = conditions.has_diagnostics,
 
     static = {
-        error_icon = (vim.fn.sign_getdefined("DiagnosticSignError")[1] or {}).text,
-        warn_icon = (vim.fn.sign_getdefined("DiagnosticSignWarn")[1] or {}).text,
-        info_icon = (vim.fn.sign_getdefined("DiagnosticSignInfo")[1] or {}).text,
-        hint_icon = (vim.fn.sign_getdefined("DiagnosticSignHint")[1] or {}).text
+        error_icon = (vim.fn.sign_getdefined("DiagnosticSignError")[1] or {text=""}).text,
+        warn_icon = (vim.fn.sign_getdefined("DiagnosticSignWarn")[1] or {text=""}).text,
+        info_icon = (vim.fn.sign_getdefined("DiagnosticSignInfo")[1] or {text=""}).text,
+        hint_icon = (vim.fn.sign_getdefined("DiagnosticSignHint")[1] or {text=""}).text
     },
 
     init = function(self)

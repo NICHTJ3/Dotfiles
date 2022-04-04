@@ -32,7 +32,7 @@ local luaformat = function()
     if not Check_command_installed('lua-format') then return end
     return {
         exe = "lua-format",
-        args = {"--stdin", "--align-parameter", "--align-args"},
+        args = {"-i", "--align-parameter", "--align-args"},
         stdin = true
     }
 end

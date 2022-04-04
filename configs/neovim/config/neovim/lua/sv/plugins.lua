@@ -16,7 +16,7 @@
             branch = 'nvim6.0',
             config = function()
                 require('lspsaga').init_lsp_saga {
-                    -- NOTE: This is dissabled because it doesn't check if
+                    -- NOTE: This is disabled because it doesn't check if
                     -- the lsp server supports it before enabling the
                     -- autocommand (It was the vscode like lightbulb)
                     code_action_prompt = {enable = false}
@@ -35,7 +35,7 @@
             'neovim/nvim-lspconfig', 'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-nvim-lua', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip',
             'hrsh7th/cmp-path', 'onsails/lspkind-nvim', 'hrsh7th/cmp-cmdline',
-            'octaltree/cmp-look', 'hrsh7th/cmp-nvim-lsp-document-symbol',
+            'octaltree/cmp-look',
             {'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim'}
         },
         config = function() require 'sv.configs.lsp.cmp' end
@@ -124,44 +124,16 @@
     use 'tpope/vim-sleuth' -- Automatically detect indentation
     use {
         'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup {
-                pre_hook = function(ctx)
-                    -- Only calculate commentstring for tsx filetypes
-                    if vim.bo.filetype == 'typescriptreact' then
-                        local U = require('Comment.utils')
-
-                        -- Detemine whether to use linewise or blockwise commentstring
-                        local type =
-                            ctx.ctype == U.ctype.line and '__default' or
-                                '__multiline'
-
-                        -- Determine the location where to calculate commentstring from
-                        local location = nil
-                        if ctx.ctype == U.ctype.block then
-                            location =
-                                require('ts_context_commentstring.utils').get_cursor_location()
-                        elseif ctx.cmotion == U.cmotion.v or ctx.cmotion ==
-                            U.cmotion.V then
-                            location =
-                                require('ts_context_commentstring.utils').get_visual_start_location()
-                        end
-
-                        return
-                            require('ts_context_commentstring.internal').calculate_commentstring(
-                                {key = type, location = location})
-                    end
-                end
-
-            }
-        end
+        config = function() require('sv.configs.comment') end
     }
     use 'AndrewRadev/tagalong.vim'
 
     -- TMUX
-    use 'christoomey/vim-tmux-navigator' -- Unifies tmux and vim navigation
-    use 'roxma/vim-tmux-clipboard' -- Unifies vim panes in tmux sessions clipboards
-    use 'tmux-plugins/vim-tmux-focus-events' -- Required for vim-tmux-clipboard
+    use {
+        'christoomey/vim-tmux-navigator', -- Unifies tmux and vim navigation
+        'roxma/vim-tmux-clipboard', -- Unifies vim panes in tmux sessions clipboards
+        'tmux-plugins/vim-tmux-focus-events' -- Required for vim-tmux-clipboard
+    }
 
     -- Note taking
     use {
@@ -177,21 +149,17 @@
         config = function() require 'sv.configs.nvimtree' end
     }
     use {
-        "rebelot/heirline.nvim", -- Status line
-        requires = {'nvim-lua/lsp-status.nvim'}, -- For git information
+        'rebelot/heirline.nvim', -- Status line
+        requires = {
+            'nvim-lua/lsp-status.nvim', -- For git information
+            'kyazdani42/nvim-web-devicons'
+        },
         config = function() require 'sv.configs.heirline' end
     }
-    use 'folke/tokyonight.nvim' -- Theme
-    use "rebelot/kanagawa.nvim" -- Theme
-    use({"catppuccin/nvim", as = "catppuccin"}) -- Theme
-    use {
-        'miyakogi/seiya.vim', -- Transparency automagically
-        config = function()
-            -- Automatically enable seiya
-            vim.g.seiya_auto_enable = 1
-            -- Doesn't work by default in neovim with true-color terminal the below fixes
-            -- this
-            vim.g.seiya_target_groups = {'guibg'}
-        end
-    }
+    use({'catppuccin/nvim', as = 'catppuccin'}) -- Theme
 end)
+
+-- Other plugins that might be useful in future
+-- 'miyakogi/seiya.vim', -- Transparency automagically
+-- 'folke/tokyonight.nvim' -- Theme
+-- 'rebelot/kanagawa.nvim' -- Theme
