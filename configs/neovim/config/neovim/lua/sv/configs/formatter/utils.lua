@@ -1,9 +1,7 @@
 local Check_command_installed = function(command)
-    if os.execute('! which ' .. command .. ' &> /dev/null') == 0 then
-        print("You must install " .. command)
-        return false
-    end
-    return true
+    if os.execute('which ' .. command) == 0 then return true end
+    vim.pretty_print("You must install " .. command)
+    return false
 end
 
 local prettierd = function()
@@ -62,7 +60,7 @@ local formattable_file_types = {
     svelte = {prettierd},
     yaml = {prettierd},
     terraform = {terraform},
-    [''] = {},
+    [''] = {}
 }
 
 local M = {}
