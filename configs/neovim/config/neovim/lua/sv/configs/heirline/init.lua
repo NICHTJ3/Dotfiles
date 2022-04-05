@@ -59,12 +59,11 @@ local StatusLines = {
                 fg = utils.get_highlight("StatusLine").fg,
                 bg = utils.get_highlight("StatusLine").bg
             }
-        else
-            return {
-                fg = utils.get_highlight("StatusLineNC").fg,
-                bg = utils.get_highlight("StatusLineNC").bg
-            }
         end
+        return {
+            fg = utils.get_highlight("StatusLineNC").fg,
+            bg = utils.get_highlight("StatusLineNC").bg
+        }
     end,
 
     init = utils.pick_child_on_condition,

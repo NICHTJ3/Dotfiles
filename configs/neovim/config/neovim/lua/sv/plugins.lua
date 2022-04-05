@@ -35,10 +35,10 @@
     use {
         'hrsh7th/nvim-cmp',
         requires = {
-            'neovim/nvim-lspconfig', 'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-nvim-lua', 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip',
-            'hrsh7th/cmp-path', 'onsails/lspkind-nvim', 'hrsh7th/cmp-cmdline',
-            'octaltree/cmp-look',
+            'neovim/nvim-lspconfig', 'onsails/lspkind-nvim',
+            'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip', 'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline', 'octaltree/cmp-look',
             {'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim'}
         },
         config = function() require 'sv.configs.lsp.cmp' end
@@ -151,7 +151,13 @@
     -- UI
     use {
         'rcarriga/nvim-notify',
-        config = function() vim.notify = require("notify") end
+        config = function()
+            require("notify").setup({
+                stages = "fade_in_slide_out",
+                timeout = 2000
+            })
+            vim.notify = require("notify")
+        end
     }
     use {
         'kyazdani42/nvim-tree.lua',
