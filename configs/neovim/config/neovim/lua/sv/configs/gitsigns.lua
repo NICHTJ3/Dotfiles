@@ -1,4 +1,3 @@
-
 require('gitsigns').setup {
     keymaps = {
         -- Default keymap options
@@ -19,7 +18,7 @@ require('gitsigns').setup {
         ['n <leader>ghr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
         ['n <leader>ghR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
         ['n <leader>ghp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-        ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+        ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
 
         -- Text objects
         ['o ih'] = ':<C-U>lua require"gitsigns".select_hunk()<CR>',
