@@ -85,7 +85,7 @@ M.Mappings = function()
                    "<cmd>lua require('telescope').extensions.githubcoauthors.coauthors()<CR>")
     -- List projects
     vim.keymap.set('n', '<leader>lp',
-                   "<cmd>lua require'sv.configs.telescope'.ListProjects()<CR")
+                   "<cmd>lua require'sv.configs.telescope'.ListProjects()<CR>")
 
 
 end
