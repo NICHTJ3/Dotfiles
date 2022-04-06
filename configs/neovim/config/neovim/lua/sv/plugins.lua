@@ -98,6 +98,11 @@
     -- Treesitter and syntax
     use {'hashivim/vim-terraform', ft = {"terraform"}}
     use {
+        'preservim/vim-markdown',
+        ft = {"markdown"},
+        config = function() vim.g.vim_markdown_folding_disabled = 1 end
+    }
+    use {
         'nvim-treesitter/nvim-treesitter', -- Tree sitter
         requires = {
             'p00f/nvim-ts-rainbow', -- Rainbow brackets
