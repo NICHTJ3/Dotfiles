@@ -32,6 +32,7 @@
     }
     use {
         'mfussenegger/nvim-lint',
+        ft = {'dockerfile'},
         config = function()
             require('lint').linters_by_ft = {dockerfile = {'hadolint'}}
             vim.cmd [[autocmd BufNewFile,BufRead,BufWritePost * lua require('lint').try_lint()]]
