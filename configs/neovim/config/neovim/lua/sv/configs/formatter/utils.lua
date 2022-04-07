@@ -1,7 +1,12 @@
 local Check_command_installed = function(command)
     if os.execute('which ' .. command) == 0 then return true end
-    vim.pretty_print("You must install " .. command)
+    vim.notify("You must install " .. command)
     return false
+end
+
+local shfmt = function()
+    if not Check_command_installed('shfmt') then return end
+    return {exe = "shfmt", stdin = true}
 end
 
 local prettierd = function()
@@ -60,6 +65,8 @@ local formattable_file_types = {
     svelte = {prettierd},
     yaml = {prettierd},
     terraform = {terraform},
+    bash = {shfmt},
+    sh = {shfmt},
     [''] = {}
 }
 

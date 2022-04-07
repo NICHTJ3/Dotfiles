@@ -43,7 +43,7 @@ require'nvim-tree'.setup {
         ignore_list = {}
     },
     view = {
-        side = 'left',
+        side = 'right',
         width = 30,
         height = 30,
         preserve_window_proportions = true
