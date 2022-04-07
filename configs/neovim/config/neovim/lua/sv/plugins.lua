@@ -30,6 +30,13 @@
             }
         end
     }
+    use {
+        'mfussenegger/nvim-lint',
+        config = function()
+            require('lint').linters_by_ft = {dockerfile = {'hadolint'}}
+            vim.cmd [[autocmd BufNewFile,BufRead,BufWritePost * lua require('lint').try_lint()]]
+        end
+    }
 
     -- TODO: Maybe make some of these opt and include them in the cmp config
     use {
