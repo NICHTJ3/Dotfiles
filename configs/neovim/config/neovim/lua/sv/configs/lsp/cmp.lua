@@ -1,11 +1,11 @@
 local cmp = require "cmp"
 
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 local keymap = require("cmp.utils.keymap")
 
 cmp.setup {
-    completion = {autocomplete = {cmp.TriggerEvent.TextChanged}},
+    completion = { autocomplete = { cmp.TriggerEvent.TextChanged } },
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
@@ -21,14 +21,14 @@ cmp.setup {
             else
                 cmp.complete()
             end
-        end, {'i', 'c'}),
+        end, { 'i', 'c' }),
         ["<C-p>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
             else
                 cmp.complete()
             end
-        end, {'i', 'c'}),
+        end, { 'i', 'c' }),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -48,7 +48,7 @@ cmp.setup {
             else
                 fallback() -- The fallback function is treated as original mapped key. In this case, it might be `<Tab>`.
             end
-        end, {'i', 's'}),
+        end, { 'i', 's' }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if vim.fn["vsnip#available"]() == 1 then
                 vim.fn.feedkeys(keymap.t("<Plug>(vsnip-jump-prev)"), "")
@@ -57,23 +57,23 @@ cmp.setup {
             else
                 fallback()
             end
-        end, {'i', 's'}),
+        end, { 'i', 's' }),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true
         })
     },
     sources = cmp.config.sources({
-        {name = 'nvim_lsp'}, {name = 'nvim_lua'}, {name = 'vsnip'}, -- For vsnip users.
-        {name = 'path'}, {name = 'zsh'}, {
+        { name = 'nvim_lsp' }, { name = 'nvim_lua' }, { name = 'vsnip' }, -- For vsnip users.
+        { name = 'path' }, { name = 'zsh' }, {
             name = 'look',
             keyword_length = 2,
-            option = {convert_case = true, loud = true}
-        }, {name = 'buffer'}, {name = "cmp_git"}
+            option = { convert_case = true, loud = true }
+        }, { name = 'buffer' }, { name = "cmp_git" }
 
     }),
 
-    experimental = {nativeMenu = false, ghost_text = true},
+    experimental = { ghost_text = true },
     formatting = {
         format = require("lspkind").cmp_format(
             {
@@ -97,5 +97,47 @@ require("cmp_git").setup()
 -- TODO: Is there a way to autocomplete on enter?
 -- Use cmdline & path source for ':'.
 cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
+    sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
+    mapping = {
+        ["<C-n>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                cmp.complete()
+            end
+        end, { 'i', 'c' }),
+        ["<C-p>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                cmp.complete()
+            end
+        end, { 'i', 'c' }),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<C-y>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true
+        }),
+        ['<Tab>'] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                cmp.complete()
+            end
+        end, { 'i', 'c' }),
+        ["<S-Tab>"] = cmp.mapping(function()
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                cmp.complete()
+            end
+        end, { 'i', 'c' }),
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true
+        })
+    }
 })
