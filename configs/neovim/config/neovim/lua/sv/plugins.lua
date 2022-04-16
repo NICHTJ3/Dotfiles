@@ -167,7 +167,7 @@
         config = function()
             require("notify").setup({
                 stages = "fade_in_slide_out",
-                timeout = 2000
+                timeout = 200
             })
             vim.notify = require("notify")
         end
@@ -183,7 +183,7 @@
             'nvim-lua/lsp-status.nvim', -- For git information
             'kyazdani42/nvim-web-devicons'
         },
-        config = function() require 'sv.configs.heirline.init' end
+        config = function() require 'sv.configs.heirline' end
     }
     use({
         'catppuccin/nvim',

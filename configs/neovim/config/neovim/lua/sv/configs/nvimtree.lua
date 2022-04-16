@@ -1,11 +1,11 @@
 vim.g.nvim_tree_group_empty = 1 -- 0 by default, compact folders that only contain a single folder into one node in the file tree
-vim.g.nvim_tree_indent_markers = 0 -- 0 by default, this option shows indent markers when folders are open
 vim.g.nvim_tree_icon_padding = ' ' -- one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
 vim.g.nvim_tree_highlight_opened_files = 1 -- 0 by default, will enable folder and file icon highlight for opened files/directories.
 vim.g.nvim_tree_add_trailing = 1 -- 0 by default, append a trailing slash to folder names
 
 -- following options are the default
 require'nvim-tree'.setup {
+    nvim_tree_indent_markers = 0, -- 0 by default, this option shows indent markers when folders are open
     -- will disable the window picker.
     disable_window_picker = 0,
     -- disables netrw completely
