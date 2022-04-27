@@ -6,14 +6,14 @@
     use 'neovim/nvim-lspconfig'
     use {
         'williamboman/nvim-lsp-installer',
-        requires = {'neovim/nvim-lspconfig', 'nvim-lua/lsp-status.nvim'},
+        requires = { 'neovim/nvim-lspconfig', 'nvim-lua/lsp-status.nvim' },
         config = function() require 'sv.configs.lsp.lspinstaller' end
     }
     use "b0o/schemastore.nvim"
     use {
         'mhartington/formatter.nvim', -- Helper for fast formatting
-        cmd = {'Format', 'FormatWrite'},
-        keys = {'<leader>d'},
+        cmd = { 'Format', 'FormatWrite' },
+        keys = { '<leader>d' },
         config = function() require 'sv.configs.formatter' end
     }
     use {
@@ -26,15 +26,15 @@
                 -- NOTE: This is disabled because it doesn't check if
                 -- the lsp server supports it before enabling the
                 -- autocommand (It was the vscode like lightbulb)
-                code_action_prompt = {enable = false}
+                code_action_prompt = { enable = false }
             }
         end
     }
     use {
         'mfussenegger/nvim-lint',
-        ft = {'dockerfile'},
+        ft = { 'dockerfile' },
         config = function()
-            require('lint').linters_by_ft = {dockerfile = {'hadolint'}}
+            require('lint').linters_by_ft = { dockerfile = { 'hadolint' } }
             vim.cmd [[autocmd BufNewFile,BufRead,BufWritePost * lua require('lint').try_lint()]]
         end
     }
@@ -47,7 +47,7 @@
             'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-vsnip', 'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline', 'octaltree/cmp-look',
-            {'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim'}
+            { 'petertriho/cmp-git', requires = 'nvim-lua/plenary.nvim' }
         },
         config = function() require 'sv.configs.lsp.cmp' end
     }
@@ -56,16 +56,17 @@
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
-            {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}, -- Actual dependencies
-            {'cwebster2/github-coauthors.nvim', opt = true},
-            {'nvim-telescope/telescope-project.nvim', opt = true},
-            {'nvim-telescope/telescope-ui-select.nvim', opt = true},
+            { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' }, -- Actual dependencies
+            { 'cwebster2/github-coauthors.nvim', opt = true },
+            { 'nvim-telescope/telescope-project.nvim', opt = true },
+            { 'nvim-telescope/telescope-ui-select.nvim', opt = true },
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
                 run = 'make',
                 opt = true
             }
         },
+        cmd = { 'Telescope' },
         -- Only load the plugin on these keypresses (this may not be what I want)
         keys = {
             '<leader>lf', '<leader>ev', '<leader>lb', '<leader>/', '<leader>sw',
@@ -79,7 +80,7 @@
     }
     use {
         'windwp/nvim-spectre',
-        keys = {'<leader>as'},
+        keys = { '<leader>as' },
         config = function()
             vim.keymap.set('n', '<leader>as', require('spectre').open)
         end
@@ -92,22 +93,22 @@
         config = function()
             require('trouble').setup {}
             vim.keymap.set('n', '<leader>tt', '<cmd>TroubleToggle<CR>',
-                           {silent = true, noremap = true})
+                { silent = true, noremap = true })
         end
     }
 
     -- Snippets
     use {
         'hrsh7th/vim-vsnip',
-        requires = {{'rafamadriz/friendly-snippets'}},
+        requires = { { 'rafamadriz/friendly-snippets' } },
         config = function() require('sv.configs.vsnip') end
     }
 
     -- Treesitter and syntax
-    use {'hashivim/vim-terraform', ft = {"terraform"}}
+    use { 'hashivim/vim-terraform', ft = { "terraform" } }
     use {
         'preservim/vim-markdown',
-        ft = {"markdown"},
+        ft = { "markdown" },
         config = function() vim.g.vim_markdown_folding_disabled = 1 end
     }
     use {
@@ -126,7 +127,7 @@
     use 'rhysd/committia.vim' -- Better commits
     use {
         'lewis6991/gitsigns.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = { 'nvim-lua/plenary.nvim' },
         config = function() require('sv.configs.gitsigns') end
     }
 
@@ -146,7 +147,7 @@
         'numToStr/Comment.nvim',
         config = function() require('sv.configs.comment') end
     }
-    use {'AndrewRadev/tagalong.vim', ft = {'typescriptreact', 'html', 'vue'}}
+    use { 'AndrewRadev/tagalong.vim', ft = { 'typescriptreact', 'html', 'vue' } }
 
     -- TMUX
     use 'christoomey/vim-tmux-navigator' -- Unifies tmux and vim navigation
@@ -157,21 +158,11 @@
     use {
         'iamcco/markdown-preview.nvim',
         run = 'cd app && yarn install',
-        ft = {"markdown"},
+        ft = { "markdown" },
         config = function() require('sv.configs.markdown-preview') end
     }
 
     -- UI
-    use {
-        'rcarriga/nvim-notify',
-        config = function()
-            require("notify").setup({
-                stages = "fade_in_slide_out",
-                timeout = 200
-            })
-            vim.notify = require("notify")
-        end
-    }
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
