@@ -4,10 +4,7 @@ vim.g.nvim_tree_highlight_opened_files = 1 -- 0 by default, will enable folder a
 vim.g.nvim_tree_add_trailing = 1 -- 0 by default, append a trailing slash to folder names
 
 -- following options are the default
-require'nvim-tree'.setup {
-    nvim_tree_indent_markers = 0, -- 0 by default, this option shows indent markers when folders are open
-    -- will disable the window picker.
-    disable_window_picker = 0,
+require 'nvim-tree'.setup {
     -- disables netrw completely
     disable_netrw = true,
     -- hijack netrw window on startup
@@ -18,13 +15,28 @@ require'nvim-tree'.setup {
     ignore_ft_on_setup = {},
     -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
     open_on_tab = true,
-    -- hijacks new directory buffers when they are opened.
-    update_to_buf_dir = {
-        -- enable the feature
-        enable = true,
-        -- allow to open the tree if it was previously closed
-        auto_open = true
+    actions = {
+        open_file = {
+            quit_on_open = false,
+            window_picker = {
+                enable = true,
+                chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                exclude = {
+                    filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                    buftype = { "nofile", "terminal", "help" },
+                },
+            }
+        }
     },
+    renderer = {
+        indent_markers = {
+            enable = false,
+        },
+        icons = {
+            webdev_colors = true,
+        },
+    },
+
     -- hijack the cursor in the tree to put it at the start of the filename
     hijack_cursor = true,
     -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
@@ -52,4 +64,4 @@ require'nvim-tree'.setup {
 
 vim.cmd("nnoremap <C-n> :NvimTreeToggle<CR>")
 
-vim.cmd[[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]
+vim.cmd [[autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]]

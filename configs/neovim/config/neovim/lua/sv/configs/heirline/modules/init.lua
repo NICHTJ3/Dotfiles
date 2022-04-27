@@ -20,10 +20,10 @@ local sett = {
         hint = utils.get_highlight("DiagnosticHint").fg,
         info = utils.get_highlight("DiagnosticInfo").fg
     },
-    git = {del = clrs.red, add = clrs.green, change = clrs.orange}
+    git = { del = clrs.red, add = clrs.green, change = clrs.orange }
 }
 
-local Space = {provider = " "}
+local Space = { provider = " " }
 
 local ViMode = {
     -- get vim current mode, this information will be required by the provider
@@ -95,7 +95,7 @@ local ViMode = {
     -- Same goes for the highlight. Now the foreground will change according to the current mode.
     hl = function(self)
         local mode = self.mode:sub(1, 1) -- get only the first mode character
-        return {fg = self.mode_colors[mode], style = "bold"}
+        return { fg = self.mode_colors[mode], bold = true }
     end
 }
 
@@ -109,12 +109,11 @@ local FileIcon = {
     init = function(self)
         local filename = self.filename
         local extension = vim.fn.fnamemodify(filename, ":e")
-        self.icon, self.icon_color =
-            require("nvim-web-devicons").get_icon_color(filename, extension,
-                                                        {default = true})
+        self.icon, self.icon_color = require("nvim-web-devicons").get_icon_color(filename, extension,
+            { default = true })
     end,
     provider = function(self) return self.icon and (self.icon .. " ") end,
-    hl = function(self) return {fg = self.icon_color} end
+    hl = function(self) return { fg = self.icon_color } end
 }
 
 local function split(str, sep)
@@ -132,7 +131,7 @@ local FilePath = {
         self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
         if self.lfilename == "" then self.lfilename = "[No Name]" end
     end,
-    hl = {fg = sett.curr_dir},
+    hl = { fg = sett.curr_dir },
 
     provider = function()
         local fp = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.:h')
@@ -155,14 +154,14 @@ local FileFlags = {
     {
         provider = function() if vim.bo.modified then return "" end end,
 
-        hl = {fg = clrs.green}
+        hl = { fg = clrs.green }
     }, {
         provider = function()
             if not vim.bo.modifiable or vim.bo.readonly then
                 return ""
             end
         end,
-        hl = {fg = clrs.orange}
+        hl = { fg = clrs.orange }
     }
 }
 
@@ -172,24 +171,23 @@ local FileName = {
         if vim.fn.empty(file) == 1 then return '' end
         return file .. ' '
     end,
-    hl = {fg = sett.curr_file, style = "bold"}
+    hl = { fg = sett.curr_file, bold = true }
 }
 
 local FileNameModifer = {
     hl = function()
         if vim.bo.modified then
             -- use `force` because we need to override the child's hl foreground
-            return {fg = sett.diffs, style = "bold", force = true}
+            return { fg = sett.diffs, bold = true, force = true }
         end
     end
 }
 
 -- let's add the children to our FileNameBlock component
-FileNameBlock =
-    utils.insert(FileNameBlock, FileIcon, FilePath, -- A small optimisation, since their parent does nothing
-                 utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
-                 unpack(FileFlags) -- A small optimisation, since their parent does nothing
-    )
+FileNameBlock = utils.insert(FileNameBlock, FileIcon, FilePath, -- A small optimisation, since their parent does nothing
+    utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
+    unpack(FileFlags)-- A small optimisation, since their parent does nothing
+)
 
 local Ruler = {
     -- %l = current line number
@@ -205,18 +203,18 @@ local ScrollPercentage = {
     -- %c = column number
     -- %P = percentage through file of displayed window
     provider = "%P",
-    hl = {fg = sett.extras}
+    hl = { fg = sett.extras }
 }
 
 local ScrollBar = {
-    static = {sbar = {"▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"}},
+    static = { sbar = { "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" } },
     provider = function(self)
         local curr_line = vim.api.nvim_win_get_cursor(0)[1]
         local lines = vim.api.nvim_buf_line_count(0)
         local i = math.floor(curr_line / lines * (#self.sbar - 1)) + 1
         return string.rep(self.sbar[i], 2)
     end,
-    hl = {fg = sett.scroll_bar, bg = sett.bright_bg}
+    hl = { fg = sett.scroll_bar, bg = sett.bright_bg }
 }
 
 local LSPActive = utils.make_flexible_component(2, {
@@ -233,13 +231,13 @@ local LSPActive = utils.make_flexible_component(2, {
         end
         return " [" .. table.concat(names, ", ") .. "]"
     end,
-    hl = {fg = sett.extras, style = "bold"}
+    hl = { fg = sett.extras, bold = true }
 }, {
     condition = conditions.lsp_attached,
 
     provider = " [LSP]",
 
-    hl = {fg = sett.extras, style = "bold"}
+    hl = { fg = sett.extras, bold = true }
 })
 
 local LSPMessages = {
@@ -250,11 +248,11 @@ local LSPMessages = {
         --     return require("lsp-status").status()
         -- end
     end,
-    hl = {fg = sett.extras}
+    hl = { fg = sett.extras }
 }
 
 local function get_sign(sign)
-    return (vim.fn.sign_getdefined(sign)[1] or {text = ""}).text
+    return (vim.fn.sign_getdefined(sign)[1] or { text = "" }).text
 end
 
 local Diagnostics = {
@@ -292,7 +290,7 @@ local Diagnostics = {
             end
             return result
         end,
-        hl = {fg = sett.diag.error}
+        hl = { fg = sett.diag.error }
     },
     {
         provider = function(self)
@@ -303,7 +301,7 @@ local Diagnostics = {
             end
             return result
         end,
-        hl = {fg = sett.diag.warn}
+        hl = { fg = sett.diag.warn }
     },
     {
         provider = function(self)
@@ -312,23 +310,23 @@ local Diagnostics = {
             if self.hints > 0 then result = result .. " " end
             return result
         end,
-        hl = {fg = sett.diag.info}
+        hl = { fg = sett.diag.info }
     },
     {
         provider = function(self)
             return self.hints > 0 and (self.hint_icon .. self.hints)
         end,
-        hl = {fg = sett.diag.hint}
+        hl = { fg = sett.diag.hint }
     }
 }
 
 local GitBranch = {
     provider = function()
         return (vim.b.gitsigns_head or vim.g.gitsigns_head) and ' ' ..
-                   (vim.b.gitsigns_head or vim.g.gitsigns_head)
+            (vim.b.gitsigns_head or vim.g.gitsigns_head)
     end,
     condition = vim.b.gitsigns_head or vim.g.gitsigns_head,
-    hl = {fg = sett.branch}
+    hl = { fg = sett.branch }
 }
 
 local Git = {
@@ -337,11 +335,11 @@ local Git = {
     init = function(self)
         self.status_dict = vim.b.gitsigns_status_dict
         self.has_changes = self.status_dict.added ~= 0 or
-                               self.status_dict.removed ~= 0 or
-                               self.status_dict.changed ~= 0
+            self.status_dict.removed ~= 0 or
+            self.status_dict.changed ~= 0
     end,
 
-    hl = {fg = sett.diffs},
+    hl = { fg = sett.diffs },
 
     Space,
     {
@@ -349,7 +347,7 @@ local Git = {
             local count = self.status_dict.added or 0
             return count > 0 and ("+" .. count)
         end,
-        hl = {fg = sett.git.add}
+        hl = { fg = sett.git.add }
     },
     Space,
     {
@@ -357,7 +355,7 @@ local Git = {
             local count = self.status_dict.removed or 0
             return count > 0 and ("-" .. count)
         end,
-        hl = {fg = sett.git.del}
+        hl = { fg = sett.git.del }
     },
     Space,
     {
@@ -365,7 +363,7 @@ local Git = {
             local count = self.status_dict.changed or 0
             return count > 0 and ("~" .. count)
         end,
-        hl = {fg = sett.git.change}
+        hl = { fg = sett.git.change }
     }
 }
 
@@ -375,7 +373,7 @@ local WorkDir = {
         local cwd = vim.fn.getcwd(0)
         self.cwd = vim.fn.fnamemodify(cwd, ":~")
     end,
-    hl = {fg = sett.curr_dir, style = "bold"},
+    hl = { fg = sett.curr_dir, bold = true },
 
     utils.make_flexible_component(1, {
         provider = function(self)
@@ -388,7 +386,7 @@ local WorkDir = {
             local trail = self.cwd:sub(-1) == "/" and "" or "/"
             return self.icon .. cwd .. trail .. " "
         end
-    }, {provider = ""})
+    }, { provider = "" })
 }
 
 local HelpFilename = {
@@ -397,7 +395,7 @@ local HelpFilename = {
         local filename = vim.api.nvim_buf_get_name(0)
         return vim.fn.fnamemodify(filename, ":t")
     end,
-    hl = {fg = sett.curr_file}
+    hl = { fg = sett.curr_file }
 }
 
 local TerminalName = {
@@ -409,16 +407,16 @@ local TerminalName = {
         local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
         return " " .. tname
     end,
-    hl = {fg = sett.curr_dir, style = "bold"}
+    hl = { fg = sett.curr_dir, bold = true }
 }
 
 local Spell = {
     condition = function() return vim.wo.spell end,
     provider = "SPELL ",
-    hl = {style = "bold", fg = sett.diffs}
+    hl = { bold = true, fg = sett.diffs }
 }
 
-local Align = {provider = "%="}
+local Align = { provider = "%=" }
 
 return {
     Align = Align,
