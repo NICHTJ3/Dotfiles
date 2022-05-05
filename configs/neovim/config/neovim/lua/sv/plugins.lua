@@ -2,6 +2,14 @@
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    use {
+        'lewis6991/impatient.nvim',
+        config = function()
+            require('impatient')
+        end
+    }
+
+
     -- LSP
     use 'neovim/nvim-lspconfig'
     use {
