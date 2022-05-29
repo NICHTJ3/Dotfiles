@@ -93,9 +93,3 @@ alias todo="nvim --cmd 'let g:startify_disable_at_vimenter = 1' +VimwikiIndex"
 
 # Rustup env
 . "$HOME/.cargo/env"
-
-cdnvmrc () {
-  cd "$@"
-  fnm_auto_use
-}
-alias cd="cdnvmrc"

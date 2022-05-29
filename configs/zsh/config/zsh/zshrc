@@ -114,6 +114,8 @@ bindkey '^x^x' edit-command-line
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Auto use .nvmrc file after cd and z
+
 # NOTE this has to be here since it needs to occur after comp init
 # read_nvmrc is defined in zshenv
 __z ()
@@ -121,5 +123,10 @@ __z ()
     z "$@";
     fnm_auto_use
 }
-
 alias z="__z"
+
+cdnvmrc () {
+  cd "$@"
+  fnm_auto_use
+}
+alias cd="cdnvmrc"
