@@ -127,20 +127,19 @@ read_nvmrc(){
 
         # If the current version is not the default version, set it to use the default version
         if [[ $(fnm current) != "$default_version" ]]; then
-            fnm use default;
+            # We use --log-level quiet since we show fnm version in the status
+            # line
+            fnm use default --log-level quiet;
         fi
 
         elif [[ -s "$nvm_path/.nvmrc" && -r "$nvm_path/.nvmrc" ]]; then
         declare nvm_version
         nvm_version=$(<"$nvm_path/.nvmrc")
 
-        # Remove the `v` suffix if it exists in the .nvmrc file
-        if [[ $nvm_version == v* ]]; then
-            nvm_version=$(echo "$nvm_version" | sed s/v//)
-        fi
-
         if [[ $(fnm current) != "$nvm_version" ]]; then
-            fnm use "$nvm_path/.nvmrc";
+            # We use --log-level quiet since we show fnm version in the status
+            # line
+            fnm use "$nvm_path/.nvmrc" --log-level quiet;
         fi
     fi
 }
