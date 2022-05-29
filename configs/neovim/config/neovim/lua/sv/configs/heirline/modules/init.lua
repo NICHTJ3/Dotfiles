@@ -1,7 +1,7 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
-local clrs = require("catppuccin.core.color_palette")
+local clrs = require("catppuccin.core.palettes").get_palette();
 
 -- settings
 local sett = {
