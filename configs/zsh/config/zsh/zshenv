@@ -93,3 +93,6 @@ alias todo="nvim --cmd 'let g:startify_disable_at_vimenter = 1' +VimwikiIndex"
 
 # Rustup env
 . "$HOME/.cargo/env"
+
+# Auto use .nvmrc file after changing directories
+add-zsh-hook -Uz chpwd (){ fnm_auto_use }
