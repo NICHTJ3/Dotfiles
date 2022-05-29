@@ -125,7 +125,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 __z ()
 {
     z "$@";
-    read_nvmrc
+    fnm_auto_use
 }
 
 alias z="__z"

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+find-up() {
+	path=$(pwd)
+	while [[ "$path" != "" && ! -e "$path/$1" ]]; do
+		path=${path%/*}
+	done
+	echo "$path"
+}
+
+fnm_alias_version() {
+	echo $(fnm list | grep $1 | cut -d' ' -f2)
+}
+
+
+nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
+
+# If there are no .nvmrc file, use the default fnm version
+if [[ ! $nvm_path = *[^[:space:]]* ]]; then
+
+	declare default_version
+	default_version=$(fnm_alias_version default)
+
+	# If there is no default version, set it to `node`
+	# This will use the latest lts
+	if [[ -z "$default_version" ]]; then
+		fnm install lts-latest
+		default_version=$(fnm_alias_version default)
+	fi
+
+	# If the current version is not the default version, set it to use the default version
+	if [[ $(fnm current) != "$default_version" ]]; then
+		# We use --log-level quiet since we show fnm version in the status
+		# line
+		fnm use default --log-level quiet
+	fi
+
+elif [[ -s "$nvm_path/.nvmrc" && -r "$nvm_path/.nvmrc" ]]; then
+	declare nvm_version
+	nvm_version=$(<"$nvm_path/.nvmrc")
+
+	if [[ $(fnm current) != "$nvm_version" ]]; then
+		# We use --log-level quiet since we show fnm version in the status
+		# line
+		fnm use "$nvm_path/.nvmrc" --log-level quiet
+	fi
+fi
