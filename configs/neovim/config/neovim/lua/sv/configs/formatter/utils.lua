@@ -6,7 +6,7 @@ end
 
 local shfmt = function()
     if not Check_command_installed('shfmt') then return end
-    return {exe = "shfmt", stdin = true}
+    return { exe = "shfmt", stdin = true }
 end
 
 local prettierd = function()
@@ -14,20 +14,20 @@ local prettierd = function()
 
     local filename = vim.api.nvim_buf_get_name(0):gsub("([%[%]])", "%\\%1") -- escape only characters from set
     return {
-        exe = "prettier",
-        args = {"--stdin-filepath", filename},
+        exe = "yarn",
+        args = { "exec", "--silent", "prettier", "--", "--stdin-filepath", filename },
         stdin = true
     }
 end
 
 local rustfmt = function()
     if not Check_command_installed('rustfmt') then return end
-    return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true}
+    return { exe = "rustfmt", args = { "--emit=stdout" }, stdin = true }
 end
 
 local gofmt = function()
     if not Check_command_installed('gofmt') then return end
-    return {exe = "gofmt", stdin = true}
+    return { exe = "gofmt", stdin = true }
 end
 
 -- TODO: Better options for this
@@ -35,38 +35,38 @@ local luaformat = function()
     if not Check_command_installed('lua-format') then return end
     return {
         exe = "lua-format",
-        args = {"-i", "--align-parameter", "--align-args"},
+        args = { "-i", "--align-parameter", "--align-args" },
         stdin = true
     }
 end
 
 local terraform = function()
     if not Check_command_installed('terraform') then return end
-    return {exe = "terraform", args = {"fmt", "-"}, stdin = true}
+    return { exe = "terraform", args = { "fmt", "-" }, stdin = true }
 end
 
 local formattable_file_types = {
-    javascript = {prettierd},
-    javascriptreact = {prettierd},
-    ['javascript.tsx'] = {prettierd},
-    typescript = {prettierd},
-    typescriptreact = {prettierd},
-    ['typescript.tsx'] = {prettierd},
-    css = {prettierd},
-    scss = {prettierd},
-    go = {gofmt},
-    html = {prettierd},
-    json = {prettierd},
-    jsonc = {prettierd},
-    lua = {luaformat},
-    markdown = {prettierd},
-    php = {prettierd},
-    rust = {rustfmt},
-    svelte = {prettierd},
-    yaml = {prettierd},
-    terraform = {terraform},
-    bash = {shfmt},
-    sh = {shfmt},
+    javascript = { prettierd },
+    javascriptreact = { prettierd },
+    ['javascript.tsx'] = { prettierd },
+    typescript = { prettierd },
+    typescriptreact = { prettierd },
+    ['typescript.tsx'] = { prettierd },
+    css = { prettierd },
+    scss = { prettierd },
+    go = { gofmt },
+    html = { prettierd },
+    json = { prettierd },
+    jsonc = { prettierd },
+    lua = { luaformat },
+    markdown = { prettierd },
+    php = { prettierd },
+    rust = { rustfmt },
+    svelte = { prettierd },
+    yaml = { prettierd },
+    terraform = { terraform },
+    bash = { shfmt },
+    sh = { shfmt },
     [''] = {}
 }
 
