@@ -13,7 +13,7 @@ end
 local M = {}
 
 local tsserver_config = require("lspconfig.server_configurations.tsserver")
-local cmd = tsserver_config.default_config.cmd
+local cmd = get_cmd(tsserver_config.default_config.cmd)
 
 M.config = {
     cmd = cmd,
