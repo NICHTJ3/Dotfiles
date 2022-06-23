@@ -57,7 +57,7 @@ basic.vi_mode = {
     hl_colors = {
         Normal  = { 'black', 'green' },
         Insert  = { 'white', 'black' },
-        Visual  = { 'black', 'green' },
+        Visual  = { 'black', 'yellow' },
         Replace = { 'black', 'cyan' },
         Command = { 'black', 'white' },
     },
@@ -125,7 +125,7 @@ basic.line_col_right = {
         end
         if width > medium_width then
             return {
-                { line_col, hl_list.Active },
+                { line_col },
                 { spaces },
                 { b_components.file_encoding() },
                 { ' ' },
@@ -134,7 +134,7 @@ basic.line_col_right = {
             }
         end
         return {
-            { line_col, '', hl_list.Active },
+            { line_col, '' },
         }
     end,
 }
@@ -187,18 +187,19 @@ local explorer = {
 local default = {
     filetypes = { 'default' },
     active = {
-        { ' ' },
         basic.vi_mode,
+        { ' ', { 'white', 'ActiveBg' } },
         basic.git_branch,
-        { ' ' },
+        { ' ', { 'white', 'ActiveBg' } },
         basic.file,
         basic.lsp_diagnos,
         { vim_components.search_count() },
         basic.divider,
-        { ' ' },
+        { ' ', { 'white', 'ActiveBg' } },
         basic.line_col_right,
         { ' ' },
         basic.lsp_name,
+        { ' ' },
     },
     inactive = {
         { b_components.full_file_name, hl_list.Inactive },
