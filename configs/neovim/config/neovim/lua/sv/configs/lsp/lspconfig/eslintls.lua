@@ -2,7 +2,6 @@ local M = {}
 
 local function get_cmd(cmd)
     local lspconfig = require('lspconfig')
-    local new_cmd = cmd
 
     local buffer_location = vim.api.nvim_buf_get_name(0)
 
@@ -13,16 +12,16 @@ local function get_cmd(cmd)
         .root_pattern('.pnp.cjs', '.pnp.js')(
             buffer_location)
 
-    local lsp_cmd = cmd[1]
-    local cmd_args = { unpack(cmd, 2) }
 
+    local new_cmd = cmd
     if pnpm and vim.fn.executable('pnpm') == 1 then
-        new_cmd = { "pnpm", "exec", lsp_cmd, unpack(cmd_args) }
+        new_cmd = { "pnpm", "exec", unpack(cmd) }
     end
-    --
+
     if yarn and vim.fn.executable('yarn') == 1 then
-        new_cmd = { "yarn", "exec", lsp_cmd, unpack(cmd_args) }
+        new_cmd = { "yarn", "exec", unpack(cmd) }
     end
+
     return new_cmd
 end
 
