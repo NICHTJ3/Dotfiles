@@ -9,7 +9,6 @@
         end
     }
 
-
     -- LSP
     use 'neovim/nvim-lspconfig'
     use {
@@ -179,13 +178,55 @@
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require 'sv.configs.nvimtree' end
     }
+    -- use {
+    --     'rebelot/heirline.nvim', -- Status line
+    --     requires = {
+    --         'nvim-lua/lsp-status.nvim', -- For git information
+    --         'kyazdani42/nvim-web-devicons'
+    --     },
+    --     config = function() require 'sv.configs.heirline' end
+    -- }
     use {
-        'rebelot/heirline.nvim', -- Status line
-        requires = {
-            'nvim-lua/lsp-status.nvim', -- For git information
-            'kyazdani42/nvim-web-devicons'
-        },
-        config = function() require 'sv.configs.heirline' end
+        'windwp/windline.nvim', -- Status line
+        config = function()
+            vim.o.laststatus = 3
+            require 'sv.configs.windline'.setup() 
+        end
+    }
+    use {
+        'b0o/incline.nvim', -- File name floating status
+        config = function()
+            require('incline').setup {
+                render = function(props)
+                    local bufname = vim.api.nvim_buf_get_name(props.buf)
+                    if bufname == '' then
+                        return '[No name]'
+                    else
+                        bufname = vim.fn.fnamemodify(bufname, ':t')
+                    end
+                    return bufname
+                end,
+                debounce_threshold = 30,
+                window = {
+                    width = 'fit',
+                    placement = { horizontal = 'right', vertical = 'top' },
+                    margin = {
+                        horizontal = { left = 1, right = 1 },
+                        vertical = { bottom = 0, top = 1 },
+                    },
+                    padding = { left = 1, right = 1 },
+                    padding_char = ' ',
+                    zindex = 100,
+                },
+                ignore = {
+                    floating_wins = true,
+                    unlisted_buffers = true,
+                    filetypes = {},
+                    buftypes = 'special',
+                    wintypes = 'special',
+                },
+            }
+        end
     }
     use({
         'catppuccin/nvim',
