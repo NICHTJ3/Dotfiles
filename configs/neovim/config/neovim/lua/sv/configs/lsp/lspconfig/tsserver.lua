@@ -25,7 +25,7 @@ M.config = {
         OrganizeImports = {organize_imports, description = "Organize Imports"}
     },
     on_attach = function(client, bufnr)
-        client.resolved_capabilities.document_formatting = false
+        client.server_capabilities.document_formatting = false
         common_on_attach(client, bufnr)
     end
 

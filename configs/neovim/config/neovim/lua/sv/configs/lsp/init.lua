@@ -74,7 +74,7 @@ function lsp_config.common_on_attach(client, bufnr)
                    opts)
 
     -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
         -- If we have a formatter defined by formattable_file_types then use
         -- that too
         if not formattable_file_types[vim.bo.filetype] == nil then
@@ -87,12 +87,12 @@ function lsp_config.common_on_attach(client, bufnr)
         end
     end
 
-    if client.resolved_capabilities.document_range_formatting then
+    if client.server_capabilities.document_range_formatting then
         buf_set_keymap("v", "<space>d",
                        "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
         -- NOTE: Currently this below section does nothing. I probably want to
         -- update it to highlight vars like vscode
     end

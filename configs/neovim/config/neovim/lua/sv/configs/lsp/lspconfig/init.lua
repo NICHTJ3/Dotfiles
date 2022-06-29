@@ -16,6 +16,12 @@ local configs = {
         filetypes = {
             "css", "less", "scss", "sugarss", "wxss"
         },
+        on_new_config = function(config, new_root_dir)
+            local stylelint_config = require("lspconfig.server_configurations.stylelint_lsp")
+            local cmd = stylelint_config.default_config.cmd
+            stylelint_config.default_config.on_new_config(config, new_root_dir)
+            config.cmd = eslintls.get_cmd(cmd)
+        end
     },
     cssls = cssls.config,
     eslint = eslintls.config,
