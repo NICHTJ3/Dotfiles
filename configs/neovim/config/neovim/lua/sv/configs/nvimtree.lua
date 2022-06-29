@@ -1,4 +1,4 @@
-require 'nvim-tree'.setup {
+require'nvim-tree'.setup {
     -- disables netrw completely
     disable_netrw = true,
     -- hijack netrw window on startup
@@ -16,23 +16,24 @@ require 'nvim-tree'.setup {
                 enable = true,
                 chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
                 exclude = {
-                    filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-                    buftype = { "nofile", "terminal", "help" },
-                },
+                    filetype = {
+                        "notify", "packer", "qf", "diff", "fugitive",
+                        "fugitiveblame"
+                    },
+                    buftype = {"nofile", "terminal", "help"}
+                }
             }
         }
     },
     renderer = {
         add_trailing = true,
         group_empty = true,
-        indent_markers = {
-            enable = false,
-        },
+        indent_markers = {enable = false},
         icons = {
             padding = ' ', -- one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
-            webdev_colors = true,
+            webdev_colors = true
         },
-        highlight_opened_files = "all",
+        highlight_opened_files = "all"
     },
     -- hijack the cursor in the tree to put it at the start of the filename
     hijack_cursor = true,
@@ -55,7 +56,8 @@ require 'nvim-tree'.setup {
         side = 'right',
         width = 30,
         height = 30,
-        preserve_window_proportions = true
+        preserve_window_proportions = true,
+        adaptive_size = true
     }
 }
 
@@ -63,5 +65,5 @@ vim.cmd("nnoremap <C-n> :NvimTreeToggle<CR>")
 
 vim.api.nvim_create_autocmd('BufEnter', {
     command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
-    nested = true,
+    nested = true
 })
