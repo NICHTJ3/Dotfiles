@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local sumneko_lua = require('sv.configs.lsp.lspconfig.sumneko_lua')
 
-local eslintls = require("sv.configs.lsp.lspconfig.eslintls")
+local utils = require("sv.configs.lsp.lspconfig.utils")
 local denols = require("sv.configs.lsp.lspconfig.denols")
 local tsserver = require('sv.configs.lsp.lspconfig.tsserver')
 local cssls = require('sv.configs.lsp.lspconfig.cssls')
@@ -20,11 +20,10 @@ local configs = {
             local stylelint_config = require("lspconfig.server_configurations.stylelint_lsp")
             local cmd = stylelint_config.default_config.cmd
             stylelint_config.default_config.on_new_config(config, new_root_dir)
-            config.cmd = eslintls.get_cmd(cmd)
+            config.cmd = utils.get_cmd(cmd)
         end
     },
     cssls = cssls.config,
-    eslint = eslintls.config,
     denols = denols.config,
     sumneko_lua = sumneko_lua.config,
     jsonls = {

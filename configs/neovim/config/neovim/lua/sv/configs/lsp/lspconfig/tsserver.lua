@@ -1,5 +1,5 @@
 local common_on_attach = require('sv.configs.lsp').common_on_attach
-local get_cmd = require('sv.configs.lsp.lspconfig.eslintls').get_cmd
+local get_cmd = require('sv.configs.lsp.lspconfig.utils').get_cmd
 
 local function organize_imports()
     local params = {
@@ -25,7 +25,7 @@ M.config = {
         OrganizeImports = {organize_imports, description = "Organize Imports"}
     },
     on_attach = function(client, bufnr)
-        client.server_capabilities.document_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
         common_on_attach(client, bufnr)
     end
 
