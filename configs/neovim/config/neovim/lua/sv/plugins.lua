@@ -144,7 +144,8 @@
     -- Fixes
     use 'romainl/vim-qf' -- Fixes issues with built in quick fix menu
     use 'tpope/vim-repeat' -- Repeat with . sequences that use pluggins
-    use 'pgdouyon/vim-evanesco' -- Clears search highlighting on move
+    -- use 'pgdouyon/vim-evanesco' -- Clears search highlighting on move
+    use 'wincent/loupe' -- Better search use this or evanesco
 
     -- Must have plugins
     use {
