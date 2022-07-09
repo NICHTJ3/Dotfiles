@@ -1,5 +1,5 @@
 local common_on_attach = require('sv.configs.lsp').common_on_attach
-local configurations = require('sv.configs.lsp.lspconfig').configs
+local configs = require('sv.configs.lsp.lspconfig').configs
 local lsp_installer = require("nvim-lsp-installer")
 local lsp_status = require('lsp-status')
 
@@ -15,7 +15,7 @@ lsp_status.config({
 lsp_status.register_progress()
 
 lsp_installer.on_server_ready(function(server)
-    local server_config = configurations[server.name] or {}
+    local server_config = configs[server.name] or {}
     server_config.on_attach = server_config.on_attach or common_on_attach
     server_config.capabilities = vim.tbl_extend('keep',
                                                 server_config.capabilities or {},
