@@ -191,7 +191,7 @@
         'windwp/windline.nvim', -- Status line
         config = function()
             vim.o.laststatus = 3
-            require 'sv.configs.windline'.setup() 
+            require 'sv.configs.windline'.setup()
         end
     }
     use {
@@ -229,6 +229,8 @@
             }
         end
     }
+    use "rebelot/kanagawa.nvim" -- Theme
+    use 'folke/tokyonight.nvim' -- Theme
     use({
         'catppuccin/nvim',
         as = 'catppuccin',
@@ -249,7 +251,5 @@ end)
 
 -- Other plugins that might be useful in future
 -- 'miyakogi/seiya.vim', -- Transparency automagically
--- 'folke/tokyonight.nvim' -- Theme
--- 'rebelot/kanagawa.nvim' -- Theme
 -- 'zoubin/vim-gotofile' -- Better go to file if you don't always have lsp running in node
 -- 'rafcamlet/nvim-luapad' -- Lua scratchpad
