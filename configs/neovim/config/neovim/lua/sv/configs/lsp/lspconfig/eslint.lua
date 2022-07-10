@@ -1,3 +1,8 @@
+local get_cmd = require('sv.configs.lsp.lspconfig.utils').get_cmd
+local eslint_config = require("lspconfig.server_configurations.eslint")
+
+local cmd = eslint_config.default_config.cmd
+
 local M = {}
 
 M.config = {
