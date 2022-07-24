@@ -39,17 +39,17 @@ local prettierd = function()
     if not Command_installed('prettier') then return end
 
     local filename = vim.api.nvim_buf_get_name(0):gsub("([%[%]])", "%\\%1") -- escape only characters from set
-    if Is_available_through_shell('prettier') then
-        return {
-            exe = "prettier",
-            args = { "--stdin-filepath", filename },
-            stdin = true
-        }
-    end
     if Is_yarn_command('prettier') then
         return {
             exe = "yarn",
             args = { "--silent", "prettier", "--stdin-filepath", filename },
+            stdin = true
+        }
+    end
+    if Is_available_through_shell('prettier') then
+        return {
+            exe = "prettier",
+            args = { "--stdin-filepath", filename },
             stdin = true
         }
     end
