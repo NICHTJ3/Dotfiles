@@ -129,7 +129,6 @@ local function buf_set_keymaps(bufnr)
 
     buf_set_keymap("n", "<leader>d", function()
         vim.lsp.buf.format()
-        vim.cmd "silent! EslintFixAll"
     end)
 
     -- Code actions
