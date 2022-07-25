@@ -1,13 +1,12 @@
--- TODO: Finish and comment this file
 -- My settings
 vim.opt.hidden = true
-vim.opt.belloff = 'all'
+vim.opt.belloff = "all"
 vim.opt.confirm = true
 vim.opt.wrap = false -- Disable line wrap
 vim.opt.autoread = true -- Automaticaly read file changes
-vim.opt.spellfile = vim.fn.expand('~') .. '/.config/nvim/spell/en.utf-8.add'
+vim.opt.spellfile = vim.fn.expand "~" .. "/.config/nvim/spell/en.utf-8.add"
 vim.opt.undofile = true -- Save undos after file closes
-vim.opt.undodir = vim.fn.expand('~') .. '/.config/nvim/undodir' -- Keep undo history in this place
+vim.opt.undodir = vim.fn.expand "~" .. "/.config/nvim/undodir" -- Keep undo history in this place
 vim.opt.history = 1000
 vim.opt.backup = false
 vim.opt.swapfile = false
@@ -15,27 +14,29 @@ vim.opt.lazyredraw = true -- Redraws screen only after user input only
 vim.opt.updatetime = 100
 
 -- Movement and nav settings
-vim.opt.cursorline = true;
+vim.opt.cursorline = true
 -- Allow visual block mode to select empty collumns
-vim.opt.virtualedit = 'block';
-vim.opt.tags = './tags;/,tags;/'
+vim.opt.virtualedit = "block"
+vim.opt.tags = "./tags;/,tags;/"
 vim.opt.sidescroll = 1
 -- Enabls mouse interaction
-if vim.fn.has('mouse') then vim.opt.mouse = "a" end
+if vim.fn.has "mouse" then
+    vim.opt.mouse = "a"
+end
 
 -- Theme and appearance
-vim.opt.shortmess:append({I = true, c = true})
+vim.opt.shortmess:append { I = true, c = true }
 vim.opt.showcmd = true
 vim.opt.list = true
 vim.opt.listchars = {
-    tab = '>~',
-    nbsp = '_',
-    trail = '.',
-    extends = '>',
-    precedes = '<'
+    tab = ">~",
+    nbsp = "_",
+    trail = ".",
+    extends = ">",
+    precedes = "<",
 }
 
-vim.opt.signcolumn = 'auto'
+vim.opt.signcolumn = "auto"
 
 vim.opt.textwidth = 80
 
@@ -73,4 +74,4 @@ vim.opt.relativenumber = true -- Relative and normal line numbering
 
 -- Fold settings
 vim.opt.foldnestmax = 10
-vim.opt.foldcolumn = '0'
+vim.opt.foldcolumn = "0"

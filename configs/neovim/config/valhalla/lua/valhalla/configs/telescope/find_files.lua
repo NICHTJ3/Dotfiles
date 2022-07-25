@@ -17,7 +17,7 @@ M.find = function(opts)
     opts = vim.tbl_extend("force", {
         layout_config = layout_config,
         hidden = true,
-    }, opts or {})
+    }, opts or {}) or {}
     if opts.use_buffer_cwd then
         opts.cwd = vim.fn.expand "%:p:h"
     end
@@ -27,7 +27,7 @@ end
 M.git_files = function(opts)
     opts = vim.tbl_extend("force", {
         layout_config = layout_config,
-    }, opts or {})
+    }, opts or {}) or {}
     if opts.use_buffer_cwd then
         -- TODO: This doesn't seem to work?
         opts.cwd = vim.fn.expand "%:p:h"

@@ -1,24 +1,24 @@
-local windline = require('windline')
-local b_components = require('windline.components.basic')
-local vim_components = require('windline.components.vim')
-local git_rev_components = require('windline.components.git_rev')
+local windline = require "windline"
+local b_components = require "windline.components.basic"
+local vim_components = require "windline.components.vim"
+local git_rev_components = require "windline.components.git_rev"
 
 local state = _G.WindLine.state
-local utils = require('windline.utils')
+local utils = require "windline.utils"
 
-local lsp_comps = require('windline.components.lsp')
-local git_comps = require('windline.components.git')
+local lsp_comps = require "windline.components.lsp"
+local git_comps = require "windline.components.git"
 
 local hl_list = {
-    Inactive = { 'InactiveFg', 'InactiveBg' },
-    Active = { 'ActiveFg', 'ActiveBg' },
-    default = { 'StatusFg', 'StatusBg' },
+    Inactive = { "InactiveFg", "InactiveBg" },
+    Active = { "ActiveFg", "ActiveBg" },
+    default = { "StatusFg", "StatusBg" },
 }
 local basic = {}
 
 local medium_width = 100
 local large_width = 140
-basic.divider = { b_components.divider, '' }
+basic.divider = { b_components.divider, "" }
 
 -- stylua: ignore
 utils.change_mode_name({
@@ -53,23 +53,25 @@ utils.change_mode_name({
 })
 
 basic.vi_mode = {
-    name = 'vi_mode',
+    name = "vi_mode",
     hl_colors = {
-        Normal  = { 'black', 'green' },
-        Insert  = { 'white', 'black' },
-        Visual  = { 'black', 'yellow' },
-        Replace = { 'black', 'cyan' },
-        Command = { 'black', 'white' },
+        Normal = { "black", "green" },
+        Insert = { "white", "black" },
+        Visual = { "black", "yellow" },
+        Replace = { "black", "cyan" },
+        Command = { "black", "white" },
     },
-    hl = function() return state.mode[2] end,
+    hl = function()
+        return state.mode[2]
+    end,
 
     text = function()
-        return ' ' .. state.mode[2] .. ' '
+        return " " .. state.mode[2] .. " "
     end,
 }
 
 basic.lsp_diagnos = {
-    name = 'diagnostic',
+    name = "diagnostic",
     hl_colors = hl_list.default,
     width = large_width,
     text = function(bufnr)
@@ -80,35 +82,34 @@ basic.lsp_diagnos = {
                 { lsp_comps.lsp_warning({ format = '  %s', show_zero = true }), { 'yellow', 'ActiveBg' }, '' },
             }
         end
-        return ''
+        return ""
     end,
 }
 
 basic.file = {
-    name = 'file_name',
+    name = "file_name",
     text = function()
-
         return {
-            { b_components.cache_file_name('', 'unique'), '' },
-            { b_components.file_modified(' ') },
+            { b_components.cache_file_name("", "unique"), "" },
+            { b_components.file_modified " " },
         }
     end,
 }
 
 local line_col = function()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return string.format(' Ln %3s, Col %-2s ', row, col + 1)
+    return string.format(" Ln %3s, Col %-2s ", row, col + 1)
 end
 
 local spaces = function()
-    return 'Spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth') .. ' '
+    return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
 end
 
 local line_format = function()
     local format_icons = {
-        unix = 'LF',
-        dos = 'CRLF',
-        mac = 'LF',
+        unix = "LF",
+        dos = "CRLF",
+        mac = "LF",
     }
     return function()
         return format_icons[vim.bo.fileformat] or vim.bo.fileformat
@@ -118,30 +119,28 @@ end
 basic.line_col_right = {
     hl_colors = hl_list.default,
     text = function(_, _, width)
-        if vim.api.nvim_buf_get_option(0, 'filetype') == ''
-            and vim.fn.wordcount().bytes < 1
-        then
-            return ''
+        if vim.api.nvim_buf_get_option(0, "filetype") == "" and vim.fn.wordcount().bytes < 1 then
+            return ""
         end
         if width > medium_width then
             return {
                 { line_col },
                 { spaces },
                 { b_components.file_encoding() },
-                { ' ' },
+                { " " },
                 { line_format() },
-                { ' ' },
+                { " " },
             }
         end
         return {
-            { line_col, '' },
+            { line_col, "" },
         }
     end,
 }
 
 basic.lsp_name = {
     width = medium_width,
-    name = 'lsp_name',
+    name = "lsp_name",
     text = function(bufnr)
         if lsp_comps.check_lsp(bufnr) then
             return {
@@ -149,13 +148,13 @@ basic.lsp_name = {
             }
         end
         return {
-            { b_components.cache_file_type({ icon = true, default = '' }) },
+            { b_components.cache_file_type { icon = true, default = "" } },
         }
     end,
 }
 
 basic.git_branch = {
-    name = 'git_branch',
+    name = "git_branch",
     hl_colors = hl_list.default,
     width = medium_width,
     text = function(bufnr)
@@ -169,37 +168,37 @@ basic.git_branch = {
                 },
             }
         end
-        return ''
+        return ""
     end,
 }
 
 local explorer = {
-    filetypes = { 'fern', 'NvimTree', 'lir' },
+    filetypes = { "fern", "NvimTree", "lir" },
     active = {
-        { '  ', hl_list.Inactive },
+        { "  ", hl_list.Inactive },
         { b_components.divider },
-        { b_components.file_name('') },
+        { b_components.file_name "" },
     },
     always_active = true,
     show_last_status = true,
 }
 
 local default = {
-    filetypes = { 'default' },
+    filetypes = { "default" },
     active = {
         basic.vi_mode,
-        { ' ', { 'white', 'ActiveBg' } },
+        { " ", { "white", "ActiveBg" } },
         basic.git_branch,
-        { ' ', { 'white', 'ActiveBg' } },
+        { " ", { "white", "ActiveBg" } },
         basic.file,
         basic.lsp_diagnos,
         { vim_components.search_count() },
         basic.divider,
-        { ' ', { 'white', 'ActiveBg' } },
+        { " ", { "white", "ActiveBg" } },
         basic.line_col_right,
-        { ' ' },
+        { " " },
         basic.lsp_name,
-        { ' ' },
+        { " " },
     },
     inactive = {
         { b_components.full_file_name, hl_list.Inactive },
@@ -213,7 +212,7 @@ local default = {
 
 local M = {}
 M.setup = function()
-    windline.setup({
+    windline.setup {
         colors_name = function(colors)
             colors.StatusFg = colors.ActiveFg
             colors.StatusBg = colors.ActiveBg
@@ -223,7 +222,7 @@ M.setup = function()
             default,
             explorer,
         },
-    })
+    }
 end
 
 M.setup()
