@@ -6,7 +6,7 @@ local builtin = require "telescope.builtin"
 
 local M = {}
 
-local function keymaps()
+M.keymaps = function()
     vim.keymap.set("n", "<leader>lf", files.find)
     vim.keymap.set("n", "<c-p>", files.find)
     -- Edit nvim config
@@ -97,8 +97,6 @@ M.setup = function()
             },
         },
     }
-
-    keymaps()
 end
 
 return M

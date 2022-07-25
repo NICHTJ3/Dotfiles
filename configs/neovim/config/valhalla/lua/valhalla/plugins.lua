@@ -131,7 +131,9 @@ local function spec(use)
             { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         },
         config = function()
-            require("valhalla.modules.telescope").setup()
+            local telescope = require "valhalla.modules.telescope"
+            telescope.setup()
+            telescope.keymaps()
         end,
     }
 
