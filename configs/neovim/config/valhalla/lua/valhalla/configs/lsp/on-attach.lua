@@ -2,25 +2,25 @@ local ts_utils = require "nvim-treesitter.ts_utils"
 local lsp_signature = require "lsp_signature"
 local telescope_lsp = require "valhalla.configs.telescope.lsp"
 
-vim.fn.sign_define("LspDiagnosticsSignError", {
-    texthl = "LspDiagnosticsSignError",
+vim.fn.sign_define("DiagnosticSignError", {
+    texthl = "DiagnosticSignError",
     text = "",
-    numhl = "LspDiagnosticsSignError",
+    numhl = "DiagnosticSignError",
 })
-vim.fn.sign_define("LspDiagnosticsSignWarning", {
-    texthl = "LspDiagnosticsSignWarning",
+vim.fn.sign_define("DiagnosticSignWarning", {
+    texthl = "DiagnosticSignWarning",
     text = "",
-    numhl = "LspDiagnosticsSignWarning",
+    numhl = "DiagnosticSignWarning",
 })
-vim.fn.sign_define("LspDiagnosticsSignHint", {
-    texthl = "LspDiagnosticsSignHint",
+vim.fn.sign_define("DiagnosticSignHint", {
+    texthl = "DiagnosticSignHint",
     text = "",
-    numhl = "LspDiagnosticsSignHint",
+    numhl = "DiagnosticSignHint",
 })
-vim.fn.sign_define("LspDiagnosticsSignInformation", {
-    texthl = "LspDiagnosticsSignInformation",
+vim.fn.sign_define("DiagnosticSignInformation", {
+    texthl = "DiagnosticSignInformation",
     text = "",
-    numhl = "LspDiagnosticsSignInformation",
+    numhl = "DiagnosticSignInformation",
 })
 
 local function highlight_references()
