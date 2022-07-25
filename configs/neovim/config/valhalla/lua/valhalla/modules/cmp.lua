@@ -35,8 +35,21 @@ function M.setup()
             ["<C-Space>"] = mapping.complete(),
             ["<C-e>"] = mapping.abort(),
             ["<CR>"] = mapping.confirm { select = false },
-            ["<C-n>"] = mapping.select_next_item { behavior = types.cmp.SelectBehavior.Select },
-            ["<C-p>"] = mapping.select_prev_item { behavior = types.cmp.SelectBehavior.Select },
+            ["<C-y>"] = cmp.mapping.confirm { select = false },
+            ["<C-n>"] = cmp.mapping(function()
+                if cmp.visible() then
+                    cmp.select_next_item()
+                else
+                    cmp.complete()
+                end
+            end, { "i", "c" }),
+            ["<C-p>"] = cmp.mapping(function()
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                else
+                    cmp.complete()
+                end
+            end, { "i", "c" }),
             ["<Tab>"] = mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item { behavior = types.cmp.SelectBehavior.Select }
