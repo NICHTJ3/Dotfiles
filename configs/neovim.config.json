@@ -2,7 +2,7 @@
     "description": "My neovim config",
     "links": [
         {
-            "from": "./neovim/config/neovim/*",
+            "from": "./neovim/config/valhalla/*",
             "to": "~/.config/nvim",
             "glob": true
         }

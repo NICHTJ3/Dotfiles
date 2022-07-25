@@ -1,2 +1,0 @@
--- Plugins
-require('valhalla.plugins')
