@@ -22,7 +22,7 @@ local function spec(use)
     use {
         "numToStr/Comment.nvim",
         config = function()
-            require "valhalla.configs.comment".setup()
+            require("valhalla.configs.comment").setup()
         end,
     }
     use { "AndrewRadev/tagalong.vim", ft = { "typescriptreact", "html", "vue" } }
