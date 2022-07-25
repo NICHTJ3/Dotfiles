@@ -25,7 +25,6 @@ local function spec(use)
             require("valhalla.modules.comment").setup()
         end,
     }
-    use { "AndrewRadev/tagalong.vim", ft = { "typescriptreact", "html", "vue" } }
 
     -- Git
     use "tpope/vim-fugitive"
@@ -44,12 +43,12 @@ local function spec(use)
             "nvim-treesitter/nvim-treesitter",
             run = ":TSUpdate",
             requires = {
-                "nvim-treesitter/playground",
-                "nvim-treesitter/nvim-treesitter-context",
-                "nvim-treesitter/nvim-treesitter-textobjects",
-                "p00f/nvim-ts-rainbow",
-                "JoosepAlviste/nvim-ts-context-commentstring",
-                "windwp/nvim-ts-autotag",
+                "nvim-treesitter/playground", -- Debug treesitter
+                "nvim-treesitter/nvim-treesitter-context", -- Show context at the top of the screen while scrolling
+                "nvim-treesitter/nvim-treesitter-textobjects", -- Change inner function etc...
+                "p00f/nvim-ts-rainbow", -- Rainbow brackets
+                "JoosepAlviste/nvim-ts-context-commentstring", -- Better commenting in tsx/jsx
+                "windwp/nvim-ts-autotag", -- Auto rename closing tags
             },
             config = function()
                 require("valhalla.modules.nvim-treesitter").setup()
@@ -59,7 +58,7 @@ local function spec(use)
 
     -- LSP
     use {
-        "glepnir/lspsaga.nvim",
+        "glepnir/lspsaga.nvim", -- TODO: Use in on-attach action mappings etc...
         branch = "main",
         config = function()
             require("lspsaga").init_lsp_saga()
