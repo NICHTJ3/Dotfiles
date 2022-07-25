@@ -17,6 +17,7 @@ local function keymaps()
         }
     end)
     vim.keymap.set("n", "<leader>gs", git.status)
+    vim.keymap.set("n", "<leader>/", files.grep)
 end
 
 M.setup = function()
