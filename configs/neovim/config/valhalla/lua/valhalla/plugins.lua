@@ -11,8 +11,8 @@ local function spec(use)
     use "romainl/vim-qf" -- Fixes issues with built in quick fix menu
     use "tpope/vim-repeat" -- Repeat with . sequences that use pluggins
     use "wincent/loupe" -- Better search use this or evanesco
-    use 'tpope/vim-surround' -- Change/Add surrounding character
-    use 'tpope/vim-sleuth' -- Automatically detect indentation
+    use "tpope/vim-surround" -- Change/Add surrounding character
+    use "tpope/vim-sleuth" -- Automatically detect indentation
     use {
         "unblevable/quick-scope",
         config = function()
@@ -20,10 +20,12 @@ local function spec(use)
         end,
     }
     use {
-        'numToStr/Comment.nvim',
-        config = function() require('valhalla.configs.comment') end
+        "numToStr/Comment.nvim",
+        config = function()
+            require "valhalla.configs.comment"
+        end,
     }
-    use { 'AndrewRadev/tagalong.vim', ft = { 'typescriptreact', 'html', 'vue' } }
+    use { "AndrewRadev/tagalong.vim", ft = { "typescriptreact", "html", "vue" } }
 
     -- Git
     use "tpope/vim-fugitive"
@@ -57,10 +59,17 @@ local function spec(use)
 
     -- LSP
     use {
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            require("lspsaga").init_lsp_saga()
+        end,
+    }
+
+    use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "folke/lua-dev.nvim",
-
         "neovim/nvim-lspconfig",
         "b0o/SchemaStore.nvim",
         "ray-x/lsp_signature.nvim",
@@ -134,11 +143,11 @@ local function spec(use)
         end,
     }
     use {
-        'windwp/windline.nvim', -- Status line
+        "windwp/windline.nvim", -- Status line
         config = function()
             vim.o.laststatus = 3
-            require 'valhalla.configs.windline'.setup()
-        end
+            require("valhalla.configs.windline").setup()
+        end,
     }
     use "rebelot/kanagawa.nvim" -- Theme
     use "folke/tokyonight.nvim" -- Theme
