@@ -136,6 +136,7 @@ local function buf_set_keymaps(bufnr)
     buf_set_keymap("n", "<leader>aa", vim.lsp.buf.code_action)
     buf_set_keymap("v", "<leader>a", vim.lsp.buf.range_code_action)
     buf_set_keymap("n", "<leader>l", find_and_run_codelens)
+    buf_set_keymap("n", "<leader>or", "<cmd>OrganizeImports<CR>")
 
     -- Movement
     buf_set_keymap("n", "gD", vim.lsp.buf.declaration)

@@ -169,4 +169,39 @@ mason.setup_handlers {
             },
         }
     end,
+    ["tsserver"] = function()
+        local on_attach = require "valhalla.configs.lsp.on-attach"
+        local get_cmd = require("valhalla.utils").get_cmd
+        print "Yes it is"
+
+        local function organize_imports()
+            local params = {
+                command = "_typescript.organizeImports",
+                arguments = { vim.api.nvim_buf_get_name(0) },
+                title = "",
+            }
+            vim.lsp.buf.execute_command(params)
+        end
+
+        local tsserver_config = require "lspconfig.server_configurations.tsserver"
+        local cmd = get_cmd(tsserver_config.default_config.cmd)
+
+        lspconfig.tsserver.setup {
+            cmd = cmd,
+            filetypes = {
+                "typescriptreact",
+                "typescript",
+                "typescript.tsx",
+                "javascript",
+                "javascriptreact",
+            },
+            commands = {
+                OrganizeImports = { organize_imports, description = "Organize Imports" },
+            },
+            on_attach = function(client, bufnr)
+                client.server_capabilities.documentFormattingProvider = false
+                on_attach(client, bufnr)
+            end,
+        }
+    end,
 }
