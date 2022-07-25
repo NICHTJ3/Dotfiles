@@ -127,7 +127,9 @@ local function buf_set_keymaps(bufnr)
         vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true })
     end
 
-    buf_set_keymap("n", "<leader>d", vim.lsp.buf.format)
+    buf_set_keymap("n", "<leader>d", function()
+        vim.lsp.buf.format { timeout_ms = 2000 }
+    end)
 
     -- Code actions
     buf_set_keymap("n", "<leader>ar", vim.lsp.buf.rename)
