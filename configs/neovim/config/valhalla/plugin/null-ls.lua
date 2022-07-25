@@ -10,5 +10,5 @@ null_ls.setup {
         null_ls.builtins.diagnostics.shellcheck,
         null_ls.builtins.diagnostics.hadolint,
     },
-    on_attach = require "valhalla.configs.lsp.on-attach",
+    on_attach = require "valhalla.modules.lsp.on-attach",
 }

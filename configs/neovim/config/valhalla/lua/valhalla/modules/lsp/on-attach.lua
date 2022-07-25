@@ -1,6 +1,6 @@
 local ts_utils = require "nvim-treesitter.ts_utils"
 local lsp_signature = require "lsp_signature"
-local telescope_lsp = require "valhalla.configs.telescope.lsp"
+local telescope_lsp = require "valhalla.modules.telescope.lsp"
 
 vim.fn.sign_define("DiagnosticSignError", {
     texthl = "DiagnosticSignError",

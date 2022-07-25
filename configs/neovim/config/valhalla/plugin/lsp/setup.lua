@@ -169,7 +169,7 @@ mason.setup_handlers {
         }
     end,
     ["tsserver"] = function()
-        local on_attach = require "valhalla.configs.lsp.on-attach"
+        local on_attach = require "valhalla.modules.lsp.on-attach"
         local get_cmd = require("valhalla.utils").get_cmd
 
         local function organize_imports()

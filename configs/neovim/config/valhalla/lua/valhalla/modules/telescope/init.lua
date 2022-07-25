@@ -1,7 +1,7 @@
 local actions = require "telescope.actions"
 local layout_actions = require "telescope.actions.layout"
-local files = require "valhalla.configs.telescope.find_files"
-local git = require "valhalla.configs.telescope.git"
+local files = require "valhalla.modules.telescope.find_files"
+local git = require "valhalla.modules.telescope.git"
 local builtin = require "telescope.builtin"
 
 local M = {}

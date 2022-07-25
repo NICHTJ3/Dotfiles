@@ -22,7 +22,7 @@ local function spec(use)
     use {
         "numToStr/Comment.nvim",
         config = function()
-            require("valhalla.configs.comment").setup()
+            require("valhalla.modules.comment").setup()
         end,
     }
     use { "AndrewRadev/tagalong.vim", ft = { "typescriptreact", "html", "vue" } }
@@ -34,7 +34,7 @@ local function spec(use)
         "lewis6991/gitsigns.nvim",
         requires = { "nvim-lua/plenary.nvim" },
         config = function()
-            require("valhalla.configs.gitsigns").setup()
+            require("valhalla.modules.gitsigns").setup()
         end,
     }
 
@@ -52,7 +52,7 @@ local function spec(use)
                 "windwp/nvim-ts-autotag",
             },
             config = function()
-                require("valhalla.configs.nvim-treesitter").setup()
+                require("valhalla.modules.nvim-treesitter").setup()
             end,
         }
     end
@@ -117,7 +117,7 @@ local function spec(use)
             },
         },
         config = function()
-            require("valhalla.configs.cmp").setup()
+            require("valhalla.modules.cmp").setup()
         end,
     }
 
@@ -130,7 +130,7 @@ local function spec(use)
             { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         },
         config = function()
-            require("valhalla.configs.telescope").setup()
+            require("valhalla.modules.telescope").setup()
         end,
     }
 
@@ -139,14 +139,14 @@ local function spec(use)
         "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
-            require("valhalla.configs.nvimtree").setup()
+            require("valhalla.modules.nvimtree").setup()
         end,
     }
     use {
         "windwp/windline.nvim", -- Status line
         config = function()
             vim.o.laststatus = 3
-            require("valhalla.configs.windline").setup()
+            require("valhalla.modules.windline").setup()
         end,
     }
     use "rebelot/kanagawa.nvim" -- Theme
