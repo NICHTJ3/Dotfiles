@@ -13,7 +13,7 @@ local function keymaps()
     vim.keymap.set("n", "<leader>ev", function()
         builtin.find_files {
             prompt_title = "< Neovim Config >",
-            cwd = "~/.config/nvim",
+            cwd = "~/Dotfiles/configs/neovim/config/valhalla",
         }
     end)
     vim.keymap.set("n", "<leader>gs", git.status)
