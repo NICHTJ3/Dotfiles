@@ -22,7 +22,7 @@ local function spec(use)
     use {
         "numToStr/Comment.nvim",
         config = function()
-            require "valhalla.configs.comment"
+            require "valhalla.configs.comment".setup()
         end,
     }
     use { "AndrewRadev/tagalong.vim", ft = { "typescriptreact", "html", "vue" } }
@@ -34,7 +34,7 @@ local function spec(use)
         "lewis6991/gitsigns.nvim",
         requires = { "nvim-lua/plenary.nvim" },
         config = function()
-            require("valhalla.configs.gitsigns").Setup()
+            require("valhalla.configs.gitsigns").setup()
         end,
     }
 
@@ -139,7 +139,7 @@ local function spec(use)
         "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
-            require("valhalla.configs.nvimtree").Setup()
+            require("valhalla.configs.nvimtree").setup()
         end,
     }
     use {

@@ -1,6 +1,6 @@
 local M = {}
 
-M.Setup = function()
+M.setup = function()
     require("gitsigns").setup {
         keymaps = {
             -- Default keymap options

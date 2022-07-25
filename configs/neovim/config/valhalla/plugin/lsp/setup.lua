@@ -1,6 +1,5 @@
 local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_ok then
-    print "Oh no"
     return
 end
 
@@ -172,7 +171,6 @@ mason.setup_handlers {
     ["tsserver"] = function()
         local on_attach = require "valhalla.configs.lsp.on-attach"
         local get_cmd = require("valhalla.utils").get_cmd
-        print "Yes it is"
 
         local function organize_imports()
             local params = {

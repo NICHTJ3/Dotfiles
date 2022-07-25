@@ -1,5 +1,5 @@
 local M = {}
-M.Setup = function()
+M.setup = function()
     require('nvim-tree').setup {
         -- disables netrw completely
         disable_netrw = true,

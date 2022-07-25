@@ -1,5 +1,5 @@
 local M = {}
-M.Setup = function()
+M.setup = function()
     require("Comment").setup {
         pre_hook = function(ctx)
             -- Only calculate commentstring for tsx filetypes
