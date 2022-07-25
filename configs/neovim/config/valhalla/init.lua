@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.nvcode_termcolors = 256
 vim.o.termguicolors = true
 
@@ -15,8 +15,8 @@ if not pcall(require, "impatient") then
     print "Failed to load impatient."
 end
 
-if pcall(require, 'plenary') then
-    RELOAD = require('plenary.reload').reload_module
+if pcall(require, "plenary") then
+    RELOAD = require("plenary.reload").reload_module
 
     R = function(name)
         RELOAD(name)
@@ -24,7 +24,7 @@ if pcall(require, 'plenary') then
     end
 end
 
-require('valhalla.first-start')
-require('valhalla.plugins')
-require('valhalla.theme')
-require('personal')
+require "valhalla.first-start"
+require "valhalla.plugins"
+require "valhalla.theme"
+require "personal"

@@ -1,1 +1,1 @@
-require('personal.mappings')
+require "personal.mappings"
