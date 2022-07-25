@@ -101,6 +101,7 @@ local function spec(use)
             "hrsh7th/cmp-calc",
             "hrsh7th/cmp-path",
             "andersevenrud/cmp-tmux",
+            "hrsh7th/cmp-cmdline",
             "saadparwaiz1/cmp_luasnip",
             "petertriho/cmp-git",
             {
