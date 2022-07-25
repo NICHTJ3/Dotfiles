@@ -69,6 +69,7 @@ local function spec(use)
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
         "folke/lua-dev.nvim",
         "neovim/nvim-lspconfig",
         "b0o/SchemaStore.nvim",
