@@ -42,5 +42,6 @@ mason_tool_installer.setup {
         "shellcheck",
         "shfmt",
         "vint",
+        "gitlint",
     },
 }
