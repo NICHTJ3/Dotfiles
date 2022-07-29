@@ -4,7 +4,7 @@ M.setup = function()
     require("nvim-treesitter.configs").setup {
         ensure_installed = "all",
         ignore_install = { "haskell", "phpdoc" },
-        highlight = { enable = true },
+        highlight = { enable = true, additional_vim_regex_highlighting = false },
         indent = { enable = true, disable = { "python", "yaml", "tsx" } },
         playground = {
             enable = true,
@@ -34,11 +34,12 @@ M.setup = function()
             enable = true,
             filetypes = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
         },
-        rainbow = { enable = true },
+        rainbow = { enable = true, extended_mode = false },
         context_commentstring = {
             enable = true,
             config = {
                 javascriptreact = { style_element = "{/*%s*/}" },
+                typescriptreact = { style_element = "{/*%s*/}" },
             },
         },
         matchup = {
