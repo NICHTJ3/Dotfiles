@@ -169,6 +169,9 @@ local function spec(use)
             }
         end,
     } -- Theme
+    use "navarasu/onedark.nvim" -- Theme
+    use "Yazeed1s/minimal.nvim" -- Theme
+    use "Yagua/nebulous.nvim" -- Theme
 end
 
 require("packer").startup {

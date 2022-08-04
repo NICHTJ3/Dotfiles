@@ -27,8 +27,7 @@ local function highlight_references()
     local node = ts_utils.get_node_at_cursor()
     while node ~= nil do
         local node_type = node:type()
-        if
-            node_type == "string"
+        if node_type == "string"
             or node_type == "string_fragment"
             or node_type == "template_string"
             or node_type == "document" -- for inline gql`` strings
@@ -95,60 +94,62 @@ local function find_and_run_codelens()
     vim.api.nvim_win_set_cursor(0, { row, col }) -- restore cursor, TODO: also restore position
 end
 
-local function get_preview_window()
-    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(vim.api.nvim_get_current_tabpage())) do
-        if vim.api.nvim_win_get_option(win, "previewwindow") then
-            return win
-        end
+local function merge(t1, t2)
+    for k, v in ipairs(t2) do
+        table.insert(t1, v)
     end
-    vim.cmd [[new]]
-    local pwin = vim.api.nvim_get_current_win()
-    vim.api.nvim_win_set_option(pwin, "previewwindow", true)
-    vim.api.nvim_win_set_height(pwin, vim.api.nvim_get_option "previewheight")
-    return pwin
-end
 
-local function hover()
-    local existing_float_win = vim.b.lsp_floating_preview
-    if existing_float_win and vim.api.nvim_win_is_valid(existing_float_win) then
-        vim.b.lsp_floating_preview = nil
-        local preview_buffer = vim.api.nvim_win_get_buf(existing_float_win)
-        local pwin = get_preview_window()
-        vim.api.nvim_win_set_buf(pwin, preview_buffer)
-        vim.api.nvim_win_close(existing_float_win, true)
-    else
-        vim.lsp.buf.hover()
-    end
+    return t1
 end
 
 ---@param bufnr number
 local function buf_set_keymaps(bufnr)
-    local function buf_set_keymap(mode, lhs, rhs)
-        vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true })
+    local function buf_set_keymap(mode, lhs, rhs, opts)
+        vim.keymap.set(mode, lhs, rhs, merge({ buffer = bufnr, silent = true }, opts or {}))
     end
 
     buf_set_keymap("n", "<leader>d", function()
-        vim.lsp.buf.format()
+        vim.lsp.buf.formatting()
     end)
 
     -- Code actions
-    buf_set_keymap("n", "<leader>ar", vim.lsp.buf.rename)
-    buf_set_keymap("n", "<leader>aa", vim.lsp.buf.code_action)
-    buf_set_keymap("v", "<leader>a", vim.lsp.buf.range_code_action)
+    local codeactions = require "lspsaga.codeaction"
+
+    buf_set_keymap("n", "<leader>ar", require("lspsaga.rename").lsp_rename)
+    buf_set_keymap("n", "<leader>aa", codeactions.code_action, { noremap = true })
+    buf_set_keymap("v", "<leader>aa", function()
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
+        codeactions.range_code_action()
+    end, { noremap = true })
     buf_set_keymap("n", "<leader>l", find_and_run_codelens)
     buf_set_keymap("n", "<leader>or", "<cmd>OrganizeImports<CR>")
 
+    -- Preview diagnostic messages
+    buf_set_keymap("n", "<leader>ai", require("lspsaga.diagnostic").show_line_diagnostics)
+
     -- Movement
+    buf_set_keymap("n", "gd", vim.lsp.buf.definition)
     buf_set_keymap("n", "gD", vim.lsp.buf.declaration)
-    buf_set_keymap("n", "gd", telescope_lsp.definitions)
+
     buf_set_keymap("n", "gr", telescope_lsp.references)
-    buf_set_keymap("n", "gbr", telescope_lsp.buffer_references)
     buf_set_keymap("n", "gI", telescope_lsp.implementations)
     buf_set_keymap("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
     buf_set_keymap("n", "<leader>ls", telescope_lsp.document_symbols)
 
     -- Docs
-    buf_set_keymap("n", "K", hover)
+    -- show hover doc and press twice will jumpto hover window
+    buf_set_keymap("n", "K", require("lspsaga.hover").render_hover_doc)
+
+    -- FIXME: Scrolling is not working for some reason 🤦
+    -- scroll down hover doc or scroll in definition preview
+    local sagaactions = require "lspsaga.action"
+    vim.keymap.set("n", "<C-f>", function()
+        sagaactions.smart_scroll_with_saga(1)
+    end)
+    -- scroll up hover doc
+    vim.keymap.set("n", "<C-b>", function()
+        sagaactions.smart_scroll_with_saga(-1)
+    end)
 end
 
 return function(client, bufnr)
