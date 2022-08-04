@@ -18,6 +18,7 @@ M.keymaps = function()
     end)
     vim.keymap.set("n", "<leader>gs", git.status)
     vim.keymap.set("n", "<leader>/", files.grep)
+    vim.keymap.set("n", "<leader>ga", require("telescope").extensions.githubcoauthors.coauthors)
 end
 
 M.setup = function()
@@ -25,6 +26,8 @@ M.setup = function()
     if not is_win then
         require("telescope").load_extension "fzf"
     end
+
+    require("telescope").load_extension "githubcoauthors"
 
     require("telescope").setup {
         defaults = {

@@ -127,6 +127,7 @@ local function spec(use)
         "nvim-telescope/telescope.nvim",
         requires = {
             "nvim-lua/plenary.nvim",
+            { "cwebster2/github-coauthors.nvim", as = "githubcoauthors" },
             "nvim-telescope/telescope-project.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         },
