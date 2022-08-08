@@ -27,7 +27,8 @@ local function highlight_references()
     local node = ts_utils.get_node_at_cursor()
     while node ~= nil do
         local node_type = node:type()
-        if node_type == "string"
+        if
+            node_type == "string"
             or node_type == "string_fragment"
             or node_type == "template_string"
             or node_type == "document" -- for inline gql`` strings
@@ -109,7 +110,7 @@ local function buf_set_keymaps(bufnr)
     end
 
     buf_set_keymap("n", "<leader>d", function()
-        vim.lsp.buf.formatting()
+        vim.lsp.buf.format()
     end)
 
     -- Code actions
