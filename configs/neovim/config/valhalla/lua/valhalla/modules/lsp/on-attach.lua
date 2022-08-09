@@ -109,9 +109,7 @@ local function buf_set_keymaps(bufnr)
         vim.keymap.set(mode, lhs, rhs, merge({ buffer = bufnr, silent = true }, opts or {}))
     end
 
-    buf_set_keymap("n", "<leader>d", function()
-        vim.lsp.buf.format()
-    end)
+    buf_set_keymap("n", "<leader>d", vim.lsp.buf.format)
 
     -- Code actions
     local codeactions = require "lspsaga.codeaction"
