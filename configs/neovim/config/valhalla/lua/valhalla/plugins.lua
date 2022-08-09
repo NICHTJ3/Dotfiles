@@ -58,14 +58,22 @@ local function spec(use)
 
     -- LSP
     use {
-        "glepnir/lspsaga.nvim", -- TODO: Use in on-attach action mappings etc...
-        branch = "main",
-        config = function()
-            require("lspsaga").init_lsp_saga()
-        end,
-    }
-
-    use {
+        {
+            "glepnir/lspsaga.nvim",
+            branch = "main",
+            config = function()
+                require("lspsaga").init_lsp_saga {
+                    symbol_in_winbar = {
+                        enable = false, -- Disabled till https://github.com/neovim/neovim/issues/19458 is fixed
+                        separator = "  ",
+                        show_file = true,
+                    },
+                    code_action_lightbulb = {
+                        sign = true,
+                    },
+                }
+            end,
+        },
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",

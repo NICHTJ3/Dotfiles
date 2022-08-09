@@ -46,6 +46,13 @@ mason.setup_handlers {
     function(server_name)
         lspconfig[server_name].setup {}
     end,
+    ["graphql"] = function()
+        lspconfig.graphql.setup {
+            on_attach = function(client, bufnr)
+                client.server_capabilities.documentSymbolProvider = false
+            end,
+        }
+    end,
     ["jdtls"] = function()
         local function progress_handler()
             ---@type table<string, boolean>
@@ -168,6 +175,13 @@ mason.setup_handlers {
             },
         }
     end,
+    ["tailwindcss"] = function()
+        lspconfig.tailwindcss.setup {
+            on_attach = function(client, bufnr)
+                client.server_capabilities.documentSymbolProvider = false
+            end,
+        }
+    end,
     ["tsserver"] = function()
         local on_attach = require "valhalla.modules.lsp.on-attach"
         local get_cmd = require("valhalla.utils").get_cmd
@@ -198,7 +212,6 @@ mason.setup_handlers {
             },
             on_attach = function(client, bufnr)
                 client.server_capabilities.documentFormattingProvider = false
-                on_attach(client, bufnr)
             end,
         }
     end,
