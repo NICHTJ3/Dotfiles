@@ -15,7 +15,7 @@ M.setup = function()
         incremental_selection = {
             enable = true,
             keymaps = {
-                init_selection = "<Tab>", -- normal mode
+                init_selection = "<S-Tab>", -- normal mode (Can't be <Tab> as tab is also <C-I>)
                 node_incremental = "<Tab>", -- visual mode
                 node_decremental = "<S-Tab>", -- visual mode
             },
