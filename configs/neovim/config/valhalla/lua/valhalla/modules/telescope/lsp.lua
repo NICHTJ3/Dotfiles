@@ -78,6 +78,10 @@ M.workspace_symbols = function()
     end
 end
 
+M.all_document_symbols = function()
+    builtin.lsp_document_symbols()
+end
+
 M.document_symbols = function()
     local symbols = {
         "All",

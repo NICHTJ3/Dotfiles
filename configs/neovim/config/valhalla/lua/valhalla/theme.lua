@@ -58,4 +58,4 @@ local themes = {
     end,
 }
 
-themes.tokyonight_night()
+themes.onedark()

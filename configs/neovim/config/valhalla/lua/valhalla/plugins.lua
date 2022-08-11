@@ -3,22 +3,27 @@ local function spec(use)
 
     use { "lewis6991/impatient.nvim" }
 
-    -- Personal must have
-    -- TMUX
-    use "christoomey/vim-tmux-navigator" -- Unifies tmux and vim navigation
-    use "roxma/vim-tmux-clipboard" -- Unifies vim panes in tmux sessions clipboards
-    use "tmux-plugins/vim-tmux-focus-events" -- Required for vim-tmux-clipboard
+    -- ======= Personal must have ========
     use "romainl/vim-qf" -- Fixes issues with built in quick fix menu
-    use "tpope/vim-repeat" -- Repeat with . sequences that use pluggins
     use "wincent/loupe" -- Better search use this or evanesco
-    use "tpope/vim-surround" -- Change/Add surrounding character
-    use "tpope/vim-sleuth" -- Automatically detect indentation
     use {
         "unblevable/quick-scope",
         config = function()
             vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
         end,
     }
+
+    -- ======= TMUX =========
+    use "christoomey/vim-tmux-navigator" -- Unifies tmux and vim navigation
+    use "roxma/vim-tmux-clipboard" -- Unifies vim panes in tmux sessions clipboards
+    use "tmux-plugins/vim-tmux-focus-events" -- Required for vim-tmux-clipboard
+
+    -- ======= TPOPE =========
+    use "tpope/vim-repeat" -- Repeat with . sequences that use pluggins
+    use "tpope/vim-sleuth" -- Automatically detect indentation
+    use "tpope/vim-surround" -- Change/Add surrounding character
+
+    -- ========= Better commenting ===========
     use {
         "numToStr/Comment.nvim",
         config = function()
@@ -26,7 +31,7 @@ local function spec(use)
         end,
     }
 
-    -- Git
+    -- ======== Git =========
     use "tpope/vim-fugitive"
     use "rhysd/committia.vim" -- Better commits
     use {
@@ -48,7 +53,7 @@ local function spec(use)
                 "nvim-treesitter/nvim-treesitter-textobjects", -- Change inner function etc...
                 "p00f/nvim-ts-rainbow", -- Rainbow brackets
                 "JoosepAlviste/nvim-ts-context-commentstring", -- Better commenting in tsx/jsx
-                "windwp/nvim-ts-autotag", -- Auto rename closing tags
+                "windwp/nvim-ts-autotag", -- Auto rename closing tags in html/jsx
             },
             config = function()
                 require("valhalla.modules.nvim-treesitter").setup()
