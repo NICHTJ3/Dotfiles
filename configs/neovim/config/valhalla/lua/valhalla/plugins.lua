@@ -58,6 +58,18 @@ local function spec(use)
 
     -- LSP
     use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        "b0o/SchemaStore.nvim",
+        "jose-elias-alvarez/null-ls.nvim", -- Support more linters/formatters
+        -- Language specific packages for lsp
+        {
+            "folke/lua-dev.nvim",
+            { "simrat39/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" },
+            "jose-elias-alvarez/typescript.nvim",
+        },
         {
             "glepnir/lspsaga.nvim",
             branch = "main",
@@ -74,20 +86,40 @@ local function spec(use)
                 }
             end,
         },
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
-        "folke/lua-dev.nvim",
-        "neovim/nvim-lspconfig",
-        "b0o/SchemaStore.nvim",
-        "ray-x/lsp_signature.nvim",
-        { "simrat39/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" },
-        "jose-elias-alvarez/null-ls.nvim",
-        "jose-elias-alvarez/typescript.nvim",
-        "j-hui/fidget.nvim",
+        {
+            "ray-x/lsp_signature.nvim",
+            config = function()
+                require("lsp_signature").setup {}
+            end,
+        },
+        {
+            "j-hui/fidget.nvim",
+            config = function()
+                require("fidget").setup {}
+            end,
+        },
+        {
+            "simrat39/symbols-outline.nvim",
+            config = function()
+                vim.g.symbols_outline = {
+                    position = "right",
+                    auto_preview = false,
+                    keymaps = { -- These keymaps can be a string or a table for multiple keys
+                        close = { "<Esc>", "q" },
+                        goto_location = "gd",
+                        focus_location = "<CR>",
+                        hover_symbol = "<C-space>",
+                        toggle_preview = "K",
+                        rename_symbol = "r",
+                        code_actions = "a",
+                    },
+                }
+            end,
+        },
     }
 
-    -- Trouble
+    -- NOTE: This could maybe be moved into the LSP block
+    -- ======== Trouble ==========
     use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
@@ -135,7 +167,7 @@ local function spec(use)
         "nvim-telescope/telescope.nvim",
         requires = {
             "nvim-lua/plenary.nvim",
-            { "cwebster2/github-coauthors.nvim", as = "githubcoauthors" },
+            "cwebster2/github-coauthors.nvim",
             "nvim-telescope/telescope-project.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
         },
@@ -148,7 +180,7 @@ local function spec(use)
 
     -- UI
     use {
-        "kyazdani42/nvim-tree.lua",
+        "kyazdani42/nvim-tree.lua", -- File tree
         requires = "kyazdani42/nvim-web-devicons",
         config = function()
             require("valhalla.modules.nvimtree").setup()

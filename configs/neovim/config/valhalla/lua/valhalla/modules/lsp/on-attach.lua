@@ -121,7 +121,7 @@ local function buf_set_keymaps(bufnr)
         codeactions.range_code_action()
     end, { noremap = true })
     buf_set_keymap("n", "<leader>l", find_and_run_codelens)
-    buf_set_keymap("n", "<leader>or", "<cmd>OrganizeImports<CR>")
+    buf_set_keymap("n", "<leader>or", "<cmd>TypescriptOrganizeImports<CR>")
 
     -- Preview diagnostic messages
     buf_set_keymap("n", "<leader>ai", require("lspsaga.diagnostic").show_line_diagnostics)
