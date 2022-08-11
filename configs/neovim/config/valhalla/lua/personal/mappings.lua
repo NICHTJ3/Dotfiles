@@ -39,17 +39,20 @@ vim.keymap.set("n", "<leader>wah", ":aboveleft vsp Left<CR>")
 vim.keymap.set("n", "<leader>wak", ":above split Above<CR>")
 
 -- Close windows
-vim.keymap.set("n", "<leader>wco", ":only<CR>")
-vim.keymap.set("n", "<leader>wca", ":qa<CR>")
-vim.keymap.set("n", "<leader>wcc", ":q<CR>")
+vim.keymap.set("n", "<leader>wco", ":only<CR>") -- Window close others
+vim.keymap.set("n", "<leader>ob", ":only<CR>") -- Only buffer?
+vim.keymap.set("n", "<leader>wca", ":qa<CR>") -- Window close all
+vim.keymap.set("n", "<leader>wqa", ":qa<CR>") -- Window quit all
+vim.keymap.set("n", "<leader>wcc", ":q<CR>") -- Window close current
 
--- Move windows
+-- Move windows -- Window move <direction>
 vim.keymap.set("n", "<leader>wmj", "<c-w>J")
 vim.keymap.set("n", "<leader>wml", "<c-w>L")
 vim.keymap.set("n", "<leader>wmh", "<c-w>H")
 vim.keymap.set("n", "<leader>wmk", "<c-w>K")
 
--- Navigate windows
+-- NOTE: Other mappings are created with christoomey/vim-tmux-navigator <c-h|j|k|l>
+-- Navigate windows -- Window navigate <direction>
 vim.keymap.set("n", "<leader>wnj", "<c-w>j")
 vim.keymap.set("n", "<leader>wnl", "<c-w>l")
 vim.keymap.set("n", "<leader>wnh", "<c-w>h")
