@@ -51,6 +51,8 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-completions src
 
+    zgen load mattmc3/zsh-safe-rm
+
     zgen save
 fi
 
