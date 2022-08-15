@@ -13,13 +13,13 @@ vim.cmd [[ hi! SignColumn guibg=0 ]]
 -- Make ColorColumn the same color as cursorline
 vim.cmd [[ hi! link ColorColumn CursorLine ]]
 
-
 -- ------ -----
 -- Themes -----
 -- ------ -----
 -- NOTE: To best make use of these themes you should use the iterm themes too
 local themes = {
     catppuccin = function()
+        vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
         vim.cmd [[ silent! colorscheme catppuccin ]]
     end,
     kanagawa = function()
@@ -58,4 +58,4 @@ local themes = {
     end,
 }
 
-themes.onedark()
+themes.catppuccin()

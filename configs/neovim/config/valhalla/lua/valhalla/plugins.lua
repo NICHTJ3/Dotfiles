@@ -262,12 +262,18 @@ local function spec(use)
         as = "catppuccin",
         config = function()
             require("catppuccin").setup {
-                integration = {
-                    nvimtree = {
+                dim_inactive = {
+                    enabled = false,
+                    shade = "dark",
+                    percentage = 0.15,
+                },
+                integrations = {
+                    neotree = {
                         enabled = true,
-                        show_root = true, -- makes the root folder not transparent
-                        transparent_panel = false, -- make the panel transparent
+                        show_root = true,
+                        transparent_panel = true,
                     },
+                    ts_rainbow = true,
                 },
             }
         end,

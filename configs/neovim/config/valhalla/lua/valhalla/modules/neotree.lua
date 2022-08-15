@@ -217,6 +217,7 @@ M.keymaps = function()
     vim.keymap.set("n", "\\", "<CMD>Neotree toggle<cr>")
     vim.keymap.set("n", "<c-n>", "<CMD>Neotree toggle<cr>")
     vim.keymap.set("n", "<leader>sf", "<CMD>Neotree toggle<cr>")
+    vim.keymap.set("n", "<leader>sd", "<CMD>Neotree toggle diagnostics<cr>")
 end
 
 return M
