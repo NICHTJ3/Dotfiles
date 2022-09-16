@@ -114,7 +114,7 @@ M.setup = function()
                 ["t"] = "open_tabnew",
                 ["w"] = "open_with_window_picker",
                 ["C"] = "close_node",
-                ["z"] = "close_all_nodes",
+                ["z"] = "",
                 --["Z"] = "expand_all_nodes",
                 ["a"] = {
                     "add",
@@ -159,7 +159,7 @@ M.setup = function()
                     --"thumbs.db"
                 },
             },
-            follow_current_file = false, -- This will find and focus the file in the active buffer every
+            follow_current_file = true, -- This will find and focus the file in the active buffer every
             -- time the current file is changed while the tree is open.
             group_empty_dirs = false, -- when true, empty folders will be grouped together
             hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
