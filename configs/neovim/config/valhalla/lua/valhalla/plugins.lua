@@ -104,12 +104,13 @@ local function spec(use)
             config = function()
                 require("lspsaga").init_lsp_saga {
                     symbol_in_winbar = {
-                        enable = false, -- Disabled till https://github.com/neovim/neovim/issues/19458 is fixed
+                        enable = false, -- TODO: enable once this is fixed https://github.com/neovim/neovim/issues/19458 is fixed
                         separator = "  ",
                         show_file = true,
                     },
                     code_action_lightbulb = {
                         sign = true,
+                        virtual_text = false,
                     },
                 }
             end,
