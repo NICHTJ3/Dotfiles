@@ -114,17 +114,23 @@ local function buf_set_keymaps(bufnr)
     -- Code actions
     local codeactions = require "lspsaga.codeaction"
 
-    buf_set_keymap("n", "<leader>ar", require("lspsaga.rename").lsp_rename)
-    buf_set_keymap("n", "<leader>aa", codeactions.code_action, { noremap = true })
+    buf_set_keymap("n", "<leader>ar", function()
+        require("lspsaga.rename"):lsp_rename()
+    end)
+    buf_set_keymap("n", "<leader>aa", function()
+        codeactions:code_action()
+    end, { noremap = true })
     buf_set_keymap("v", "<leader>aa", function()
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
-        codeactions.range_code_action()
+        codeactions:range_code_action()
     end, { noremap = true })
     buf_set_keymap("n", "<leader>l", find_and_run_codelens)
     buf_set_keymap("n", "<leader>or", "<cmd>TypescriptOrganizeImports<CR>")
 
     -- Preview diagnostic messages
-    buf_set_keymap("n", "<leader>ai", require("lspsaga.diagnostic").show_line_diagnostics)
+    buf_set_keymap("n", "<leader>ai", function()
+        require("lspsaga.diagnostic"):show_line_diagnostics()
+    end)
 
     -- Movement
     buf_set_keymap("n", "gd", vim.lsp.buf.definition)
@@ -142,7 +148,7 @@ local function buf_set_keymaps(bufnr)
 
     -- FIXME: Scrolling is not working for some reason 🤦
     -- scroll down hover doc or scroll in definition preview
-    local sagaactions = require "lspsaga.action"
+    local sagaactions = require "lspsaga.codeaction"
     vim.keymap.set("n", "<C-f>", function()
         sagaactions.smart_scroll_with_saga(1)
     end)
