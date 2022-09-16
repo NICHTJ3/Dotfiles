@@ -82,6 +82,20 @@ function M.setup()
             { name = "git" },
             { name = "calc" },
         },
+        window = {
+            documentation = {
+                border = "rounded",
+                winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+            },
+            completion = {
+                border = "rounded",
+                winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+            },
+        },
+        experimental = {
+            ghost_text_view = true,
+            ghost_text = true,
+        },
     }
 
     require("cmp_git").setup {
