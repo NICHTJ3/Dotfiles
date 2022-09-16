@@ -36,7 +36,7 @@ vim.opt.listchars = {
     precedes = "<",
 }
 
-vim.opt.signcolumn = "number"
+vim.opt.signcolumn = "auto"
 
 vim.opt.textwidth = 80
 
