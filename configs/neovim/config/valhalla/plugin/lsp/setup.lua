@@ -28,9 +28,9 @@ end
 
 util.on_setup = util.add_hook_after(util.on_setup, function(config)
     if config.on_attach then
-        config.on_attach = util.add_hook_after(config.on_attach, require "valhalla.lsp.on-attach")
+        config.on_attach = util.add_hook_after(config.on_attach, require "valhalla.modules.lsp.on-attach")
     else
-        config.on_attach = require "valhalla.lsp.on-attach"
+        config.on_attach = require "valhalla.modules.lsp.on-attach"
     end
     config.capabilities = create_capabilities()
 end)
