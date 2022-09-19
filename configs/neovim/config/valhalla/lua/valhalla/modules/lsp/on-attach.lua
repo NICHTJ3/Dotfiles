@@ -112,25 +112,13 @@ local function buf_set_keymaps(bufnr)
     buf_set_keymap("n", "<leader>d", vim.lsp.buf.format)
 
     -- Code actions
-    local codeactions = require "lspsaga.codeaction"
-
-    buf_set_keymap("n", "<leader>ar", function()
-        require("lspsaga.rename"):lsp_rename()
-    end)
-    buf_set_keymap("n", "<leader>aa", function()
-        codeactions:code_action()
-    end, { noremap = true })
-    buf_set_keymap("v", "<leader>aa", function()
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
-        codeactions:range_code_action()
-    end, { noremap = true })
+    buf_set_keymap("n", "<leader>ar", "<cmd>Lspsaga rename<CR>")
+    buf_set_keymap({ "n", "v" }, "<leader>aa", "<cmd>Lspsaga code_action<CR>", { noremap = true })
     buf_set_keymap("n", "<leader>l", find_and_run_codelens)
     buf_set_keymap("n", "<leader>or", "<cmd>TypescriptOrganizeImports<CR>")
 
     -- Preview diagnostic messages
-    buf_set_keymap("n", "<leader>ai", function()
-        require("lspsaga.diagnostic"):show_line_diagnostics()
-    end)
+    buf_set_keymap("n", "<leader>ai", "<cmd>Lspsaga show_line_diagnostics<CR>")
 
     -- Movement
     buf_set_keymap("n", "gd", vim.lsp.buf.definition)
@@ -144,7 +132,7 @@ local function buf_set_keymaps(bufnr)
 
     -- Docs
     -- show hover doc and press twice will jumpto hover window
-    buf_set_keymap("n", "K", require("lspsaga.hover").render_hover_doc)
+    buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 
     -- FIXME: Scrolling is not working for some reason 🤦
     -- scroll down hover doc or scroll in definition preview
