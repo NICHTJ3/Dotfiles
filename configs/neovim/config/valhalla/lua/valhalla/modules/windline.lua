@@ -190,7 +190,7 @@ local default = {
         { " ", { "white", "ActiveBg" } },
         basic.git_branch,
         { " ", { "white", "ActiveBg" } },
-        basic.file, -- TODO: Disable when the info is shown in winbar
+        basic.file,
         basic.lsp_diagnos,
         { vim_components.search_count() },
         basic.divider,
