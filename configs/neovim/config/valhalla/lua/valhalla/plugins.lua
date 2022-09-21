@@ -97,6 +97,7 @@ local function spec(use)
             "folke/lua-dev.nvim",
             { "simrat39/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" },
             "jose-elias-alvarez/typescript.nvim",
+            "Decodetalkers/csharpls-extended-lsp.nvim",
         },
         {
             "glepnir/lspsaga.nvim",

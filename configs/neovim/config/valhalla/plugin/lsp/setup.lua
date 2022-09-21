@@ -175,6 +175,13 @@ mason.setup_handlers {
             },
         }
     end,
+    ["csharp_ls"] = function()
+        lspconfig.csharp_ls.setup {
+            handlers = {
+                ["textDocument/definition"] = require("csharpls_extended").handler,
+            },
+        }
+    end,
     ["tailwindcss"] = function()
         lspconfig.tailwindcss.setup {
             on_attach = function(client, bufnr)
