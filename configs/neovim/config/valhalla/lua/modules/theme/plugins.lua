@@ -24,5 +24,4 @@ plugin {
     end,
 } -- Theme
 plugin "navarasu/onedark.nvim" -- Theme
-plugin "Yazeed1s/minimal.nvim" -- Theme
 plugin "Yagua/nebulous.nvim" -- Theme

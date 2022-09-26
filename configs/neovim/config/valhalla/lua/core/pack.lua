@@ -9,7 +9,7 @@ local Packer = {}
 
 Packer.__index = Packer
 
-function Packer:load_plugins()
+function Packer:load_module_plugins()
     self.repos = {}
     load_module_files "plugins.lua"
 end
@@ -34,14 +34,14 @@ function Packer:load_packer()
     }
     packer.reset()
     local use = packer.use
-    self:load_plugins()
+    self:load_module_plugins()
     use { "wbthomason/packer.nvim", opt = true }
     for _, repo in ipairs(self.repos) do
         use(repo)
     end
 end
 
-function Packer:insure_plugins_installed()
+function Packer:ensure_plugins_installed()
     local packer_dir = data_dir .. "pack/packer/opt/packer.nvim"
     local state = vim.loop.fs_stat(packer_dir)
     if not state then
@@ -55,7 +55,7 @@ function Packer:insure_plugins_installed()
     end
 end
 
-local plugins = setmetatable({}, {
+local module = setmetatable({}, {
     __index = function(_, key)
         if not packer then
             Packer:load_packer()
@@ -64,15 +64,15 @@ local plugins = setmetatable({}, {
     end,
 })
 
-function plugins.ensure_plugins_installed()
-    Packer:insure_plugins_installed()
+function module.ensure_plugins_installed()
+    Packer:ensure_plugins_installed()
 end
 
-function plugins.register_plugin(repo)
+function module.register_plugin(repo)
     table.insert(Packer.repos, repo)
 end
 
-function plugins.load_compile()
+function module.load_installed_plugins()
     if vim.fn.filereadable(packer_compiled) == 1 then
         require "packer_compiled"
     else
@@ -104,4 +104,4 @@ function plugins.load_compile()
     })
 end
 
-return plugins
+return module

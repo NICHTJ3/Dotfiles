@@ -22,24 +22,28 @@ local themes = {
         vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
         vim.cmd [[ silent! colorscheme catppuccin ]]
     end,
+
     kanagawa = function()
         vim.cmd [[ silent! colorscheme kanagawa ]]
     end,
 
-    onedark = function()
+    onedark_darker = function()
         require("onedark").setup {
-            style = "deep",
+            style = "darker",
         }
         require("onedark").load()
     end,
 
-    minimal = function()
-        vim.cmd [[ silent! colorscheme minimal ]]
+    onedark_warm = function()
+        require("onedark").setup {
+            style = "warmer",
+        }
+        require("onedark").load()
     end,
 
     nebulous = function()
         require("nebulous").setup {
-            variant = "night",
+            variant = "midnight",
             italic = {
                 comments = false,
                 keywords = true,
@@ -47,9 +51,9 @@ local themes = {
                 variables = true,
             },
         }
-
         vim.keymap.set("n", "<leader>ts", require("nebulous.functions").toggle_variant)
     end,
+
     tokyonight_night = function()
         vim.g.tokyonight_style = "night"
         vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer", "NvimTree" }
@@ -58,4 +62,4 @@ local themes = {
     end,
 }
 
-themes.catppuccin()
+themes.kanagawa()

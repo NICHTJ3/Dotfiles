@@ -52,6 +52,8 @@ vim.cmd [[
       set termguicolors
     endif
 ]]
+vim.g.nvcode_termcolors = 256
+vim.o.termguicolors = true
 
 -- Sane window splitting
 vim.opt.splitbelow = true
