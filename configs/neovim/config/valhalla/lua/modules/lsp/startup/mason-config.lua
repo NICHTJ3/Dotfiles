@@ -3,8 +3,10 @@ if not lspconfig_ok then
     return
 end
 
-local util = require "lspconfig.util"
 local cmp_lsp = require "cmp_nvim_lsp"
+local get_cmd = require("modules.lsp.utils").get_cmd
+local on_attach = require "modules.lsp.on-attach"
+local util = require "lspconfig.util"
 
 ---@param opts table|nil
 local function create_capabilities(opts)
@@ -28,21 +30,21 @@ end
 
 util.on_setup = util.add_hook_after(util.on_setup, function(config)
     if config.on_attach then
-        config.on_attach = util.add_hook_after(config.on_attach, require "valhalla.modules.lsp.on-attach")
+        config.on_attach = util.add_hook_after(config.on_attach, on_attach)
     else
-        config.on_attach = require "valhalla.modules.lsp.on-attach"
+        config.on_attach = on_attach
     end
     config.capabilities = create_capabilities()
 end)
 
-local mason_ok, mason = pcall(require, "mason-lspconfig")
-if not mason_ok then
+local mason_config_ok, mason_config = pcall(require, "mason-lspconfig")
+if not mason_config_ok then
     return
 end
 
-mason.setup {}
+mason_config.setup {}
 
-mason.setup_handlers {
+mason_config.setup_handlers {
     function(server_name)
         lspconfig[server_name].setup {}
     end,
@@ -136,8 +138,15 @@ mason.setup_handlers {
     ["rust_analyzer"] = function()
         require("rust-tools").setup {
             tools = {
-                executor = require("rust-tools/executors").toggleterm,
+                executor = require("rust-tools/executors").quickfix,
                 hover_actions = { border = "solid" },
+                dap = {
+                    adapter = {
+                        type = "executable",
+                        command = "codelldb",
+                        name = "codelldb",
+                    },
+                },
             },
         }
     end,
@@ -153,7 +162,6 @@ mason.setup_handlers {
         })
     end,
     ["eslint"] = function()
-        local get_cmd = require("valhalla.utils").get_cmd
         local eslint_config = require "lspconfig.server_configurations.eslint"
         local cmd = eslint_config.default_config.cmd
         lspconfig.eslint.setup {
@@ -190,9 +198,6 @@ mason.setup_handlers {
         }
     end,
     ["tsserver"] = function()
-        local on_attach = require "valhalla.modules.lsp.on-attach"
-        local get_cmd = require("valhalla.utils").get_cmd
-
         local tsserver_config = require "lspconfig.server_configurations.tsserver"
         local cmd = get_cmd(tsserver_config.default_config.cmd)
         require("typescript").setup {

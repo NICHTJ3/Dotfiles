@@ -24,7 +24,4 @@ if pcall(require, "plenary") then
     end
 end
 
-require "valhalla.first-start"
-require "valhalla.plugins"
-require "valhalla.theme"
-require "personal"
+require "core"

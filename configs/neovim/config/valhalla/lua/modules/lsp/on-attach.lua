@@ -1,6 +1,5 @@
 local ts_utils = require "nvim-treesitter.ts_utils"
 local lsp_signature = require "lsp_signature"
-local telescope_lsp = require "valhalla.modules.telescope.lsp"
 
 vim.fn.sign_define("DiagnosticSignError", {
     texthl = "DiagnosticSignError",
@@ -115,6 +114,8 @@ local function buf_set_keymaps(bufnr)
     buf_set_keymap("n", "<leader>ar", "<cmd>Lspsaga rename<CR>")
     buf_set_keymap({ "n", "v" }, "<leader>aa", "<cmd>Lspsaga code_action<CR>", { noremap = true })
     buf_set_keymap("n", "<leader>l", find_and_run_codelens)
+
+    -- Uses "jose-elias-alvarez/typescript.nvim"
     buf_set_keymap("n", "<leader>or", "<cmd>TypescriptOrganizeImports<CR>")
 
     -- Preview diagnostic messages
@@ -123,27 +124,23 @@ local function buf_set_keymaps(bufnr)
     -- Movement
     buf_set_keymap("n", "gd", vim.lsp.buf.definition)
     buf_set_keymap("n", "gD", vim.lsp.buf.declaration)
-
-    buf_set_keymap("n", "gr", telescope_lsp.references)
-    buf_set_keymap("n", "gI", telescope_lsp.implementations)
     buf_set_keymap("n", "gt", vim.lsp.buf.type_definition)
-    buf_set_keymap("n", "<leader>ls", telescope_lsp.all_document_symbols)
     buf_set_keymap("n", "<leader>ss", "<cmd>SymbolsOutline<CR>")
+
+    local has_telescope, telescope_builtins = pcall(require, "telescope.builtin")
+
+    if has_telescope then
+        buf_set_keymap("n", "gr", telescope_builtins.lsp_references)
+        buf_set_keymap("n", "gI", telescope_builtins.lsp_implementations)
+        buf_set_keymap("n", "<leader>ls", telescope_builtins.lsp_document_symbols)
+    else
+        buf_set_keymap("n", "gr", vim.lsp.buf.references)
+        buf_set_keymap("n", "gI", vim.lsp.buf.implementation)
+    end
 
     -- Docs
     -- show hover doc and press twice will jumpto hover window
     buf_set_keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-
-    -- FIXME: Scrolling is not working for some reason 🤦
-    -- scroll down hover doc or scroll in definition preview
-    local sagaactions = require "lspsaga.codeaction"
-    vim.keymap.set("n", "<C-f>", function()
-        sagaactions.smart_scroll_with_saga(1)
-    end)
-    -- scroll up hover doc
-    vim.keymap.set("n", "<C-b>", function()
-        sagaactions.smart_scroll_with_saga(-1)
-    end)
 end
 
 return function(client, bufnr)
