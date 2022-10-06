@@ -23,11 +23,15 @@ end
 
 M.setup = function()
     local is_win = vim.fn.has "win32" == 1
-    if not is_win then
+
+    local has_fzf = pcall(require, "telescope._extensions.fzf")
+    if not is_win and has_fzf then
         require("telescope").load_extension "fzf"
     end
 
-    require("telescope").load_extension "githubcoauthors"
+    if pcall(require, "telescope._extensions.githubcoauthors") then
+        require("telescope").load_extension "githubcoauthors"
+    end
 
     require("telescope").setup {
         defaults = {
@@ -92,7 +96,7 @@ M.setup = function()
             project = {
                 hidden_files = false,
             },
-            fzf = is_win and {} or {
+            fzf = (is_win and not has_fzf) and {} or {
                 fuzzy = true,
                 override_generic_sorter = true,
                 override_file_sorter = true,

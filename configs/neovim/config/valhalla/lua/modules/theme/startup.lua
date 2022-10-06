@@ -62,4 +62,4 @@ local themes = {
     end,
 }
 
-themes.kanagawa()
+themes.onedark_darker()

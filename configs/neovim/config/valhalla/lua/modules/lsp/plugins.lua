@@ -8,6 +8,10 @@ plugin {
 
 plugin {
     "jose-elias-alvarez/null-ls.nvim", -- Support more linters/formatters
+    config = function()
+        local config = require "modules.lsp.config.null-ls"
+        config.setup()
+    end,
 }
 
 -- Language specific packages for lsp
@@ -104,4 +108,12 @@ plugin {
     end,
 }
 
-plugin "mfussenegger/nvim-dap"
+-- ======== Trouble ==========
+plugin {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+        require("trouble").setup {}
+        vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<CR>", { silent = true, noremap = true })
+    end,
+}

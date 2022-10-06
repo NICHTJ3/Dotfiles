@@ -35,7 +35,7 @@ plugin {
         },
     },
     config = function()
-        local neotree = require "modules.neotree.config"
+        local neotree = require "modules.sidebar.config"
         neotree.setup()
         neotree.keymaps()
     end,
