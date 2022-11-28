@@ -1,10 +1,28 @@
+local function file_size_too_large(lang, buf)
+    local max_filesize = 100 * 1024 -- 100 KB
+    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+    if ok and stats and stats.size > max_filesize then
+        return true
+    end
+end
+
+local function file_too_long(lang, buf)
+    return vim.api.nvim_buf_line_count(buf) > 5000
+end
+
 local M = {}
 
 M.setup = function()
     require("nvim-treesitter.configs").setup {
         ensure_installed = "all",
         ignore_install = { "haskell", "phpdoc" },
-        highlight = { enable = true, additional_vim_regex_highlighting = false },
+        highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false,
+            disable = function(lang, bufnr)
+                return file_size_too_large(lang, bufnr) or file_too_long(lang, bufnr)
+            end,
+        },
         indent = { enable = true, disable = { "python", "yaml", "tsx" } },
         playground = {
             enable = true,
