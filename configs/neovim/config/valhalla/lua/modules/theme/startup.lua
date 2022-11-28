@@ -20,29 +20,72 @@ vim.cmd [[ hi! link ColorColumn CursorLine ]]
 local themes = {
     catppuccin = function()
         vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+        vim.cmd [[packadd catppuccin]]
+        local ok, catppuccin = pcall(require, "catppuccin")
+
+        if not ok then
+            print "The Catppuccin theme is not installed"
+        end
+
+        catppuccin.setup {
+            dim_inactive = {
+                enabled = false,
+                shade = "dark",
+                percentage = 0.15,
+            },
+            integrations = {
+                treesitter = true,
+                gitsigns = true,
+                treesitter_context = true,
+                neotree = {
+                    enabled = true,
+                    show_root = true,
+                    transparent_panel = true,
+                },
+                ts_rainbow = true,
+            },
+        }
         vim.cmd [[ silent! colorscheme catppuccin ]]
     end,
 
     kanagawa = function()
+        vim.cmd [[packadd kanagawa.nvim]]
         vim.cmd [[ silent! colorscheme kanagawa ]]
     end,
 
     onedark_darker = function()
-        require("onedark").setup {
+        vim.cmd [[packadd onedark.nvim]]
+
+        local ok, onedark = pcall(require, "onedark")
+        if not ok then
+            print "The Onedark theme is not installed"
+        end
+        onedark.setup {
             style = "darker",
         }
-        require("onedark").load()
+        onedark.load()
     end,
 
     onedark_warm = function()
-        require("onedark").setup {
+        vim.cmd [[packadd onedark.nvim]]
+        local ok, onedark = pcall(require, "onedark")
+        if not ok then
+            print "The Onedark theme is not installed"
+        end
+        onedark.setup {
             style = "warmer",
         }
-        require("onedark").load()
+        onedark.load()
     end,
 
     nebulous = function()
-        require("nebulous").setup {
+        vim.cmd [[packadd nebulous.nvim]]
+        local ok, nebulous = pcall(require, "nebulous")
+        if not ok then
+            print "The Nebulous theme is not installed"
+        end
+
+        nebulous.setup {
             variant = "midnight",
             italic = {
                 comments = false,
@@ -55,6 +98,7 @@ local themes = {
     end,
 
     tokyonight_night = function()
+        vim.cmd [[packadd tokyonight.nvim]]
         vim.g.tokyonight_style = "night"
         vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer", "NvimTree" }
         vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
@@ -62,4 +106,4 @@ local themes = {
     end,
 }
 
-themes.onedark_darker()
+themes.catppuccin()
