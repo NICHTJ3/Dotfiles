@@ -25,7 +25,7 @@ local function create_capabilities(opts)
             },
         }
     end
-    return cmp_lsp.update_capabilities(capabilities)
+    return cmp_lsp.default_capabilities(capabilities)
 end
 
 util.on_setup = util.add_hook_after(util.on_setup, function(config)
@@ -151,7 +151,8 @@ mason_config.setup_handlers {
         }
     end,
     ["sumneko_lua"] = function()
-        lspconfig.sumneko_lua.setup(require("lua-dev").setup {
+        require("neodev").setup()
+        lspconfig.sumneko_lua.setup {
             settings = {
                 Lua = {
                     diagnostics = {
@@ -159,7 +160,7 @@ mason_config.setup_handlers {
                     },
                 },
             },
-        })
+        }
     end,
     ["eslint"] = function()
         local eslint_config = require "lspconfig.server_configurations.eslint"
@@ -183,10 +184,10 @@ mason_config.setup_handlers {
             },
         }
     end,
-    ["csharp_ls"] = function()
-        lspconfig.csharp_ls.setup {
+    ["omnisharp"] = function()
+        lspconfig.omnisharp.setup {
             handlers = {
-                ["textDocument/definition"] = require("csharpls_extended").handler,
+                ["textDocument/definition"] = require("omnisharp_extended").handler,
             },
         }
     end,

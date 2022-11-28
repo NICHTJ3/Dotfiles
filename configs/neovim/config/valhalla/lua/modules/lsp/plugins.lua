@@ -16,11 +16,11 @@ plugin {
 
 -- Language specific packages for lsp
 plugin {
-    "folke/lua-dev.nvim",
+    "folke/neodev.nvim",
     "b0o/SchemaStore.nvim",
     { "simrat39/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" },
     "jose-elias-alvarez/typescript.nvim",
-    "Decodetalkers/csharpls-extended-lsp.nvim",
+    "Hoffs/omnisharp-extended-lsp.nvim",
 }
 
 plugin {
@@ -50,12 +50,6 @@ plugin {
         end,
     },
     {
-        "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup {}
-        end,
-    },
-    {
         "simrat39/symbols-outline.nvim",
         config = function()
             vim.g.symbols_outline = {
@@ -73,6 +67,15 @@ plugin {
             }
         end,
     },
+}
+
+plugin {
+    "vigoux/notifier.nvim",
+    config = function()
+        require("notifier").setup {
+            -- You configuration here
+        }
+    end,
 }
 
 -- CMP
