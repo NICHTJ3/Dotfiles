@@ -40,4 +40,12 @@ plugin "tpope/vim-repeat" -- Repeat with . sequences that use pluggins
 plugin "tpope/vim-sleuth" -- Automatically detect indentation
 plugin "tpope/vim-surround" -- Change/Add surrounding character
 
-
+plugin {
+    "ThePrimeagen/harpoon",
+    config = function()
+        vim.keymap.set("n", "<leader>ma", require("harpoon.mark").add_file)
+        vim.keymap.set("n", "<leader>ml", require("harpoon.ui").toggle_quick_menu)
+        vim.keymap.set("n", "<leader>mn", require("harpoon.ui").nav_next)
+        vim.keymap.set("n", "<leader>mp", require("harpoon.ui").nav_prev)
+    end,
+}
