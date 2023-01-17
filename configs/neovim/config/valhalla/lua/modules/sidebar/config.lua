@@ -39,7 +39,7 @@ M.setup = function()
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
-        sort_case_insensitive = false, -- used when sorting files and directories in the tree
+        sort_case_insensitive = true, -- used when sorting files and directories in the tree
         sort_function = nil, -- use a custom function for sorting files and directories in the tree
         default_component_configs = {
             container = {
@@ -152,7 +152,12 @@ M.setup = function()
                     --"*.meta"
                 },
                 always_show = { -- remains visible even if other settings would normally hide it
-                    --".gitignored",
+                    ".teamcity",
+                    ".gitignore",
+                    ".dockerignore",
+                    ".eslint*",
+                    ".nvmrc",
+                    ".npmrc",
                 },
                 never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
                     --".DS_Store",
@@ -161,7 +166,7 @@ M.setup = function()
             },
             follow_current_file = true, -- This will find and focus the file in the active buffer every
             -- time the current file is changed while the tree is open.
-            group_empty_dirs = false, -- when true, empty folders will be grouped together
+            group_empty_dirs = true, -- when true, empty folders will be grouped together
             hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
             -- in whatever position is specified in window.position
             -- "open_current",  -- netrw disabled, opening a directory opens within the
@@ -177,7 +182,7 @@ M.setup = function()
                     ["/"] = "",
                     ["D"] = "",
                     ["f"] = "filter_on_submit",
-                    ["<c-x>"] = "clear_filter",
+                    ["F"] = "clear_filter",
                     ["[c"] = "prev_git_modified",
                     ["]c"] = "next_git_modified",
                 },
