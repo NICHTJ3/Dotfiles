@@ -40,19 +40,19 @@ tmux split-window -t $1:vim.2
 
 # 2. Create a second window you could create splits etc in the same way as the
 # above section
-tmux new-window -t $1 -c "\$PWD" -n window-2
+tmux new-window -t $1 -c '$PWD' -n window-2
 
 # Attach to the newly created session
 attachOrSwitch :vim.left
 " > .tmux
-echo Giving the new file the correct permissions
+echo Giving the new file execute permissions so we can use it in the future
 chmod +x .tmux
 }
 
 function init(){
-  SESSION_NAME=$(echo $(basename "$(pwd)") | sed -e s/\\./_/g)
+  SESSION_NAME=$(basename "$(pwd)" | sed -e s/\\./_/g)
   if [[ ! -f ./.tmux && ! -d ./.tmux ]]; then
-    createTmuxFile $SESSION_NAME
+    createTmuxFile "$SESSION_NAME"
     echo Created a .tmux file have a look inside if you want to change anything
   else
     echo There is already a .tmux file or directory remove it before running this command
@@ -65,7 +65,7 @@ function validateAndRunTmuxFile(){
   DIGEST="$(openssl sha512 .tmux)"
   if ! grep -q "$DIGEST" ~/.config/..tmux.digests 2> /dev/null; then
     cat .tmux
-    read -p \
+    read -pr \
       'REPLY? Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
         echo
         if [[ $REPLY =~ ^[Tt]$ ]]; then
@@ -79,18 +79,18 @@ function validateAndRunTmuxFile(){
 
 # Attach to existing session, or create one, based on current directory.
 function attachOrCreateSession(){
-  SESSION_NAME=$(echo $(basename "$(pwd)") | sed -e s/\\./_/g)
+  SESSION_NAME=$(basename "$(pwd)" | sed -e s/\\./_/g)
 
   # Create a session if it doesn't already exist
-  if ! tmux has-session -t=$SESSION_NAME 2> /dev/null; then
+  if ! tmux has-session -t="$SESSION_NAME" 2> /dev/null; then
     env SSH_AUTH_SOCK=$SOCK_SYMLINK tmux new -s "$SESSION_NAME" -d
   fi
 
   # Attach to the session created above even if we're in tmux
   if [[ $TMUX ]];then
-    tmux switch-client -t $SESSION_NAME
+    tmux switch-client -t "$SESSION_NAME"
   else
-    tmux attach -t $SESSION_NAME
+    tmux attach -t "$SESSION_NAME"
   fi
 }
 
