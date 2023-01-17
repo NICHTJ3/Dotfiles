@@ -4,5 +4,10 @@
         "missing-parameter",
         "unused-local",
         "param-type-mismatch"
-    ]
+    ],
+    "diagnostics.globals": [
+        "Windline",
+        "vim"
+    ],
+    "runtime.version": "LuaJIT"
 }

@@ -3,6 +3,7 @@ local b_components = require "windline.components.basic"
 local vim_components = require "windline.components.vim"
 local git_rev_components = require "windline.components.git_rev"
 
+---@diagnostic disable-next-line: undefined-field
 local state = _G.WindLine.state
 local utils = require "windline.utils"
 
