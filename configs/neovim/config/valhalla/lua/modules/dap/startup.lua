@@ -1,44 +1,139 @@
-for _, language in ipairs { "typescript", "javascript", "typescriptreact", "javascriptreact" } do
-    require("dap").configurations[language] = {
-        {
-            type = "pwa-node",
-            request = "launch",
-            name = "[pwa-node] Launch file",
-            program = "${file}",
-            cwd = "${workspaceFolder}",
-        },
-        {
-            type = "pwa-node",
-            request = "attach",
-            name = "[pwa-node] Attach",
-            processId = require("dap.utils").pick_process,
-            cwd = "${workspaceFolder}",
-        },
-        {
-            type = "pwa-node",
-            request = "launch",
-            name = "Debug Jest Tests",
-            -- trace = true, -- include debugger info
-            runtimeExecutable = "node",
-            runtimeArgs = {
-                "./node_modules/jest/bin/jest.js",
-                "--runInBand",
-            },
-            rootPath = "${workspaceFolder}",
-            cwd = "${workspaceFolder}",
-            console = "integratedTerminal",
-            internalConsoleOptions = "neverOpen",
-        },
-    }
-end
-
-local ok, js_debug = pcall(require, "dap-vscode-js")
+local ok, mason_dap = pcall(require, "mason-nvim-dap")
 
 if not ok then
     return
 end
 
-js_debug.setup {
-    debugger_cmd = { "js-debug-adapter" },
-    adapters = { "pwa-node", "pwa-chrome", "node-terminal" }, -- which adapters to register in nvim-dap
+mason_dap.setup {
+    automatic_setup = true,
 }
+
+local dapup_ok, dapui = pcall(require,"dapui")
+if dapup_ok then
+    dapui.setup {}
+end
+
+local dap = require "dap"
+dap.adapters.python = {
+    type = "executable",
+    command = "/usr/bin/python3",
+    args = {
+        "-m",
+        "debugpy.adapter",
+    },
+}
+
+dap.configurations.python = {
+    {
+        type = "python",
+        request = "launch",
+        name = "Launch file",
+        program = "${file}", -- This configuration will launch the current file if used.
+    },
+}
+
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly
+dap.adapters.delve = {
+    type = "server",
+    port = "${port}",
+    executable = {
+        command = "dlv",
+        args = { "dap", "-l", "127.0.0.1:${port}" },
+    },
+}
+-- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
+dap.configurations.go = {
+    {
+        type = "delve",
+        name = "Debug",
+        request = "launch",
+
+        program = "${file}",
+    },
+    {
+        type = "delve",
+        name = "Debug test", -- configuration for debugging test files
+        request = "launch",
+        mode = "test",
+        program = "${file}",
+    },
+    -- works with go.mod packages and sub packages
+    {
+        type = "delve",
+        name = "Debug test (go.mod)",
+        request = "launch",
+        mode = "test",
+        program = "./${relativeFileDirname}",
+    },
+}
+
+dap.adapters.chrome = {
+    type = "executable",
+    command = "node",
+    args = { vim.fn.stdpath "data" .. "/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js" }, -- TODO adjust
+}
+
+dap.configurations.javascript = { -- change this to javascript if needed
+    {
+        type = "chrome",
+        request = "attach",
+        program = "${file}",
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = "inspector",
+        port = 9222,
+        webRoot = "${workspaceFolder}",
+    },
+}
+
+dap.configurations.javascriptreact = { -- change this to javascript if needed
+    {
+        type = "chrome",
+        request = "attach",
+        program = "${file}",
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = "inspector",
+        port = 9222,
+        webRoot = "${workspaceFolder}",
+    },
+}
+
+dap.configurations.typescript = { -- change to typescript if needed
+    {
+        type = "chrome",
+        request = "attach",
+        program = "${file}",
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = "inspector",
+        port = 9222,
+        webRoot = "${workspaceFolder}",
+    },
+}
+
+dap.configurations.typescriptreact = { -- change to typescript if needed
+    {
+        type = "chrome",
+        request = "attach",
+        program = "${file}",
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = "inspector",
+        port = 9222,
+        webRoot = "${workspaceFolder}",
+    },
+}
+
+vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticWarn" })
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticInfo" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticError" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticInfo" })
+vim.fn.sign_define("DapLogPoint", { text = ".>", texthl = "DiagnosticInfo" })
+
+-- Catppuccin
+local sign = vim.fn.sign_define
+
+sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
