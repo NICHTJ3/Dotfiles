@@ -150,9 +150,9 @@ mason_config.setup_handlers {
             },
         }
     end,
-    ["sumneko_lua"] = function()
+    ["lua_ls"] = function()
         require("neodev").setup()
-        lspconfig.sumneko_lua.setup {
+        lspconfig.lua_ls.setup {
             settings = {
                 Lua = {
                     diagnostics = {
