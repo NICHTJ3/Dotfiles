@@ -47,33 +47,19 @@ nnoremap c* *Ncgn
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                  Move split                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-nnoremap <leader>H <C-w>H
-nnoremap <leader>L <C-w>L
-nnoremap <leader>J <C-w>J
-nnoremap <leader>K <C-w>K
+nnoremap <leader>wmj <C-w>H
+nnoremap <leader>wml <C-w>L
+nnoremap <leader>wmh <C-w>J
+nnoremap <leader>wmk <C-w>K
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                 Create splits                                "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-" Create with ctrl
-nnoremap c<C-j> :split Below<CR>
-nnoremap c<C-l> :vsplit Right<CR>
-nnoremap c<C-h> :aboveleft vsp Left<CR>
-nnoremap c<C-k> :above split Above<CR>
-" Add with ctrl
-nnoremap a<C-j> :split Below<CR>
-nnoremap a<C-l> :vsplit Right<CR>
-nnoremap a<C-h> :aboveleft vsp Left<CR>
-nnoremap a<C-k> :above split Above<CR>
 " Create with leader
-nnoremap <leader>cj :split Below<CR>
-nnoremap <leader>cl :vsplit Right<CR>
-nnoremap <leader>ch :aboveleft vsp Left<CR>
-nnoremap <leader>ck :above split Above<CR>
-" Add with leader
-nnoremap <leader>aj :split Below<CR>
-nnoremap <leader>al :vsplit Right<CR>
-nnoremap <leader>ah :aboveleft vsp Left<CR>
+nnoremap <leader>waj :split Below<CR>
+nnoremap <leader>wal :vsplit Right<CR>
+nnoremap <leader>wah :aboveleft vsp Left<CR>
+nnoremap <leader>wak :above split Above<CR>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                     pasting over text works like you would expect            "
