@@ -79,8 +79,8 @@ local function find_and_run_codelens()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 
     local lenses = vim.tbl_filter(function(lense)
-        return lense.range.start.line < row
-    end, vim.lsp.codelens.get(bufnr)) or {}
+            return lense.range.start.line < row
+        end, vim.lsp.codelens.get(bufnr)) or {}
 
     if #lenses == 0 then
         return vim.notify "Could not find codelens to run."
@@ -109,7 +109,9 @@ local function buf_set_keymaps(bufnr)
         vim.keymap.set(mode, lhs, rhs, merge({ buffer = bufnr, silent = true }, opts or {}))
     end
 
-    buf_set_keymap("n", "<leader>d", vim.lsp.buf.format)
+    buf_set_keymap("n", "<space>d", function()
+        vim.lsp.buf.format { async = true }
+    end)
 
     -- Code actions
     buf_set_keymap("n", "<leader>ar", "<cmd>Lspsaga rename<CR>")

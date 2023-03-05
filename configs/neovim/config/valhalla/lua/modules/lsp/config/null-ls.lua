@@ -5,7 +5,7 @@ local M = {}
 function M.setup()
     null_ls.setup {
         sources = {
-            null_ls.builtins.formatting.prettierd.with {
+            null_ls.builtins.formatting.prettier.with {
                 extra_filetypes = { "astro" },
             },
             null_ls.builtins.formatting.stylua,
