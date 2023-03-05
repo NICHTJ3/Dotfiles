@@ -1,4 +1,5 @@
 local M = {}
+local popup = require "neo-tree.ui.popups"
 
 M.setup = function()
     -- Unless you are still migrating, remove the deprecated commands from v1.x
@@ -140,6 +141,12 @@ M.setup = function()
         },
         nesting_rules = {},
         filesystem = {
+            commands = {
+                preview_file_name = function(state)
+                    local node = state.tree:get_node()
+                    popup.alert("File name", node.name)
+                end,
+            },
             filtered_items = {
                 visible = false, -- when true, they will just be displayed differently than normal items
                 hide_dotfiles = true,
@@ -176,6 +183,7 @@ M.setup = function()
             -- instead of relying on nvim autocmd events.
             window = {
                 mappings = {
+                    ["K"] = "preview_file_name",
                     ["<bs>"] = "navigate_up",
                     ["."] = "set_root",
                     ["I"] = "toggle_hidden",
