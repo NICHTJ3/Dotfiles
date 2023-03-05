@@ -65,6 +65,10 @@ vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.smartcase = true
 
+vim.opt.expandtab = true
+vim.opt.sw = 2
+vim.opt.tabstop = 2
+
 -- Autocomplete options
 -- set wildoptions=pum " this is disabled because of cmp
 vim.opt.pumheight = 15
