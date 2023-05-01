@@ -65,16 +65,16 @@ function validateAndRunTmuxFile(){
   DIGEST="$(openssl sha512 .tmux)"
   if ! grep -q "$DIGEST" ~/.config/..tmux.digests 2> /dev/null; then
     cat .tmux
-    read -pr \
-      'REPLY? Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
-        echo
-        if [[ $REPLY =~ ^[Tt]$ ]]; then
-          echo "$DIGEST" >> ~/.config/..tmux.digests
-          ./.tmux
-        fi
-      else
-        ./.tmux
+    echo
+    read -p 'REPLY? Trust (and run) this .tmux file? (t = trust, otherwise = skip) ' -r
+    echo
+    if [[ $REPLY =~ ^[Tt]$ ]]; then
+      echo "$DIGEST" >> ~/.config/..tmux.digests
+      ./.tmux
     fi
+  else
+    ./.tmux
+  fi
 }
 
 # Attach to existing session, or create one, based on current directory.
