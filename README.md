@@ -13,7 +13,7 @@ dotsy --help
 # dotsy profile install work-mac > To install the work-mac profile
 ```
 
-__NOTE:__ You can also install dotsy globaly using cargo and run `dotsy init`
+__NOTE:__ You can install dotsy using cargo and run `dotsy init`
 in your home dir to allow yourself to run dotsy from anywhere
 
 ### More help can be found in the wiki
