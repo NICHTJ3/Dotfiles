@@ -14,11 +14,15 @@ M.setup = function()
     -- in the form "LspDiagnosticsSignWarning"
 
     require("neo-tree").setup {
+        source_selector = {
+            winbar = true,
+            statusline = false
+        },
         sources = {
             "filesystem",
-            "buffers",
-            "git_status",
+            -- "buffers",
             "diagnostics",
+            "git_status",
             -- ...and any additional source
         },
         diagnostics = {
@@ -96,7 +100,7 @@ M.setup = function()
         },
         window = {
             position = "right",
-            width = 30,
+            width = 45,
             mapping_options = {
                 noremap = true,
                 nowait = true,
@@ -104,19 +108,16 @@ M.setup = function()
             mappings = {
                 ["<space>"] = {
                     "toggle_node",
-                    nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+                    nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
                 },
                 ["<2-LeftMouse>"] = "open",
                 ["<cr>"] = "open",
                 ["S"] = "open_split",
                 ["s"] = "open_vsplit",
-                -- ["S"] = "split_with_window_picker",
-                -- ["s"] = "vsplit_with_window_picker",
                 ["t"] = "open_tabnew",
                 ["w"] = "open_with_window_picker",
                 ["C"] = "close_node",
                 ["z"] = "",
-                --["Z"] = "expand_all_nodes",
                 ["a"] = {
                     "add",
                     -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -152,12 +153,6 @@ M.setup = function()
                 hide_dotfiles = true,
                 hide_gitignored = true,
                 hide_hidden = true, -- only works on Windows for hidden files/directories
-                hide_by_name = {
-                    --"node_modules"
-                },
-                hide_by_pattern = { -- uses glob style patterns
-                    --"*.meta"
-                },
                 always_show = { -- remains visible even if other settings would normally hide it
                     ".teamcity",
                     ".gitignore",
@@ -166,19 +161,11 @@ M.setup = function()
                     ".nvmrc",
                     ".npmrc",
                 },
-                never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-                    --".DS_Store",
-                    --"thumbs.db"
-                },
             },
             follow_current_file = true, -- This will find and focus the file in the active buffer every
             -- time the current file is changed while the tree is open.
             group_empty_dirs = true, -- when true, empty folders will be grouped together
             hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
-            -- in whatever position is specified in window.position
-            -- "open_current",  -- netrw disabled, opening a directory opens within the
-            -- window like netrw would, regardless of window.position
-            -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
             use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
             -- instead of relying on nvim autocmd events.
             window = {
@@ -211,7 +198,6 @@ M.setup = function()
         },
         git_status = {
             window = {
-                position = "float",
                 mappings = {
                     ["A"] = "git_add_all",
                     ["gu"] = "git_unstage_file",
@@ -231,6 +217,7 @@ M.keymaps = function()
     vim.keymap.set("n", "<c-n>", "<CMD>Neotree toggle<cr>")
     vim.keymap.set("n", "<leader>sf", "<CMD>Neotree toggle<cr>")
     vim.keymap.set("n", "<leader>sd", "<CMD>Neotree toggle diagnostics<cr>")
+    vim.keymap.set("n", "<leader>sg", "<CMD>Neotree toggle git_status<cr>")
 end
 
 return M
