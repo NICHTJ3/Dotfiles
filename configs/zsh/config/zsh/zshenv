@@ -77,7 +77,6 @@ alias :e='nvim'
 if type "tmux-manager" > /dev/null; then
     alias tmux='tmux-manager'
 fi
-alias :q!='test -n "$TMUX" && \tmux kill-session'
 alias :qa='test -n "$TMUX" && \tmux kill-window'
 alias :sp='test -n "$TMUX" && \tmux split-window'
 alias :vs='test -n "$TMUX" && \tmux split-window -h'
@@ -99,4 +98,11 @@ fnm_upgrade () {
   fnm exec --using=$1 npm ls --global --json \
     | jq -r '.dependencies | to_entries[] | .key+"@"+.value.version' \
     | xargs npm i -g
+}
+
+:q!(){
+    if [[ -n "$TMUX" ]]; then
+        test -f ./.tmux.down.sh && bash ./.tmux.down.sh
+        \tmux kill-session
+    fi
 }
