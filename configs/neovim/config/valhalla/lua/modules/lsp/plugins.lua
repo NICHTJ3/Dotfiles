@@ -18,7 +18,7 @@ plugin {
 plugin {
     "folke/neodev.nvim",
     "b0o/SchemaStore.nvim",
-    { "simrat39/rust-tools.nvim", branch = "modularize_and_inlay_rewrite" },
+    { "simrat39/rust-tools.nvim", branch = "modularize_and_inlay_rewrite", ft = { "rust" } },
     "jose-elias-alvarez/typescript.nvim",
     "Hoffs/omnisharp-extended-lsp.nvim",
 }
