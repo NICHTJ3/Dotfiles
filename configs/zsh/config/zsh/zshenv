@@ -106,3 +106,11 @@ fnm_upgrade () {
         \tmux kill-session
     fi
 }
+
+terraform() {
+    if [[ "$1" == "apply" ]]; then
+        echo "Running 'terraform apply' is not allowed locally because of the terraform alias you have setup"
+    else
+        command terraform "$@"
+    fi
+}
