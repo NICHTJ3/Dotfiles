@@ -9,5 +9,11 @@
         "Windline",
         "vim"
     ],
-    "runtime.version": "LuaJIT"
+    "runtime.version": "LuaJIT",
+    "workspace.library": [
+        "/Users/trent.nicholson/.local/share/nvim/site/pack/packer/start/neodev.nvim/types/nightly",
+        "/usr/local/Cellar/neovim/HEAD-6dfabd0/share/nvim/runtime/lua",
+        "/Users/trent.nicholson/Dotfiles/configs/neovim/config/valhalla/lua",
+        "${3rd}/luv/library"
+    ]
 }

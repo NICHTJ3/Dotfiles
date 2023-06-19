@@ -2,10 +2,11 @@
 vim.opt.hidden = true
 vim.opt.belloff = "all"
 vim.opt.confirm = true
-vim.opt.wrap = false -- Disable line wrap
+vim.opt.wrap = false    -- Disable line wrap
 vim.opt.autoread = true -- Automaticaly read file changes
+vim.opt.spelllang = { "en_us" }
 vim.opt.spellfile = vim.fn.expand "~" .. "/.config/nvim/spell/en.utf-8.add"
-vim.opt.undofile = true -- Save undos after file closes
+vim.opt.undofile = true                                        -- Save undos after file closes
 vim.opt.undodir = vim.fn.expand "~" .. "/.config/nvim/undodir" -- Keep undo history in this place
 vim.opt.history = 1000
 vim.opt.backup = false
@@ -75,7 +76,7 @@ vim.opt.pumheight = 15
 vim.opt.pumblend = 0 -- Completion transparency
 
 -- Line numbers
-vim.opt.number = true -- Relative and normal line numbering
+vim.opt.number = true         -- Relative and normal line numbering
 vim.opt.relativenumber = true -- Relative and normal line numbering
 
 -- Fold settings
