@@ -7,3 +7,6 @@ require "core.init-globals"
 require "core.options"
 
 require "core.mappings"
+
+-- Setup Lazy.nvim
+require "core.lazy"
