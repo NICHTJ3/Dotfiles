@@ -14,7 +14,7 @@ function M.setup()
             null_ls.builtins.diagnostics.gitlint,
             null_ls.builtins.diagnostics.markdownlint,
         },
-        on_attach = require "plugins.lsp.on-attach",
+        on_attach = require "plugins.lsp.handlers.on-attach",
     }
 end
 

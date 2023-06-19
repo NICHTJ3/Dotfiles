@@ -5,7 +5,7 @@ end
 
 local cmp_lsp = require "cmp_nvim_lsp"
 local get_cmd = require("plugins.lsp.utils").get_cmd
-local on_attach = require "plugins.lsp.on-attach"
+local on_attach = require "plugins.lsp.handlers.on-attach"
 local util = require "lspconfig.util"
 
 ---@param opts table|nil
@@ -266,7 +266,7 @@ mason_config.setup_handlers {
                     },
                     range = true,
                 }
-            end
+            end,
         }
     end,
     ["tailwindcss"] = function()

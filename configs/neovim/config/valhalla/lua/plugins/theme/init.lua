@@ -1,25 +1,26 @@
-return {{
-    "rebelot/kanagawa.nvim",
-    lazy = true,
-    init = function()
-        require "plugins.theme.startup"
-    end
-}, -- Theme
+return {
+    {
+        "rebelot/kanagawa.nvim",
+        lazy = true,
+        init = function()
+            require "plugins.theme.startup"
+        end,
+    }, -- Theme
     {
         "folke/tokyonight.nvim",
-        lazy = true
+        lazy = true,
     }, -- Theme
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        lazy = true
+        lazy = true,
     }, -- Theme
     {
         "navarasu/onedark.nvim",
-        lazy = true
+        lazy = true,
     }, -- Theme
     {
         "Yagua/nebulous.nvim",
-        lazy = true
-    } -- Theme
+        lazy = true,
+    }, -- Theme
 }
