@@ -1,0 +1,39 @@
+-- function DuckItOpFunc(type, ...)
+--     local sel_save = vim.o.selection
+--     vim.o.selection = "inclusive"
+--     local reg_save = vim.fn.getreg "@"
+--
+--     if select("#", ...) > 0 then -- Invoked from Visual mode, use '< and '> marks.
+--         vim.cmd("silent normal! `<" .. type .. "`>y")
+--     elseif type == "line" then
+--         vim.cmd "silent normal! '[V']y"
+--     elseif type == "block" then
+--         vim.cmd "silent normal! `[<C-V>`]y"
+--     else
+--         vim.cmd "silent normal! `[v`]y"
+--     end
+--
+--     local search = vim.fn.substitute(vim.trim(vim.fn.getreg "@"), " \\+", "+", "g")
+--
+--     local uname = vim.fn.system("uname"):gsub("\n", "")
+--     if uname == "Linux" then
+--         if vim.fn.system("$PATH"):find "/mnt/c/Windows" then
+--             -- Windows Subsystem
+--             vim.cmd("!cmd.exe /c start 'https://duckduckgo.com/?q=" .. search .. "'")
+--         else
+--             -- Linux
+--             vim.cmd("!xdg-open 'https://duckduckgo.com/?q=" .. search .. "'")
+--         end
+--     else
+--         -- TODO: Fix this for native Windows CLI and macOS
+--         vim.cmd("!open 'https://duckduckgo.com/?q=" .. search .. "'")
+--     end
+--
+--     vim.o.selection = sel_save
+--     vim.fn.setreg("@", reg_save)
+-- end
+--
+-- vim.api.nvim_set_keymap("n", "gs", function()
+--     vim.api.nvim_set_option("opfunc", DuckItOpFunc)
+--     vim.api.nvim_feedkeys("g@", "n", false)
+-- end, { noremap = true })

@@ -1,10 +1,8 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  opts = {
-    options = { theme = "auto" },
-  },
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    lazy = true,
-  },
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = {
+        options = { theme = "auto", globalstatus = true },
+    },
+    dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 }
