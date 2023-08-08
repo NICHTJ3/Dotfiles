@@ -18,9 +18,34 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             {
-                "nvim-treesitter/playground",                  -- Debug treesitter
-                "nvim-treesitter/nvim-treesitter-context",     -- Show context at the top of the screen while scrolling
-                "p00f/nvim-ts-rainbow",                        -- Rainbow brackets
+                "nvim-treesitter/playground",              -- Debug treesitter
+                "nvim-treesitter/nvim-treesitter-context", -- Show context at the top of the screen while scrolling
+                {
+                    "hiphish/rainbow-delimiters.nvim",     -- Rainbow brackets
+                    init = function()
+                        local rainbow_delimiters = require "rainbow-delimiters"
+
+                        vim.g.rainbow_delimiters = {
+                            strategy = {
+                                [""] = rainbow_delimiters.strategy["global"],
+                                vim = rainbow_delimiters.strategy["local"],
+                            },
+                            query = {
+                                [""] = "rainbow-delimiters",
+                                lua = "rainbow-blocks",
+                            },
+                            highlight = {
+                                "RainbowDelimiterRed",
+                                "RainbowDelimiterYellow",
+                                "RainbowDelimiterBlue",
+                                "RainbowDelimiterOrange",
+                                "RainbowDelimiterGreen",
+                                "RainbowDelimiterViolet",
+                                "RainbowDelimiterCyan",
+                            },
+                        }
+                    end,
+                },
                 "JoosepAlviste/nvim-ts-context-commentstring", -- Better commenting in tsx/jsx
                 "windwp/nvim-ts-autotag",                      -- Auto rename closing tags in html/jsx
                 "nvim-treesitter/nvim-treesitter-textobjects", -- Change inner function etc...
@@ -72,6 +97,8 @@ return {
                 "c",
                 "html",
                 "javascript",
+                "comment",
+                "terraform",
                 "json",
                 "lua",
                 "luadoc",
@@ -113,10 +140,6 @@ return {
             autotag = {
                 enable = true,
                 filetypes = { "html", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
-            },
-            rainbow = {
-                enable = true,
-                extended_mode = false,
             },
             context_commentstring = {
                 enable = true,
