@@ -22,6 +22,7 @@ for path_candidate in \
     $HOME/.poetry/bin\
     $HOME/.local/share/npm/bin\
     $HOME/.local/share/cargo/bin\
+    $HOME/Library/pnpm\
     /usr/local/opt/sqlite/bin
 do
     if [ -d ${path_candidate} ]; then
