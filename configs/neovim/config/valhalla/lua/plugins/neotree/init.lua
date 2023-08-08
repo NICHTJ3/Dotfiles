@@ -1,7 +1,7 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
     event = "VeryLazy",
-    branch = "v2.x",
+    branch = "v3.x",
     dependencies = {
         {
             "simrat39/symbols-outline.nvim",
@@ -35,9 +35,15 @@ return {
             },
         },
     },
+    keys = {
+        { "\\",         "<CMD>Neotree toggle reveal<cr>" },
+        { "<c-n>",      "<CMD>Neotree toggle reveal<cr>" },
+        { "<leader>sf", "<CMD>Neotree toggle reveal<cr>" },
+        { "<leader>sd", "<CMD>Neotree toggle diagnostics<cr>" },
+        { "<leader>sg", "<CMD>Neotree toggle git_status<cr>" },
+    },
     config = function()
         local neotree = require "plugins.neotree.config"
         neotree.setup()
-        neotree.keymaps()
     end,
 }
