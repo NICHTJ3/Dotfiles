@@ -21,7 +21,6 @@ end
 local themes = {
     catppuccin = function()
         vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-        -- vim.cmd [[packadd catppuccin]]
         local ok, catppuccin = pcall(require, "catppuccin")
 
         if not ok then
@@ -32,7 +31,7 @@ local themes = {
             dim_inactive = {
                 enabled = false,
                 shade = "dark",
-                percentage = 0.15
+                percentage = 0.15,
             },
             integrations = {
                 treesitter = true,
@@ -41,42 +40,37 @@ local themes = {
                 neotree = {
                     enabled = true,
                     show_root = true,
-                    transparent_panel = true
+                    transparent_panel = true,
                 },
-                ts_rainbow = true
-            }
+                ts_rainbow = true,
+            },
         }
         vim.cmd [[ silent! colorscheme catppuccin ]]
     end,
     kanagawa = function()
-        -- vim.cmd [[packadd kanagawa.nvim]]
         vim.cmd [[ silent! colorscheme kanagawa ]]
     end,
     onedark_darker = function()
-        -- vim.cmd [[packadd onedark.nvim]]
-
         local ok, onedark = pcall(require, "onedark")
         if not ok then
             print "The Onedark theme is not installed"
         end
         onedark.setup {
-            style = "darker"
+            style = "darker",
         }
         onedark.load()
     end,
     onedark_warm = function()
-        -- vim.cmd [[packadd onedark.nvim]]
         local ok, onedark = pcall(require, "onedark")
         if not ok then
             print "The Onedark theme is not installed"
         end
         onedark.setup {
-            style = "warmer"
+            style = "warmer",
         }
         onedark.load()
     end,
     nebulous = function()
-        -- vim.cmd [[packadd nebulous.nvim]]
         local ok, nebulous = pcall(require, "nebulous")
         if not ok then
             print "The Nebulous theme is not installed"
@@ -88,21 +82,19 @@ local themes = {
                 comments = false,
                 keywords = true,
                 functions = false,
-                variables = true
-            }
+                variables = true,
+            },
         }
         vim.keymap.set("n", "<leader>ts", require("nebulous.functions").toggle_variant)
     end,
     tokyonight_night = function()
-        -- vim.cmd [[packadd tokyonight.nvim]]
-        vim.g.tokyonight_style = "night"
-        vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer", "NvimTree", "neo-tree"}
+        vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer", "NvimTree", "neo-tree" }
         vim.g.tokyonight_colors = {
             hint = "orange",
-            error = "#ff0000"
+            error = "#ff0000",
         }
-        vim.cmd [[ silent! colorscheme tokyonight ]]
-    end
+        vim.cmd [[ silent! colorscheme tokyonight-night ]]
+    end,
 }
 
 themes.catppuccin()
