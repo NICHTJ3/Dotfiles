@@ -69,6 +69,7 @@ mason_config.setup_handlers {
                 end
                 local token = tokens[cwd] or vim.tbl_count(tokens)
                 if result.type == "Starting" and not tokens[cwd] then
+                    ---@diagnostic disable-next-line: need-check-nil
                     tokens[cwd] = token
                     vim.lsp.handlers["$/progress"](nil, {
                         token = token,
@@ -155,6 +156,7 @@ mason_config.setup_handlers {
         lspconfig.lua_ls.setup {
             settings = {
                 Lua = {
+                    workspace = { checkThirdParty = false },
                     diagnostics = {
                         globals = { "P" },
                     },
@@ -279,22 +281,11 @@ mason_config.setup_handlers {
     ["tsserver"] = function()
         local tsserver_config = require "lspconfig.server_configurations.tsserver"
         local cmd = get_cmd(tsserver_config.default_config.cmd)
-        require("typescript").setup {
-            disable_commands = false, -- prevent the plugin from creating Vim commands
-            debug = false, -- enable debug logging for commands
-            server = { -- pass options to lspconfig's setup method
-                cmd = cmd,
-                filetypes = {
-                    "typescriptreact",
-                    "typescript",
-                    "typescript.tsx",
-                    "javascript",
-                    "javascriptreact",
-                },
-                on_attach = function(client, bufnr)
-                    client.server_capabilities.documentFormattingProvider = false
-                end,
-            },
+        require("typescript-tools").setup {
+            on_attach = function(cli, buf)
+                cli.server_capabilities.documentFormattingProvider = false
+                on_attach(cli, buf)
+            end,
         }
     end,
 }

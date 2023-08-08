@@ -19,10 +19,23 @@ return {
 
     {
         "jose-elias-alvarez/null-ls.nvim", -- Support more linters/formatters
-        event = "VeryLazy",
-        config = function()
-            local config = require "plugins.lsp.config.null-ls"
-            config.setup()
+        opts = function(_, opts)
+            local nls = require "null-ls"
+            opts.sources = opts.sources or {}
+            opts.on_attach = require "plugins.lsp.handlers.on-attach"
+
+            local source = function(source)
+                table.insert(opts.sources, source)
+            end
+
+            source(nls.builtins.formatting.prettierd)
+            source(nls.builtins.formatting.prettier.with { extra_filetypes = { "astro" } })
+            source(nls.builtins.formatting.stylua)
+            source(nls.builtins.formatting.terraform_fmt)
+            source(nls.builtins.diagnostics.shellcheck)
+            source(nls.builtins.diagnostics.hadolint)
+            source(nls.builtins.diagnostics.gitlint)
+            source(nls.builtins.diagnostics.markdownlint)
         end,
     },
 
@@ -31,6 +44,7 @@ return {
         {
             "folke/neodev.nvim",
             event = "VeryLazy",
+            ft = { "lua" },
         },
         {
             "b0o/SchemaStore.nvim",
@@ -38,8 +52,10 @@ return {
         },
         { "simrat39/rust-tools.nvim", branch = "modularize_and_inlay_rewrite", ft = { "rust" } },
         {
-            "jose-elias-alvarez/typescript.nvim",
-            event = "VeryLazy",
+            "pmizio/typescript-tools.nvim",
+            dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+            opts = {},
+            ft = { "typescript" },
         },
         {
             "Hoffs/omnisharp-extended-lsp.nvim",
@@ -98,7 +114,7 @@ return {
     {
         -- "hrsh7th/nvim-cmp",
         "williamboman/nvim-cmp",
-        event = "VeryLazy",
+        event = "InsertEnter",
         branch = "feat/docs-preview-window",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
@@ -133,9 +149,8 @@ return {
         "folke/trouble.nvim",
         event = "VeryLazy",
         dependencies = "nvim-tree/nvim-web-devicons",
-        config = function()
-            require("trouble").setup {}
-            vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<CR>", { silent = true, noremap = true })
-        end,
+        keys = {
+            { "<leader>tt", "<cmd>TroubleToggle<CR>" },
+        },
     },
 }

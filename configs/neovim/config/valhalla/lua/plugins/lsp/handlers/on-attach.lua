@@ -121,7 +121,7 @@ local function buf_set_keymaps(bufnr)
     buf_set_keymap("n", "<leader>l", find_and_run_codelens)
 
     -- Uses "jose-elias-alvarez/typescript.nvim"
-    buf_set_keymap("n", "<leader>or", "<cmd>TypescriptOrganizeImports<CR>")
+    buf_set_keymap("n", "<leader>or", "<cmd>TSToolsOrganizeImports<CR>")
 
     -- Preview diagnostic messages
     buf_set_keymap("n", "<leader>ai", "<cmd>Lspsaga show_line_diagnostics<CR>")
