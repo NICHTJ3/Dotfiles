@@ -1,0 +1,9 @@
+[user]
+	name = Trent Nicholson
+	email = trent.nicholson@xero.com
+
+[url "git@github.dev.xero.com:"] # Use ssh even for HTTPS remotes
+	insteadOf = https://github.dev.xero.com/
+
+[url "git@github.com:xero-internal"] # Use ssh even for HTTPS remotes
+	insteadOf = https://github.dev.xero.com/xero-internal

@@ -6,8 +6,9 @@
             "glob": true
         },
         {
-            "to": "~/.gitconfig",
-            "from": "git/config/gitconfig"
+            "to": "~/.config/git",
+            "from": "git/config/git/*",
+            "glob": true
         }
     ]
 }

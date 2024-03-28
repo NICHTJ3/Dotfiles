@@ -1,0 +1,39 @@
+# This is Git's per-user configuration file.
+[user]
+  name = Trent Nicholson
+  email = nicholsontrent@gmail.com
+
+[url "git@github.com:NICHTJ3"] # Use ssh even for HTTPS remotes
+  insteadOf = https://github.com/nichtj3
+  insteadOf = https://github.com/NICHTJ3
+
+[includeIf "hasconfig:remote.*.url:git@github.dev.xero.com/**"]
+  path = config-work
+[includeIf "hasconfig:remote.*.url:https://github.dev.xero.com/**"]
+  path = config-work
+
+[includeIf "hasconfig:remote.*.url:git@github.com:xero-internal/**"]
+  path = config-work
+[includeIf "hasconfig:remote.*.url:https://github.com.com/xero-internal/**"]
+  path = config-work
+
+[pager]
+  diff = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
+  log = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
+  show = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
+  show-branch = true
+  status = false
+  whatchanged = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
+
+[pull]
+  rebase = true
+[init]
+  defaultBranch = main
+[alias]
+  fixup = !sh -c 'REV=$(git rev-parse $1) && git commit --fixup $@' -
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
