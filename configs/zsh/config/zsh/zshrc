@@ -14,6 +14,11 @@ esac
 # fnm
 eval "$(fnm env --use-on-cd)"
 
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
 
 ##################
 # Enable Powerlevel10k instant prompt.
@@ -118,3 +123,12 @@ fi
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# bun completions
+[ -s "/Users/trent.nicholson/.bun/_bun" ] && source "/Users/trent.nicholson/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+alias jira-task="jira issue create --template ~/.config/.jira/templates/task.tmpl"
