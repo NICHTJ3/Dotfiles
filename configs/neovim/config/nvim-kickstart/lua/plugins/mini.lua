@@ -1,11 +1,17 @@
 local function custom_mini_files_keymaps(MiniFiles)
-  local function toggle_minifiles()
+  local function toggle_minifiles(...)
     if not MiniFiles.close() then
-      MiniFiles.open()
+      MiniFiles.open(...)
     end
   end
-  vim.keymap.set('n', '\\', toggle_minifiles, { desc = 'Toggle minifiles' })
-  vim.keymap.set('n', '-', toggle_minifiles, { desc = 'Toggle minifiles' })
+
+  vim.keymap.set('n', '\\', function()
+    toggle_minifiles(vim.api.nvim_buf_get_name(0), false)
+  end, { desc = 'Toggle minifiles' })
+
+  vim.keymap.set('n', '-', function()
+    toggle_minifiles(vim.api.nvim_buf_get_name(0), false)
+  end, { desc = 'Toggle minifiles with current files location' })
 
   local show_dotfiles = false
 
