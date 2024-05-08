@@ -119,7 +119,7 @@ function main() {
     if [[ $i == 'kill-session' ]]; then
       killHook
     fi
-    TMUX_ARGS+="$i " ;;
+    TMUX_ARGS+="$i "
   done
 
   # If we passed additional args just run tmux normally with those args
