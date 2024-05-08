@@ -103,8 +103,7 @@ fnm_upgrade () {
 
 :q!(){
     if [[ -n "$TMUX" ]]; then
-        test -f ./.tmux.down.sh && bash ./.tmux.down.sh
-        \tmux kill-session
+        tmux kill-session
     fi
 }
 
