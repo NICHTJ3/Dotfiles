@@ -12,9 +12,20 @@ return {
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {
-        library = { plugins = { 'neotest' }, types = true },
-      } },
+      {
+        'folke/neodev.nvim',
+        opts = {
+          library = {
+            types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
+            plugins = true,
+          },
+        },
+      },
+      {
+        'pmizio/typescript-tools.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = {},
+      },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -123,11 +134,6 @@ return {
         biome = {
           on_attach = function(client)
             client.server_capabilities.documentFormattingProvider = true
-          end,
-        },
-        tsserver = {
-          on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = false
           end,
         },
         lua_ls = {
