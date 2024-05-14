@@ -57,9 +57,15 @@ vim.opt.scrolloff = 10
 -- Don't line wrap
 vim.opt.wrap = false
 
--- NOTE: This might cause issues so I might have to remove this or move it to just be applied to certain filetypes.
--- Don't fix the line endings when opening files.
-vim.opt.bin = true
-vim.opt.endofline = true
+-- Respect modeline comments at the end of files
+vim.opt.modeline = true
+
+-- Use relative line numbers
+vim.opt.relativenumber = true
+
+-- My coworkers like to see the name of the current file at the top of the window
+-- because they rely on tabs in their editors
+vim.opt.showtabline = 2
+vim.opt.tabline = '%t'
 
 -- vim: ts=2 sts=2 sw=2 et
