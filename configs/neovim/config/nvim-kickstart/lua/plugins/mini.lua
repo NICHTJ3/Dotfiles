@@ -1,44 +1,3 @@
-local function custom_mini_files_keymaps(MiniFiles)
-  local function toggle_minifiles(...)
-    if not MiniFiles.close() then
-      MiniFiles.open(...)
-    end
-  end
-
-  vim.keymap.set('n', '\\', function()
-    toggle_minifiles(vim.api.nvim_buf_get_name(0), false)
-  end, { desc = 'Toggle minifiles' })
-
-  vim.keymap.set('n', '-', function()
-    toggle_minifiles(vim.api.nvim_buf_get_name(0), false)
-  end, { desc = 'Toggle minifiles with current files location' })
-
-  local show_dotfiles = false
-
-  local filter_show = function()
-    return true
-  end
-
-  local filter_hide = function(fs_entry)
-    return not vim.startswith(fs_entry.name, '.')
-  end
-
-  local toggle_dotfiles = function()
-    show_dotfiles = not show_dotfiles
-    local new_filter = show_dotfiles and filter_show or filter_hide
-    MiniFiles.refresh { content = { filter = new_filter } }
-  end
-
-  vim.api.nvim_create_autocmd('User', {
-    pattern = 'MiniFilesBufferCreate',
-    callback = function(args)
-      local buf_id = args.data.buf_id
-      -- Tweak left-hand side of mapping to your liking
-      vim.keymap.set('n', 'H', toggle_dotfiles, { buffer = buf_id })
-    end,
-  })
-end
-
 return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -57,23 +16,6 @@ return {
           suffix_next = 'n', -- Suffix to search with "next" method
         },
         n_lines = 500,
-      }
-
-      local MiniFiles = require 'mini.files'
-      custom_mini_files_keymaps(MiniFiles)
-      MiniFiles.setup {
-        mappings = {
-          close = '<Esc>',
-          go_in = 'l',
-          go_in_plus = '<CR>',
-          go_out_plus = 'h',
-          reset = '<BS>',
-          reveal_cwd = '@',
-          show_help = 'g?',
-          synchronize = '=',
-          trim_left = '<',
-          trim_right = '>',
-        },
       }
 
       -- Simple and easy statusline.
