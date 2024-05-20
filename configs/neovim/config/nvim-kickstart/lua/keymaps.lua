@@ -35,6 +35,19 @@ vim.keymap.set('n', '<leader>wal', ':vnew<CR>', { desc = 'new window to the righ
 vim.keymap.set('n', '<leader>wah', ':aboveleft vnew<CR>', { desc = 'new window to the left' })
 vim.keymap.set('n', '<leader>wak', ':above new<CR>', { desc = 'new window above' })
 
+-- TODO: Trial this for a bit
+-- JK enters normal mode from insert mode
+vim.keymap.set('i', 'jk', '<esc>', { desc = 'switch to normal mode form insert mode without esc' })
+
+-- JK move lines in visual mode
+vim.keymap.set('x', 'K', ":move '<-2<CR>gv-gv", { desc = 'Move selected lines up' })
+vim.keymap.set('x', 'J', ":move '>+1<CR>gv-gv", { desc = 'Move selected lines down' })
+
+-- Moving lines with < and > in visual mode doesn't unselect the text
+
+vim.keymap.set('x', '<', '<gv', { desc = 'Move selected lines left' })
+vim.keymap.set('x', '>', '>gv', { desc = 'Move selected lines right' })
+
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -43,5 +56,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Keep cursor centered when scrolling with <C-d> and <C-u>
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
 -- vim: ts=2 sts=2 sw=2 et
