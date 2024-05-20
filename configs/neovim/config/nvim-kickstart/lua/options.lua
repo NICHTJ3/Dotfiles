@@ -1,13 +1,10 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
 
 -- Make line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+-- Use relative line numbers
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -60,12 +57,13 @@ vim.opt.wrap = false
 -- Respect modeline comments at the end of files
 vim.opt.modeline = true
 
--- Use relative line numbers
-vim.opt.relativenumber = true
-
 -- My coworkers like to see the name of the current file at the top of the window
 -- because they rely on tabs in their editors
 vim.opt.showtabline = 2
 vim.opt.tabline = '%t'
+
+-- No swapfile or backup. The popup sucks
+vim.opt.swapfile = false
+vim.opt.backup = false
 
 -- vim: ts=2 sts=2 sw=2 et
