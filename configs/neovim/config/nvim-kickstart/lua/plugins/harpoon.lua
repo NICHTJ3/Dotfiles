@@ -10,9 +10,12 @@ return {
       harpoon:list():add()
     end, { desc = 'Harpoon [A]dd' })
 
-    vim.keymap.set('n', '<leader>sh', function()
+    vim.keymap.set('n', '<leader>sj', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
-    end, { desc = '[S]how [H]arpoon' })
+    end, { desc = '[S]how Harpoon [J]ump list' })
+    vim.keymap.set('n', '<leader>fj', function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end, { desc = '[F]ind Harpoon [J]ump list' })
 
     -- Meta + HJKL to navigate between Harpoon list
     vim.keymap.set('n', '˙', function()
