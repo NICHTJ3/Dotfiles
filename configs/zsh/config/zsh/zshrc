@@ -11,14 +11,6 @@ esac
 ##################
 # Setup
 ##################
-# fnm
-eval "$(fnm env --use-on-cd)"
-
-# pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
 
 ##################
 # Enable Powerlevel10k instant prompt.
@@ -72,6 +64,9 @@ fi
 compdef _tmux tmux-manager
 compdef _tmux tmux
 
+# bun completions
+[ -s "/Users/trent.nicholson/.bun/_bun" ] && source "/Users/trent.nicholson/.bun/_bun"
+
 ##################
 # User config
 ##################
@@ -112,23 +107,6 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^x' edit-command-line
 
-if command -v ngrok &>/dev/null; then
-  eval "$(ngrok completion)"
-fi
-
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# bun completions
-[ -s "/Users/trent.nicholson/.bun/_bun" ] && source "/Users/trent.nicholson/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-alias jira-task="jira issue create --template ~/.config/.jira/templates/task.tmpl"

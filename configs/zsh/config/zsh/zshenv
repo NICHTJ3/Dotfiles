@@ -10,24 +10,24 @@ if [ -d"$HOME/bin" ];then
 fi
 
 export DOTNET_ROOT=$HOME/.dotnet
+export BUN_INSTALL="$HOME/.bun"
 
 # Conditional PATH additions
 for path_candidate in \
+    $BUN_INSTALL/bin\
     $DOTNET_ROOT\
-    $HOME/go/bin\
     $HOME/.deno/bin\
     $HOME/.fnm\
     $HOME/.gem/bin\
     $HOME/.local/bin\
-    $HOME/.poetry/bin\
-    $HOME/.local/share/npm/bin\
     $HOME/.local/share/cargo/bin\
+    $HOME/.local/share/npm/bin\
+    $HOME/.poetry/bin\
     $HOME/Library/pnpm\
+    $HOME/go/bin\
     /usr/local/opt/sqlite/bin
 do
-    if [ -d ${path_candidate} ]; then
-        export PATH="${PATH}:${path_candidate}"
-    fi
+    [[ -d ${path_candidate} ]] && export PATH="${PATH}:${path_candidate}"
 done
 
 ##################
@@ -81,6 +81,7 @@ fi
 alias :qa='test -n "$TMUX" && \tmux kill-window'
 alias :sp='test -n "$TMUX" && \tmux split-window'
 alias :vs='test -n "$TMUX" && \tmux split-window -h'
+alias :q!='test -n "$TMUX" && \tmux kill-session'
 alias tmux-kill-and-set-host='\tmux kill-session -a;\tmux rename-session $HOST'
 alias docker-clean='docker system prune -a'
 alias cl='clear'
@@ -88,23 +89,31 @@ alias lear='clear'
 alias rmNodeModules="find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;"
 alias devx="cd ~/Documents/work/dev-content"
 alias nvm="fnm"
+alias jira-task="jira issue create --template ~/.config/.jira/templates/task.tmpl"
 
 # Rustup env
-. "$HOME/.cargo/env"
+[[ -s $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
 
-# Auto use .nvmrc file after changing directories
-# add-zsh-hook -Uz chpwd (){ fnm_auto_use }
+# Go version manager
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# Iterm shell integration
+[[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Use fnm on cd
+if command -v fnm 1>/dev/null 2>&1; then
+    eval "$(fnm env --use-on-cd)"
+fi
+
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
 
 fnm_upgrade () {
-  fnm exec --using=$1 npm ls --global --json \
-    | jq -r '.dependencies | to_entries[] | .key+"@"+.value.version' \
-    | xargs npm i -g
-}
-
-:q!(){
-    if [[ -n "$TMUX" ]]; then
-        tmux kill-session
-    fi
+    fnm exec --using=$1 npm ls --global --json \
+        | jq -r '.dependencies | to_entries[] | .key+"@"+.value.version' \
+        | xargs npm i -g
 }
 
 terraform() {
