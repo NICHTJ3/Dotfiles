@@ -3,6 +3,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Default theme
+vim.o.background = 'dark'
+vim.cmd.colorscheme 'retrobox'
+
 require 'options'
 require 'keymaps'
 require 'lazy-init'

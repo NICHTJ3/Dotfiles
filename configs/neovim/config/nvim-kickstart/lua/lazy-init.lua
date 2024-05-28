@@ -19,21 +19,19 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup({
+require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 
   -- NOTE: I might want to add this back in, but for now the editorconfig used in one of my main projects causes some issues with trailing new lines
   -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
-  require 'themes.tokyodark',
   -- Automatically set the bg color of your terminal to match your theme
   { 'typicode/bg.nvim', lazy = false },
 
+  -- You can require themes you want to use here too
+  -- require 'themes.tokyodark',
+
   { import = 'plugins' },
-}, {
-  ui = {
-    theme = 'tokyodark',
-  },
-})
+}
 
 -- vim: ts=2 sts=2 sw=2 et
