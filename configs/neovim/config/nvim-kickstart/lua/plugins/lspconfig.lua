@@ -26,14 +26,14 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {},
       },
-      {
-        'hoffs/omnisharp-extended-lsp.nvim',
-      },
+      'Decodetalkers/csharpls-extended-lsp.nvim',
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('personal-lsp-attach', { clear = true }),
         callback = function(event)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+
           -- NOTE: Remember that Lua is a real programming language, and as such it is possible
           -- to define small helper and utility functions so you don't have to repeat yourself.
           --
@@ -46,7 +46,10 @@ return {
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('gd', require('omnisharp_extended').telescope_lsp_definitions, '[G]oto [D]efinition')
+          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          if client and client.name == 'csharp_ls' then -- Custom implentation for C# that handles compiled sources too
+            map('gd', require('csharpls_extended').lsp_definitions, '[G]oto [D]efinition')
+          end
 
           -- Find references for the word under your cursor.
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -89,7 +92,6 @@ return {
           --    See `:help CursorHold` for information about when this is executed
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
             local highlight_augroup = vim.api.nvim_create_augroup('personal-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -105,12 +107,13 @@ return {
             })
           end
 
-          -- The following autocommand is used to enable inlay hints in your
+          -- The following mapping is used to enable inlay hints in your
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
           if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
             map('<leader>th', function()
+              ---@diagnostic disable-next-line: missing-parameter
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, '[T]oggle Inlay [H]ints')
           end
@@ -147,6 +150,10 @@ return {
               },
             },
           },
+        },
+        csharp_ls = {
+          -- NOTE: Without this there seems to be an issue resolving compiled definitions, even though the defaults seem pretty similar to this already
+          root_dir = require('lspconfig.util').root_pattern('*.sln', '*.csproj', '.git'),
         },
       }
 
