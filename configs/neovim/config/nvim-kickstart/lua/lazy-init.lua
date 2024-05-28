@@ -26,6 +26,8 @@ require('lazy').setup({
   -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   require 'themes.tokyodark',
+  -- Automatically set the bg color of your terminal to match your theme
+  { 'typicode/bg.nvim', lazy = false },
 
   { import = 'plugins' },
 }, {
