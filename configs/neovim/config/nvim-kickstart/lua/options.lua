@@ -66,4 +66,13 @@ vim.opt.tabline = '%t'
 vim.opt.swapfile = false
 vim.opt.backup = false
 
+vim.diagnostic.config {
+  -- If we're in tmux don't use underlines
+  underline = not vim.env.TMUX,
+  virtual_text = true,
+  signs = true,
+  severity_sort = true,
+  update_in_insert = false,
+}
+
 -- vim: ts=2 sts=2 sw=2 et
