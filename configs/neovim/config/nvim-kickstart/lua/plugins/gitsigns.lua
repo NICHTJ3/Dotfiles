@@ -7,6 +7,7 @@ return {
   -- 'rhysd/committia.vim', -- Better commits
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    lazy = false,
     opts = {
       signs = {
         add = { text = '+' },

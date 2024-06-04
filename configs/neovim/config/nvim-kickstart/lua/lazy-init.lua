@@ -33,11 +33,29 @@ require('lazy').setup({
 
   { import = 'plugins' },
 }, {
-  {
-    -- automatically check for config file changes and reload the ui
-    change_detection = {
+  -- automatically check for config file changes and reload the ui
+  defaults = { lazy = true },
+  change_detection = {
+    enabled = true,
+    notify = false, -- get a notification when changes are found
+  },
+  install = { colorscheme = { 'tokyonight', 'habamax' } },
+  performance = {
+    cache = {
       enabled = true,
-      notify = false, -- get a notification when changes are found
+    },
+    rtp = {
+      ---@type string[] list any plugins you want to disable here
+      disabled_plugins = {
+        'gzip',
+        'matchit',
+        'matchparen',
+        -- "netrwPlugin",
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
     },
   },
 })

@@ -1,1 +1,1 @@
-return { 'folke/zen-mode.nvim', opts = {} }
+return { cmd = 'ZenMode', 'folke/zen-mode.nvim', opts = {} }
