@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup {
+require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 
   -- NOTE: I might want to add this back in, but for now the editorconfig used in one of my main projects causes some issues with trailing new lines
@@ -32,6 +32,14 @@ require('lazy').setup {
   -- require 'themes.tokyodark',
 
   { import = 'plugins' },
-}
+}, {
+  {
+    -- automatically check for config file changes and reload the ui
+    change_detection = {
+      enabled = true,
+      notify = false, -- get a notification when changes are found
+    },
+  },
+})
 
 -- vim: ts=2 sts=2 sw=2 et

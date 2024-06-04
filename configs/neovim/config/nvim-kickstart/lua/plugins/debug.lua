@@ -11,6 +11,8 @@ return {
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
   },
+  -- TODO: Better setup for this
+  event = 'VeryLazy',
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
