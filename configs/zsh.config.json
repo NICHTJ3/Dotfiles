@@ -17,10 +17,6 @@
     {
       "from": "zsh/config/zsh/p10k.zsh",
       "to": "~/.config/zsh/p10k.zsh"
-    },
-    {
-      "from": "zsh/config/zsh/p10k-portable.zsh",
-      "to": "~/.config/zsh/p10k-portable.zsh"
     }
   ],
   "shell": ["touch ~/.z", "pnpm install-completion zsh"]

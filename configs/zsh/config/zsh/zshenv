@@ -15,7 +15,6 @@ export BUN_INSTALL="$HOME/.bun"
 # Conditional PATH additions
 # $HOME/.gem/bin\
 # $HOME/.poetry/bin\
-# /usr/local/opt/sqlite/bin
 for path_candidate in \
     $BUN_INSTALL/bin\
     $DOTNET_ROOT\
@@ -25,6 +24,7 @@ for path_candidate in \
     $HOME/.local/share/cargo/bin\
     $HOME/.local/share/npm/bin\
     $HOME/Library/pnpm\
+    /usr/local/bin\
     $HOME/go/bin
 do
     [[ -d ${path_candidate} ]] && export PATH="${PATH}:${path_candidate}"
@@ -48,7 +48,6 @@ export DISABLE_LS_COLORS=true
 export TERM=xterm-256color
 # Move the zsh history file
 export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh_history"
-# }}}
 
 ##################
 # Aliases
@@ -89,7 +88,7 @@ alias lear='clear'
 alias rmNodeModules="find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;"
 alias devx="cd ~/Documents/work/dev-content"
 alias nvm="fnm"
-if  type "jira"  > /dev/null;then
+if type "jira"  > /dev/null;then
     alias jira-task="jira issue create --template ~/.config/.jira/templates/task.tmpl"
 fi
 
@@ -103,19 +102,12 @@ fi
 [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Use fnm on cd
-if command -v fnm 1>/dev/null 2>&1; then
-    eval "$(fnm env --use-on-cd --log-level quiet)"
-fi
+eval "$(fnm env --use-on-cd --log-level quiet)"
 
-# pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
-fnm_upgrade () {
-    fnm exec --using=$1 npm ls --global --json \
-        | jq -r '.dependencies | to_entries[] | .key+"@"+.value.version' \
-        | xargs npm i -g
+# lazy load pyenv
+pyenv () {
+    eval "$(command \pyenv init -)"
+    \pyenv "$@"
 }
 
 terraform() {
