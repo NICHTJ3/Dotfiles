@@ -1,8 +1,3 @@
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
-end
-
 return {
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -32,17 +27,6 @@ return {
           },
         },
       },
-      {
-        'zbirenbaum/copilot.lua',
-        dependencies = {
-          'nvim-lua/plenary.nvim',
-        },
-        cmd = 'Copilot',
-        event = 'InsertEnter',
-        opts = {
-          suggestion = { auto_trigger = true, debounce = 150 },
-        },
-      },
       'saadparwaiz1/cmp_luasnip',
 
       -- Adds other completion capabilities.
@@ -51,23 +35,35 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'petertriho/cmp-git',
+      {
+        'zbirenbaum/copilot-cmp',
+        dependencies = {
+          {
+            'zbirenbaum/copilot.lua',
+            dependencies = {
+              'nvim-lua/plenary.nvim',
+            },
+            cmd = 'Copilot',
+            event = 'InsertEnter',
+            opts = {
+              suggestion = { enabled = false },
+              panel = { enabled = false },
+            },
+          },
+        },
+        config = function()
+          require('copilot_cmp').setup()
+        end,
+      },
     },
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
-      local copilot = require 'copilot.suggestion'
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
 
-      cmp.event:on('menu_opened', function()
-        vim.b.copilot_suggestion_hidden = true
-      end)
-
-      cmp.event:on('menu_closed', function()
-        vim.b.copilot_suggestion_hidden = false
-      end)
-
       cmp.setup {
+        experimental = { ghost_text = true },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -95,14 +91,8 @@ return {
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping(function(fallback)
-            if copilot.is_visible() then
-              copilot.accept()
-            elseif cmp.visible() then
-              cmp.confirm { select = true }
-            else
-              fallback()
-            end
+          ['<C-y>'] = cmp.mapping(function()
+            cmp.confirm { select = true }
           end, { 'i', 's' }),
 
           -- <c-l> will move you to the right of each of the expansion locations.
@@ -119,6 +109,7 @@ return {
           end, { 'i', 's' }),
         },
         sources = {
+          { name = 'copilot', group_index = 2 },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
