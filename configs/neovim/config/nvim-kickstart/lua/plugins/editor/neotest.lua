@@ -19,7 +19,7 @@ return {
         require 'neotest-rust',
 
         require 'neotest-jest' {
-          jestCommand = 'yarn test -- --',
+          jestCommand = 'npm test -- --',
           cwd = function()
             return vim.fn.getcwd()
           end,

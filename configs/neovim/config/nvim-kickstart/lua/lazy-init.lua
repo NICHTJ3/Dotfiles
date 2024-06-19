@@ -9,29 +9,28 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
---
---  To check the current status of your plugins, run
---    :Lazy
---
---  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins you can run
---    :Lazy update
---
--- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-  -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-
-  -- NOTE: I might want to add this back in, but for now the editorconfig used in one of my main projects causes some issues with trailing new lines
-  -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  {
+    -- NOTE: I might want to enable this for all file types, but for now the editorconfig is used in one of my main projects causes some issues with trailing new lines
+    'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+    event = 'VeryLazy',
+    ft = { 'lua', 'yaml', 'json', 'bash', 'zsh' },
+    cmds = { 'Sleuth' },
+  },
 
   -- Automatically set the bg color of your terminal to match your theme
   { 'typicode/bg.nvim', lazy = false },
 
   -- You can require themes you want to use here too
   -- require 'themes.tokyodark',
+  --
 
   { import = 'plugins' },
+  { import = 'plugins/ui' },
+  { import = 'plugins/lsp' },
+  { import = 'plugins/trial' }, -- Plugins I'm trialling
+  { import = 'plugins/editor' },
+  { import = 'plugins/extras' },
 }, {
   -- automatically check for config file changes and reload the ui
   defaults = { lazy = true },
@@ -44,6 +43,7 @@ require('lazy').setup({
     cache = {
       enabled = true,
     },
+    reset_packpath = true, -- reset the package path to improve startup time
     rtp = {
       ---@type string[] list any plugins you want to disable here
       disabled_plugins = {
