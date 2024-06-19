@@ -25,6 +25,9 @@
   status = false
   whatchanged = diff-highlight | menos -iFMRSX --pattern='^(commit|diff)' +r
 
+[core]
+  excludesfile = ~/.gitignore
+
 [pull]
   rebase = true
 [init]
