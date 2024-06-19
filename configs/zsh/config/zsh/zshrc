@@ -7,26 +7,19 @@ case $- in
     *) return;;
 esac
 
+# zmodload zsh/zprof # top of your .zshrc file
 
 ##################
 # Setup
 ##################
-
-##################
-# Enable Powerlevel10k instant prompt.
-##################
-# To customize prompt, run `p10k configure`
-[[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && \
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-
-# Source normal prompt if on windows or in a DM
-if [[ $DISPLAY || $WSL_ACTIVE || "$(uname -s)" == "Darwin" ]]; then
-    [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
-    # Else source a prompt without icons
-else
-    [[ "$(expr ${$(uname -s)[1,5]})" == "Linux" ]] && . $HOME/bin/helper-scripts/dracula-tty.sh
-    [[ ! -f ~/.config/zsh/p10k-portable.zsh ]] || source ~/.config/zsh/p10k-portable.zsh
+#
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
 
 ##################
 # ZGEN
@@ -38,8 +31,6 @@ if ! zgen saved; then
 
     zgen oh-my-zsh plugins/z
     zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/docker
-    zgen oh-my-zsh plugins/docker-compose
     zgen oh-my-zsh plugins/history-substring-search
     zgen oh-my-zsh plugins/colored-man-pages
 
@@ -61,8 +52,8 @@ fi
 ##################
 # Completion
 ##################
-compdef _tmux tmux-manager
 compdef _tmux tmux
+compdef _tmux tmux-manager
 
 # bun completions
 [ -s "/Users/trent.nicholson/.bun/_bun" ] && source "/Users/trent.nicholson/.bun/_bun"
@@ -101,12 +92,22 @@ bindkey '^[OH' beginning-of-line
 bindkey '^[OF' end-of-line
 bindkey '^[[3~' delete-char
 
+
+# Faster compinit
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
+
 # Ctrl x ctrl x opens vi with current command
-autoload -Uz compinit; compinit
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^x' edit-command-line
 
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+
+# zprof

@@ -1,8 +1,21 @@
 return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    event = 'VimEnter',
+    dependencies = { { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VeryLazy' } },
     config = function()
-      require('mini.ai').setup { n_lines = 500 }
+      local spec_treesitter = require('mini.ai').gen_spec.treesitter
+      require('mini.ai').setup {
+        n_lines = 500,
+        custom_textobjects = {
+          F = spec_treesitter { a = '@function.outer', i = '@function.inner' },
+          d = { '%f[%d]%d+' }, -- digits
+          o = spec_treesitter {
+            a = { '@conditional.outer', '@loop.outer' },
+            i = { '@conditional.inner', '@loop.inner' },
+          },
+        },
+      }
       require('mini.surround').setup {
         mappings = {
           add = 'ys', -- Add surrounding in Normal and Visual modes. Carried over from the old surround.nvim plugin
@@ -14,6 +27,13 @@ return {
           update_n_lines = 'sn', -- Update `n_lines`
           suffix_last = 'l', -- Suffix to search with "prev" method
           suffix_next = 'n', -- Suffix to search with "next" method
+        },
+        -- Don't include spaces when wrapping text with parentheses
+        custom_surroundings = {
+          ['('] = { input = { '%b()', '^.().*().$' }, output = { left = '(', right = ')' } },
+          ['['] = { input = { '%b[]', '^.().*().$' }, output = { left = '[', right = ']' } },
+          ['{'] = { input = { '%b{}', '^.().*().$' }, output = { left = '{', right = '}' } },
+          ['<'] = { input = { '%b<>', '^.().*().$' }, output = { left = '<', right = '>' } },
         },
         n_lines = 500,
       }

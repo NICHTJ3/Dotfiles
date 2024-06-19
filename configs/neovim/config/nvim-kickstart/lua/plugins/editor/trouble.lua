@@ -1,6 +1,5 @@
 return {
   'folke/trouble.nvim',
-  branch = 'dev', -- Use the beta V3 branch
   keys = {
     {
       '<leader>tt',

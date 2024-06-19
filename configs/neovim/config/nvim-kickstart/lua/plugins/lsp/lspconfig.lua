@@ -1,6 +1,8 @@
 return {
   {
     'neovim/nvim-lspconfig',
+    event = { 'BufReadPost', 'BufNewFile' },
+    cmd = { 'LspInfo', 'LspInstall', 'LspUninstall' },
     dependencies = {
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
@@ -21,23 +23,93 @@ return {
           },
         },
       },
+      -- TODO: Can I make this lazier?
       {
-        'pmizio/typescript-tools.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        opts = {
-          on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-          end,
+        'yioneko/nvim-vtsls',
+        ft = {
+          'javascript',
+          'javascriptreact',
+          'javascript.jsx',
+          'typescript',
+          'typescriptreact',
+          'typescript.tsx',
         },
       },
-      'Decodetalkers/csharpls-extended-lsp.nvim',
+      { 'Decodetalkers/csharpls-extended-lsp.nvim' },
     },
     config = function()
+      local server_configs = {
+        eslint = {
+          on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = true
+          end,
+        },
+        biome = {
+          on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = true
+          end,
+        },
+        lua_ls = {
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = 'Replace',
+              },
+            },
+          },
+        },
+        csharp_ls = {
+          -- NOTE: Without this there seems to be an issue resolving compiled definitions, even though the defaults seem pretty similar to this already
+          root_dir = require('lspconfig.util').root_pattern('*.sln', '*.csproj', '.git'),
+          keys = {
+            { 'gd', require('csharpls_extended').lsp_definitions, 'csharp - [G]oto [D]efinition' },
+          },
+        },
+        vtsls = {
+          on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+          end,
+          settings = {
+            complete_function_calls = true,
+            vtsls = {
+              enableMoveToFileCodeAction = true,
+              experimental = {
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
+              },
+            },
+            typescript = {
+              updateImportsOnFileMove = { enabled = 'always' },
+              suggest = {
+                completeFunctionCalls = true,
+              },
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = 'literals' },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = false },
+              },
+            },
+          },
+        },
+        tsserver = {
+          enabled = false,
+        },
+      }
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('personal-lsp-attach', { clear = true }),
         callback = function(event)
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+          if require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc')(vim.fn.getcwd()) then
+            if client and client.name == 'vtsls' then
+              client.stop()
+              return
+            end
+          end
 
           -- NOTE: Remember that Lua is a real programming language, and as such it is possible
           -- to define small helper and utility functions so you don't have to repeat yourself.
@@ -52,9 +124,6 @@ return {
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          if client and client.name == 'csharp_ls' then -- Custom implentation for C# that handles compiled sources too
-            map('gd', require('csharpls_extended').lsp_definitions, '[G]oto [D]efinition')
-          end
 
           -- Find references for the word under your cursor.
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -122,6 +191,14 @@ return {
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, '[T]oggle Inlay [H]ints')
           end
+
+          -- Custom keymaps added for specific LSP servers
+          local client_config = client and server_configs[client.name] or {}
+          client_config.keys = client_config.keys or {}
+
+          for _, keymap in ipairs(client_config.keys) do
+            map(unpack(keymap))
+          end
         end,
       })
 
@@ -133,38 +210,13 @@ return {
         end,
       })
 
+      local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
-      local servers = {
-        eslint = {
-          on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = true
-          end,
-        },
-        biome = {
-          on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = true
-          end,
-        },
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-            },
-          },
-        },
-        csharp_ls = {
-          -- NOTE: Without this there seems to be an issue resolving compiled definitions, even though the defaults seem pretty similar to this already
-          root_dir = require('lspconfig.util').root_pattern('*.sln', '*.csproj', '.git'),
-        },
-      }
+      capabilities = vim.tbl_deep_extend('force', capabilities, has_cmp and cmp_nvim_lsp.default_capabilities() or {})
 
       require('mason').setup()
 
-      local ensure_installed = vim.tbl_keys(servers or {})
+      local ensure_installed = vim.tbl_keys(server_configs or {})
       vim.list_extend(ensure_installed, {
         'stylua',
       })
@@ -173,7 +225,7 @@ return {
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
-            local server = servers[server_name] or {}
+            local server = server_configs[server_name] or {}
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,

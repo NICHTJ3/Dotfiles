@@ -1,5 +1,13 @@
+if vim.env.VSCODE then
+  vim.g.vscode = true
+end
+
+if vim.loader then
+  vim.loader.enable()
+end
+
 -- Set <space> as the leader key
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+--  NOTE: st happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
