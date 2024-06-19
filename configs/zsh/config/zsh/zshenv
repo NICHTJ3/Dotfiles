@@ -91,6 +91,7 @@ alias nvm="fnm"
 if type "jira"  > /dev/null;then
     alias jira-task="jira issue create --template ~/.config/.jira/templates/task.tmpl"
 fi
+alias gcof="git checkout \$(git branch | fzf)"
 
 # Rustup env
 [[ -s $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
