@@ -35,16 +35,11 @@ vim.keymap.set('n', '<leader>wal', ':vnew<CR>', { desc = 'new window to the righ
 vim.keymap.set('n', '<leader>wah', ':aboveleft vnew<CR>', { desc = 'new window to the left' })
 vim.keymap.set('n', '<leader>wak', ':above new<CR>', { desc = 'new window above' })
 
--- TODO: Trial this for a bit
--- JK enters normal mode from insert mode
-vim.keymap.set('i', 'jk', '<esc>', { desc = 'switch to normal mode form insert mode without esc' })
-
 -- JK move lines in visual mode
 vim.keymap.set('x', 'K', ":move '<-2<CR>gv-gv", { desc = 'Move selected lines up' })
 vim.keymap.set('x', 'J', ":move '>+1<CR>gv-gv", { desc = 'Move selected lines down' })
 
 -- Moving lines with < and > in visual mode doesn't unselect the text
-
 vim.keymap.set('x', '<', '<gv', { desc = 'Move selected lines left' })
 vim.keymap.set('x', '>', '>gv', { desc = 'Move selected lines right' })
 
