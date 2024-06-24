@@ -1,7 +1,10 @@
 return {
   'akinsho/bufferline.nvim',
   event = 'VeryLazy',
+  cond = false,
   keys = {
+    { '<leader>b', '', desc = '[B]uffer' },
+    { '<leader>bd', '<Cmd>bd<CR>', desc = '[B]uffer [D]elete' },
     { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = '[B]uffer [O]nly' },
     { '<leader>br', '<Cmd>BufferLineCloseRight<CR>', desc = 'Delete [B]uffers to the [R]ight' },
     { '<leader>bl', '<Cmd>BufferLineCloseLeft<CR>', desc = 'Delete [B]uffers to the [L]eft' },

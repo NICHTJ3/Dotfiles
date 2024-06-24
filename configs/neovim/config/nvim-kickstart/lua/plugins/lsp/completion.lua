@@ -37,14 +37,17 @@ return {
       'petertriho/cmp-git',
       {
         'zbirenbaum/copilot-cmp',
+        cond = function()
+          local isEnabled = vim.fn.getcwd():match '/work' == nil
+          return isEnabled
+        end,
         dependencies = {
           {
             'zbirenbaum/copilot.lua',
             dependencies = {
               'nvim-lua/plenary.nvim',
             },
-            cmd = 'Copilot',
-            event = 'InsertEnter',
+            -- event = 'InsertEnter',
             opts = {
               suggestion = { enabled = false },
               panel = { enabled = false },

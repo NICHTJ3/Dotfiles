@@ -2,6 +2,11 @@ return {
   'CopilotC-Nvim/CopilotChat.nvim',
   branch = 'canary',
   cmd = 'CopilotChat',
+  cond = function()
+    -- Disable on work projects
+    local isEnabled = vim.fn.getcwd():match '/work' == nil
+    return isEnabled
+  end,
   opts = function()
     local user = vim.env.USER or 'User'
     user = user:sub(1, 1):upper() .. user:sub(2)
