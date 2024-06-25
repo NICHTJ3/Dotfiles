@@ -1,7 +1,6 @@
 return {
   'akinsho/bufferline.nvim',
   event = 'VeryLazy',
-  cond = false,
   keys = {
     { '<leader>b', '', desc = '[B]uffer' },
     { '<leader>bd', '<Cmd>bd<CR>', desc = '[B]uffer [D]elete' },
@@ -17,7 +16,7 @@ return {
     options = {
       -- stylua: ignore
       diagnostics = 'nvim_lsp',
-      always_show_bufferline = true,
+      always_show_bufferline = false,
       mode = 'tabs',
       offsets = {
         {
