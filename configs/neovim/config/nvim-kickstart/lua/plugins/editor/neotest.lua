@@ -10,6 +10,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
     -- Adapters
     'nvim-neotest/neotest-jest',
+    'marilari88/neotest-vitest',
     'rouge8/neotest-rust',
   },
   config = function()
@@ -17,7 +18,7 @@ return {
     require('neotest').setup {
       adapters = {
         require 'neotest-rust',
-
+        require 'neotest-vitest',
         require 'neotest-jest' {
           jestCommand = 'npm test -- --',
           cwd = function()
