@@ -17,6 +17,7 @@ return {
     { '<leader>oy', '<cmd>ObsidianYesterday<CR>', desc = '[O]bsidian [Y]esterday' },
     { '<leader>oj', '<cmd>ObsidianDailies<CR>', desc = '[O]bsidian [J]ournal' },
     { '<leader>od', '<cmd>ObsidianDailies<CR>', desc = '[O]bsidian [D]iary' },
+    { '<leader>oh', '<cmd>ObsidianTags<CR>', desc = '[O]bsidian [H]ashtags/Tags' },
   },
   ft = 'markdown',
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
