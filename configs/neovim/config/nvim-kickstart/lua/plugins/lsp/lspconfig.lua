@@ -4,7 +4,7 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
     cmd = { 'LspInfo', 'LspInstall', 'LspUninstall' },
     dependencies = {
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+      { 'williamboman/mason.nvim', cmd = { 'Mason' }, config = true }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
