@@ -5,7 +5,8 @@ return {
     'Neotree',
   },
   keys = {
-    { '<leader>sF', '<cmd>Neotree<cr>', desc = '[S]how [F]ile explorer' },
+    { '<leader>ts', '<cmd>Neotree toggle<cr>', desc = '[T]oggle [S]idebar' },
+    { '<leader>sF', '<cmd>Neotree toggle<cr>', desc = '[S]how [F]ile explorer' },
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
