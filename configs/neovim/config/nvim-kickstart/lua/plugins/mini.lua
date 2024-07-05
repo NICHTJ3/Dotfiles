@@ -1,7 +1,7 @@
 return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
-    event = 'VimEnter',
+    event = 'VeryLazy',
     dependencies = { { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VeryLazy' } },
     config = function()
       local spec_treesitter = require('mini.ai').gen_spec.treesitter
