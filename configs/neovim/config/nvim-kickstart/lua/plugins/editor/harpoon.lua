@@ -1,15 +1,22 @@
 return {
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
-  lazy = false,
   dependencies = { 'nvim-lua/plenary.nvim' },
+  keys = {
+    '<leader>aj',
+    '<leader>sj',
+    '˙', -- <Meta> + H
+    '∆', -- <Meta> + J
+    '˚', -- <Meta> + K
+    '¬', -- <Meta> + L
+  },
   config = function()
     local harpoon = require 'harpoon'
     harpoon:setup()
 
-    vim.keymap.set('n', '<leader>a', function()
+    vim.keymap.set('n', '<leader>aj', function()
       harpoon:list():add()
-    end, { desc = 'Harpoon [A]dd' })
+    end, { desc = 'Harpoon [A]dd to [J]ump' })
 
     vim.keymap.set('n', '<leader>sj', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
