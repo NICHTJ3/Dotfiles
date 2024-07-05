@@ -27,8 +27,11 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        markdown = { { 'markdownlint' } },
-        cs = { { 'csharpier' } },
+        markdown = { 'markdownlint' },
+        cs = { 'csharpier' },
+        javascript = { { 'prettierd', 'prettier' } },
+        typescript = { { 'prettierd', 'prettier' } },
+        typescriptreact = { { 'prettierd', 'prettier' } },
       },
     },
   },
