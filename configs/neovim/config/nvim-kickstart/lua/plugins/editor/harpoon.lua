@@ -3,8 +3,9 @@ return {
   branch = 'harpoon2',
   dependencies = { 'nvim-lua/plenary.nvim' },
   keys = {
-    '<leader>aj',
-    '<leader>sj',
+    { '<leader>j', '', desc = 'Harpoon [J]umplist' },
+    { '<leader>ja', desc = 'Harpoon [J]umplist [A]dd' },
+    { '<leader>js', desc = 'Harpoon [J]ump list [S]how' },
     '˙', -- <Meta> + H
     '∆', -- <Meta> + J
     '˚', -- <Meta> + K
@@ -14,13 +15,13 @@ return {
     local harpoon = require 'harpoon'
     harpoon:setup()
 
-    vim.keymap.set('n', '<leader>aj', function()
+    vim.keymap.set('n', '<leader>ja', function()
       harpoon:list():add()
-    end, { desc = 'Harpoon [A]dd to [J]ump' })
+    end, { desc = 'Harpoon [J]umplist [A]dd' })
 
-    vim.keymap.set('n', '<leader>sj', function()
+    vim.keymap.set('n', '<leader>js', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
-    end, { desc = '[S]how Harpoon [J]ump list' })
+    end, { desc = 'Harpoon [J]ump list [S]how' })
 
     -- Meta + HJKL to navigate between Harpoon list
     vim.keymap.set('n', '˙', function()

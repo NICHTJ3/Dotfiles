@@ -22,8 +22,7 @@ require('lazy').setup({
   { 'typicode/bg.nvim', lazy = false },
 
   -- You can require themes you want to use here too
-  -- require 'themes.tokyodark',
-  --
+  require 'themes.gruvbox',
 
   { import = 'plugins' },
   { import = 'plugins/ui' },

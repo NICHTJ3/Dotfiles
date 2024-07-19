@@ -10,7 +10,7 @@ return {
     'ObsidianDailies',
   },
   keys = {
-    { '<leader>o', '', desc = '[O]bsidian' },
+    { '<leader>o', desc = '[O]bsidian' },
     { '<leader>os', '<cmd>ObsidianSearch<CR>', desc = '[O]bsidian [S]earch' },
     { '<leader>ot', '<cmd>ObsidianToday<CR>', desc = '[O]bsidian [T]oday' },
     { '<leader>oT', '<cmd>ObsidianTomorrow<CR>', desc = '[O]bsidian [T]omorrow' },

@@ -3,6 +3,19 @@ return {
   cmd = {
     'Neotest',
   },
+  --   keys = {
+  --     <leader>t	+test	n
+  -- <leader>Tl	Run Last	n
+  -- <leader>To	Show Output	n
+  -- <leader>TO	Toggle Output Panel	n
+  -- <leader>Tr	Run Nearest	n
+  -- <leader>Ts	Toggle Summary	n
+  -- <leader>TS	Stop	n
+  -- <leader>Tt	Run File	n
+  -- <leader>TT	Run All Test Files	n
+  -- <leader>Tw	Toggle Watch	n
+  --
+  --   },
   dependencies = {
     'nvim-neotest/nvim-nio',
     'nvim-lua/plenary.nvim',
@@ -12,19 +25,21 @@ return {
     'nvim-neotest/neotest-jest',
     'marilari88/neotest-vitest',
     'rouge8/neotest-rust',
+    'Issafalcon/neotest-dotnet',
   },
   config = function()
-    ---@diagnostic disable-next-line: missing-fields
     require('neotest').setup {
       adapters = {
-        require 'neotest-rust',
-        require 'neotest-vitest',
         require 'neotest-jest' {
           jestCommand = 'npm test -- --',
-          cwd = function()
-            return vim.fn.getcwd()
-          end,
         },
+        require 'neotest-dotnet' {
+          dotnet_additional_args = {
+            '-e ASPNETCORE_ENVIRONMENT=Development',
+          },
+        },
+        require 'neotest-vitest',
+        require 'neotest-rust',
       },
     }
   end,
