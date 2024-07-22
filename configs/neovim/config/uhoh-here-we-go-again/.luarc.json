@@ -1,0 +1,10 @@
+{
+    "diagnostics.disable": [
+        "inject-field",
+        "unused-local",
+        "param-type-mismatch",
+    ],
+    "diagnostics.globals": [
+        "require"
+    ]
+}

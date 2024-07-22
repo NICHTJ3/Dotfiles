@@ -5,6 +5,11 @@
             "from": "./neovim/config/nvim-kickstart/*",
             "to": "~/.config/nvim",
             "glob": true
+        },
+        {
+            "from": "./neovim/config/uhoh-here-we-go-again/*",
+            "to": "~/.config/uhoh-here-we-go-again",
+            "glob": true
         }
     ],
     "directories": [
