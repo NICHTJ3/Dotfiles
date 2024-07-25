@@ -14,51 +14,74 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
 _G.Core = require 'core.util'
 
--- Register the LazyFile event
-Core.events.add_lazy_file_event()
+local M = {}
 
--- Setup lazy.nvim
-require('lazy').setup {
-  spec = {
-    { 'folke/lazy.nvim', version = '*' },
-    -- Automatically set the bg color of your terminal to match your theme
-    { 'typicode/bg.nvim', lazy = false },
-    -- import your plugins
-    { import = 'plugins' },
-    { import = 'plugins.trial' },
-    { import = 'plugins.extras.formatters.prettier' },
-    { import = 'plugins.extras.linters.eslint' },
+---@param opts {colorscheme:string}
+function M.setup(opts)
+  -- Register the LazyFile event
+  Core.events.add_lazy_file_event()
 
-    { import = 'plugins.extras.lang.git' },
-    { import = 'plugins.extras.lang.json' },
-    { import = 'plugins.extras.lang.csharpls' },
-    -- { import = 'plugins.extras.lang.omnisharp' }, -- Omnisharp seems to be a little slower in large projects however the go to definition is a lot more reliable
-    { import = 'plugins.extras.lang.prisma' },
-    { import = 'plugins.extras.lang.rust' },
-    { import = 'plugins.extras.lang.typescript' },
-  },
-  defaults = {
-    lazy = false,
-    version = false,
-  },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { 'tokyonight', 'retrobox' } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
-  change_detection = {
-    notify = false,
-  },
-  profiling = {
-    -- Enables extra stats on the debug tab related to the loader cache.
-    -- Additionally gathers stats about all package.loaders
-    loader = true,
-    -- Track each new require in the Lazy profiling tab
-    require = true,
-  },
-}
+  -- Setup lazy.nvim
+  require('lazy').setup {
+    spec = {
+      { 'folke/lazy.nvim', version = '*' },
+      -- Automatically set the bg color of your terminal to match your theme
+      { 'typicode/bg.nvim', lazy = false },
+      -- import your plugins
+      { import = 'plugins' },
+      { import = 'plugins.trial' },
+      { import = 'plugins.extras.formatters.prettier' },
+      { import = 'plugins.extras.linters.eslint' },
 
-require 'core.autocmds'
+      { import = 'plugins.extras.lang.git' },
+      { import = 'plugins.extras.lang.json' },
+      { import = 'plugins.extras.lang.csharpls' },
+      -- { import = 'plugins.extras.lang.omnisharp' }, -- Omnisharp seems to be a little slower in large projects however the go to definition is a lot more reliable
+      { import = 'plugins.extras.lang.prisma' },
+      { import = 'plugins.extras.lang.rust' },
+      { import = 'plugins.extras.lang.typescript' },
+      { import = 'plugins.extras.lang.terraform' },
+    },
+    defaults = {
+      lazy = false,
+      version = false,
+    },
+    -- Configure any other settings here. See the documentation for more details.
+    -- colorscheme that will be used when installing plugins.
+    install = { colorscheme = { opts.colorscheme, 'retrobox' } },
+    -- automatically check for plugin updates
+    checker = { enabled = true },
+    change_detection = {
+      notify = false,
+    },
+    performance = {
+      rtp = {
+        disabled_plugins = {
+          'gzip',
+          'matchit',
+          -- 'matchparen',
+          -- 'netrwPlugin',
+          'tarPlugin',
+          'tohtml',
+          'tutor',
+          'zipPlugin',
+        },
+      },
+    },
+    profiling = {
+      -- Enables extra stats on the debug tab related to the loader cache.
+      -- Additionally gathers stats about all package.loaders
+      loader = false,
+      -- Track each new require in the Lazy profiling tab
+      require = false,
+    },
+  }
+
+  require 'core.autocmds'
+
+  vim.cmd.colorscheme(opts.colorscheme)
+end
+
+return M

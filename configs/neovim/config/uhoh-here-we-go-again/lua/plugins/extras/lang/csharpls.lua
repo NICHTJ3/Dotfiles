@@ -27,10 +27,9 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        omnisharp = {
-          root_dir = function()
-            return require('lspconfig.util').root_pattern('*.sln', '*.csproj', '.git')
-          end,
+        csharp_ls = {
+          -- TODO: Fix this loading lspconfig early
+          root_dir = require('lspconfig.util').root_pattern('*.sln', '*.csproj', '.git'),
           keys = {
             {
               'gd',

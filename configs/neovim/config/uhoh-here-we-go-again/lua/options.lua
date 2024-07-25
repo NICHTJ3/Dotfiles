@@ -1,8 +1,5 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
--- We disable the status line to hide the inbuilt status until lualine has loaded
-vim.o.laststatus = 0
-
 -- Make line numbers default
 vim.opt.number = true
 -- Use relative line numbers
@@ -62,5 +59,11 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 
 vim.opt.smoothscroll = true
+
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+
+-- Hide the netrw banner by default
+vim.g.netrw_banner = false
 
 -- vim: ts=2 sts=2 sw=2 et

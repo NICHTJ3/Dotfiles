@@ -3,10 +3,9 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
 -- Install and setup plugins
-require 'core'
-
--- Set theme
-vim.cmd.colorscheme 'retrobox'
+require('core').setup {
+  colorscheme = 'fluoromachine',
+}
 
 -- Set personal vim options
 require 'options'

@@ -260,7 +260,7 @@ return {
       opts = {
         adapters = {
           ['neotest-jest'] = {
-            jestCommand = 'npm test -- --',
+            -- jestCommand = 'npm test -- --',
           },
           ['neotest-vitest'] = {},
         },

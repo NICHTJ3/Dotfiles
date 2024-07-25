@@ -3,10 +3,13 @@ return {
     event = 'VeryLazy',
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    init = function()
+      -- set an empty statusline till lualine loads to prevent pop in and page shift
+      vim.o.statusline = ' '
+    end,
     opts = function(_, opts)
-      -- NOTE: Set laststatus to 0 to hide the statusline until lualine is ready
-      vim.opt.laststatus = 3
-      opts.globalstatus = vim.opt.laststatus == 3
+      vim.o.laststatus = 3
+      opts.globalstatus = true
       return opts
     end,
   },
