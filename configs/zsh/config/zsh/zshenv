@@ -41,7 +41,6 @@ elif [[ "$(expr ${$(uname -s)[1,5]})" == "Linux" ]]; then
     export BROWSER="firefox-developer-edition"
 fi
 
-export NVIM_APPNAME="uhoh-here-we-go-again"
 export EDITOR="nvim"
 export GEM_HOME="$HOME/.gem"
 export BASE16_SHELL="$HOME/.config/base16-shell/"

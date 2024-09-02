@@ -1,8 +1,6 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
--- Make line numbers default
 vim.opt.number = true
--- Use relative line numbers
 vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -45,9 +43,6 @@ vim.opt.inccommand = 'split'
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
-
 -- Don't line wrap
 vim.opt.wrap = false
 
@@ -58,6 +53,8 @@ vim.opt.modeline = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 
+-- Minimum number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10
 vim.opt.smoothscroll = true
 
 vim.opt.expandtab = true

@@ -2,12 +2,11 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
--- Install and setup plugins
 require('core').setup {
-  colorscheme = 'fluoromachine',
+  colorscheme = 'duskfox',
 }
 
--- Set personal vim options
+-- Set personal options
 require 'options'
--- Set personal vim keymaps
+-- Set personal keymaps
 require 'keymaps'

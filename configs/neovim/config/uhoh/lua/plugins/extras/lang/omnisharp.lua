@@ -1,5 +1,5 @@
 return {
-  { 'Decodetalkers/csharpls-extended-lsp.nvim', lazy = true },
+  { 'Hoffs/omnisharp-extended-lsp.nvim', lazy = true },
   {
     'nvim-treesitter/nvim-treesitter',
     opts = { ensure_installed = { 'c_sharp' } },
@@ -27,18 +27,25 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        csharp_ls = {
-          -- TODO: Fix this loading lspconfig early
-          root_dir = require('lspconfig.util').root_pattern('*.sln', '*.csproj', '.git'),
-          keys = {
-            {
-              'gd',
-              function()
-                require('csharpls_extended').lsp_definitions()
-              end,
-              'csharp - [G]oto [D]efinition',
-            },
+        -- omnisharp@v1.39.8 seems to be more performant if you run into issues
+        omnisharp = {
+          handlers = {
+            ['textDocument/definition'] = function(...)
+              require('omnisharp_extended').definition_handler(...)
+            end,
+            ['textDocument/typeDefinition'] = function(...)
+              require('omnisharp_extended').type_definition_handler(...)
+            end,
+            ['textDocument/references'] = function(...)
+              require('omnisharp_extended').references_handler(...)
+            end,
+            ['textDocument/implementation'] = function(...)
+              require('omnisharp_extended').implementation_handler(...)
+            end,
           },
+          enable_roslyn_analyzers = true,
+          organize_imports_on_format = true,
+          enable_import_completion = true,
         },
       },
     },
@@ -65,6 +72,7 @@ return {
               type = 'netcoredbg',
               name = 'Launch file',
               request = 'launch',
+              ---@diagnostic disable-next-line: redundant-parameter
               program = function()
                 return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/', 'file')
               end,

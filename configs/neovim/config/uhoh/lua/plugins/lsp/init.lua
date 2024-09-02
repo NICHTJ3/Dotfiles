@@ -49,6 +49,9 @@ return {
               didRename = true,
               willRename = true,
             },
+            didChangeWatchedFiles = {
+              dynamicRegistration = true,
+            },
           },
         },
         -- LSP Server Settings

@@ -9,4 +9,9 @@ return {
     lazy = true,
     opts = {},
   },
+  {
+    'ronwoch/hotline-vim',
+    lazy = true,
+  },
+  { 'EdenEast/nightfox.nvim', lazy = true },
 }

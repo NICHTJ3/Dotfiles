@@ -14,12 +14,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-_G.Core = require 'core.util'
 
 local M = {}
 
 ---@param opts {colorscheme:string}
 function M.setup(opts)
+  _G.Core = require 'core.util'
+
   -- Register the LazyFile event
   Core.events.add_lazy_file_event()
 
@@ -37,12 +38,13 @@ function M.setup(opts)
 
       { import = 'plugins.extras.lang.git' },
       { import = 'plugins.extras.lang.json' },
-      { import = 'plugins.extras.lang.csharpls' },
-      -- { import = 'plugins.extras.lang.omnisharp' }, -- Omnisharp seems to be a little slower in large projects however the go to definition is a lot more reliable
+      -- { import = 'plugins.extras.lang.csharpls' },
+      { import = 'plugins.extras.lang.omnisharp' }, -- Omnisharp seems to be a little slower in large projects however the go to definition is a lot more reliable
       { import = 'plugins.extras.lang.prisma' },
       { import = 'plugins.extras.lang.rust' },
       { import = 'plugins.extras.lang.typescript' },
       { import = 'plugins.extras.lang.terraform' },
+      { import = 'plugins.extras.lang.markdown' },
     },
     defaults = {
       lazy = false,
@@ -61,8 +63,6 @@ function M.setup(opts)
         disabled_plugins = {
           'gzip',
           'matchit',
-          -- 'matchparen',
-          -- 'netrwPlugin',
           'tarPlugin',
           'tohtml',
           'tutor',

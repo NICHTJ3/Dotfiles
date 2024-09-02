@@ -2,13 +2,8 @@
     "description": "My neovim config",
     "links": [
         {
-            "from": "./neovim/config/nvim-kickstart/*",
-            "to": "~/.config/nvim",
-            "glob": true
-        },
-        {
-            "from": "./neovim/config/uhoh-here-we-go-again/*",
-            "to": "~/.config/uhoh-here-we-go-again",
+            "from": "./neovim/config/uhoh/*",
+            "to": "~/.config/nvim/",
             "glob": true
         }
     ],

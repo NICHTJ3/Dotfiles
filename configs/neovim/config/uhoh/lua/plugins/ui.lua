@@ -70,7 +70,12 @@ return {
     end,
   },
   {
+    'stevearc/dressing.nvim',
+    opts = {},
+  },
+  {
     'folke/noice.nvim',
+    enabled = false,
     event = 'VeryLazy',
     opts = {
       lsp = {
@@ -98,10 +103,6 @@ return {
         command_palette = true,
         long_message_to_split = true,
       },
-      -- cmdline = {
-      --   enabled = true,
-      --   view = 'cmdline', -- view for rendering the cmdline. Changed to get a classic cmdline at the bottom
-      -- },
     },
     -- stylua: ignore
     keys = {
@@ -127,6 +128,7 @@ return {
   },
   {
     'rcarriga/nvim-notify',
+    enabled = true,
     keys = {
       {
         '<leader>un',
