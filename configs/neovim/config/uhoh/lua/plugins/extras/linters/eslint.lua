@@ -1,10 +1,9 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    opt = true,
+    opt = false,
     -- other settings removed for brevity
     opts = {
-      ---@type lspconfig.Config
       servers = {
         eslint = {
           settings = {
