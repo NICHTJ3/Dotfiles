@@ -5,7 +5,7 @@ return {
     opts = {
       -- make sure mason installs the server
       servers = {
-        tsserver = {
+        ts_ls = {
           enabled = false,
         },
         vtsls = {
