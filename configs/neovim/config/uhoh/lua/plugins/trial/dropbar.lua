@@ -17,7 +17,7 @@ return {
     { '<leader>ud', toggle_dropbar, desc = '[U]I Toggle [D]ropbar' },
   },
   opts = {
-    general = {
+    bar = {
       enable = function()
         return enabled
       end,
