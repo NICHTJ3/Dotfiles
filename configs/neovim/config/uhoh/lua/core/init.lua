@@ -45,6 +45,7 @@ function M.setup(opts)
       { import = 'plugins.extras.lang.typescript' },
       { import = 'plugins.extras.lang.terraform' },
       { import = 'plugins.extras.lang.markdown' },
+      { import = 'plugins.extras.lang.docker' },
     },
     defaults = {
       lazy = false,
