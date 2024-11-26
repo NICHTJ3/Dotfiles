@@ -5,6 +5,7 @@ return {
   ---@type snacks.Config
   opts = {
     quickfile = { enabled = true },
+    bigfile = { enabled = true },
   },
   keys = {},
   init = function() end,
