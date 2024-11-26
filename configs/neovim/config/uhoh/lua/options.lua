@@ -63,4 +63,13 @@ vim.opt.shiftwidth = 2
 -- Hide the netrw banner by default
 vim.g.netrw_banner = false
 
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldmethod = 'expr'
+vim.opt.foldopen = { 'block', 'insert', 'jump', 'mark', 'percent', 'quickfix', 'search', 'tag', 'undo' }
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = -1
+vim.opt.foldnestmax = 5 -- Only fold up to this many nested levels.
+vim.opt.foldminlines = 1 -- Only fold if there are at least this many lines.
+vim.opt.fillchars = { fold = '·', foldopen = '', foldclose = '' }
+
 -- vim: ts=2 sts=2 sw=2 et
