@@ -8,6 +8,7 @@ return {
     bigfile = { enabled = true },
     words = { enabled = true },
     lazygit = { enabled = true },
+    gitbrowse = { enabled = true },
   },
   keys = {
     -- Words
@@ -49,6 +50,22 @@ return {
         Snacks.lazygit.log()
       end,
       desc = 'Lazygit Log (cwd)',
+    },
+    -- Git and git browse
+    -- NOTE: I'm not sure I'll really use these over git signs so maybe remove them
+    {
+      '<leader>gb',
+      function()
+        Snacks.git.blame_line()
+      end,
+      desc = 'Git Blame Line',
+    },
+    {
+      '<leader>gB',
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = 'Git Browse',
     },
   },
   init = function() end,
