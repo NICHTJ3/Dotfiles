@@ -26,4 +26,4 @@ dotsy --help
 
 ## Other resources
 
-Most dependencies etc (that you'd normally brew install, git clone etc, are handled for you by `dotsy`, you may need a `.dotsyrc` file setup with your dependency manager to make this work though. Outside of that setup guides for other things can be found over in the [Wiki](/wiki)
+Most dependencies etc (that you'd normally brew install, git clone etc, are handled for you by `dotsy`, you may need a `.dotsyrc` file setup with your dependency manager to make this work though. Outside of that setup guides for other things can be found over in the [Wiki](https://github.com/nichtj3/dotfiles/wiki)
