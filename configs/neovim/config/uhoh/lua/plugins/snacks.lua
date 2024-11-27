@@ -7,8 +7,10 @@ return {
     quickfile = { enabled = true },
     bigfile = { enabled = true },
     words = { enabled = true },
+    lazygit = { enabled = true },
   },
   keys = {
+    -- Words
     {
       ']]',
       function()
@@ -24,6 +26,29 @@ return {
       end,
       desc = 'Prev Reference',
       mode = { 'n', 't' },
+    },
+
+    -- Lazygit
+    {
+      '<leader>gg',
+      function()
+        Snacks.lazygit()
+      end,
+      desc = 'Lazygit',
+    },
+    {
+      '<leader>gf',
+      function()
+        Snacks.lazygit.log_file()
+      end,
+      desc = 'Lazygit Current File History',
+    },
+    {
+      '<leader>gl',
+      function()
+        Snacks.lazygit.log()
+      end,
+      desc = 'Lazygit Log (cwd)',
     },
   },
   init = function() end,
