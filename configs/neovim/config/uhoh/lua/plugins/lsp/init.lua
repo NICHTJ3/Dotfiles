@@ -114,8 +114,6 @@ return {
       Core.lsp.setup()
       Core.lsp.on_dynamic_capability(require('plugins.lsp.keymaps').on_attach)
 
-      Core.lsp.words.setup(opts.document_highlight)
-
       if vim.fn.has 'nvim-0.10' == 1 then
         -- inlay hints
         if opts.inlay_hints.enabled then

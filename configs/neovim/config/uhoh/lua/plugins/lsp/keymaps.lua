@@ -27,7 +27,7 @@ function M.get()
     { "<leader>cC", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" }, has = "codeLens" },
     { "<leader>cD", vim.lsp.codelens.clear, desc = "Disable Codelens", mode = { "n" }, has = "codeLens" },
     { "<leader>cr", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
-
+    { "<leader>cR", function() Snacks.rename() end, desc = "Rename File", mode ={"n"}, has = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
   }
 
   return M._keys
