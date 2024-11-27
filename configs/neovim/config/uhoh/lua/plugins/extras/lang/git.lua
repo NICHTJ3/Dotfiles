@@ -16,4 +16,14 @@ return {
       table.insert(opts.sources, { name = 'git' })
     end,
   },
+  {
+    'tpope/vim-fugitive',
+    keys = {
+      {
+        '<leader>gc',
+        '<cmd>G commit<CR>',
+        desc = 'Git commit',
+      },
+    },
+  },
 }

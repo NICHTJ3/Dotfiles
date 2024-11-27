@@ -69,13 +69,6 @@ return {
       end,
       desc = 'Git Browse',
     },
-    {
-      '<leader>gc',
-      function()
-        Snacks.terminal 'git commit'
-      end,
-      desc = 'Git commit',
-    },
 
     -- Nvim news!! OMG I've wanted this setup for so long and couldn't be bothered
     {
