@@ -1,8 +1,18 @@
 return {
   'b0o/incline.nvim',
+  lazy = false,
   keys = {
-    { '<leader>ui', '<Cmd>lua require"incline".toggle()<Cr>', desc = '[U]I Toggle [I]ncline' },
+    {
+      '<leader>ui',
+      function()
+        require('incline').toggle()
+      end,
+      desc = '[U]I Toggle [I]ncline',
+    },
   },
+  init = function()
+    require('incline').disable()
+  end,
   config = function()
     local helpers = require 'incline.helpers'
     local devicons = require 'nvim-web-devicons'
