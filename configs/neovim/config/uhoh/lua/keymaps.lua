@@ -16,7 +16,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 
 -- Toggle lsp inlay hints
 if vim.lsp.inlay_hint then
-  Core.toggle.map('<leader>uh', Core.toggle.inlay_hints)
+  Snacks.toggle.inlay_hints():map '<leader>uh'
 end
 
 -- Keybinds to make split navigation easier.

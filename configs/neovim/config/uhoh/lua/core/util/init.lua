@@ -5,7 +5,6 @@ local LazyUtil = require 'lazy.core.util'
 ---@field cmp core.util.cmp
 ---@field lsp core.util.lsp
 ---@field events core.util.events
----@field toggle core.util.toggle
 local M = {}
 
 setmetatable(M, {

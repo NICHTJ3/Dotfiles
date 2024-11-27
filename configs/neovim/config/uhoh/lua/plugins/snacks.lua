@@ -9,6 +9,7 @@ return {
     words = { enabled = true },
     lazygit = { enabled = true },
     gitbrowse = { enabled = true },
+    toggle = { enabled = true },
   },
   keys = {
     -- Words
