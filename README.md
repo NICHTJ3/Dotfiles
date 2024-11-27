@@ -1,6 +1,10 @@
 # Dotfiles
 
-My dotfiles for arch and wsl using dotsy to link all dotfiles
+> My dotfiles for various environments - Utilising [nichtj3/dotsy]() for dotfile management
+
+Nowadays this is pretty much a giant bin that houses my neovim config and some mediocre zsh things
+
+<img width="1904" alt="Screenshot 2024-11-27 at 9 04 17 PM" src="https://github.com/user-attachments/assets/f9680b35-400c-45d2-86cb-6048dfefbca2">
 
 ## Running
 
@@ -12,8 +16,5 @@ dotsy --help
 # dotsy profile list > To list available profiles
 # dotsy profile install work-mac > To install the work-mac profile
 ```
-
-__NOTE:__ You can install dotsy using cargo and run `dotsy init`
-in your home dir to allow yourself to run dotsy from anywhere
 
 ### More help can be found in the wiki
