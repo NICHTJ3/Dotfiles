@@ -19,7 +19,13 @@ return {
     event = 'VeryLazy',
     keys = {
       { '<leader>b', '', desc = '[B]uffer' },
-      { '<leader>bd', '<Cmd>bd<CR>', desc = '[B]uffer [D]elete' },
+      {
+        '<leader>bd',
+        function()
+          Snacks.bufdelete()
+        end,
+        desc = '[B]uffer [D]elete',
+      },
       { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = '[B]uffer [O]nly' },
       { '<leader>br', '<Cmd>BufferLineCloseRight<CR>', desc = 'Delete [B]uffers to the [R]ight' },
       { '<leader>bl', '<Cmd>BufferLineCloseLeft<CR>', desc = 'Delete [B]uffers to the [L]eft' },
@@ -30,8 +36,13 @@ return {
     },
     opts = {
       options = {
-      -- stylua: ignore
-      diagnostics = 'nvim_lsp',
+        close_command = function(n)
+          Snacks.bufdelete(n)
+        end,
+        right_mouse_command = function(n)
+          Snacks.bufdelete(n)
+        end,
+        diagnostics = 'nvim_lsp',
         always_show_bufferline = false,
         mode = 'tabs',
         offsets = {
