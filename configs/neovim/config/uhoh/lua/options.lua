@@ -1,5 +1,9 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
+
+-- Disable the intro screen on startup see `:help shortmess` for more info
+vim.opt.shortmess = 'ltToOCFI'
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 
