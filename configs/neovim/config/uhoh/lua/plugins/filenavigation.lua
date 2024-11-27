@@ -140,8 +140,12 @@ return {
       })
     end,
     opts = {
-      sources = { 'filesystem', 'buffers', 'git_status' },
       close_if_last_window = true,
+      sources = { 'filesystem', 'git_status' },
+      source_selector = {
+        winbar = true,
+        tabs_layout = 'start',
+      },
       open_files_do_not_replace_types = { 'terminal', 'Trouble', 'trouble', 'qf', 'Outline' },
       filesystem = {
         bind_to_cwd = false,
