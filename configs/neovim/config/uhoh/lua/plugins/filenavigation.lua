@@ -141,6 +141,7 @@ return {
     end,
     opts = {
       sources = { 'filesystem', 'buffers', 'git_status' },
+      close_if_last_window = true,
       open_files_do_not_replace_types = { 'terminal', 'Trouble', 'trouble', 'qf', 'Outline' },
       filesystem = {
         bind_to_cwd = false,
