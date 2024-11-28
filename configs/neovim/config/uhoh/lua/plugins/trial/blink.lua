@@ -44,7 +44,8 @@ return {
       accept = { auto_brackets = { enabled = true } },
 
       -- experimental signature help support
-      -- trigger = { signature_help = { enabled = true } }
+      trigger = { signature_help = { enabled = true } },
+
       sources = {
         -- adding any nvim-cmp sources here will enable them
         -- with blink.compat
