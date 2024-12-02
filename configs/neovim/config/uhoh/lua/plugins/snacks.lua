@@ -25,6 +25,7 @@ return {
     gitbrowse = { enabled = true },
     toggle = { enabled = true },
     notifier = { enabled = true },
+    statuscolumn = { enabled = true },
   },
   keys = {
     -- Words
