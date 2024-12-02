@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
 require('core').setup {
-  colorscheme = 'retrobox',
+  colorscheme = 'onedark_dark',
 }
 
 -- Set personal options
