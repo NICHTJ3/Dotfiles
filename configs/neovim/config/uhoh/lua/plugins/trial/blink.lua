@@ -28,8 +28,8 @@ return {
         use_nvim_cmp_as_default = false,
       },
       nerd_font_variant = 'mono',
-      windows = {
-        autocomplete = {
+      completion = {
+        menu = {
           winblend = vim.o.pumblend,
         },
         documentation = {
@@ -44,7 +44,9 @@ return {
       accept = { auto_brackets = { enabled = true } },
 
       -- experimental signature help support
-      trigger = { signature_help = { enabled = true } },
+      signature = {
+        enabled = true,
+      },
 
       sources = {
         -- adding any nvim-cmp sources here will enable them
