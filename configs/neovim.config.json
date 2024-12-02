@@ -2,7 +2,7 @@
     "description": "My neovim config",
     "links": [
         {
-            "from": "./neovim/config/uhoh/*",
+            "from": "./neovim/config/*",
             "to": "~/.config/nvim/",
             "glob": true
         }
