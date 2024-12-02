@@ -31,9 +31,11 @@ return {
       completion = {
         menu = {
           winblend = vim.o.pumblend,
+          draw = { treesitter = true },
         },
         documentation = {
           auto_show = true,
+          treesitter_highlighting = true,
         },
         ghost_text = {
           enabled = false,
