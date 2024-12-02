@@ -17,7 +17,9 @@ vim.opt.rtp:prepend(lazypath)
 
 local M = {}
 
----@param opts {colorscheme:string}
+--- @alias Colorscheme 'onedark' | 'onedark_vivid' | 'onelight' |'onedark_dark' | 'blue' | 'cyberdream' | 'darkblue' | 'default' | 'delek' | 'desert' | 'elflord' | 'evening' | 'habamax' | 'industry' | 'kanagawa' | 'kanagawa-dragon' | 'kanagawa-lotus' | 'kanagawa-wave' | 'koehler' | 'lunaperche' | 'morning' | 'murphy' | 'pablo' | 'peachpuff' | 'quiet' | 'retrobox' | 'ron' | 'shine' | 'slate' | 'sorbet' | 'tokyonight' | 'tokyonight-day' | 'tokyonight-moon' | 'tokyonight-night' | 'tokyonight-storm' | 'torte' | 'vim' | 'wildcharm' | 'zaibatsu' | 'zellner' | 'catppuccin'|'catppuccin-latte'|'catppuccin-mocha'| 'catppuccin-frappe'| 'catppuccin-macchiato'
+
+---@param opts {colorscheme: Colorscheme | string}
 function M.setup(opts)
   _G.Core = require 'core.util'
 
