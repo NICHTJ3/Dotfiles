@@ -66,6 +66,9 @@ else
   compinit -C
 fi
 
+# git spice auto complete. Requires compinit
+complete -C /usr/local/bin/gs gs
+
 ##################
 # User config
 ##################
@@ -73,32 +76,9 @@ fi
 bindkey -v
 export KEYTIMEOUT=1
 
-# Make CTRL-Z background things and unbackground them.
-function fg-bg() {
-    if [[ $#BUFFER -eq 0 ]]; then
-        fg
-    else
-        zle push-input
-    fi
-}
-zle -N fg-bg
-bindkey '^Z' fg-bg
-
-# CTRL-Q quits the terminal
-function quit() {
-    exit
-}
-zle -N quit
-bindkey '^Q' quit
-
 # History search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-# Home End and Delete
-bindkey '^[OH' beginning-of-line
-bindkey '^[OF' end-of-line
-bindkey '^[[3~' delete-char
 
 # Ctrl x ctrl x opens vi with current command
 autoload -U edit-command-line
