@@ -7,11 +7,6 @@
   insteadOf = https://github.com/nichtj3
   insteadOf = https://github.com/NICHTJ3
 
-[includeIf "hasconfig:remote.*.url:git@github.dev.xero.com/**"]
-  path = config-work
-[includeIf "hasconfig:remote.*.url:https://github.dev.xero.com/**"]
-  path = config-work
-
 [includeIf "hasconfig:remote.*.url:git@github.com:xero-internal/**"]
   path = config-work
 [includeIf "hasconfig:remote.*.url:https://github.com.com/xero-internal/**"]
