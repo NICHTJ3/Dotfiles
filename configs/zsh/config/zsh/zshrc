@@ -55,8 +55,16 @@ fi
 compdef _tmux tmux
 compdef _tmux tmux-manager
 
-# bun completions
-[ -s "/Users/trent.nicholson/.bun/_bun" ] && source "/Users/trent.nicholson/.bun/_bun"
+# bun compdef
+[ -s $HOME/.bun/_bun ] && source $HOME/.bun/_bun
+
+# Faster compinit
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 ##################
 # User config
@@ -91,15 +99,6 @@ bindkey '^[[B' history-substring-search-down
 bindkey '^[OH' beginning-of-line
 bindkey '^[OF' end-of-line
 bindkey '^[[3~' delete-char
-
-
-# Faster compinit
-autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
 
 # Ctrl x ctrl x opens vi with current command
 autoload -U edit-command-line
