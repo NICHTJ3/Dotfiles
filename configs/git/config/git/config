@@ -47,6 +47,9 @@
 [credential "https://gist.github.com"]
   helper = 
   helper = !/usr/local/bin/gh auth git-credential
-[credential "https://github.dev.xero.com"]
-  helper = 
-  helper = !/usr/local/bin/gh auth git-credential
+
+[spice "submit"]
+  navigationComment = false
+
+[spice "branchCreate"]
+  commit = false
