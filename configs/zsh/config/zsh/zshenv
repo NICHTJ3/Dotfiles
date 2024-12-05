@@ -62,13 +62,18 @@ fi
 
 # Shared
 alias sudo='sudo ' #Allow sudo to use aliases
+
+# Git aliases
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gco='git checkout'
+alias gss='git status --short'
+alias gp='git push'
+alias gcof="git checkout \$(git branch | fzf)"
+
 alias :q='exit'
 alias e='open'
 alias ls='lsd'
-alias gp='git push'
-alias gc='git commit'
-alias gcm='git commit -m'
-alias grmi='git rm -r --cached .; git add -A'
 alias cleanMem='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 alias vim='nvim'
 alias vi='nvim'
