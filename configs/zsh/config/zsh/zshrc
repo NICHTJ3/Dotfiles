@@ -3,12 +3,16 @@
 # User configuration sourced by interactive shells
 #
 
+# Set to 1 to run zprof
+PROFILE_ZSH=0
+
 if type "tmux-manager" > /dev/null; then
   if  [[ -t 0 ]] && [[ -z "$TMUX" ]]; then
     exec tmux-manager 
   fi
 fi
-# zmodload zsh/zprof
+
+[[ $PROFILE_ZSH == 1 ]] && zmodload zsh/zprof
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -105,4 +109,5 @@ unset key
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# zprof
+
+[[ $PROFILE_ZSH == 1 ]] && zprof &2>/dev/null
