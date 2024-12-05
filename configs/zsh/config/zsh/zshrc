@@ -3,7 +3,7 @@
 # User configuration sourced by interactive shells
 #
 
-if command -v tmux-manager 2>&1 >/dev/null; then
+if type "tmux-manager" > /dev/null; then
   if  [[ -t 0 ]] && [[ -z "$TMUX" ]]; then
     exec tmux-manager 
   fi
