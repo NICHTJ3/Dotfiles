@@ -1,4 +1,7 @@
 # Personal
+
+# z command
+zmodule agkozak/zsh-z
 # Prompt
 zmodule romkatv/powerlevel10k
 
