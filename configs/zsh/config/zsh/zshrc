@@ -1,18 +1,15 @@
-# ZSHRC
+# Start configuration added by Zim install {{{
 #
+# User configuration sourced by interactive shells
 #
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-    *) return;;
-esac
 
-# zmodload zsh/zprof # top of your .zshrc file
+if type "tmux-manager" > /dev/null; then
+  if  [[ -t 0 ]] && [[ -z "$TMUX" ]]; then
+    exec tmux-manager 
+  fi
+fi
+# zmodload zsh/zprof
 
-##################
-# Setup
-##################
-#
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -20,73 +17,92 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# -----------------
+# Zsh configuration
+# -----------------
 
-##################
-# ZGEN
-##################
-source "${HOME}/bin/helper-scripts/zgen.zsh"
+#
+# History
+#
 
-if ! zgen saved; then
-    zgen oh-my-zsh
+# Remove older command from the history if a duplicate is to be added.
+setopt HIST_IGNORE_ALL_DUPS
 
-    zgen oh-my-zsh plugins/z
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/history-substring-search
-    zgen oh-my-zsh plugins/colored-man-pages
+#
+# Input/output
+#
 
-    zgen load romkatv/powerlevel10k powerlevel10k
-
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-completions src
-
-    zgen load mattmc3/zsh-safe-rm
-
-    zgen save
-fi
-
-##################
-# Other scripts
-##################
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-##################
-# Completion
-##################
-compdef _tmux tmux
-compdef _tmux tmux-manager
-
-# bun compdef
-[ -s $HOME/.bun/_bun ] && source $HOME/.bun/_bun
-
-# Faster compinit
-autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
-
-# git spice auto complete. Requires compinit
-complete -C /usr/local/bin/gs gs
-
-##################
-# User config
-##################
-# Enable Vi mode
+# Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -v
-export KEYTIMEOUT=1
 
-# History search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# Remove path separator from WORDCHARS.
+WORDCHARS=${WORDCHARS//[\/]}
 
-# Ctrl x ctrl x opens vi with current command
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^x^x' edit-command-line
+# --------------------
+# Module configuration
+# --------------------
 
+#
+# git
+#
+
+# Set a custom prefix for the generated aliases. The default prefix is 'G'.
+zstyle ':zim:git' aliases-prefix 'g'
+
+#
+# input
+#
+
+# Append `../` to your input for each `.` you type after an initial `..`
+zstyle ':zim:input' double-dot-expand yes
+
+#
+# zsh-syntax-highlighting
+#
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# ------------------
+# Initialize modules
+# ------------------
+
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  if (( ${+commands[curl]} )); then
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
+fi
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+
+# ------------------------------
+# Post-init module configuration
+# ------------------------------
+
+#
+# zsh-history-substring-search
+#
+
+zmodload -F zsh/terminfo +p:terminfo
+# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
+for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
+for key ('k') bindkey -M vicmd ${key} history-substring-search-up
+for key ('j') bindkey -M vicmd ${key} history-substring-search-down
+unset key
+# }}} End configuration added by Zim install
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
-
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # zprof
