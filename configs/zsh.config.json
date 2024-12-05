@@ -2,11 +2,6 @@
   "description": "My zsh config",
   "links": [
     {
-      "from": "zsh/config/helper-scripts/*",
-      "to": "~/bin/helper-scripts/",
-      "glob": true
-    },
-    {
       "from": "zsh/config/zsh/zshenv",
       "to": "~/.zshenv"
     },
@@ -15,9 +10,9 @@
       "to": "~/.zshrc"
     },
     {
-      "from": "zsh/config/zsh/p10k.zsh",
-      "to": "~/.config/zsh/p10k.zsh"
+      "from": "zsh/config/zsh/zimrc",
+      "to": "~/.zimrc"
     }
   ],
-  "shell": ["touch ~/.z", "pnpm install-completion zsh"]
+  "shell": ["touch ~/.z"]
 }
