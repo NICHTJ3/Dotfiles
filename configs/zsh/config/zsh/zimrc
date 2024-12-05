@@ -2,6 +2,8 @@
 
 # z command
 zmodule agkozak/zsh-z
+# rm just moves to ~/.Trash
+zmodule mattmc3/zsh-safe-rm
 # Prompt
 zmodule romkatv/powerlevel10k
 
