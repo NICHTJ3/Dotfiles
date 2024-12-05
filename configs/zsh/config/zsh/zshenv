@@ -106,7 +106,7 @@ eval "$(fnm env --use-on-cd --log-level quiet)"
 # lazy load pyenv
 export PYENV_INITTED=0
 pyenv () {
-    if [[ PYENV_INITTED == 0 ]]; then
+    if [[ $PYENV_INITTED == 0 ]]; then
         eval "$(command \pyenv init -)"
         PYENV_INITTED = 1
     fi
