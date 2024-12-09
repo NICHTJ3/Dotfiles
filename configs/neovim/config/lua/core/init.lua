@@ -31,7 +31,7 @@ function M.setup(opts)
     spec = {
       { 'folke/lazy.nvim', version = '*' },
       -- Automatically set the bg color of your terminal to match your theme
-      { 'typicode/bg.nvim', lazy = false },
+      { 'nichtj3/bg.nvim', lazy = false },
       -- import your plugins
       { import = 'plugins' },
       { import = 'plugins.trial' },

@@ -1,6 +1,6 @@
 {
   "SchemaStore.nvim": { "branch": "main", "commit": "f922d46e17019e7fcadc1f0c1cfba31e8300819a" },
-  "bg.nvim": { "branch": "main", "commit": "18b4161e22decab29fa8705c174bb29b5b39be36" },
+  "bg.nvim": { "branch": "main", "commit": "f36b4556533c9db9c9eebf787a21d0ae1af97f4d" },
   "blink.cmp": { "branch": "main", "commit": "777d6fbba5a4099d9182037a4278f70ef395059e" },
   "bufferline.nvim": { "branch": "main", "commit": "261a72b90d6db4ed8014f7bda976bcdc9dd7ce76" },
   "catppuccin": { "branch": "main", "commit": "faf15ab0201b564b6368ffa47b56feefc92ce3f4" },
