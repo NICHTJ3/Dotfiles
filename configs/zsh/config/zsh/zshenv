@@ -64,12 +64,21 @@ fi
 alias sudo='sudo ' #Allow sudo to use aliases
 
 # Git aliases
+alias gaa="git add ."
+alias gl='git pull'
+alias gp='git push'
 alias gc='git commit'
 alias gcm='git commit -m'
 alias gco='git checkout'
-alias gss='git status --short'
-alias gp='git push'
 alias gcof="git checkout \$(git branch | fzf)"
+alias gss='git status --short'
+alias glo="git log --oneline --decorate"
+alias glod="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
+alias glods="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
+alias glog="git log --oneline --decorate --graph"
+alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'"
+alias glola="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all"
+alias glols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --stat"
 
 alias :q='exit'
 alias e='open'
