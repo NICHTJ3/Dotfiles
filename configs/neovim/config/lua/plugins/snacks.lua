@@ -26,6 +26,14 @@ return {
     toggle = { enabled = true },
     notifier = { enabled = true },
     statuscolumn = { enabled = true },
+    zen = {
+      toggles = {
+        dim = false,
+        git_signs = false,
+        mini_diff_signs = false,
+        inlay_hints = false,
+      },
+    },
   },
   keys = {
     -- Words
@@ -112,6 +120,22 @@ return {
         Snacks.notifier.hide()
       end,
       desc = 'Dismiss All Notifications',
+    },
+
+    -- Zen mode
+    {
+      '<leader>zo',
+      function()
+        Snacks.zen()
+      end,
+      desc = '[Z]en Mode [O]pen',
+    },
+    {
+      '<leader>zz',
+      function()
+        Snacks.zen.zoom()
+      end,
+      desc = '[Z]en Mode [Z]oom',
     },
   },
   init = function() end,
