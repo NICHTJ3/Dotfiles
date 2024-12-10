@@ -6,7 +6,7 @@
 # Set to 1 to run zprof
 PROFILE_ZSH=0
 
-if type "tmux-manager" > /dev/null; then
+if type "tmux-manager" > /dev/null && type "tmux" > /dev/null; then
   if  [[ -t 0 ]] && [[ -z "$TMUX" ]]; then
     exec tmux-manager 
   fi
