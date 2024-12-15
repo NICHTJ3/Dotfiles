@@ -103,14 +103,15 @@ return {
               return require('which-key.extras').expand.buf()
             end,
           },
-          { '<leader>c', group = 'code' },
-          { '<leader>g', group = 'git' },
-          { '<leader>gh', group = 'hunks' },
-          { '<leader>s', group = 'search' },
-          { '<leader>u', group = 'ui', icon = { icon = '󰙵 ', color = 'cyan' } },
+          { '<leader>z', group = '[Z]en Mode' },
+          { '<leader>c', group = '[C]ode' },
+          { '<leader>g', group = '[G]it' },
+          { '<leader>gh', group = '[G]it [H]unks' },
+          { '<leader>s', group = '[S]earch' },
+          { '<leader>u', group = '[U]i', icon = { icon = '󰙵 ', color = 'cyan' } },
           {
             '<leader>w',
-            group = 'windows',
+            group = '[W]indows',
             proxy = '<c-w>',
             expand = function()
               return require('which-key.extras').expand.win()

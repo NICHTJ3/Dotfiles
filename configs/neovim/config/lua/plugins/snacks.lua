@@ -124,6 +124,11 @@ return {
 
     -- Zen mode
     {
+      '<leader>z',
+      function() end,
+      desc = '[Z]en Mode',
+    },
+    {
       '<leader>zo',
       function()
         Snacks.zen()
