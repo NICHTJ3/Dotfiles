@@ -38,7 +38,6 @@ function M.setup(opts)
       { import = 'plugins.extras.formatters.prettier' },
       { import = 'plugins.extras.linters.eslint' },
       { import = 'plugins.extras.filenavigation.harpoon' },
-      { import = 'plugins.extras.editor.undotree' },
       { import = 'plugins.extras.lang.git' },
       { import = 'plugins.extras.lang.json' },
       { import = 'plugins.extras.lang.omnisharp' }, -- Omnisharp seems to be a little slower in large projects however the go to definition is a lot more reliable
