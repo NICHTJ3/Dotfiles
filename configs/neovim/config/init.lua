@@ -2,7 +2,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
-require('core').setup {
+require('core.init').setup {
   colorscheme = 'catppuccin-macchiato',
 }
 
