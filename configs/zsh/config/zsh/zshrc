@@ -111,3 +111,6 @@ unset key
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [[ $PROFILE_ZSH == 1 ]] && zprof &2>/dev/null
+
+# bun completions
+[ -s "/Users/trent.nicholson/.bun/_bun" ] && source "/Users/trent.nicholson/.bun/_bun"
