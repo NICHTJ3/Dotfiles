@@ -19,7 +19,6 @@ for path_candidate in \
     $BUN_INSTALL/bin\
     $DOTNET_ROOT\
     $HOME/.deno/bin\
-    $HOME/.fnm\
     $HOME/.local/bin\
     $HOME/.local/share/cargo/bin\
     $HOME/.local/share/npm/bin\
@@ -98,7 +97,6 @@ alias :q!='test -n "$TMUX" && \tmux kill-session'
 alias tmux-kill-and-set-host='\tmux kill-session -a;\tmux rename-session $HOST'
 alias cl='clear'
 alias lear='clear'
-alias nvm="fnm"
 
 # Rustup env
 [[ -s $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
@@ -108,9 +106,6 @@ alias nvm="fnm"
 
 # Iterm shell integration
 [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Use fnm on cd
-eval "$(fnm env --use-on-cd --log-level quiet)"
 
 # lazy load pyenv
 export PYENV_INITTED=0

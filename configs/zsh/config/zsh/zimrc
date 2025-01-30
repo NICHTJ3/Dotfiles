@@ -37,6 +37,8 @@ zmodule zsh-users/zsh-completions --fpath src
 # completion must be sourced after all modules that add completion definitions.
 zmodule completion
 
+zmodule bgrrtt/zimfw-node
+
 #
 # Modules that must be initialized last
 #
