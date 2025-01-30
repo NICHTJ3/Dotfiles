@@ -40,7 +40,8 @@ function M.setup(opts)
       { import = 'plugins.extras.filenavigation.harpoon' },
       { import = 'plugins.extras.lang.git' },
       { import = 'plugins.extras.lang.json' },
-      { import = 'plugins.extras.lang.omnisharp' }, -- Omnisharp seems to be a little slower in large projects however the go to definition is a lot more reliable
+      -- { import = 'plugins.extras.lang.omnisharp' }, -- Omnisharp seems to be a little slower in large projects however the go to definition is a lot more reliable
+      { import = 'plugins.extras.lang.csharpls' },
       { import = 'plugins.extras.lang.prisma' },
       { import = 'plugins.extras.lang.rust' },
       { import = 'plugins.extras.lang.typescript' },
