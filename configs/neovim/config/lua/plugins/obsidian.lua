@@ -22,6 +22,8 @@ return {
   ft = 'markdown',
   dependencies = {
     'nvim-lua/plenary.nvim',
+    -- TODO: Remove this once obsidian supports snacks picker
+    'nvim-telescope/telescope.nvim',
   },
   config = function()
     vim.api.nvim_create_autocmd('FileType', {
