@@ -137,8 +137,8 @@ return {
     opts = { picker = {} },
     -- stylua: ignore
     keys={
-      { '<leader>sf', function() Snacks.picker.pick('files', { layout = 'vscode', }) end, desc = 'Snacks picker [S]earch [F]iles', },
-      { '<leader><space>', function() Snacks.picker.pick('files', { layout = 'vscode' }) end, desc = 'Snacks picker Search Files', },
+      { '<leader>sf', function() Snacks.picker.pick('files' ) end, desc = 'Snacks picker [S]earch [F]iles', },
+      { '<leader><space>', function() Snacks.picker.pick('files' ) end, desc = 'Snacks picker Search Files', },
       { '<leader>uC', function() Snacks.picker.pick 'colorschemes' end, desc = 'Colorscheme with Preview', },
       { '<leader>sg', function() Snacks.picker.pick 'grep' end, desc = '[S]each by [G]rep', },
       { '<leader>sw', function() Snacks.picker.pick 'grep_word' end, desc = '[S]earch current [W]ord', },
@@ -147,7 +147,6 @@ return {
         '<leader>sn',
         function()
           Snacks.picker.pick('files', {
-            layout = 'vscode',
             ---@diagnostic disable-next-line: assign-type-mismatch
             cwd = vim.fn.stdpath 'config',
             follow = true,
