@@ -107,16 +107,6 @@ alias lear='clear'
 # Iterm shell integration
 [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# lazy load pyenv
-export PYENV_INITTED=0
-pyenv () {
-    if [[ $PYENV_INITTED == 0 ]]; then
-        eval "$(command \pyenv init -)"
-        PYENV_INITTED = 1
-    fi
-    \pyenv "$@"
-}
-
 terraform() {
     if [[ "$1" == "apply" ]]; then
         echo "Running 'terraform apply' is not allowed locally because of the terraform alias you have setup"
