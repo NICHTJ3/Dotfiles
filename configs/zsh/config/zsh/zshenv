@@ -67,7 +67,7 @@ alias gaa="git add ."
 alias gl='git pull'
 alias gp='git push'
 alias gc='git commit'
-alias gcm='git commit -m'
+alias gcm='git checkout $(git_main_branch)'
 alias gco='git checkout'
 alias gcof="git checkout \$(git branch | fzf)"
 alias gss='git status --short'
@@ -107,7 +107,7 @@ alias lear='clear'
 # Iterm shell integration
 [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 
-terraform() {
+function terraform() {
     if [[ "$1" == "apply" ]]; then
         echo "Running 'terraform apply' is not allowed locally because of the terraform alias you have setup"
     else
@@ -115,7 +115,23 @@ terraform() {
     fi
 }
 
-jdk() {
+# Check if main exists and use instead of master
+function git_main_branch() {
+  command git rev-parse --git-dir &>/dev/null || return
+  local ref
+  for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk,mainline,default,stable,master}; do
+    if command git show-ref -q --verify $ref; then
+      echo ${ref:t}
+      return 0
+    fi
+  done
+
+  # If no main branch was found, fall back to master but return error
+  echo master
+  return 1
+}
+
+function jdk() {
     version=$1
     unset JAVA_HOME;
     export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
