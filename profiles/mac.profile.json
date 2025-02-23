@@ -1,9 +1,18 @@
 {
-    "configs":[
-        "neovim",
-        "zsh",
-        "karabiner",
-        "tmux",
-        "git"
-    ]
+  "configs": [
+    "neovim",
+    "zsh",
+    "karabiner",
+    "tmux",
+    "git"
+  ],
+  "packages": [
+    "notunes",
+    "raycast",
+    "1password",
+    "spotify",
+    "wget",
+    "tmux",
+    "arc"
+  ]
 }

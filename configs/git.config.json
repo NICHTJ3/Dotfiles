@@ -1,14 +1,19 @@
 {
-    "links": [
-        {
-            "to": "~/bin/helper-scripts",
-            "from": "git/config/helper-scripts/*",
-            "glob": true
-        },
-        {
-            "to": "~/.config/git",
-            "from": "git/config/git/*",
-            "glob": true
-        }
-    ]
+  "links": [
+    {
+      "to": "~/bin/helper-scripts",
+      "from": "git/config/helper-scripts/*",
+      "glob": true
+    },
+    {
+      "to": "~/.config/git",
+      "from": "git/config/git/*",
+      "glob": true
+    }
+  ],
+  "packages": [
+    "git",
+    "lazygit",
+    "gh"
+  ]
 }

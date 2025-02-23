@@ -1,8 +1,11 @@
 {
-    "links": [
-        {
-            "from": "karabiner/config/karabiner.json",
-            "to": "~/.config/karabiner/karabiner.json"
-        }
-    ]
+  "links": [
+    {
+      "from": "karabiner/config/karabiner.json",
+      "to": "~/.config/karabiner/karabiner.json"
+    }
+  ],
+  "packages": [
+    "karabiner-elements"
+  ]
 }
