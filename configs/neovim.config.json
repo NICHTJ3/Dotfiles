@@ -1,17 +1,19 @@
 {
-    "description": "My neovim config",
-    "links": [
-        {
-            "from": "./neovim/config/*",
-            "to": "~/.config/nvim/",
-            "glob": true
-        }
-    ],
-    "directories": [
-        "~/.config/nvim/spell/",
-        "~/.config/nvim/undodir/"
-    ],
-    "packages": [
-        "nvim"
-    ]
+  "description": "My neovim config",
+  "links": [
+    {
+      "from": "./neovim/config/*",
+      "to": "~/.config/nvim/",
+      "glob": true
+    }
+  ],
+  "directories": [
+    "~/.config/nvim/spell/",
+    "~/.config/nvim/undodir/"
+  ],
+  "packages": [
+    "nvim",
+    "fzf",
+    "rg"
+  ]
 }
