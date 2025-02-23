@@ -48,13 +48,6 @@ WORDCHARS=${WORDCHARS//[\/]}
 # --------------------
 
 #
-# git
-#
-
-# Set a custom prefix for the generated aliases. The default prefix is 'G'.
-zstyle ':zim:git' aliases-prefix 'g'
-
-#
 # input
 #
 
@@ -114,4 +107,4 @@ unset key
 [[ $PROFILE_ZSH == 1 ]] && zprof &2>/dev/null
 
 # bun completions
-[ -s "/Users/trent.nicholson/.bun/_bun" ] && source "/Users/trent.nicholson/.bun/_bun"
+[[ -s "${HOME}/.bun/_bun" ]] && source "${HOME}/.bun/_bun"
