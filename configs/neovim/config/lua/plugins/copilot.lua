@@ -43,17 +43,24 @@ return {
   },
   {
     'yetone/avante.nvim',
-    event = 'VeryLazy',
-    lazy = false,
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
       provider = 'copilot',
     },
-    enabled = function()
-      local ok = pcall(require('copilot.auth').get_cred)
-      return ok
-    end,
     build = 'make',
+    cmd = {
+      'AvanteAsk',
+      'AvanteChat',
+      'AvanteClear',
+      'AvanteEdit',
+      'AvanteBuild',
+      'AvanteFocus',
+      'AvanteRefresh',
+      'AvanteShowRepoMap',
+      'AvanteSwitchFileSelectorProvider',
+      'AvanteSwitchProvider',
+      'AvanteToggle',
+    },
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'stevearc/dressing.nvim',
