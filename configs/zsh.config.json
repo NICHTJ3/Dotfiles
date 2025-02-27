@@ -12,6 +12,10 @@
     {
       "from": "zsh/config/zsh/zimrc",
       "to": "~/.zimrc"
+    },
+    {
+      "from": "zsh/config/zsh/zprofile",
+      "to": "~/.zprofile"
     }
   ],
   "shell": ["touch ~/.z"]
