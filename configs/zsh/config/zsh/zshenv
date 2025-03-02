@@ -11,19 +11,15 @@ fi
 
 export DOTNET_ROOT=$HOME/.dotnet
 export BUN_INSTALL="$HOME/.bun"
+export PNPM_HOME="$HOME/Library/pnpm"
 
 # Conditional PATH additions
-# $HOME/.gem/bin\
-# $HOME/.poetry/bin\
 for path_candidate in \
     $BUN_INSTALL/bin\
     $DOTNET_ROOT\
     $HOME/.deno/bin\
     $HOME/.local/bin\
-    $HOME/.local/share/cargo/bin\
-    $HOME/.local/share/npm/bin\
-    $HOME/Library/pnpm\
-    /usr/local/bin\
+    $PNPM_HOME\
     $HOME/go/bin
 do
     [[ -d ${path_candidate} ]] && export PATH="${PATH}:${path_candidate}"
