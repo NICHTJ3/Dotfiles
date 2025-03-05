@@ -100,11 +100,6 @@ return {
         },
       },
       setup = {
-        --- @deprecated -- tsserver renamed to ts_ls but not yet released, so keep this for now
-        tsserver = function()
-          -- disable tsserver
-          return true
-        end,
         ts_ls = function()
           -- disable tsserver
           return true
