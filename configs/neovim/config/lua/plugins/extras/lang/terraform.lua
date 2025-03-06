@@ -12,6 +12,10 @@ return {
     },
   },
   {
+    'williamboman/mason.nvim',
+    opts = { ensure_installed = { 'tflint' } },
+  },
+  {
     'stevearc/conform.nvim',
     optional = true,
     opts = {
