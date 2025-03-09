@@ -25,15 +25,16 @@ return {
   {
     'saghen/blink.cmp',
     optional = true,
-    dependencies = { 'giuxtaposition/blink-cmp-copilot' },
+    -- NOTE: checkup on this issue at somepoint see if swapping from blink-cmp-copilot was a good idea:
+    -- https://github.com/LazyVim/LazyVim/pull/5551/files
+    dependencies = { 'fang2hou/blink-copilot' },
     opts = {
       sources = {
         default = { 'copilot' },
         providers = {
           copilot = {
             name = 'copilot',
-            module = 'blink-cmp-copilot',
-            -- kind = 'Copilot',
+            module = 'blink-copilot',
             score_offset = 100,
             async = true,
           },
