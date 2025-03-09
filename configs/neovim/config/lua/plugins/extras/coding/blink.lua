@@ -37,6 +37,7 @@ return {
         menu = {
           draw = {
             treesitter = { 'lsp' },
+            columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', gap = 1, 'kind' } },
           },
         },
         documentation = {
@@ -44,7 +45,7 @@ return {
           auto_show_delay_ms = 200,
         },
         ghost_text = {
-          enabled = vim.g.ai_cmp,
+          enabled = true,
         },
       },
       cmdline = { enabled = true },
