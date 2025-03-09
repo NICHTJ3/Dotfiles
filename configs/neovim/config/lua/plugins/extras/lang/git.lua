@@ -14,4 +14,23 @@ return {
       },
     },
   },
+  {
+    'saghen/blink.cmp',
+    dependencies = { { 'Kaiser-Yang/blink-cmp-git', dependencies = { 'nvim-lua/plenary.nvim' } } },
+    opts = {
+      sources = {
+        default = { 'git' },
+        providers = {
+          git = {
+            module = 'blink-cmp-git',
+            name = 'Git',
+            enabled = function()
+              return vim.bo.filetype == 'gitcommit'
+            end,
+            opts = {},
+          },
+        },
+      },
+    },
+  },
 }
