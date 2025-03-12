@@ -5,7 +5,7 @@
 
 [includeIf "hasconfig:remote.*.url:git@github.com:xero-internal/**"]
   path = config-work
-[includeIf "hasconfig:remote.*.url:https://github.com.com/xero-internal/**"]
+[includeIf "hasconfig:remote.*.url:https://github.com/xero-internal/**"]
   path = config-work
 
 [pager]
