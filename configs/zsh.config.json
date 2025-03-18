@@ -2,19 +2,19 @@
   "description": "My zsh config",
   "links": [
     {
-      "from": "./configs/zsh/config/zsh/zshenv",
+      "from": "./config/zsh/zshenv",
       "to": "~/.zshenv"
     },
     {
-      "from": "./configs/zsh/config/zsh/zshrc",
+      "from": "./config/zsh/zshrc",
       "to": "~/.zshrc"
     },
     {
-      "from": "./configs/zsh/config/zsh/zimrc",
+      "from": "./config/zsh/zimrc",
       "to": "~/.zimrc"
     },
     {
-      "from": "./configs/zsh/config/zsh/zprofile",
+      "from": "./config/zsh/zprofile",
       "to": "~/.zprofile"
     }
   ],
