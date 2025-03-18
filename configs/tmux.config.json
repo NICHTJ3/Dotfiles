@@ -2,17 +2,17 @@
     "description": "My tmux config",
     "links": [
         {
-            "from": "tmux/config/helper-scripts/*",
+            "from": "./configs/tmux/config/helper-scripts/*",
             "to": "~/bin/helper-scripts",
             "glob": true
         },
         {
-            "from": "tmux/config/powerline/*",
+            "from": "./configs/tmux/config/powerline/*",
             "to": "~/.config/powerline/",
             "glob": true
         },
         {
-            "from": "tmux/config/tmux/tmux.conf",
+            "from": "./configs/tmux/config/tmux/tmux.conf",
             "to": "~/.tmux.conf"
         }
     ],

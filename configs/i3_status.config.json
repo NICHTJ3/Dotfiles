@@ -2,7 +2,7 @@
     "links": [
         {
             "to": "~/.config/i3status/config",
-            "from": "i3_status/config/i3status.conf"
+            "from": "./configs/i3_status/config/i3status.conf"
         }
     ]
 }
