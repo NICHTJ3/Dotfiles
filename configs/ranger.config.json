@@ -1,7 +1,7 @@
 {
     "links": [
         {
-            "from": "./configs/ranger/config/ranger/*",
+            "from": "./config/ranger/config/ranger/*",
             "to": "~/.config/ranger/",
             "glob": true
         }

@@ -1,12 +1,12 @@
 {
     "links": [
         {
-            "from": "./configs/dwm/config/dwm/*",
+            "from": "./config/dwm/dwm/*",
             "to": "~/.local/share/dwm/",
             "glob": true
         },
         {
-            "from": "./configs/dwm/config/wm-scripts/*",
+            "from": "./config/dwm/wm-scripts/*",
             "to": "~/bin/wm-scripts",
             "glob": true
         }

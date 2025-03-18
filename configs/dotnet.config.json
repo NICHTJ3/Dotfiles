@@ -2,7 +2,7 @@
     "description": "My dotnet helper scripts",
     "links": [
         {
-            "from": "./configs/dotnet/config/helper-scripts/*",
+            "from": "./config/dotnet/helper-scripts/*",
             "to": "~/bin/helper-scripts",
             "glob": true
         }
