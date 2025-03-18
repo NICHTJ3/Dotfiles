@@ -2,12 +2,12 @@
   "links": [
     {
       "to": "~/bin/helper-scripts",
-      "from": "git/config/helper-scripts/*",
+      "from": "./configs/git/config/helper-scripts/*",
       "glob": true
     },
     {
       "to": "~/.config/git",
-      "from": "git/config/git/*",
+      "from": "./configs/git/config/git/*",
       "glob": true
     }
   ],

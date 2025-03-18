@@ -1,7 +1,7 @@
 {
     "links": [
         {
-            "from": "zathura/config/zathurarc",
+            "from": "./configs/zathura/config/zathurarc",
             "to": "~/.config/zathura/zathurarc"
         }
     ]
