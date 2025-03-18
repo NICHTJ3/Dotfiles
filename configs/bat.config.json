@@ -1,7 +1,7 @@
 {
     "links": [
         {
-            "from": "./configs/bat/*",
+            "from": "./config/bat/*",
             "to": "~/.config/bat/",
             "glob": true
         }
