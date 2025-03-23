@@ -103,6 +103,9 @@ alias lear='clear'
 # Iterm shell integration
 [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Work specific stuff that might not exist in personal installs
+[[ -s $HOME/.zsh-work ]] && source "$HOME/.zsh-work"
+
 function terraform() {
     if [[ "$1" == "apply" ]]; then
         echo "Running 'terraform apply' is not allowed locally because of the terraform alias you have setup"
