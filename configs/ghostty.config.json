@@ -1,0 +1,9 @@
+{
+  "links": [
+    {
+      "from": "./config/ghostty/*",
+      "to": "~/.config/ghostty/",
+      "glob": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+term = xterm-256color
+window-padding-balance = true
+shell-integration-features = no-cursor,sudo,no-title
+
+# Font
+font-size = 15
+adjust-cell-height = 40%
+font-thicken = true
+font-family="MesloLGS NF"
+font-variation = wght=200
+font-variation-bold = wght=500
+
+# Styling
+cursor-style = block
+bold-is-bright = true
+macos-titlebar-style = transparent
+theme = "Catppuccin-Macchiato"
+alpha-blending = linear-corrected

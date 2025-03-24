@@ -4,6 +4,7 @@
         "zsh",
         "karabiner",
         "tmux",
-        "git"
+        "git",
+        "ghostty"
     ]
 }
