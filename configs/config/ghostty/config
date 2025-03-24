@@ -4,15 +4,16 @@ shell-integration-features = no-cursor,sudo,no-title
 
 # Font
 font-size = 15
-adjust-cell-height = 40%
 font-thicken = true
-font-family="MesloLGS NF"
-font-variation = wght=200
+font-thicken-strength = 50
+font-family = "MesloLGS NF"
 font-variation-bold = wght=500
+
+alpha-blending = native
+adjust-underline-position=2
 
 # Styling
 cursor-style = block
 bold-is-bright = true
 macos-titlebar-style = transparent
 theme = "Catppuccin-Macchiato"
-alpha-blending = linear-corrected
