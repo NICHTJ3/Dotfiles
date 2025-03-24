@@ -9,7 +9,6 @@ return {
     },
     keys = {
       { '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' } },
-      { '\\', '<CMD>Oil<CR>', { desc = 'Open parent directory' } },
     },
     -- Optional dependencies
     dependencies = { 'nvim-tree/nvim-web-devicons' },
