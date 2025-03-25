@@ -17,3 +17,23 @@ cursor-style = block
 bold-is-bright = true
 macos-titlebar-style = transparent
 theme = "Catppuccin-Macchiato"
+
+
+# Tmux custom keymaps
+# New tmux window on Cmd+t in tmux it is Ctrl+a+c
+keybind = super+t=text:\x01\x63
+
+# Close tmux pane on Cmd+w in tmux it is Ctrl+a+x
+keybind = super+w=text:\x01\x78
+
+# Go to the previous tmux window on Cmd+p in tmux it is Ctrl+b+p
+keybind = super+p=text:\x01\x70
+
+# Go to te next tmux window on Cmd+n in tmux it is Ctrl+b+n
+keybind = super+n=text:\x01\x6e
+
+# Split the window horizontally on Cmd+minus in tmux it is Ctrl+b+"
+keybind = super+minus=text:\x01\x22
+
+# Split the window vertically on Cmd+backslash in tmux it is Ctrl+b+%
+keybind = super+backslash=text:\x01\x25
