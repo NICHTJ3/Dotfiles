@@ -5,7 +5,7 @@ return {
     version = 'v1.0.0',
     event = 'LazyFile',
     dependencies = {
-      'mason.nvim',
+      { 'mason.nvim', branch = 'v2.x' },
       { 'williamboman/mason-lspconfig.nvim', config = function() end },
     },
     opts = function()
