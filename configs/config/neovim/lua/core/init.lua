@@ -50,7 +50,7 @@ function M.setup(opts)
       { import = 'plugins.extras.lang.docker' },
     },
     defaults = {
-      lazy = false,
+      lazy = true,
       version = false,
     },
     -- Configure any other settings here. See the documentation for more details.
