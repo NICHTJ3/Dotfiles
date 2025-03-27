@@ -28,8 +28,6 @@ return {
     opts = {
       servers = {
         csharp_ls = {
-          -- TODO: Fix this loading lspconfig early
-          root_dir = require('lspconfig.util').root_pattern('*.sln', '*.csproj', '.git'),
           keys = {
             {
               'gd',
