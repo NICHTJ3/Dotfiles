@@ -27,10 +27,10 @@ keybind = super+t=text:\x01\x63
 keybind = super+w=text:\x01\x78
 
 # Go to the previous tmux window on Cmd+p in tmux it is Ctrl+b+p
-keybind = super+p=text:\x01\x70
+keybind = super+p=text:\x01\x6e
 
 # Go to te next tmux window on Cmd+n in tmux it is Ctrl+b+n
-keybind = super+n=text:\x01\x6e
+keybind = super+n=text:\x01\x70
 
 # Split the window horizontally on Cmd+minus in tmux it is Ctrl+b+"
 keybind = super+minus=text:\x01\x22
