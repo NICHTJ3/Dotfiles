@@ -66,4 +66,21 @@ return {
       vim.cmd [[do FileType]]
     end,
   },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {
+      file_types = { 'markdown' },
+      bullet = {
+        right_pad = 1,
+      },
+      completions = {
+        -- Settings for blink.cmp completions source
+        blink = { enabled = true },
+      },
+    },
+    ft = { 'markwown' },
+  },
 }
