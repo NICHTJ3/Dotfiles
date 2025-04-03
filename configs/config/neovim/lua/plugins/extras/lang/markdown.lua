@@ -74,11 +74,10 @@ return {
     opts = {
       file_types = { 'markdown' },
       bullet = {
-        right_pad = 1,
+        enabled = false,
       },
       completions = {
-        -- Settings for blink.cmp completions source
-        blink = { enabled = true },
+        lsp = { enabled = false },
       },
     },
     ft = { 'markwown' },

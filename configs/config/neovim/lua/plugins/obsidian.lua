@@ -1,5 +1,5 @@
 return {
-  'epwalsh/obsidian.nvim',
+  'obsidian-nvim/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
   lazy = true,
   cmds = {
@@ -22,8 +22,6 @@ return {
   ft = 'markdown',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    -- TODO: Remove this once obsidian supports snacks picker
-    'nvim-telescope/telescope.nvim',
   },
   config = function()
     vim.api.nvim_create_autocmd('FileType', {
@@ -46,8 +44,11 @@ return {
         folder = 'journal',
         template = nil,
       },
+      completion = {
+        blink = true,
+      },
       ui = {
-        enable = false, -- set to false to disable all additional syntax features
+        enable = true, -- set to false to disable all additional syntax features
         update_debounce = 200, -- update delay after a text change (in milliseconds)
         max_file_length = 5000, -- disable UI features for files with more than this many lines
       },
