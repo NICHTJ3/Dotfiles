@@ -80,6 +80,6 @@ return {
         lsp = { enabled = false },
       },
     },
-    ft = { 'markwown' },
+    ft = { 'markdown' },
   },
 }
