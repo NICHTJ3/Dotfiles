@@ -5,6 +5,10 @@ return {
     event = 'LazyFile',
     opts = {
       provider = 'copilot',
+      file_selector = {
+        provider = 'snacks',
+        provider_opts = {},
+      },
     },
     build = 'make',
     dependencies = {
