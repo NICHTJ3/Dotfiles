@@ -5,7 +5,7 @@ return {
     event = 'LazyFile',
     opts = {
       provider = 'copilot',
-      file_selector = {
+      selector = {
         provider = 'snacks',
         provider_opts = {},
       },
