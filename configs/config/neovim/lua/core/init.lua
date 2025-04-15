@@ -35,6 +35,7 @@ function M.setup(opts)
       -- import your plugins
       { import = 'plugins' },
       { import = 'plugins.extras.ai' },
+      { import = 'plugins.extras.coding.octo' },
       { import = 'plugins.extras.formatters.prettier' },
       { import = 'plugins.extras.linters.eslint' },
       { import = 'plugins.extras.filenavigation.harpoon' },
