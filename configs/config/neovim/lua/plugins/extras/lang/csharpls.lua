@@ -1,5 +1,10 @@
 return {
-  { 'Decodetalkers/csharpls-extended-lsp.nvim', lazy = true },
+  {
+    'Decodetalkers/csharpls-extended-lsp.nvim',
+    config = function()
+      require('csharpls_extended').buf_read_cmd_bind()
+    end,
+  },
   {
     'nvim-treesitter/nvim-treesitter',
     opts = { ensure_installed = { 'c_sharp' } },
@@ -22,24 +27,6 @@ return {
   {
     'williamboman/mason.nvim',
     opts = { ensure_installed = { 'csharpier', 'netcoredbg' } },
-  },
-  {
-    'neovim/nvim-lspconfig',
-    opts = {
-      servers = {
-        csharp_ls = {
-          keys = {
-            {
-              'gd',
-              function()
-                require('csharpls_extended').lsp_definitions()
-              end,
-              'csharp - [G]oto [D]efinition',
-            },
-          },
-        },
-      },
-    },
   },
   {
     'mfussenegger/nvim-dap',
