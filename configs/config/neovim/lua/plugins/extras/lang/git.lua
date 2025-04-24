@@ -32,13 +32,13 @@ return {
         },
       },
     },
-    {
-      -- Added until nvim-lspconfig merges: https://github.com/williamboman/mason-lspconfig.nvim/pull/506
-      'neovim/nvim-lspconfig',
-      opts = {
-        servers = {
-          gh_actions_ls = {},
-        },
+  },
+  {
+    -- Added until nvim-lspconfig merges: https://github.com/williamboman/mason-lspconfig.nvim/pull/506
+    'neovim/nvim-lspconfig',
+    opts = {
+      servers = {
+        gh_actions_ls = {},
       },
     },
   },
