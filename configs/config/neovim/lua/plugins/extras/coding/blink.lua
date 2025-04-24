@@ -31,7 +31,7 @@ return {
         accept = {
           -- experimental auto-brackets support
           auto_brackets = {
-            enabled = true,
+            enabled = false,
           },
         },
         menu = {
@@ -57,7 +57,19 @@ return {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
 
-      keymap = { preset = 'default' },
+      keymap = {
+        preset = 'default',
+        ['<c-y>'] = {
+          'select_and_accept',
+          Core.cmp.map { 'snippet_forward', 'ai_accept' },
+          'fallback',
+        },
+        ['<tab>'] = {
+          'select_and_accept',
+          Core.cmp.map { 'snippet_forward', 'ai_accept' },
+          'fallback',
+        },
+      },
     },
     ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
     config = function(_, opts)
@@ -74,7 +86,6 @@ return {
       require('blink.cmp').setup(opts)
     end,
   },
-
   -- lazydev
   {
     'saghen/blink.cmp',
@@ -100,5 +111,26 @@ return {
     opts = {
       integrations = { blink_cmp = true },
     },
+  },
+
+  -- Hide copilot.lua suggestions when copilot is open
+  {
+    'zbirenbaum/copilot.lua',
+    opt = true,
+    opts = function()
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'BlinkCmpMenuOpen',
+        callback = function()
+          vim.b.copilot_suggestion_hidden = true
+        end,
+      })
+
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'BlinkCmpMenuClose',
+        callback = function()
+          vim.b.copilot_suggestion_hidden = false
+        end,
+      })
+    end,
   },
 }
