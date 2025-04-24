@@ -1,7 +1,6 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    opt = false,
     -- other settings removed for brevity
     opts = {
       servers = {
@@ -11,15 +10,6 @@ return {
             workingDirectories = { mode = 'auto' },
           },
         },
-      },
-      setup = {
-        eslint = function()
-          return {
-            on_attach = function(client)
-              client.server_capabilities.documentFormattingProvider = true
-            end,
-          }
-        end,
       },
     },
   },
