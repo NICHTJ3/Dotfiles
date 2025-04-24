@@ -2,7 +2,6 @@ return {
   -- lspconfig
   {
     'neovim/nvim-lspconfig',
-    version = 'v1.0.0',
     event = 'LazyFile',
     dependencies = {
       { 'mason.nvim', branch = 'v2.x' },
