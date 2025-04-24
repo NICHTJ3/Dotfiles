@@ -107,6 +107,7 @@ return {
         end,
         vtsls = function(_, opts)
           Core.lsp.on_attach(function(client, buffer)
+            client.commands['_typescript.didOrganizeImports'] = function(command, ctx) end
             client.commands['_typescript.moveToFileRefactoring'] = function(command, ctx)
               ---@type string, string, lsp.Range
               local action, uri, range = unpack(command.arguments)
