@@ -71,6 +71,9 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
+    opts_extend = {
+      'file_types',
+    },
     opts = {
       file_types = { 'markdown' },
       bullet = {
@@ -80,6 +83,5 @@ return {
         lsp = { enabled = false },
       },
     },
-    ft = { 'markdown' },
   },
 }
