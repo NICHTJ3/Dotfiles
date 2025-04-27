@@ -34,7 +34,8 @@ function M.setup(opts)
       { 'nichtj3/bg.nvim', lazy = false },
       -- import your plugins
       { import = 'plugins' },
-      { import = 'plugins.extras.ai' },
+      { import = 'plugins.extras.ai.copilot' },
+      { import = 'plugins.extras.ai.codecompanion' },
       { import = 'plugins.extras.coding.octo' },
       { import = 'plugins.extras.formatters.prettier' },
       { import = 'plugins.extras.linters.eslint' },
