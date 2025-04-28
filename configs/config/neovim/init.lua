@@ -7,6 +7,7 @@ require('core.init').setup {
   extras = {
     { import = 'plugins.extras.ai.avante' },
     { import = 'plugins.extras.ai.copilot' },
+    { import = 'plugins.extras.ai.mcphub' },
     { import = 'plugins.extras.coding.octo' },
     { import = 'plugins.extras.formatters.prettier' },
     { import = 'plugins.extras.linters.eslint' },
