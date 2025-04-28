@@ -116,7 +116,7 @@ return {
   -- Hide copilot.lua suggestions when copilot is open
   {
     'zbirenbaum/copilot.lua',
-    opt = true,
+    optional = true,
     opts = function()
       vim.api.nvim_create_autocmd('User', {
         pattern = 'BlinkCmpMenuOpen',

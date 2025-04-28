@@ -16,7 +16,7 @@ return {
       'stevearc/dressing.nvim',
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
-      'zbirenbaum/copilot.lua',
+      { 'zbirenbaum/copilot.lua', optional = true },
       --- The below dependencies are optional,
       {
         'MeanderingProgrammer/render-markdown.nvim',
