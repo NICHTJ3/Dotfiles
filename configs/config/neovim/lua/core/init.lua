@@ -32,7 +32,7 @@ function M.setup(opts)
   require('lazy').setup {
     spec = {
       { 'folke/lazy.nvim', version = '*' },
-      { 'nichtj3/bg.nvim', lazy = false },
+      { 'nichtj3/bg.nvim', event = 'ColorScheme' },
       -- Core plugins
       { import = 'plugins' },
       -- User extras
