@@ -15,11 +15,13 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+table.unpack = table.unpack or unpack -- 5.1 compatibility
+
 local M = {}
 
 --- @alias Colorscheme 'onedark' | 'onedark_vivid' | 'onelight' |'onedark_dark' | 'blue' | 'cyberdream' | 'darkblue' | 'default' | 'delek' | 'desert' | 'elflord' | 'evening' | 'habamax' | 'industry' | 'kanagawa' | 'kanagawa-dragon' | 'kanagawa-lotus' | 'kanagawa-wave' | 'koehler' | 'lunaperche' | 'morning' | 'murphy' | 'pablo' | 'peachpuff' | 'quiet' | 'retrobox' | 'ron' | 'shine' | 'slate' | 'sorbet' | 'tokyonight' | 'tokyonight-day' | 'tokyonight-moon' | 'tokyonight-night' | 'tokyonight-storm' | 'torte' | 'vim' | 'wildcharm' | 'zaibatsu' | 'zellner' | 'catppuccin'|'catppuccin-latte'|'catppuccin-mocha'| 'catppuccin-frappe'| 'catppuccin-macchiato'
 
----@param opts {colorscheme: Colorscheme | string}
+---@param opts {colorscheme: Colorscheme | string, extras: LazySpec}
 function M.setup(opts)
   _G.Core = require 'core.util'
 
@@ -30,27 +32,11 @@ function M.setup(opts)
   require('lazy').setup {
     spec = {
       { 'folke/lazy.nvim', version = '*' },
-      -- Automatically set the bg color of your terminal to match your theme
       { 'nichtj3/bg.nvim', lazy = false },
-      -- import your plugins
+      -- Core plugins
       { import = 'plugins' },
-      { import = 'plugins.extras.ai.copilot' },
-      { import = 'plugins.extras.ai.codecompanion' },
-      { import = 'plugins.extras.coding.octo' },
-      { import = 'plugins.extras.formatters.prettier' },
-      { import = 'plugins.extras.linters.eslint' },
-      { import = 'plugins.extras.filenavigation.harpoon' },
-      { import = 'plugins.extras.lang.git' },
-      { import = 'plugins.extras.lang.json' },
-      -- { import = 'plugins.extras.lang.omnisharp' }, -- Omnisharp seems to be a little slower in large projects however the go to definition is a lot more reliable
-      { import = 'plugins.extras.lang.csharpls' },
-      { import = 'plugins.extras.lang.prisma' },
-      { import = 'plugins.extras.lang.rust' },
-      { import = 'plugins.extras.lang.typescript' },
-      { import = 'plugins.extras.lang.terraform' },
-      { import = 'plugins.extras.lang.markdown' },
-      { import = 'plugins.extras.lang.docker' },
-      { import = 'plugins.extras.lang.css' },
+      -- User extras
+      table.unpack(opts.extras),
     },
     defaults = {
       lazy = true,
