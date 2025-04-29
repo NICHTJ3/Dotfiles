@@ -16,7 +16,8 @@ return {
   },
   {
     'saghen/blink.cmp',
-    dependencies = { { 'Kaiser-Yang/blink-cmp-git', dependencies = { 'nvim-lua/plenary.nvim' } } },
+    enabled = false,
+    dependencies = { { 'Kaiser-Yang/blink-cmp-git', event = 'VeryLazy', dependencies = { 'nvim-lua/plenary.nvim' } } },
     opts = {
       sources = {
         default = { 'git' },
