@@ -16,7 +16,6 @@ return {
   },
   {
     'saghen/blink.cmp',
-    enabled = false,
     dependencies = { { 'Kaiser-Yang/blink-cmp-git', event = 'VeryLazy', dependencies = { 'nvim-lua/plenary.nvim' } } },
     opts = {
       sources = {
@@ -26,7 +25,7 @@ return {
             module = 'blink-cmp-git',
             name = 'Git',
             enabled = function()
-              return vim.bo.filetype == 'gitcommit'
+              return false
             end,
             opts = {},
           },
