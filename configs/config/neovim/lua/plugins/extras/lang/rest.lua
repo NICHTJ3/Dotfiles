@@ -7,7 +7,7 @@ return {
     'mistweaverco/kulala.nvim',
     ft = 'http',
     keys = {
-      { '<leader>R', '', desc = '+[R]est', ft = 'http' },
+      { '<leader>R', '', desc = '+[R]est' },
       { '<leader>Rb', "<cmd>lua require('kulala').scratchpad()<cr>", desc = 'Open scratchpad' },
       { '<leader>Rc', "<cmd>lua require('kulala').copy()<cr>", desc = 'Copy as cURL', ft = 'http' },
       { '<leader>RC', "<cmd>lua require('kulala').from_curl()<cr>", desc = 'Paste from curl', ft = 'http' },
