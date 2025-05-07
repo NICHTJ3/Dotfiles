@@ -1,6 +1,6 @@
 {
   "SchemaStore.nvim": { "branch": "main", "commit": "0cd099d94b1d61565ee1d44c4afad42f9a170ad1" },
-  "avante.nvim": { "branch": "main", "commit": "93aa961fc4fe45f69c68f1e336fbefbe4112be77" },
+  "avante.nvim": { "branch": "main", "commit": "113913355a6b9c0fbd62cf52d0cf3e5671d0e34a" },
   "bg.nvim": { "branch": "main", "commit": "f36b4556533c9db9c9eebf787a21d0ae1af97f4d" },
   "blink-cmp-avante": { "branch": "master", "commit": "ddefb8de3cb1286ab39e0ccec0f32a45d03391f2" },
   "blink-cmp-git": { "branch": "master", "commit": "59c19ac2c26cf32ae05362b4b85e14370f83bf80" },
@@ -17,7 +17,7 @@
   "eyeliner.nvim": { "branch": "main", "commit": "8f197eb30cecdf4c2cc9988a5eecc6bc34c0c7d6" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gitsigns.nvim": { "branch": "main", "commit": "43b0c856ae5f32a195d83f4a27fe21d63e6c966c" },
-  "grug-far.nvim": { "branch": "main", "commit": "6ff8a205a29db3a9b08e5debe09452b4d6fd6591" },
+  "grug-far.nvim": { "branch": "main", "commit": "b91e6d4bad441dcaeda3d0c6df45ed270443b60a" },
   "harpoon": { "branch": "harpoon2", "commit": "ed1f853847ffd04b2b61c314865665e1dadf22c7" },
   "kanagawa.nvim": { "branch": "master", "commit": "cc3b68b08e6a0cb6e6bf9944932940091e49bb83" },
   "kulala.nvim": { "branch": "main", "commit": "4a56a4cf40e126721a60039079f76a14caf5336a" },
