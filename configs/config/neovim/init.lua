@@ -23,6 +23,7 @@ require('core.init').setup {
     { import = 'plugins.extras.lang.docker' },
     { import = 'plugins.extras.lang.css' },
     { import = 'plugins.extras.lang.rest' },
+    { import = 'plugins.extras.lang.sql' },
   },
 }
 
