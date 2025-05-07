@@ -11,7 +11,7 @@
   "conform.nvim": { "branch": "master", "commit": "372fc521f8421b7830ea6db4d6ea3bae1c77548c" },
   "copilot.lua": { "branch": "master", "commit": "7ba73866b9b3c696f80579c470c6eec374d3acec" },
   "crates.nvim": { "branch": "main", "commit": "2c8f4fab02e3e9ea42c6ad9b547e4207a914a397" },
-  "csharpls-extended-lsp.nvim": { "branch": "master", "commit": "c1edd1eaad2e649d3de8121337e3c515ac6db46e" },
+  "csharpls-extended-lsp.nvim": { "branch": "master", "commit": "9cdc993347cfb51d102bf5da1ebf6bf4fc4683e4" },
   "cyberdream.nvim": { "branch": "main", "commit": "8407e80415aebd6b052773d751dda7cd9cfc6835" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "eyeliner.nvim": { "branch": "main", "commit": "8f197eb30cecdf4c2cc9988a5eecc6bc34c0c7d6" },
