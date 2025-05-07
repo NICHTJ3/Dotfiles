@@ -5,8 +5,8 @@ return {
     version = 'v2.0.0',
     event = 'LazyFile',
     dependencies = {
-      { 'mason.nvim', branch = 'v2.x' },
-      { 'williamboman/mason-lspconfig.nvim', config = function() end },
+      { 'mason.nvim' },
+      { 'mason-org/mason-lspconfig.nvim', config = function() end },
     },
     opts = function()
       ---@class PluginLspOpts
@@ -172,31 +172,22 @@ return {
         require('lspconfig')[server].setup(server_opts)
       end
 
-      -- get all the servers that are available through mason-lspconfig
-      local have_mason, mlsp = pcall(require, 'mason-lspconfig')
-      local all_mslp_servers = {}
-      if have_mason then
-        all_mslp_servers = vim.tbl_keys(require('mason-lspconfig.mappings').get_mason_map().lspconfig_to_package)
-      end
-
       local ensure_installed = {} ---@type string[]
       for server, server_opts in pairs(servers) do
         if server_opts then
           server_opts = server_opts == true and {} or server_opts
           if server_opts.enabled ~= false then
-            -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-            if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
-              setup(server)
-            else
-              ensure_installed[#ensure_installed + 1] = server
-            end
+            setup(server)
+            ensure_installed[#ensure_installed + 1] = server
           end
         end
       end
 
+      local have_mason, mlsp = pcall(require, 'mason-lspconfig')
       if have_mason then
         mlsp.setup {
           ensure_installed = vim.tbl_deep_extend('force', ensure_installed, Core.opts('mason-lspconfig.nvim').ensure_installed or {}),
+          automatic_enable = true,
           handlers = { setup },
         }
       end
@@ -217,7 +208,7 @@ return {
   -- cmdline tools and lsp servers
   {
 
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     cmd = 'Mason',
     keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
     build = ':MasonUpdate',

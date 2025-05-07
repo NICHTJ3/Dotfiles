@@ -4,7 +4,7 @@ return {
     opts = { ensure_installed = { 'scss', 'css' } },
   },
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     opts = { ensure_installed = { 'some-sass-language-server' } },
   },
   {
