@@ -2,7 +2,7 @@ return {
   -- lspconfig
   {
     'neovim/nvim-lspconfig',
-    version = 'v2.0.0',
+    version = 'v2.x',
     event = 'LazyFile',
     dependencies = {
       { 'mason.nvim' },
@@ -95,12 +95,10 @@ return {
         ---@type table<string, fun(server:string, opts:lspconfig.Config):boolean?>
         setup = {
           -- example to setup with typescript.nvim
-          -- tsserver = function(_, opts)
+          -- ts_ls = function(_, opts)
           --   require("typescript").setup({ server = opts })
           --   return true
           -- end,
-          -- Specify * to use this function as a fallback for any server
-          -- ["*"] = function(server, opts) end,
         },
       }
       return ret
@@ -144,32 +142,29 @@ return {
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
       local servers = opts.servers
-      local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
       local has_blink, blink = pcall(require, 'blink.cmp')
-      local capabilities = vim.tbl_deep_extend(
-        'force',
-        {},
-        vim.lsp.protocol.make_client_capabilities(),
-        has_cmp and cmp_nvim_lsp.default_capabilities() or {},
-        has_blink and blink.get_lsp_capabilities() or {},
-        opts.capabilities or {}
-      )
+
+      vim.lsp.config('*', {
+        capabilities = vim.tbl_deep_extend(
+          'force',
+          {},
+          vim.lsp.protocol.make_client_capabilities(),
+          has_blink and blink.get_lsp_capabilities() or {},
+          opts.capabilities or {}
+        ),
+      })
+      local skip_mason_setup = {}
 
       local function setup(server)
-        local server_opts = vim.tbl_deep_extend('force', {
-          capabilities = vim.deepcopy(capabilities),
-        }, servers[server] or {})
+        local server_opts = servers[server] or {}
 
-        if opts.setup[server] then
-          if opts.setup[server](server, server_opts) then
-            return
-          end
-        elseif opts.setup['*'] then
-          if opts.setup['*'](server, server_opts) then
-            return
-          end
+        -- If we have a custom setup function, call it, if it returns true, we don't want to setup the server with lspconfig
+        if opts.setup[server] and opts.setup[server](server, server_opts) then
+          skip_mason_setup[server] = true
+          return
         end
-        require('lspconfig')[server].setup(server_opts)
+
+        vim.lsp.config(server, server_opts)
       end
 
       local have_mason, mlsp = pcall(require, 'mason-lspconfig')
@@ -195,20 +190,10 @@ return {
       if have_mason then
         mlsp.setup {
           ensure_installed = vim.tbl_deep_extend('force', ensure_installed, Core.opts('mason-lspconfig.nvim').ensure_installed or {}),
-          automatic_enable = true,
-          handlers = { setup },
+          automatic_enable = {
+            exclude = vim.tbl_keys(skip_mason_setup),
+          },
         }
-      end
-
-      if Core.lsp.is_enabled 'denols' and Core.lsp.is_enabled 'vtsls' then
-        local is_deno = require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc')
-        Core.lsp.disable('vtsls', is_deno)
-        Core.lsp.disable('denols', function(root_dir, config)
-          if not is_deno(root_dir) then
-            config.settings.deno.enable = false
-          end
-          return false
-        end)
       end
     end,
   },
