@@ -1,6 +1,6 @@
 {
-  "SchemaStore.nvim": { "branch": "main", "commit": "0cd099d94b1d61565ee1d44c4afad42f9a170ad1" },
-  "avante.nvim": { "branch": "main", "commit": "113913355a6b9c0fbd62cf52d0cf3e5671d0e34a" },
+  "SchemaStore.nvim": { "branch": "main", "commit": "ea5687d7e8af3ce6678dd03d3a1bd109b5c618b7" },
+  "avante.nvim": { "branch": "main", "commit": "b2064a8f40cbd10ddd3ea9d82f0bdb2bcaf2f152" },
   "bg.nvim": { "branch": "main", "commit": "f36b4556533c9db9c9eebf787a21d0ae1af97f4d" },
   "blink-cmp-avante": { "branch": "master", "commit": "ddefb8de3cb1286ab39e0ccec0f32a45d03391f2" },
   "blink-cmp-git": { "branch": "master", "commit": "59c19ac2c26cf32ae05362b4b85e14370f83bf80" },
