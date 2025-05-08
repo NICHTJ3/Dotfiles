@@ -145,6 +145,8 @@ return {
       local has_blink, blink = pcall(require, 'blink.cmp')
 
       vim.lsp.config('*', {
+        -- Some servers require this to be set when using vim.lsp.config, so we just set it globally
+        init_options = {},
         capabilities = vim.tbl_deep_extend(
           'force',
           {},
