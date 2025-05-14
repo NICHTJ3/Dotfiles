@@ -7,6 +7,8 @@ return {
     quickfile = { enabled = true },
     bigfile = { enabled = true },
     words = { enabled = true },
+    scope = { enabled = true },
+    indent = { enabled = true },
     lazygit = {
       enabled = true,
       theme = {
