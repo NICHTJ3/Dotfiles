@@ -57,8 +57,7 @@ vim.opt.modeline = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 
--- Minimum number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+-- Treat linewrapped lines as multiple lines when scrolling
 vim.opt.smoothscroll = true
 
 vim.opt.expandtab = true

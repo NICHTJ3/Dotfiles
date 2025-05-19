@@ -14,7 +14,7 @@ require('core.init').setup {
     { import = 'plugins.extras.filenavigation.harpoon' },
     { import = 'plugins.extras.lang.git' },
     { import = 'plugins.extras.lang.json' },
-    { import = 'plugins.extras.lang.csharpls' },
+    { import = 'plugins.extras.lang.roslyn' },
     { import = 'plugins.extras.lang.prisma' },
     { import = 'plugins.extras.lang.rust' },
     { import = 'plugins.extras.lang.typescript' },

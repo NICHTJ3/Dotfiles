@@ -41,10 +41,6 @@ vim.keymap.set('n', '<leader>wak', ':above new<CR>', { desc = 'new window above'
 vim.keymap.set('x', '<', '<gv', { desc = 'Move selected lines left' })
 vim.keymap.set('x', '>', '>gv', { desc = 'Move selected lines right' })
 
--- Keep cursor centered when scrolling with <C-d> and <C-u>
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
