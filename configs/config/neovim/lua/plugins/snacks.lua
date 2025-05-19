@@ -2,6 +2,9 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
+  opts_extend = {
+    'explorer',
+  },
   ---@type snacks.Config
   opts = {
     quickfile = { enabled = true },

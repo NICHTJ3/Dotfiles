@@ -12,6 +12,7 @@ require('core.init').setup {
     { import = 'plugins.extras.formatters.prettier' },
     { import = 'plugins.extras.linters.eslint' },
     { import = 'plugins.extras.filenavigation.harpoon' },
+    { import = 'plugins.extras.filenavigation.snacks-explorer' },
     { import = 'plugins.extras.lang.git' },
     { import = 'plugins.extras.lang.json' },
     { import = 'plugins.extras.lang.roslyn' },
