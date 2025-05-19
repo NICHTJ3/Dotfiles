@@ -228,11 +228,14 @@ return {
     cmd = 'Mason',
     keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
     build = ':MasonUpdate',
-    opts_extend = { 'ensure_installed' },
+    opts_extend = { 'ensure_installed', 'registries' },
     opts = {
       ensure_installed = {
         'stylua',
         'shfmt',
+      },
+      registries = {
+        'github:mason-org/mason-registry',
       },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
