@@ -26,6 +26,11 @@ return {
       server = {
         override = false,
       },
+      document_color = {
+        kind = 'inline', -- "inline" | "foreground" | "background"
+        inline_symbol = ' ', -- only used in inline mode
+        debounce = 200, -- in milliseconds, only applied in insert mode
+      },
     },
   },
 }
