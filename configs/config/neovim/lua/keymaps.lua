@@ -47,5 +47,9 @@ vim.keymap.set('x', '>', '>gv', { desc = 'Move selected lines right' })
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
---
+
+-- j and k should handle line wraps
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj': 'j'", { expr = true, silent = true })
 -- vim: ts=2 sts=2 sw=2 et

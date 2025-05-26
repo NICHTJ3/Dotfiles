@@ -47,8 +47,11 @@ vim.opt.inccommand = 'split'
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
--- Don't line wrap
-vim.opt.wrap = false
+-- Better linewrap
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = string.rep(' ', 3)
 
 -- Respect modeline comments at the end of files
 vim.opt.modeline = true
