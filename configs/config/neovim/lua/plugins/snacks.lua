@@ -13,6 +13,7 @@ return {
     scope = { enabled = true },
     indent = { enabled = true },
     scroll = { enabled = true },
+    terminal = { enabled = true },
     lazygit = {
       enabled = true,
       theme = {
