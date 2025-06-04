@@ -5,7 +5,8 @@ return {
   {
     'neovim/nvim-lspconfig',
     version = 'v2.x',
-    event = 'LazyFile',
+    -- TODO: Find a better solution to this. Essentially, without this ft detection doesn't work due to some change in BufReadPost
+    event = vim.fn.has 'nvim-0.11' == 1 and { 'BufReadPre', 'BufNewFile', 'BufWritePre' } or 'LazyFile',
     dependencies = {
       'mason.nvim',
       { 'mason-org/mason-lspconfig.nvim', config = function() end },
