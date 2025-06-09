@@ -67,6 +67,14 @@ return {
       desc = '[A]I [I]nline',
     },
     { '<leader>at', mode = { 'v' }, '<cmd>CodeCompanion /tests<cr>', desc = '[A]I [T]est' },
+    {
+      '<leader>at',
+      mode = { 'n' },
+      function()
+        vim.cmd '%CodeCompanion /tests'
+      end,
+      desc = '[A]I [T]est',
+    },
     { '<leader>ac', mode = { 'n', 'v' }, '<cmd>CodeCompanionChat Toggle<cr>', desc = '[A]I [C]hat toggle' },
     { '<leader>aC', mode = { 'n', 'v' }, '<cmd>CodeCompanionChat<cr>', desc = '[A]I [C]reate a new chat' },
     { '<leader>aa', mode = { 'n', 'v' }, '<cmd>CodeCompanionAction<cr>', desc = '[A]I [A]ction' },
