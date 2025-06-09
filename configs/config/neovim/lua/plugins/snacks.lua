@@ -7,6 +7,7 @@ return {
   },
   ---@type snacks.Config
   opts = {
+    input = { enabled = true },
     quickfile = { enabled = true },
     bigfile = { enabled = true },
     words = { enabled = true },

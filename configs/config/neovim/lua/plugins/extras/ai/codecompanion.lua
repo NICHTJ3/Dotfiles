@@ -32,17 +32,24 @@ return {
       '<leader>ai',
       mode = { 'v' },
       function()
-        local user_input = vim.fn.input '[AI]: What would you like help with? '
-
-        if user_input and user_input ~= '' then
-          vim.cmd('CodeCompanion ' .. user_input)
-        else
-          print 'No input provided'
-        end
+        Snacks.input.input({
+          prompt = '[AI] Inline: What would you like help with? ',
+          win = {
+            relative = 'cursor',
+            row = -2,
+            col = 0,
+          },
+        }, function(input)
+          if input and input ~= '' then
+            vim.cmd('CodeCompanion ' .. input)
+          else
+            vim.notify 'CodeCompanion: No input provided'
+          end
+        end)
       end,
       desc = '[A]I [I]nline',
     },
-    { '<leader>ae', mode = { 'n', 'v' }, '<cmd>CodeCompanion /explain<cr>', desc = '[A]I [E]xplain' },
+    { '<leader>at', mode = { 'v' }, '<cmd>CodeCompanion /tests<cr>', desc = '[A]I [T]est' },
     { '<leader>ac', mode = { 'n', 'v' }, '<cmd>CodeCompanionChat Toggle<cr>', desc = '[A]I [C]hat toggle' },
     { '<leader>aC', mode = { 'n', 'v' }, '<cmd>CodeCompanionChat<cr>', desc = '[A]I [C]reate a new chat' },
     { '<leader>aa', mode = { 'n', 'v' }, '<cmd>CodeCompanionAction<cr>', desc = '[A]I [A]ction' },
