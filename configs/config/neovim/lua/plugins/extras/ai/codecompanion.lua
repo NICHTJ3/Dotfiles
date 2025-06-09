@@ -1,7 +1,24 @@
 return {
   'olimorris/codecompanion.nvim',
   event = 'VeryLazy',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter',
+    { 'folke/snacks.nvim', opt = true },
+    {
+      'MeanderingProgrammer/render-markdown.nvim',
+      optional = true,
+      opts = {
+        file_types = { 'codecompanion' },
+      },
+      ft = { 'codecompanion' },
+    },
+  },
   opts = {
+    display = {
+      action_palette = {
+        provider = 'snacks',
+      },
+    },
     strategies = {
       chat = {
         keymaps = {
@@ -53,17 +70,5 @@ return {
     { '<leader>ac', mode = { 'n', 'v' }, '<cmd>CodeCompanionChat Toggle<cr>', desc = '[A]I [C]hat toggle' },
     { '<leader>aC', mode = { 'n', 'v' }, '<cmd>CodeCompanionChat<cr>', desc = '[A]I [C]reate a new chat' },
     { '<leader>aa', mode = { 'n', 'v' }, '<cmd>CodeCompanionAction<cr>', desc = '[A]I [A]ction' },
-  },
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-treesitter/nvim-treesitter',
-    {
-      'MeanderingProgrammer/render-markdown.nvim',
-      optional = true,
-      opts = {
-        file_types = { 'codecompanion' },
-      },
-      ft = { 'codecompanion' },
-    },
   },
 }
