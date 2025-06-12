@@ -42,6 +42,9 @@ return {
           end
         end,
       },
+      discovery = {
+        enabled = false,
+      },
     },
     config = function(_, opts)
       local neotest_ns = vim.api.nvim_create_namespace 'neotest'

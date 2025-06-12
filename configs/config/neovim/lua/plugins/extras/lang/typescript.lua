@@ -263,6 +263,8 @@ return {
         adapters = {
           ['neotest-jest'] = {
             -- jestCommand = 'npm test -- --',
+            jest_test_discovery = true,
+
           },
           ['neotest-vitest'] = {},
         },
