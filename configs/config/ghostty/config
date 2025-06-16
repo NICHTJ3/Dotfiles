@@ -26,14 +26,14 @@ keybind = super+t=text:\x01\x63
 # Close tmux pane on Cmd+w in tmux it is Ctrl+a+x
 keybind = super+w=text:\x01\x78
 
-# Go to the previous tmux window on Cmd+p in tmux it is Ctrl+b+p
-keybind = super+p=text:\x01\x6e
+# Go to the next tmux tab on Cmd+n in tmux it is Ctrl+a+n
+keybind = super+n=text:\x01\x6e
 
-# Go to te next tmux window on Cmd+n in tmux it is Ctrl+b+n
-keybind = super+n=text:\x01\x70
+# Go to the previous tmux tab on Cmd+p in tmux it is Ctrl+a+p
+keybind = super+p=text:\x01\x70
 
-# Split the window horizontally on Cmd+minus in tmux it is Ctrl+b+"
-keybind = super+minus=text:\x01\x22
+# Split the window horizontally on Cmd+' in tmux it is Ctrl+a+"
+keybind = super+'=text:\x01\x22
 
-# Split the window vertically on Cmd+backslash in tmux it is Ctrl+b+%
+# Split the window vertically on Cmd+backslash in tmux it is Ctrl+a+%
 keybind = super+backslash=text:\x01\x25
