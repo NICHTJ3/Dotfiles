@@ -17,6 +17,7 @@ return {
     })
 
     return {
+      use_local_fs = true,
       enable_builtin = true,
       default_merge_method = 'merge',
       picker = 'snacks',
