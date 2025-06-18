@@ -17,6 +17,7 @@ require('core.init').setup {
     { import = 'plugins.extras.lang.docker' },
     { import = 'plugins.extras.lang.git' },
     { import = 'plugins.extras.lang.json' },
+    { import = 'plugins.extras.lang.yaml' },
     { import = 'plugins.extras.lang.markdown' },
     { import = 'plugins.extras.lang.prisma' },
     { import = 'plugins.extras.lang.rest' },
