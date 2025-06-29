@@ -1,4 +1,11 @@
 return {
+  {
+    'tiesen243/vercel.nvim',
+    lazy = false,
+    opts = {
+      theme = 'dark',
+    },
+  },
   { 'folke/tokyonight.nvim', lazy = false, opts = { style = 'night' } },
   { 'olimorris/onedarkpro.nvim', lazy = false },
   { 'rebelot/kanagawa.nvim', lazy = false },
