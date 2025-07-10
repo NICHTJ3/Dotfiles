@@ -107,4 +107,9 @@ unset key
 # bun completions
 [[ -s "${HOME}/.bun/_bun" ]] && source "${HOME}/.bun/_bun"
 
+# Add git spice completions
+if type "gs" > /dev/null; then
+  eval "$(gs shell completion zsh)"
+fi
+
 [[ $PROFILE_ZSH == 1 ]] && zprof &2>/dev/null
