@@ -1,8 +1,0 @@
-{
-  "links": [
-    {
-      "from": "./config/aerospace/.aerospace.toml",
-      "to": "~/.aerospace.toml"
-    }
-  ]
-}
