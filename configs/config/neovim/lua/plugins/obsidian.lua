@@ -2,22 +2,18 @@ return {
   'obsidian-nvim/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
   lazy = true,
-  cmds = {
-    'ObsidianToday',
-    'ObsidianTomorrow',
-    'ObsidianYesterday',
-    'ObsidianSearch',
-    'ObsidianDailies',
+  cmd = {
+    'Obsidian',
   },
   keys = {
     { '<leader>o', desc = '[O]bsidian' },
-    { '<leader>os', '<cmd>ObsidianSearch<CR>', desc = '[S]earch' },
-    { '<leader>ot', '<cmd>ObsidianToday<CR>', desc = '[T]oday' },
-    { '<leader>oT', '<cmd>ObsidianTomorrow<CR>', desc = '[T]omorrow' },
-    { '<leader>oy', '<cmd>ObsidianYesterday<CR>', desc = '[Y]esterday' },
-    { '<leader>oj', '<cmd>ObsidianDailies<CR>', desc = '[J]ournal' },
-    { '<leader>od', '<cmd>ObsidianDailies<CR>', desc = '[D]iary' },
-    { '<leader>oh', '<cmd>ObsidianTags<CR>', desc = '[H]ashtags/Tags' },
+    { '<leader>os', '<cmd>Obsidian search<CR>', desc = '[S]earch' },
+    { '<leader>ot', '<cmd>Obsidian today<CR>', desc = '[T]oday' },
+    { '<leader>oT', '<cmd>Obsidian tomorrow<CR>', desc = '[T]omorrow' },
+    { '<leader>oy', '<cmd>Obsidian yesterday<CR>', desc = '[Y]esterday' },
+    { '<leader>oj', '<cmd>Obsidian dailies<CR>', desc = '[J]ournal' },
+    { '<leader>od', '<cmd>Obsidian dailies<CR>', desc = '[D]iary' },
+    { '<leader>oh', '<cmd>Obsidian tags<CR>', desc = '[H]ashtags/Tags' },
   },
   ft = 'markdown',
   dependencies = {
@@ -52,6 +48,7 @@ return {
         update_debounce = 200, -- update delay after a text change (in milliseconds)
         max_file_length = 5000, -- disable UI features for files with more than this many lines
       },
+      legacy_commands = false,
     }
   end,
 }
