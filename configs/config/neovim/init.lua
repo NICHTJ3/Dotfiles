@@ -11,7 +11,6 @@ require('core.init').setup {
     { import = 'plugins.extras.coding.octo' },
     { import = 'plugins.extras.coding.refactoring' },
     { import = 'plugins.extras.editor.hardtime' },
-    { import = 'plugins.extras.filenavigation.harpoon' },
     { import = 'plugins.extras.filenavigation.snacks-explorer' },
     { import = 'plugins.extras.formatters.prettier' },
     { import = 'plugins.extras.lang.css' },
