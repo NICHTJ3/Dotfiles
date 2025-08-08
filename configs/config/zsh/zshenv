@@ -103,6 +103,9 @@ alias lear='clear'
 # Iterm shell integration
 [[ -s "${HOME}/.iterm2_shell_integration.zsh" ]] && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Bob nvim version manager
+[[ -s "${HOME}/.local/share/bob/env/env.sh" ]] && source "${HOME}/.local/share/bob/env/env.sh"
+
 # Work specific stuff that might not exist in personal installs
 [[ -s $HOME/.zsh-work ]] && source "$HOME/.zsh-work"
 
