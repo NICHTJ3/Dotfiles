@@ -6,7 +6,7 @@ return {
         tailwindcss = {
           settings = {
             tailwindCSS = {
-              classFunctions = { 'cn', 'cx', 'cva' },
+              classFunctions = { 'cn', 'cx', 'cva', 'tv' },
             },
           },
         },
