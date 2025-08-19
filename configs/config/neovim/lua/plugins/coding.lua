@@ -17,6 +17,7 @@ return {
   { 'Bilal2453/luvit-meta', lazy = true },
   {
     'nvim-neotest/neotest',
+    commit = '52fca671', -- workaround until https://github.com/nvim-neotest/neotest/issues/531 is fixed
     dependencies = { 'nvim-neotest/nvim-nio' },
     opts = {
       -- Can be a list of adapters like what neotest expects,
