@@ -4,7 +4,24 @@ return {
     cmd = 'Copilot',
     build = ':Copilot auth',
     event = 'BufReadPost',
+    dependencies = {
+      {
+        'copilotlsp-nvim/copilot-lsp', -- (Optional) for nes
+        init = function()
+          vim.g.copilot_nes_debounce = 400
+        end,
+      },
+    },
     opts = {
+      nes = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept_and_goto = '<c-y>',
+          accept = false,
+          dismiss = '<Esc>',
+        },
+      },
       suggestion = {
         enabled = true,
         auto_trigger = true,
@@ -22,20 +39,15 @@ return {
         help = true,
       },
     },
-  },
-  {
-    'zbirenbaum/copilot.lua',
-    opts = function()
+    init = function()
       Core.cmp.actions.ai_accept = function()
         if require('copilot.suggestion').is_visible() then
-          -- Core.create_undo()
           require('copilot.suggestion').accept()
           return true
         end
       end
     end,
   },
-
   {
     'saghen/blink.cmp',
     optional = true,

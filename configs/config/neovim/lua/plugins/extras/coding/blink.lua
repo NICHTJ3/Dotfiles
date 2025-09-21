@@ -117,7 +117,7 @@ return {
   {
     'zbirenbaum/copilot.lua',
     optional = true,
-    opts = function()
+    opts = function(opts)
       vim.api.nvim_create_autocmd('User', {
         pattern = 'BlinkCmpMenuOpen',
         callback = function()
@@ -131,6 +131,7 @@ return {
           vim.b.copilot_suggestion_hidden = false
         end,
       })
+      return opts
     end,
   },
 }
