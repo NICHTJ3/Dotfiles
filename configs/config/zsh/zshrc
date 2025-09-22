@@ -122,4 +122,8 @@ if type "bob" > /dev/null; then
   eval "$(bob complete zsh)"
 fi
 
+if type "kubectl" > /dev/null; then
+  eval "$(kubectl completion zsh)"
+fi
+
 [[ $PROFILE_ZSH == 1 ]] && zprof &2>/dev/null
