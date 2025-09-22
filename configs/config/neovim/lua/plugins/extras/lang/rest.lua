@@ -5,7 +5,7 @@ return {
   },
   {
     'mistweaverco/kulala.nvim',
-    ft = 'http',
+    ft = { 'http', 'json' },
     keys = {
       { '<leader>R', '', desc = '+[R]est' },
       { '<leader>Rb', "<cmd>lua require('kulala').scratchpad()<cr>", desc = 'Open scratchpad' },
@@ -26,6 +26,8 @@ return {
       { '<leader>RS', "<cmd>lua require('kulala').show_stats()<cr>", desc = 'Show stats', ft = 'http' },
       { '<leader>Rt', "<cmd>lua require('kulala').toggle_view()<cr>", desc = 'Toggle headers/body', ft = 'http' },
     },
-    opts = {},
+    opts = {
+      lsp = { formatter = true },
+    },
   },
 }
