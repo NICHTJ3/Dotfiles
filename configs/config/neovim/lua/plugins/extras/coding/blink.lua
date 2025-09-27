@@ -61,12 +61,12 @@ return {
         preset = 'default',
         ['<c-y>'] = {
           'select_and_accept',
-          Core.cmp.map { 'snippet_forward', 'ai_accept' },
+          Core.cmp.map { 'snippet_forward', 'ai_nes', 'ai_accept' },
           'fallback',
         },
         ['<tab>'] = {
           'select_and_accept',
-          Core.cmp.map { 'snippet_forward', 'ai_accept' },
+          Core.cmp.map { 'snippet_forward', 'ai_nes', 'ai_accept' },
           'fallback',
         },
       },
