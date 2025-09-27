@@ -17,7 +17,7 @@ adjust-underline-position=2
 cursor-style = block
 bold-is-bright = true
 macos-titlebar-style = transparent
-theme = "Catppuccin-Macchiato"
+theme = "Catppuccin Macchiato"
 
 
 # Tmux custom keymaps
