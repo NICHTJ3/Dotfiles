@@ -54,7 +54,8 @@ return {
   {
     'folke/sidekick.nvim',
     lazy = false,
-    opts = function()
+    init = function() end,
+    opts = function(opts)
       -- Accept inline suggestions or next edits
       Core.cmp.actions.ai_nes = function()
         local Nes = require 'sidekick.nes'
@@ -62,6 +63,7 @@ return {
           return true
         end
       end
+      return opts
     end,
     keys = {
       -- nes is also useful in normal mode
