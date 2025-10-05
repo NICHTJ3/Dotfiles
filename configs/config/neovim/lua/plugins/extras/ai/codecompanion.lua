@@ -20,6 +20,29 @@ return {
           provider = 'snacks',
         },
       },
+      memory = {
+        default = {
+          description = 'Collection of common files for all projects',
+          files = {
+            '.clinerules',
+            '.cursorrules',
+            '.goosehints',
+            '.rules',
+            '.windsurfrules',
+            '.github/copilot-instructions.md',
+            'AGENT.md',
+            'AGENTS.md',
+            { path = 'CLAUDE.md', parser = 'claude' },
+            { path = 'CLAUDE.local.md', parser = 'claude' },
+            { path = '~/.claude/CLAUDE.md', parser = 'claude' },
+          },
+        },
+        opts = {
+          chat = {
+            default_memory = 'default',
+          },
+        },
+      },
       strategies = {
         chat = {
           keymaps = {
