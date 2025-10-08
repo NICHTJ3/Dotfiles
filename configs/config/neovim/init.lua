@@ -5,7 +5,7 @@ vim.g.maplocalleader = '\\'
 require('core.init').setup {
   colorscheme = 'catppuccin-macchiato',
   extras = {
-    { import = 'plugins.extras.ai.codecompanion' },
+    { import = 'plugins.extras.ai.sidekick' },
     { import = 'plugins.extras.ai.copilot-native' },
     { import = 'plugins.extras.ai.mcphub' },
     { import = 'plugins.extras.coding.octo' },
