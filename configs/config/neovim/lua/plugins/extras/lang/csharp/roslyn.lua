@@ -4,21 +4,6 @@ return {
     opts = { ensure_installed = { 'c_sharp' } },
   },
   {
-    'stevearc/conform.nvim',
-    optional = true,
-    opts = {
-      formatters_by_ft = {
-        cs = { 'csharpier' },
-      },
-      formatters = {
-        csharpier = {
-          command = 'dotnet-csharpier',
-          args = { '--write-stdout' },
-        },
-      },
-    },
-  },
-  {
     'mfussenegger/nvim-dap',
     optional = true,
     opts = function()
