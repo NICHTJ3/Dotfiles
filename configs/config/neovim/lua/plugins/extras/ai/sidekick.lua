@@ -11,56 +11,68 @@ return {
       },
     },
     keys = {
-      { '<leader>a', mode = { 'n', 'v' }, '', desc = '+[A]I' },
+      { '<leader>a', '', desc = '+[A]i', mode = { 'n', 'v' } },
+      {
+        '<c-_>',
+        function()
+          require('sidekick.cli').toggle()
+        end,
+        desc = '[A]I chat toggle',
+        mode = { 'n', 't', 'i', 'x' },
+      },
+      {
+        '<leader>ac',
+        function()
+          require('sidekick.cli').toggle()
+        end,
+        desc = '[A]I chat toggle',
+      },
+      {
+        '<leader>as',
+        function()
+          require('sidekick.cli').select()
+        end,
+        -- Or to select only installed tools:
+        -- require("sidekick.cli").select({ filter = { installed = true } })
+        desc = '[A]I select tool',
+      },
+      {
+        '<leader>ad',
+        function()
+          require('sidekick.cli').close()
+        end,
+        desc = '[A]I close',
+      },
+      {
+        '<leader>at',
+        function()
+          require('sidekick.cli').send { msg = '{this}' }
+        end,
+        mode = { 'x', 'n' },
+        desc = '[A]I send This',
+      },
+      {
+        '<leader>af',
+        function()
+          require('sidekick.cli').send { msg = '{file}' }
+        end,
+        desc = '[A]I send File',
+      },
+      {
+        '<leader>av',
+        function()
+          require('sidekick.cli').send { msg = '{selection}' }
+        end,
+        mode = { 'x' },
+        desc = '[A]I send Selection',
+      },
       {
         '<leader>aa',
         function()
           require('sidekick.cli').prompt()
         end,
-        desc = '[A]I [A]ction',
-        mode = { 'n', 'v' },
-      },
-      {
-        '<leader>ac',
-        function()
-          require('sidekick.cli').send { prompt = 'file', name = 'copilot' }
-        end,
-        desc = '[A]I [C]hat',
-        mode = { 'n' },
-      },
-      {
-        '<leader>at',
-        mode = { 'n' },
-        function()
-          require('sidekick.cli').send { prompt = 'test', name = 'copilot' }
-        end,
-        desc = '[A]I [T]est',
-      },
-      {
-        '<leader>ai',
-        function()
-          require('sidekick.cli').send { name = 'copilot' }
-        end,
-        desc = '[A]I [I]nline',
-        mode = { 'v' },
-      },
-      {
-        '<leader>af',
-        function()
-          require('sidekick.cli').send { prompt = 'fix', name = 'copilot' }
-        end,
-        desc = '[A]I [F]ix',
-        mode = { 'n', 'v' },
-      },
-      {
-        '<c-_>',
-        function()
-          require('sidekick.cli').focus {
-            name = 'copilot',
-          }
-        end,
-        mode = { 'n', 'x', 'i', 't' },
-        desc = 'Sidekick Switch Focus',
+        mode = { 'n', 'x' },
+        desc = '[A]I action',
       },
     },
   },
