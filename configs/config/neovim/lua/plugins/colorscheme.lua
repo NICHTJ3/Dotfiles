@@ -59,4 +59,11 @@ return {
       },
     },
   },
+  {
+    'maxmx03/fluoromachine.nvim',
+    lazy = false,
+    opts = {
+      glow = true,
+    },
+  },
 }
