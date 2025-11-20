@@ -7,6 +7,7 @@ return {
           settings = {
             tailwindCSS = {
               classFunctions = { 'cn', 'cx', 'cva', 'tv' },
+              classAttributes = { 'class', 'className', 'ngClass', 'tw', 'twClass', 'classNames' },
             },
           },
         },
