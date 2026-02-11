@@ -1,12 +1,28 @@
+local PREFERRED_CLI_AGENTS = {
+  { cmd = 'claude', name = 'claude' },
+  { cmd = 'cursor-agent', name = 'cursor' },
+  { cmd = 'gemini', name = 'gemini' },
+  { cmd = 'copilot', name = 'copilot' },
+}
+
+local function default_cli_agent()
+  for _, agent in ipairs(PREFERRED_CLI_AGENTS) do
+    if vim.fn.executable(agent.cmd) == 1 then
+      return agent.name
+    end
+  end
+  return nil
+end
+
 return {
   {
     'folke/sidekick.nvim',
+    version = '*',
     lazy = false,
     opts = {
       cli = {
         mux = {
           enabled = true,
-          backend = 'tmux',
         },
       },
     },
@@ -15,7 +31,9 @@ return {
       {
         '<c-_>',
         function()
-          require('sidekick.cli').toggle()
+          require('sidekick.cli').toggle {
+            name = default_cli_agent(),
+          }
         end,
         desc = '[A]I chat toggle',
         mode = { 'n', 't', 'i', 'x' },
@@ -23,9 +41,18 @@ return {
       {
         '<leader>ac',
         function()
-          require('sidekick.cli').toggle()
+          require('sidekick.cli').toggle {
+            name = default_cli_agent(),
+          }
         end,
         desc = '[A]I chat toggle',
+      },
+      {
+        '<leader>aC',
+        function()
+          require('sidekick.cli').toggle {}
+        end,
+        desc = '[A]I chat toggle with cli selection',
       },
       {
         '<leader>as',
