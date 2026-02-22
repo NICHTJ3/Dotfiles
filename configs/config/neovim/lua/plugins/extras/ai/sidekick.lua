@@ -1,6 +1,7 @@
 local PREFERRED_CLI_AGENTS = {
   { cmd = 'claude', name = 'claude' },
   { cmd = 'cursor-agent', name = 'cursor' },
+  { cmd = 'opencode', name = 'opencode' },
   { cmd = 'gemini', name = 'gemini' },
   { cmd = 'copilot', name = 'copilot' },
 }
