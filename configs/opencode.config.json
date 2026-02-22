@@ -1,0 +1,8 @@
+{
+  "links": [
+    {
+      "to": "~/.config/opencode/opencode.json",
+      "from": "./config/opencode/opencode.json"
+    }
+  ]
+}

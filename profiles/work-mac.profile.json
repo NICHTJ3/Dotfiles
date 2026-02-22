@@ -1,10 +1,11 @@
 {
-    "configs":[
-        "neovim",
-        "zsh",
-        "karabiner",
-        "tmux",
-        "git",
-        "ghostty"
-    ]
+  "configs": [
+    "neovim",
+    "zsh",
+    "karabiner",
+    "tmux",
+    "git",
+    "ghostty",
+    "opencode"
+  ]
 }
