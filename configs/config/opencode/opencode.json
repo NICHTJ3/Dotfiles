@@ -5,8 +5,10 @@
       "mode": "primary",
       "prompt": "You have access to no tools, you can only respond to questions",
       "tools": {
-        "*": false
-      }
+        "mymcp_*": false,
+        "write": false,
+        "edit": false
+      },
     }
   }
 }
