@@ -113,8 +113,8 @@ unset key
 # PERF: The completions that are evalled could be added to fpath or cached rather than run time exec
 
 # Add git spice completions
-if type "gs" > /dev/null; then
-  eval "$(gs shell completion zsh)"
+if type "git-spice" > /dev/null; then
+  eval "$(git-spice shell completion zsh)"
 fi
 
 # bob completions
