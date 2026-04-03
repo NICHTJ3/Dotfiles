@@ -5,6 +5,7 @@ local LazyUtil = require 'lazy.core.util'
 ---@field cmp core.util.cmp
 ---@field lsp core.util.lsp
 ---@field events core.util.events
+---@field treesitter core.util.treesitter
 local M = {}
 
 setmetatable(M, {
@@ -32,7 +33,6 @@ function M.get_pkg_path(pkg, path, opts)
   path = path or ''
   return root .. '/packages/' .. pkg .. '/' .. path
 end
-
 
 ---@param name string
 function M.get_plugin(name)
