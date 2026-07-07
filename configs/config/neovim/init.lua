@@ -13,6 +13,7 @@ require('core.init').setup {
     { import = 'plugins.extras.filenavigation.snacks-explorer' },
     { import = 'plugins.extras.formatters.prettier' },
     { import = 'plugins.extras.lang.css' },
+    { import = 'plugins.extras.lang.go' },
     { import = 'plugins.extras.lang.docker' },
     { import = 'plugins.extras.lang.git' },
     { import = 'plugins.extras.lang.json' },
