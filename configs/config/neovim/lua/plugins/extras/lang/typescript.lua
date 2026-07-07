@@ -262,9 +262,11 @@ return {
       opts = {
         adapters = {
           ['neotest-jest'] = {
-            -- jestCommand = 'npm test -- --',
+            -- NOTE: This is only recommended with `neotest.discovery.enabled = false`.
+            -- We've kept it enabled to prevent other neotest adapters from having issues.
+            -- If you see excessive jest instances being spawned you can disabled either of the options
             jest_test_discovery = true,
-
+            -- jestCommand = 'npm test --',
           },
           ['neotest-vitest'] = {},
         },

@@ -44,7 +44,7 @@ return {
         end,
       },
       discovery = {
-        enabled = false,
+        enabled = true,
       },
     },
     config = function(_, opts)
