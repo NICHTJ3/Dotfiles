@@ -87,6 +87,11 @@ alias :e='nvim'
 if type "tmux-manager" > /dev/null; then
     alias tmux='tmux-manager'
 fi
+if type "git-spice" > /dev/null; then
+  alias gs='git-spice'
+  alias gsu='git-spice up'
+  alias gsd='git-spice down'
+fi
 alias :qa='test -n "$TMUX" && \tmux kill-window'
 alias :sp='test -n "$TMUX" && \tmux split-window'
 alias :vs='test -n "$TMUX" && \tmux split-window -h'
