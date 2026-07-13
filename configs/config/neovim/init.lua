@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
 require('core.init').setup {
-  colorscheme = 'fluoromachine',
+  colorscheme = 'gruvbox',
   extras = {
     { import = 'plugins.extras.ai.sidekick' },
     { import = 'plugins.extras.ai.copilot-native' },

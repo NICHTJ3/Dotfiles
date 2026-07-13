@@ -17,24 +17,26 @@ adjust-underline-position=2
 cursor-style = block
 bold-is-bright = true
 macos-titlebar-style = transparent
-theme = "Catppuccin Macchiato"
+theme = "Rose Pine"
 
+# Make Option key send alt escape sequences (enables option+backspace word delete, option+arrows, etc.)
+macos-option-as-alt = true
 
-# Tmux custom keymaps
-# New tmux window on Cmd+t in tmux it is Ctrl+a+c
+# Herdr + tmux keymaps (prefix is Ctrl+a)
+# New tab: Cmd+t → Ctrl+a+c
 keybind = super+t=text:\x01\x63
 
-# Close tmux pane on Cmd+w in tmux it is Ctrl+a+x
+# Close pane: Cmd+w → Ctrl+a+x
 keybind = super+w=text:\x01\x78
 
-# Go to the next tmux tab on Cmd+n in tmux it is Ctrl+a+n
+# Next tab: Cmd+n → Ctrl+a+n
 keybind = super+n=text:\x01\x6e
 
-# Go to the previous tmux tab on Cmd+p in tmux it is Ctrl+a+p
+# Previous tab: Cmd+p → Ctrl+a+p
 keybind = super+p=text:\x01\x70
 
-# Split the window horizontally on Cmd+' in tmux it is Ctrl+a+"
+# Split horizontal: Cmd+' → Ctrl+a+" (herdr: prefix+", tmux: prefix+")
 keybind = super+'=text:\x01\x22
 
-# Split the window vertically on Cmd+backslash in tmux it is Ctrl+a+%
+# Split vertical: Cmd+backslash → Ctrl+a+% (herdr: prefix+%, tmux: prefix+%)
 keybind = super+backslash=text:\x01\x25

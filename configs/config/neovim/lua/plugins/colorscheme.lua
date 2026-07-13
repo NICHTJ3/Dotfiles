@@ -66,4 +66,25 @@ return {
       glow = true,
     },
   },
+  {
+    'rose-pine/neovim',
+    lazy = false,
+    name = 'rose-pine',
+    opts = {
+      dark_variant = 'main',
+      disable_background = true,
+      disable_float_background = true,
+    },
+  },
+  {
+    'ellisonleao/gruvbox.nvim',
+    lazy = false,
+    opts = {
+      transparent_mode = true,
+      overrides = {
+        NormalFloat = { bg = '#1d2021' },
+        FloatBorder = { bg = '#1d2021' },
+      },
+    },
+  },
 }
