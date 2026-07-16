@@ -5,7 +5,8 @@
     "zsh",
     "karabiner",
     "tmux",
-    "git"
+    "git",
+    "zig"
   ],
   "packages": [
     "notunes",

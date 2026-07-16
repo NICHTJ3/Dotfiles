@@ -1,0 +1,6 @@
+{
+  "description": "Install zig",
+  "shell": [
+    "curl https://www.zvm.app/install.sh | bash"
+  ]
+}

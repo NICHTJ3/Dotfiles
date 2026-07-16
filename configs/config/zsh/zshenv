@@ -9,6 +9,9 @@ if [ -d"$HOME/bin" ];then
     PATH="$PATH:$(du -L "$HOME/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 fi
 
+
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
 export DOTNET_ROOT=$HOME/.dotnet
 export BUN_INSTALL="$HOME/.bun"
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -21,7 +24,9 @@ for path_candidate in \
     $HOME/.deno/bin\
     $HOME/.local/bin\
     $PNPM_HOME\
-    $HOME/go/bin
+    $HOME/go/bin\
+    $HOME/.zvm/bin\
+    $ZVM_INSTALL/
 do
     [[ -d ${path_candidate} ]] && export PATH="${PATH}:${path_candidate}"
 done
