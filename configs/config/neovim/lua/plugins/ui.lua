@@ -10,6 +10,13 @@ return {
     opts = function(_, opts)
       vim.o.laststatus = 3
       opts.globalstatus = true
+      opts.sections = opts.sections or {}
+      -- Show lsp status on the right hand side:
+      -- abc ----- xyz
+      opts.sections.lualine_x = opts.sections.lualine_x or {}
+      table.insert(opts.sections.lualine_x, {
+        'lsp_status',
+      })
       return opts
     end,
   },
