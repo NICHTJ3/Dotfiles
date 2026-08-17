@@ -1,19 +1,18 @@
 return {
   {
     'tiesen243/vercel.nvim',
-    lazy = false,
+    event = 'VeryLazy',
     opts = {
       theme = 'dark',
     },
   },
-  { 'folke/tokyonight.nvim', lazy = false, opts = { style = 'night' } },
-  { 'olimorris/onedarkpro.nvim', lazy = false },
-  { 'rebelot/kanagawa.nvim', lazy = false },
-  { 'scottmckendry/cyberdream.nvim', lazy = false },
+  { 'folke/tokyonight.nvim', event = 'VeryLazy', opts = { style = 'night' } },
+  { 'olimorris/onedarkpro.nvim', event = 'VeryLazy' },
+  { 'rebelot/kanagawa.nvim', event = 'VeryLazy' },
+  { 'scottmckendry/cyberdream.nvim', event = 'VeryLazy' },
   -- catppuccin
   {
     'catppuccin/nvim',
-    lazy = true,
     name = 'catppuccin',
     opts = {
       integrations = {
@@ -61,14 +60,14 @@ return {
   },
   {
     'maxmx03/fluoromachine.nvim',
-    lazy = false,
+    event = 'VeryLazy',
     opts = {
       glow = true,
     },
   },
   {
     'rose-pine/neovim',
-    lazy = false,
+    event = 'VeryLazy',
     name = 'rose-pine',
     opts = {
       dark_variant = 'main',
@@ -78,7 +77,7 @@ return {
   },
   {
     'ellisonleao/gruvbox.nvim',
-    lazy = false,
+    event = 'VeryLazy',
     opts = {
       transparent_mode = true,
       overrides = {
