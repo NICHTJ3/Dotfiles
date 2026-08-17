@@ -35,7 +35,6 @@ return {
     'mrcjkb/rustaceanvim',
     version = '^9',
     ft = { 'rust' },
-    lazy = false, -- This plugin is already lazy
     dependencies = {
       'mason.nvim', -- Make sure mason is loaded before running check for rust-analyzer
     },
