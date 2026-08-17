@@ -40,9 +40,6 @@ return {
         folder = 'journal',
         template = nil,
       },
-      completion = {
-        blink = true,
-      },
       ui = {
         enable = false, -- set to false to disable all additional syntax features
         update_debounce = 200, -- update delay after a text change (in milliseconds)
