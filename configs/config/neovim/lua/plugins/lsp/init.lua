@@ -135,10 +135,21 @@ return {
         -- code lens
         if opts.codelens.enabled and vim.lsp.codelens then
           Core.lsp.on_supports_method('textDocument/codeLens', function(client, buffer)
-            vim.lsp.codelens.refresh()
-            vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
-              buffer = buffer,
-              callback = vim.lsp.codelens.refresh,
+            vim.lsp.codelens.enable(true, {
+              bufnr = buffer,
+              client_id = client.id,
+            })
+          end)
+        end
+      end
+
+      if vim.fn.has 'nvim-0.12' == 1 then
+        -- Inline color highlights for supported LSP servers
+        if vim.lsp.document_color then
+          Core.lsp.on_supports_method('textDocument/documentColor', function(client, buffer)
+            vim.lsp.document_color.enable(true, { bufnr = buffer }, {
+              style = ' ',
+              virtual_text_pos = 'inline', -- Displays the square directly next to the color code
             })
           end)
         end
