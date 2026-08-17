@@ -25,35 +25,46 @@ return {
         mux = {
           enabled = true,
         },
+        win = {
+          layout = 'float',
+          float = { border = 'rounded' },
+          keys = {
+            shift_enter = {
+              '<S-CR>',
+              function(terminal)
+                -- Send keyboard protocol shift+enter directly to the job
+                vim.api.nvim_chan_send(terminal.job, '\x1b\r')
+              end,
+              mode = 't',
+              desc = 'send shift+enter to terminal',
+            },
+          },
+        },
       },
     },
     keys = {
       { '<leader>a', '', desc = '+[A]i', mode = { 'n', 'v' } },
       {
-        '<c-_>',
-        function()
-          require('sidekick.cli').toggle {
-            name = default_cli_agent(),
-          }
-        end,
-        desc = '[A]I chat toggle',
-        mode = { 'n', 't', 'i', 'x' },
-      },
-      {
         '<leader>ac',
         function()
           require('sidekick.cli').toggle {
+            focus = true,
+            name = default_cli_agent(),
+          }
+        end,
+        desc = '[A]I [c]hat toggle',
+        mode = { 'n', 'v', 't' },
+      },
+      {
+        '<c-;>',
+        function()
+          require('sidekick.cli').toggle {
+            focus = true,
             name = default_cli_agent(),
           }
         end,
         desc = '[A]I chat toggle',
-      },
-      {
-        '<leader>aC',
-        function()
-          require('sidekick.cli').toggle {}
-        end,
-        desc = '[A]I chat toggle with cli selection',
+        mode = { 'n', 'v', 't' },
       },
       {
         '<leader>as',
