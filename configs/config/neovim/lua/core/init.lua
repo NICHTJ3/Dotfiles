@@ -19,7 +19,7 @@ table.unpack = table.unpack or unpack -- 5.1 compatibility
 
 local M = {}
 
---- @alias Colorscheme 'onedark' | 'onedark_vivid' | 'onelight' |'onedark_dark' | 'blue' | 'cyberdream' | 'darkblue' | 'default' | 'delek' | 'desert' | 'elflord' | 'evening' | 'habamax' | 'industry' | 'industry-extended' | 'kanagawa' | 'kanagawa-dragon' | 'kanagawa-lotus' | 'kanagawa-wave' | 'koehler' | 'lunaperche' | 'morning' | 'murphy' | 'pablo' | 'peachpuff' | 'quiet' | 'retrobox' | 'ron' | 'shine' | 'slate' | 'sorbet' | 'tokyonight' | 'tokyonight-day' | 'tokyonight-moon' | 'tokyonight-night' | 'tokyonight-storm' | 'torte' | 'vim' | 'wildcharm' | 'zaibatsu' | 'zellner' | 'catppuccin'|'catppuccin-latte'|'catppuccin-mocha'| 'catppuccin-frappe'| 'catppuccin-macchiato'| 'vercel' | 'fluoromachine' | 'gruvbox' | 'rose-pine' | 'rose-pine-dawn' | 'rose-pine-moon' | 'rose-pine-main'
+--- @alias Colorscheme 'onedark' | 'onedark_vivid' | 'onelight' |'onedark_dark' | 'blue' | 'cyberdream' | 'darkblue' | 'default' | 'delek' | 'desert' | 'elflord' | 'evening' | 'habamax' | 'industry' | 'industry-extended' | 'kanagawa' | 'kanagawa-dragon' | 'kanagawa-lotus' | 'kanagawa-wave' | 'koehler' | 'lunaperche' | 'morning' | 'murphy' | 'pablo' | 'peachpuff' | 'quiet' | 'retrobox' | 'ron' | 'shine' | 'slate' | 'sorbet' | 'tokyonight' | 'tokyonight-day' | 'tokyonight-moon' | 'tokyonight-night' | 'tokyonight-storm' | 'torte' | 'vim' | 'wildcharm' | 'zaibatsu' | 'zellner' | 'catppuccin'|'catppuccin-latte'|'catppuccin-mocha'| 'catppuccin-frappe'| 'catppuccin-macchiato'| 'vercel' | 'fluoromachine' | 'gruvbox' | 'rose-pine' | 'rose-pine-dawn' | 'rose-pine-moon' | 'rose-pine-main' | 'vscode' | 'rider'
 
 ---@param opts {colorscheme: Colorscheme | string, extras: LazySpec}
 function M.setup(opts)
