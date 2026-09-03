@@ -5,9 +5,14 @@
 -- taken from runtime/lua/_editor.lua
 vim.keymap.set('n', '<leader>ur', '<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>', { desc = 'Redraw / Clear hlsearch / Diff Update' })
 
--- Set highlight on search, but clear on pressing <Esc> in normal mode
+-- Highlight on search, but clear on normal mode <Esc>. Also clear multicursor if using 0.13 or later
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', function()
+  vim.cmd.nohlsearch()
+  if vim.fn.has 'nvim-0.13' == 1 then
+    vim.api.nvim_buf_clear_namespace(0, vim.api.nvim_create_namespace 'nvim.multicursor', 0, -1)
+  end
+end, { desc = 'Clear search highlight and multicursor highlights' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
