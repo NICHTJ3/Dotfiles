@@ -4,7 +4,7 @@ return {
     opts = { ensure_installed = { 'http', 'graphql' } },
   },
   {
-    'mistweaverco/kulala.nvim',
+    'dont-be-evil-company/kulala.nvim',
     ft = { 'http', 'json' },
     keys = {
       { '<leader>R', '', desc = '+[R]est' },
