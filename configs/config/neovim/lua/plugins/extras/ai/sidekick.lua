@@ -53,7 +53,7 @@ return {
           }
         end,
         desc = '[A]I [c]hat toggle',
-        mode = { 'n', 'v', 't' },
+        mode = { 'n', 'v' },
       },
       {
         '<c-;>',
