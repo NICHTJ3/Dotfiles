@@ -26,6 +26,7 @@ require('core.init').setup {
     { import = 'plugins.extras.lang.sql' },
     { import = 'plugins.extras.lang.terraform' },
     { import = 'plugins.extras.lang.typescript' },
+    { import = 'plugins.extras.lang.angular' },
     { import = 'plugins.extras.lang.tailwind' },
     { import = 'plugins.extras.linters.eslint' },
     { import = 'plugins.extras.lang.csharp.roslyn' },
