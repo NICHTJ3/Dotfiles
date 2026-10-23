@@ -42,6 +42,15 @@ return {
           },
         },
       },
+      setup = {
+        angularls = function(_, opts)
+          Core.lsp.on({ name = 'vtsls' }, function(_, client)
+            --HACK: disable vtsls renaming and reference capabilities to avoid duplicates
+            client.server_capabilities.referencesProvider = false
+            client.server_capabilities.renameProvider = false
+          end)
+        end,
+      },
     },
   },
 
