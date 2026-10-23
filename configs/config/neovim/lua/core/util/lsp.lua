@@ -155,6 +155,20 @@ M.action = setmetatable({}, {
   end,
 })
 
+---@param filter? vim.lsp.get_clients.Filter
+---@param cb fun(buf: number, client: vim.lsp.Client): any?
+---@overload fun(cb: fun(buf: number, client: vim.lsp.Client): any?)
+function M.on(filter, cb)
+  local ok, snacks = pcall(require, 'snacks')
+  if ok and snacks.util and snacks.util.lsp and snacks.util.lsp.on then
+    if type(filter) == 'function' then
+      return snacks.util.lsp.on(filter)
+    else
+      return snacks.util.lsp.on(filter, cb)
+    end
+  end
+end
+
 function M.setup()
   local register_capability = vim.lsp.handlers['client/registerCapability']
 
