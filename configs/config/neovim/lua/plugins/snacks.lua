@@ -11,7 +11,16 @@ return {
     quickfile = { enabled = true },
     gh = { enabled = true },
     bigfile = { enabled = true, notify = true },
-    words = { enabled = true },
+    words = {
+      enabled = true,
+      filter = function(buf)
+        -- Disable for angular .component.ts buffers. As inline templates cause some issues
+        if vim.bo[buf].filetype == 'typescript' and vim.fn.expand('#' .. buf .. ':p'):match '%.component%.ts$' then
+          return false
+        end
+        return true
+      end,
+    },
     scope = { enabled = true },
     indent = { enabled = true },
     scroll = { enabled = true },
