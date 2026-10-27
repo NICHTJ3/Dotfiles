@@ -1,0 +1,9 @@
+{
+  "links": [
+    {
+      "to": "~/.config/herdr/config.toml",
+      "from": "./config/herdr/config.toml"
+    }
+  ],
+  "packages": ["herdr"]
+}

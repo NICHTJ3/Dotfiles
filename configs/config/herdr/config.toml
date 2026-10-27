@@ -1,0 +1,55 @@
+onboarding = false
+[theme]
+name = "tokyo-night"
+
+auto_switch = false
+[keys]
+prefix = "ctrl+a"
+
+# Last pane, matching tmux's bind ^\ last-window
+last_pane = "prefix+backslash"
+
+# tmux-style split bindings: | for vertical, " for horizontal
+# Also bind % so Cmd+backslash works the same as in tmux
+split_vertical = ['prefix+|', 'prefix+%']
+split_horizontal = 'prefix+"'
+
+# tmux-style tab rename on prefix+,
+rename_tab = "prefix+comma"
+
+# vim herdr navigation: smart ctrl+h/j/k/l that detects vim and forwards keys
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "mux.nvim.left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "mux.nvim.down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "mux.nvim.up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "mux.nvim.right"
+
+[ui]
+agent_panel_sort = "spaces"
+show_agent_labels_on_pane_borders = true
+pane_gaps = true
+prompt_new_tab_name = false
+
+[ui.sound]
+enabled = true
+
+[ui.toast]
+delivery = "terminal"
+
+[experimental]
+pane_history = false
+switch_ascii_input_source_in_prefix = true
