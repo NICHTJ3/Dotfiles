@@ -6,7 +6,8 @@
     "karabiner",
     "tmux",
     "git",
-    "zig"
+    "zig",
+    "herdr"
   ],
   "packages": [
     "notunes",
