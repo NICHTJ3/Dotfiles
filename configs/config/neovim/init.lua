@@ -9,6 +9,7 @@ require('core.init').setup {
     { import = 'plugins.extras.ai.copilot-native' },
     { import = 'plugins.extras.ai.mcphub' },
     { import = 'plugins.extras.editor.hardtime' },
+    { import = 'plugins.extras.editor.other' },
     { import = 'plugins.extras.filenavigation.snacks-explorer' },
     { import = 'plugins.extras.formatters.prettier' },
     { import = 'plugins.extras.lang.css' },
