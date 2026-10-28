@@ -2,6 +2,6 @@
   "dotfiles": "~/Dotfiles/",
   "profiles_dir": "profiles",
   "configs_dir": "configs",
-  "package_add_command": "brew add {}",
+  "package_add_command": "brew install {}",
   "package_remove_command": "brew remove {}"
 }
