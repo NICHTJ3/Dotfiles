@@ -13,8 +13,23 @@ if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
   if (Test-Path $ompConfig) {
     oh-my-posh init pwsh --config $ompConfig | Invoke-Expression
   } else {
-    oh-my-posh init pwsh --config 'spaceship' | Invoke-Expression
+    oh-my-posh init pwsh --config 'powerlevel10k_lean' | Invoke-Expression
   }
+}
+
+Import-Module PSReadLine
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineOption -BellStyle None
+Set-PSReadLineOption -CompletionQueryItems 100
+Set-PSReadLineOption -HistorySearchCaseSensitive:$false
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+Set-PSReadLineOption -HistorySaveStyle SaveIncrementally
+
+if (-not [Console]::IsOutputRedirected -and ($env:WT_SESSION -or $env:TERM_PROGRAM -eq 'vscode' -or $env:ConEmuANSI -eq 'ON' -or $env:ANSICON)) {
+  Set-PSReadLineOption -PredictionSource History
+  Set-PSReadLineOption -PredictionViewStyle ListView
 }
 
 # Git aliases (functions, since PowerShell aliases can't take arguments)
@@ -59,3 +74,8 @@ function glog { git log --oneline --decorate --graph @args }
 function glol { git log --graph --pretty=($glogPretty -f '%ar') @args }
 function glola { git log --graph --pretty=($glogPretty -f '%ar') --all @args }
 function glols { git log --graph --pretty=($glogPretty -f '%ar') --stat @args }
+
+$EcoProfilePath = Join-Path $HOME 'Documents\PowerShell\eco-profile.ps1'
+if (Test-Path -LiteralPath $EcoProfilePath) {
+  . $EcoProfilePath
+}

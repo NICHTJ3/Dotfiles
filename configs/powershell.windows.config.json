@@ -1,16 +1,13 @@
 {
-  "description": "My PowerShell $PROFILE (Windows PowerShell + PowerShell 7) and oh-my-posh",
+  "description": "My PowerShell 7 profile and oh-my-posh",
   "links": [
     {
       "from": "./config/powershell/profile.ps1",
       "to": "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
-    },
-    {
-      "from": "./config/powershell/profile.ps1",
-      "to": "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
     }
   ],
   "packages": [
+    "Microsoft.PowerShell",
     "JanDeDobbeleer.OhMyPosh"
   ]
 }
