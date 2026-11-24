@@ -50,10 +50,6 @@ foreach ($name in $configNames) {
     }
   }
 
-  foreach ($dir in $config.directories) {
-    New-Item -ItemType Directory -Force (Expand-Home $dir) | Out-Null
-  }
-
   foreach ($l in $config.links) {
     $to = Expand-Home $l.to
     if ($l.glob) {
@@ -63,6 +59,13 @@ foreach ($name in $configNames) {
       }
     } else {
       Link (Join-Path (Join-Path $root 'configs') $l.from.Substring(2)) $to
+    }
+  }
+
+  foreach ($dir in $config.directories) {
+    $path = Expand-Home $dir
+    if (-not (Test-Path $path)) {
+      New-Item -ItemType Directory -Force $path | Out-Null
     }
   }
 }
