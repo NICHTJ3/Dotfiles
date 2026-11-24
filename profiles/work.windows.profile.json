@@ -1,0 +1,7 @@
+{
+  "configs": [
+    "powershell.windows",
+    "neovim.windows"
+  ]
+}
+

@@ -24,6 +24,20 @@ dotsy --help
 # dotsy profile install work-mac > To install the work-mac profile
 ```
 
+### Windows
+
+`install.ps1` installs a profile from `profiles/` without `dotsy`. It needs [winget](https://learn.microsoft.com/windows/package-manager/winget/) and PowerShell 5.1+.
+
+```powershell
+git clone https://github.com/NICHTJ3/Dotfiles $HOME\Dotfiles
+cd $HOME\Dotfiles
+
+.\install.ps1 work.windows
+# .\install.ps1 work.windows -SkipPackages > To skip the winget installs
+```
+
+Symlinks require Developer Mode or an elevated shell, otherwise files are copied instead. Existing files that conflict with a link cause the script to fail rather than be overwritten. Restart your shell afterwards and run `nvim` to let lazy.nvim sync plugins.
+
 ## Other resources
 
 Most dependencies etc (that you'd normally brew install, git clone etc, are handled for you by `dotsy`, you may need a `.dotsyrc` file setup with your dependency manager to make this work though. Outside of that setup guides for other things can be found over in the [Wiki](https://github.com/nichtj3/dotfiles/wiki)

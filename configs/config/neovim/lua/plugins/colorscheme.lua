@@ -1,11 +1,4 @@
 return {
-  {
-    'tiesen243/vercel.nvim',
-    event = 'VeryLazy',
-    opts = {
-      theme = 'dark',
-    },
-  },
   { 'tomstolarczuk/rider.nvim', event = 'VeryLazy' },
   { 'mofiqul/vscode.nvim', event = 'VeryLazy' },
   { 'folke/tokyonight.nvim', event = 'VeryLazy', opts = { style = 'night' } },

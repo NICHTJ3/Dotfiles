@@ -1,0 +1,19 @@
+{
+  "description": "My neovim config (Windows paths)",
+  "links": [
+    {
+      "from": "./config/neovim/*",
+      "to": "~/AppData/Local/nvim/",
+      "glob": true
+    }
+  ],
+  "directories": [
+    "~/AppData/Local/nvim/spell/",
+    "~/AppData/Local/nvim/undodir/"
+  ],
+  "packages": [
+    "Neovim.Neovim",
+    "junegunn.fzf",
+    "BurntSushi.ripgrep.MSVC"
+  ]
+}
