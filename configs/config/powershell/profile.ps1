@@ -22,14 +22,14 @@ Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineOption -BellStyle None
-Set-PSReadLineOption -CompletionQueryItems 100
+Set-PSReadLineOption -CompletionQueryItems 20
 Set-PSReadLineOption -HistorySearchCaseSensitive:$false
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadLineOption -HistorySaveStyle SaveIncrementally
 
 if (-not [Console]::IsOutputRedirected -and ($env:WT_SESSION -or $env:TERM_PROGRAM -eq 'vscode' -or $env:ConEmuANSI -eq 'ON' -or $env:ANSICON)) {
   Set-PSReadLineOption -PredictionSource History
-  Set-PSReadLineOption -PredictionViewStyle ListView
+  Set-PSReadLineOption -PredictionViewStyle InlineView
 }
 
 # Git aliases (functions, since PowerShell aliases can't take arguments)
