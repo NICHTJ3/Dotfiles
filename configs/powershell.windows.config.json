@@ -4,6 +4,10 @@
     {
       "from": "./config/powershell/profile.ps1",
       "to": "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+    },
+    {
+      "from": "./config/oh-my-posh/config.omp.json",
+      "to": "~/.config/oh-my-posh/config.omp.json"
     }
   ],
   "packages": [
