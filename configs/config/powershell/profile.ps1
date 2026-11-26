@@ -1,5 +1,11 @@
 set-alias vi 'nvim'
 
+$env:EDITOR = 'nvim'
+
+# Vim mode for input
+Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineOption -ViModeIndicator Cursor
+
 # Make sure dotnet is on the user PATH (only written once)
 $dotnet = Join-Path $HOME '.dotnet'
 $userPath = [Environment]::GetEnvironmentVariable('Path', 'User')
@@ -7,6 +13,7 @@ if ((Test-Path $dotnet) -and (($userPath -split ';') -notcontains $dotnet)) {
   [Environment]::SetEnvironmentVariable('Path', "$userPath;$dotnet", 'User')
 }
 if (($env:Path -split ';') -notcontains $dotnet) { $env:Path += ";$dotnet" }
+
 
 if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
   $ompConfig = Join-Path $HOME '.config\oh-my-posh\config.omp.json'
@@ -75,7 +82,27 @@ function glol { git log --graph --pretty=($glogPretty -f '%ar') @args }
 function glola { git log --graph --pretty=($glogPretty -f '%ar') --all @args }
 function glols { git log --graph --pretty=($glogPretty -f '%ar') --stat @args }
 
+# cd aliases like zsh
+function .. { Set-Location .. }
+function ... { Set-Location ..\.. }
+
+# Pretty ls
+if (Get-Command lsd -ErrorAction SilentlyContinue) {
+   if (Test-Path Alias:ls) { Remove-Item Alias:ls -Force }
+
+    function ls  { lsd --group-directories-first @args }
+    function l   { lsd -la --group-directories-first @args }
+    function la  { lsd -lA --group-directories-first @args }
+    function ll  { lsd -l --group-directories-first @args }
+    function lt  { lsd --tree --depth=2 @args }
+}
+
 $EcoProfilePath = Join-Path $HOME 'Documents\PowerShell\eco-profile.ps1'
 if (Test-Path -LiteralPath $EcoProfilePath) {
   . $EcoProfilePath
+}
+
+# setup 'z' to cd
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+  Invoke-Expression (& { (zoxide init powershell | Out-String) })
 }
