@@ -15,6 +15,8 @@ local function default_cli_agent()
   return nil
 end
 
+local is_windows = vim.fn.has("win32") == 1
+
 return {
   {
     'folke/sidekick.nvim',
@@ -23,7 +25,7 @@ return {
     opts = {
       cli = {
         mux = {
-          enabled = true,
+          enabled = not is_windows, -- I don't use tmux on windows at the moment so disable mux
         },
         win = {
           layout = 'float',
